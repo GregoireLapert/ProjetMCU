@@ -3682,32 +3682,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 374  ]
 [e :U 373 ]
 {
-[; ;main.c: 27: if ((j>=0 && j<=1) || (j>=62 && j<=63))
+[; ;main.c: 27: if ((j>=3 && j<=4) || (j>=62 && j<=63))
 "27
-[e $ ! || && >= _j -> 0 `i <= _j -> 1 `i && >= _j -> 62 `i <= _j -> 63 `i 376  ]
+[e $ ! || && >= _j -> 3 `i <= _j -> 4 `i && >= _j -> 62 `i <= _j -> 63 `i 376  ]
 [; ;main.c: 28: glcd_PlotPixel(i,j,1);
 "28
 [e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
 [e $U 377  ]
 "29
 [e :U 376 ]
-[; ;main.c: 29: else if ((i>=0 && i<=1) || ( i>=126 && i<=127))
-[e $ ! || && >= _i -> 0 `i <= _i -> 1 `i && >= _i -> 126 `i <= _i -> 127 `i 378  ]
+[; ;main.c: 29: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))
+[e $ ! && || && >= _i -> 0 `i <= _i -> 1 `i && >= _i -> 126 `i <= _i -> 127 `i > _j -> 4 `i 378  ]
 [; ;main.c: 30: glcd_PlotPixel(i,j,1);
 "30
 [e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
 [e $U 379  ]
 "31
 [e :U 378 ]
-[; ;main.c: 31: else if (i>=91 && i<=92)
-[e $ ! && >= _i -> 91 `i <= _i -> 92 `i 380  ]
+[; ;main.c: 31: else if (i>=91 && i<=92 && j>4)
+[e $ ! && && >= _i -> 91 `i <= _i -> 92 `i > _j -> 4 `i 380  ]
 [; ;main.c: 32: glcd_PlotPixel(i,j,1);
 "32
 [e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
 [e :U 380 ]
-"41
+"35
 [e :U 379 ]
 [e :U 377 ]
+[; ;main.c: 35: if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i==64) || (i==73) || (i==82)) && (j>4) )
+[e $ ! && || || || || || || || || == _i -> 10 `i == _i -> 19 `i == _i -> 28 `i == _i -> 37 `i == _i -> 46 `i == _i -> 55 `i == _i -> 64 `i == _i -> 73 `i == _i -> 82 `i > _j -> 4 `i 381  ]
+[; ;main.c: 36: glcd_PlotPixel(i,j,1);
+"36
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e :U 381 ]
+[; ;main.c: 39: if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i<92))
+"39
+[e $ ! && || || || || || == _j -> 17 `i == _j -> 26 `i == _j -> 35 `i == _j -> 44 `i == _j -> 53 `i == _j -> 62 `i < _i -> 92 `i 382  ]
+[; ;main.c: 40: glcd_PlotPixel(i,j,1);
+"40
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e :U 382 ]
+"41
 }
 "26
 [e ++ _j -> 1 `i ]
@@ -3748,19 +3762,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _display_array ..  ]
 [; ;main.c: 53: while (1){
 "53
-[e :U 383 ]
+[e :U 385 ]
 {
 "56
 }
-[e :U 382 ]
-"53
-[e $U 383  ]
 [e :U 384 ]
+"53
+[e $U 385  ]
+[e :U 386 ]
 [; ;main.c: 56: }
 [; ;main.c: 58: return;
 "58
-[e $UE 381  ]
+[e $UE 383  ]
 [; ;main.c: 59: }
 "59
-[e :UE 381 ]
+[e :UE 383 ]
 }

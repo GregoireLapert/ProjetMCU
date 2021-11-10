@@ -24,19 +24,19 @@ typedef struct shape{
 void display_array(){
     for (int i=0;i<128;i++){
         for(int j=0;j<64;j++){
-            if ((j>=0 && j<=1) || (j>=62 && j<=63)) //bordure haut et bas 
+            if ((j>=3 && j<=4) || (j>=62 && j<=63)) //bordure haut et bas 
                 glcd_PlotPixel(i,j,1);
-            else if ((i>=0 && i<=1) || ( i>=126 && i<=127))//bordure gauche droite
+            else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))//bordure gauche droite
                 glcd_PlotPixel(i,j,1);
-            else if (i>=91 && i<=92) //limite grille droite
+            else if (i>=91 && i<=92 && j>4) //limite grille droite
                 glcd_PlotPixel(i,j,1);
-            /*    
+             
             //colonnes
-            if ( (i>=13 && i<=16) || (i>=26 && i<=29) || (i>=39 && i<=42) || (i>=52 && i<=55) || (i>=65 && i<=68) || (i>=78 && i<=81) || (i>=91 && i<=93) || (i>=103 && i<=106) || (i>=116 && i<=119) )
-                glcd_PlotPixel(i,j,1);*/
+            if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i==64) || (i==73) || (i==82)) && (j>4) )
+                glcd_PlotPixel(i,j,1);
             
             //ligne
-            if ( (j>=10 && j<=13) || (j>=20 && j<=23) || (j>=30 && j<=33) || (j>=40 && j<=43) || (j>=50 && j<=53) )
+            if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i<92))
                 glcd_PlotPixel(i,j,1);
         }
     }

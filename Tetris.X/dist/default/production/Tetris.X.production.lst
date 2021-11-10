@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.43 build -156212558 
-                                                                                               Mon Nov 08 11:34:45 2021
+                                                                                               Wed Nov 10 14:24:10 2021
 
 Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250354
      1                           	processor	18F4550
@@ -2336,24 +2336,24 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2322  007FFE  00                 	db	0	; dummy byte at the end
   2323  0000                     
   2324                           	psect	cinit
-  2325  007356                     __pcinit:
+  2325  007254                     __pcinit:
   2326                           	opt stack 0
-  2327  007356                     start_initialization:
+  2327  007254                     start_initialization:
   2328                           	opt stack 0
-  2329  007356                     __initialization:
+  2329  007254                     __initialization:
   2330                           	opt stack 0
   2331                           
   2332                           ; Clear objects allocated to COMRAM (2 bytes)
-  2333  007356  6A17               	clrf	(__pbssCOMRAM+1)& (0+255),c
-  2334  007358  6A16               	clrf	__pbssCOMRAM& (0+255),c
-  2335  00735A                     end_of_initialization:
+  2333  007254  6A17               	clrf	(__pbssCOMRAM+1)& (0+255),c
+  2334  007256  6A16               	clrf	__pbssCOMRAM& (0+255),c
+  2335  007258                     end_of_initialization:
   2336                           	opt stack 0
-  2337  00735A                     __end_of__initialization:
+  2337  007258                     __end_of__initialization:
   2338                           	opt stack 0
-  2339  00735A  0E00               	movlw	low (__Lmediumconst shr (0+16))
-  2340  00735C  6EF8               	movwf	tblptru,c
-  2341  00735E  0100               	movlb	0
-  2342  007360  EFA5  F039         	goto	_main	;jump to C main() function
+  2339  007258  0E00               	movlw	low (__Lmediumconst shr (0+16))
+  2340  00725A  6EF8               	movwf	tblptru,c
+  2341  00725C  0100               	movlb	0
+  2342  00725E  EF24  F039         	goto	_main	;jump to C main() function
   2343                           tblptru	equ	0xFF8
   2344                           
   2345                           	psect	bssCOMRAM
@@ -2502,23 +2502,23 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2488 ;;
   2489                           
   2490                           	psect	text0
-  2491  00734A                     __ptext0:
+  2491  007248                     __ptext0:
   2492                           	opt stack 0
-  2493  00734A                     _main:
+  2493  007248                     _main:
   2494                           	opt stack 28
   2495                           
   2496                           ;main.c: 48: int array [10][7];
   2497                           ;main.c: 51: glcd_Init(1);
   2498                           
   2499                           ;incstack = 0
-  2500  00734A  0E01               	movlw	1
-  2501  00734C  ECBA  F03A         	call	_glcd_Init
+  2500  007248  0E01               	movlw	1
+  2501  00724A  EC39  F03A         	call	_glcd_Init
   2502                           
   2503                           ;main.c: 52: display_array();
-  2504  007350  EC19  F03B         	call	_display_array	;wreg free
-  2505  007354                     l29:
-  2506  007354  D7FF               	goto	l29
-  2507  007356                     __end_of_main:
+  2504  00724E  EC98  F03A         	call	_display_array	;wreg free
+  2505  007252                     l35:
+  2506  007252  D7FF               	goto	l35
+  2507  007254                     __end_of_main:
   2508                           	opt stack 0
   2509                           tblptru	equ	0xFF8
   2510                           
@@ -2557,169 +2557,169 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2543 ;;
   2544                           
   2545                           	psect	text1
-  2546  007574                     __ptext1:
+  2546  007472                     __ptext1:
   2547                           	opt stack 0
-  2548  007574                     _glcd_Init:
+  2548  007472                     _glcd_Init:
   2549                           	opt stack 28
   2550                           
   2551                           ;incstack = 0
   2552                           ;glcd_Init@mode stored from wreg
-  2553  007574  6E0F               	movwf	glcd_Init@mode,c
+  2553  007472  6E0F               	movwf	glcd_Init@mode,c
   2554                           
   2555                           ;glcd.c: 341: TRISA = 0xFF;
-  2556  007576  6892               	setf	3986,c	;volatile
+  2556  007474  6892               	setf	3986,c	;volatile
   2557                           
   2558                           ;glcd.c: 342: PORTA = 0x00;
-  2559  007578  0E00               	movlw	0
-  2560  00757A  6E80               	movwf	3968,c	;volatile
+  2559  007476  0E00               	movlw	0
+  2560  007478  6E80               	movwf	3968,c	;volatile
   2561                           
   2562                           ;glcd.c: 343: ADCON1 = 0x0F;
-  2563  00757C  0E0F               	movlw	15
-  2564  00757E  6EC1               	movwf	4033,c	;volatile
+  2563  00747A  0E0F               	movlw	15
+  2564  00747C  6EC1               	movwf	4033,c	;volatile
   2565                           
   2566                           ;glcd.c: 345: TRISB = 0x00;
-  2567  007580  0E00               	movlw	0
-  2568  007582  6E93               	movwf	3987,c	;volatile
+  2567  00747E  0E00               	movlw	0
+  2568  007480  6E93               	movwf	3987,c	;volatile
   2569                           
   2570                           ;glcd.c: 346: PORTB = 0x00;
-  2571  007584  0E00               	movlw	0
-  2572  007586  6E81               	movwf	3969,c	;volatile
+  2571  007482  0E00               	movlw	0
+  2572  007484  6E81               	movwf	3969,c	;volatile
   2573                           
   2574                           ;glcd.c: 348: TRISD = 0x00;
-  2575  007588  0E00               	movlw	0
-  2576  00758A  6E95               	movwf	3989,c	;volatile
+  2575  007486  0E00               	movlw	0
+  2576  007488  6E95               	movwf	3989,c	;volatile
   2577                           
   2578                           ;glcd.c: 349: PORTD = 0x00;
-  2579  00758C  0E00               	movlw	0
-  2580  00758E  6E83               	movwf	3971,c	;volatile
+  2579  00748A  0E00               	movlw	0
+  2580  00748C  6E83               	movwf	3971,c	;volatile
   2581                           
   2582                           ;glcd.c: 351: unsigned char i, j, k;
   2583                           ;glcd.c: 354: PORTD = 0x00;
-  2584  007590  0E00               	movlw	0
-  2585  007592  6E83               	movwf	3971,c	;volatile
+  2584  00748E  0E00               	movlw	0
+  2585  007490  6E83               	movwf	3971,c	;volatile
   2586                           
   2587                           ;glcd.c: 355: LATBbits.LATB5 = 0;
-  2588  007594  9A8A               	bcf	3978,5,c	;volatile
+  2588  007492  9A8A               	bcf	3978,5,c	;volatile
   2589                           
   2590                           ;glcd.c: 357: _delay((unsigned long)((1500)*(100000/4000.0)));
-  2591  007596  0E31               	movlw	49
-  2592  007598  6E0E               	movwf	??_glcd_Init& (0+255),c
-  2593  00759A  0EB2               	movlw	178
-  2594  00759C                     u1257:
-  2595  00759C  2EE8               	decfsz	wreg,f,c
-  2596  00759E  D7FE               	bra	u1257
-  2597  0075A0  2E0E               	decfsz	??_glcd_Init& (0+255),f,c
-  2598  0075A2  D7FC               	bra	u1257
-  2599  0075A4  D000               	nop2	
+  2591  007494  0E31               	movlw	49
+  2592  007496  6E0E               	movwf	??_glcd_Init& (0+255),c
+  2593  007498  0EB2               	movlw	178
+  2594  00749A                     u1637:
+  2595  00749A  2EE8               	decfsz	wreg,f,c
+  2596  00749C  D7FE               	bra	u1637
+  2597  00749E  2E0E               	decfsz	??_glcd_Init& (0+255),f,c
+  2598  0074A0  D7FC               	bra	u1637
+  2599  0074A2  D000               	nop2	
   2600                           
   2601                           ;glcd.c: 358: LATBbits.LATB5 = 1;
-  2602  0075A6  8A8A               	bsf	3978,5,c	;volatile
+  2602  0074A4  8A8A               	bsf	3978,5,c	;volatile
   2603                           
   2604                           ;glcd.c: 360: LATBbits.LATB4=0;
-  2605  0075A8  988A               	bcf	3978,4,c	;volatile
+  2605  0074A6  988A               	bcf	3978,4,c	;volatile
   2606                           
   2607                           ;glcd.c: 361: LATBbits.LATB0=0;
-  2608  0075AA  908A               	bcf	3978,0,c	;volatile
+  2608  0074A8  908A               	bcf	3978,0,c	;volatile
   2609                           
   2610                           ;glcd.c: 362: LATBbits.LATB1=0;
-  2611  0075AC  928A               	bcf	3978,1,c	;volatile
+  2611  0074AA  928A               	bcf	3978,1,c	;volatile
   2612                           
   2613                           ;glcd.c: 363: LATBbits.LATB2=0;
-  2614  0075AE  948A               	bcf	3978,2,c	;volatile
+  2614  0074AC  948A               	bcf	3978,2,c	;volatile
   2615                           
   2616                           ;glcd.c: 366: _delay((unsigned long)((10)*(100000/4000.0)));
-  2617  0075B0  0E53               	movlw	83
-  2618  0075B2                     u1267:
-  2619  0075B2  2EE8               	decfsz	wreg,f,c
-  2620  0075B4  D7FE               	bra	u1267
-  2621  0075B6  F000               	nop	
+  2617  0074AE  0E53               	movlw	83
+  2618  0074B0                     u1647:
+  2619  0074B0  2EE8               	decfsz	wreg,f,c
+  2620  0074B2  D7FE               	bra	u1647
+  2621  0074B4  F000               	nop	
   2622                           
   2623                           ;glcd.c: 367: glcd_WriteByte(0, 0xC0);
-  2624  0075B8  0EC0               	movlw	192
-  2625  0075BA  6E09               	movwf	glcd_WriteByte@data,c
-  2626  0075BC  0E00               	movlw	0
-  2627  0075BE  ECCD  F039         	call	_glcd_WriteByte
+  2624  0074B6  0EC0               	movlw	192
+  2625  0074B8  6E09               	movwf	glcd_WriteByte@data,c
+  2626  0074BA  0E00               	movlw	0
+  2627  0074BC  EC4C  F039         	call	_glcd_WriteByte
   2628                           
   2629                           ;glcd.c: 368: glcd_WriteByte(1, 0xC0);
-  2630  0075C2  0EC0               	movlw	192
-  2631  0075C4  6E09               	movwf	glcd_WriteByte@data,c
-  2632  0075C6  0E01               	movlw	1
-  2633  0075C8  ECCD  F039         	call	_glcd_WriteByte
+  2630  0074C0  0EC0               	movlw	192
+  2631  0074C2  6E09               	movwf	glcd_WriteByte@data,c
+  2632  0074C4  0E01               	movlw	1
+  2633  0074C6  EC4C  F039         	call	_glcd_WriteByte
   2634                           
   2635                           ;glcd.c: 369: glcd_WriteByte(0, 0x40);
-  2636  0075CC  0E40               	movlw	64
-  2637  0075CE  6E09               	movwf	glcd_WriteByte@data,c
-  2638  0075D0  0E00               	movlw	0
-  2639  0075D2  ECCD  F039         	call	_glcd_WriteByte
+  2636  0074CA  0E40               	movlw	64
+  2637  0074CC  6E09               	movwf	glcd_WriteByte@data,c
+  2638  0074CE  0E00               	movlw	0
+  2639  0074D0  EC4C  F039         	call	_glcd_WriteByte
   2640                           
   2641                           ;glcd.c: 370: glcd_WriteByte(1, 0x40);
-  2642  0075D6  0E40               	movlw	64
-  2643  0075D8  6E09               	movwf	glcd_WriteByte@data,c
-  2644  0075DA  0E01               	movlw	1
-  2645  0075DC  ECCD  F039         	call	_glcd_WriteByte
+  2642  0074D4  0E40               	movlw	64
+  2643  0074D6  6E09               	movwf	glcd_WriteByte@data,c
+  2644  0074D8  0E01               	movlw	1
+  2645  0074DA  EC4C  F039         	call	_glcd_WriteByte
   2646                           
   2647                           ;glcd.c: 371: glcd_WriteByte(0, 0xB8);
-  2648  0075E0  0EB8               	movlw	184
-  2649  0075E2  6E09               	movwf	glcd_WriteByte@data,c
-  2650  0075E4  0E00               	movlw	0
-  2651  0075E6  ECCD  F039         	call	_glcd_WriteByte
+  2648  0074DE  0EB8               	movlw	184
+  2649  0074E0  6E09               	movwf	glcd_WriteByte@data,c
+  2650  0074E2  0E00               	movlw	0
+  2651  0074E4  EC4C  F039         	call	_glcd_WriteByte
   2652                           
   2653                           ;glcd.c: 372: glcd_WriteByte(1, 0xB8);
-  2654  0075EA  0EB8               	movlw	184
-  2655  0075EC  6E09               	movwf	glcd_WriteByte@data,c
-  2656  0075EE  0E01               	movlw	1
-  2657  0075F0  ECCD  F039         	call	_glcd_WriteByte
+  2654  0074E8  0EB8               	movlw	184
+  2655  0074EA  6E09               	movwf	glcd_WriteByte@data,c
+  2656  0074EC  0E01               	movlw	1
+  2657  0074EE  EC4C  F039         	call	_glcd_WriteByte
   2658                           
   2659                           ;glcd.c: 374: if(mode == 1)
-  2660  0075F4  040F               	decf	glcd_Init@mode,w,c
-  2661  0075F6  A4D8               	btfss	status,2,c
-  2662  0075F8  D00E               	goto	l75
+  2660  0074F2  040F               	decf	glcd_Init@mode,w,c
+  2661  0074F4  A4D8               	btfss	status,2,c
+  2662  0074F6  D00E               	goto	l81
   2663                           
   2664                           ;glcd.c: 375: {
   2665                           ;glcd.c: 376: TRISA = 0x00;
-  2666  0075FA  0E00               	movlw	0
-  2667  0075FC  6E92               	movwf	3986,c	;volatile
+  2666  0074F8  0E00               	movlw	0
+  2667  0074FA  6E92               	movwf	3986,c	;volatile
   2668                           
   2669                           ;glcd.c: 377: PORTA = 0xFF;
-  2670  0075FE  6880               	setf	3968,c	;volatile
+  2670  0074FC  6880               	setf	3968,c	;volatile
   2671                           
   2672                           ;glcd.c: 378: glcd_WriteByte(0, 0x3F);
-  2673  007600  0E3F               	movlw	63
-  2674  007602  6E09               	movwf	glcd_WriteByte@data,c
-  2675  007604  0E00               	movlw	0
-  2676  007606  ECCD  F039         	call	_glcd_WriteByte
+  2673  0074FE  0E3F               	movlw	63
+  2674  007500  6E09               	movwf	glcd_WriteByte@data,c
+  2675  007502  0E00               	movlw	0
+  2676  007504  EC4C  F039         	call	_glcd_WriteByte
   2677                           
   2678                           ;glcd.c: 379: glcd_WriteByte(1, 0x3F);
-  2679  00760A  0E3F               	movlw	63
-  2680  00760C  6E09               	movwf	glcd_WriteByte@data,c
-  2681  00760E  0E01               	movlw	1
-  2682  007610  ECCD  F039         	call	_glcd_WriteByte
+  2679  007508  0E3F               	movlw	63
+  2680  00750A  6E09               	movwf	glcd_WriteByte@data,c
+  2681  00750C  0E01               	movlw	1
+  2682  00750E  EC4C  F039         	call	_glcd_WriteByte
   2683                           
   2684                           ;glcd.c: 380: }
-  2685  007614  D00A               	goto	l76
-  2686  007616                     l75:
+  2685  007512  D00A               	goto	l82
+  2686  007514                     l81:
   2687                           
   2688                           ;glcd.c: 381: else
   2689                           ;glcd.c: 382: {
   2690                           ;glcd.c: 383: glcd_WriteByte(0, 0x3E);
-  2691  007616  0E3E               	movlw	62
-  2692  007618  6E09               	movwf	glcd_WriteByte@data,c
-  2693  00761A  0E00               	movlw	0
-  2694  00761C  ECCD  F039         	call	_glcd_WriteByte
+  2691  007514  0E3E               	movlw	62
+  2692  007516  6E09               	movwf	glcd_WriteByte@data,c
+  2693  007518  0E00               	movlw	0
+  2694  00751A  EC4C  F039         	call	_glcd_WriteByte
   2695                           
   2696                           ;glcd.c: 384: glcd_WriteByte(1, 0x3E);
-  2697  007620  0E3E               	movlw	62
-  2698  007622  6E09               	movwf	glcd_WriteByte@data,c
-  2699  007624  0E01               	movlw	1
-  2700  007626  ECCD  F039         	call	_glcd_WriteByte
-  2701  00762A                     l76:
+  2697  00751E  0E3E               	movlw	62
+  2698  007520  6E09               	movwf	glcd_WriteByte@data,c
+  2699  007522  0E01               	movlw	1
+  2700  007524  EC4C  F039         	call	_glcd_WriteByte
+  2701  007528                     l82:
   2702                           
   2703                           ;glcd.c: 385: }
   2704                           ;glcd.c: 387: glcd_FillScreen(0);
-  2705  00762A  0E00               	movlw	0
-  2706  00762C  ECE8  F039         	call	_glcd_FillScreen
-  2707  007630  0012               	return		;funcret
-  2708  007632                     __end_of_glcd_Init:
+  2705  007528  0E00               	movlw	0
+  2706  00752A  EC67  F039         	call	_glcd_FillScreen
+  2707  00752E  0012               	return		;funcret
+  2708  007530                     __end_of_glcd_Init:
   2709                           	opt stack 0
   2710                           tblptru	equ	0xFF8
   2711                           wreg	equ	0xFE8
@@ -2758,89 +2758,89 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2744 ;;
   2745                           
   2746                           	psect	text2
-  2747  0073D0                     __ptext2:
+  2747  0072CE                     __ptext2:
   2748                           	opt stack 0
-  2749  0073D0                     _glcd_FillScreen:
+  2749  0072CE                     _glcd_FillScreen:
   2750                           	opt stack 28
   2751                           
   2752                           ;incstack = 0
   2753                           ;glcd_FillScreen@color stored from wreg
-  2754  0073D0  6E0B               	movwf	glcd_FillScreen@color,c
+  2754  0072CE  6E0B               	movwf	glcd_FillScreen@color,c
   2755                           
   2756                           ;glcd.c: 531: unsigned char i, j;
   2757                           ;glcd.c: 533: for(i = 0; i < 8; i ++)
-  2758  0073D2  0E00               	movlw	0
-  2759  0073D4  6E0D               	movwf	glcd_FillScreen@i,c
-  2760  0073D6                     l1337:
-  2761  0073D6  0E07               	movlw	7
-  2762  0073D8  640D               	cpfsgt	glcd_FillScreen@i,c
-  2763  0073DA  D001               	goto	l110
-  2764  0073DC  0012               	return	
-  2765  0073DE                     l110:
+  2758  0072D0  0E00               	movlw	0
+  2759  0072D2  6E0D               	movwf	glcd_FillScreen@i,c
+  2760  0072D4                     l1385:
+  2761  0072D4  0E07               	movlw	7
+  2762  0072D6  640D               	cpfsgt	glcd_FillScreen@i,c
+  2763  0072D8  D001               	goto	l116
+  2764  0072DA  0012               	return	
+  2765  0072DC                     l116:
   2766                           
   2767                           ;glcd.c: 534: {
   2768                           ;glcd.c: 535: LATBbits.LATB2=0;
-  2769  0073DE  948A               	bcf	3978,2,c	;volatile
+  2769  0072DC  948A               	bcf	3978,2,c	;volatile
   2770                           
   2771                           ;glcd.c: 536: glcd_WriteByte(0, 0b01000000);
-  2772  0073E0  0E40               	movlw	64
-  2773  0073E2  6E09               	movwf	glcd_WriteByte@data,c
-  2774  0073E4  0E00               	movlw	0
-  2775  0073E6  ECCD  F039         	call	_glcd_WriteByte
+  2772  0072DE  0E40               	movlw	64
+  2773  0072E0  6E09               	movwf	glcd_WriteByte@data,c
+  2774  0072E2  0E00               	movlw	0
+  2775  0072E4  EC4C  F039         	call	_glcd_WriteByte
   2776                           
   2777                           ;glcd.c: 537: glcd_WriteByte(1, 0b01000000);
-  2778  0073EA  0E40               	movlw	64
-  2779  0073EC  6E09               	movwf	glcd_WriteByte@data,c
-  2780  0073EE  0E01               	movlw	1
-  2781  0073F0  ECCD  F039         	call	_glcd_WriteByte
+  2778  0072E8  0E40               	movlw	64
+  2779  0072EA  6E09               	movwf	glcd_WriteByte@data,c
+  2780  0072EC  0E01               	movlw	1
+  2781  0072EE  EC4C  F039         	call	_glcd_WriteByte
   2782                           
   2783                           ;glcd.c: 538: glcd_WriteByte(0, i | 0b10111000);
-  2784  0073F4  500D               	movf	glcd_FillScreen@i,w,c
-  2785  0073F6  09B8               	iorlw	184
-  2786  0073F8  6E09               	movwf	glcd_WriteByte@data,c
-  2787  0073FA  0E00               	movlw	0
-  2788  0073FC  ECCD  F039         	call	_glcd_WriteByte
+  2784  0072F2  500D               	movf	glcd_FillScreen@i,w,c
+  2785  0072F4  09B8               	iorlw	184
+  2786  0072F6  6E09               	movwf	glcd_WriteByte@data,c
+  2787  0072F8  0E00               	movlw	0
+  2788  0072FA  EC4C  F039         	call	_glcd_WriteByte
   2789                           
   2790                           ;glcd.c: 539: glcd_WriteByte(1, i | 0b10111000);
-  2791  007400  500D               	movf	glcd_FillScreen@i,w,c
-  2792  007402  09B8               	iorlw	184
-  2793  007404  6E09               	movwf	glcd_WriteByte@data,c
-  2794  007406  0E01               	movlw	1
-  2795  007408  ECCD  F039         	call	_glcd_WriteByte
+  2791  0072FE  500D               	movf	glcd_FillScreen@i,w,c
+  2792  007300  09B8               	iorlw	184
+  2793  007302  6E09               	movwf	glcd_WriteByte@data,c
+  2794  007304  0E01               	movlw	1
+  2795  007306  EC4C  F039         	call	_glcd_WriteByte
   2796                           
   2797                           ;glcd.c: 540: LATBbits.LATB2=1;
-  2798  00740C  848A               	bsf	3978,2,c	;volatile
+  2798  00730A  848A               	bsf	3978,2,c	;volatile
   2799                           
   2800                           ;glcd.c: 542: for(j = 0; j < 64; j++)
-  2801  00740E  0E00               	movlw	0
-  2802  007410  6E0C               	movwf	glcd_FillScreen@j,c
-  2803  007412                     l1351:
-  2804  007412  0E3F               	movlw	63
-  2805  007414  640C               	cpfsgt	glcd_FillScreen@j,c
-  2806  007416  D001               	goto	l112
-  2807  007418  D010               	goto	u770
-  2808  00741A                     l112:
+  2801  00730C  0E00               	movlw	0
+  2802  00730E  6E0C               	movwf	glcd_FillScreen@j,c
+  2803  007310                     l1399:
+  2804  007310  0E3F               	movlw	63
+  2805  007312  640C               	cpfsgt	glcd_FillScreen@j,c
+  2806  007314  D001               	goto	l118
+  2807  007316  D010               	goto	u960
+  2808  007318                     l118:
   2809                           
   2810                           ;glcd.c: 543: {
   2811                           ;glcd.c: 544: glcd_WriteByte(0, 0xFF*color);
-  2812  00741A  500B               	movf	glcd_FillScreen@color,w,c
-  2813  00741C  0DFF               	mullw	255
-  2814  00741E  CFF3 F009          	movff	prodl,glcd_WriteByte@data
-  2815  007422  0E00               	movlw	0
-  2816  007424  ECCD  F039         	call	_glcd_WriteByte
+  2812  007318  500B               	movf	glcd_FillScreen@color,w,c
+  2813  00731A  0DFF               	mullw	255
+  2814  00731C  CFF3 F009          	movff	prodl,glcd_WriteByte@data
+  2815  007320  0E00               	movlw	0
+  2816  007322  EC4C  F039         	call	_glcd_WriteByte
   2817                           
   2818                           ;glcd.c: 545: glcd_WriteByte(1, 0xFF*color);
-  2819  007428  500B               	movf	glcd_FillScreen@color,w,c
-  2820  00742A  0DFF               	mullw	255
-  2821  00742C  CFF3 F009          	movff	prodl,glcd_WriteByte@data
-  2822  007430  0E01               	movlw	1
-  2823  007432  ECCD  F039         	call	_glcd_WriteByte
-  2824  007436  2A0C               	incf	glcd_FillScreen@j,f,c
-  2825  007438  D7EC               	goto	l1351
-  2826  00743A                     u770:
-  2827  00743A  2A0D               	incf	glcd_FillScreen@i,f,c
-  2828  00743C  D7CC               	goto	l1337
-  2829  00743E                     __end_of_glcd_FillScreen:
+  2819  007326  500B               	movf	glcd_FillScreen@color,w,c
+  2820  007328  0DFF               	mullw	255
+  2821  00732A  CFF3 F009          	movff	prodl,glcd_WriteByte@data
+  2822  00732E  0E01               	movlw	1
+  2823  007330  EC4C  F039         	call	_glcd_WriteByte
+  2824  007334  2A0C               	incf	glcd_FillScreen@j,f,c
+  2825  007336  D7EC               	goto	l1399
+  2826  007338                     u960:
+  2827  007338  2A0D               	incf	glcd_FillScreen@i,f,c
+  2828  00733A  D7CC               	goto	l1385
+  2829  00733C                     __end_of_glcd_FillScreen:
   2830                           	opt stack 0
   2831                           tblptru	equ	0xFF8
   2832                           prodl	equ	0xFF3
@@ -2879,714 +2879,859 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2865 ;;
   2866                           
   2867                           	psect	text3
-  2868  007632                     __ptext3:
+  2868  007530                     __ptext3:
   2869                           	opt stack 0
-  2870  007632                     _display_array:
+  2870  007530                     _display_array:
   2871                           	opt stack 28
   2872                           
   2873                           ;main.c: 25: for (int i=0;i<128;i++){
   2874                           
   2875                           ;incstack = 0
-  2876  007632  0E00               	movlw	0
-  2877  007634  6E15               	movwf	display_array@i+1,c
-  2878  007636  0E00               	movlw	0
-  2879  007638  6E14               	movwf	display_array@i,c
-  2880  00763A  BE15               	btfsc	display_array@i+1,7,c
-  2881  00763C  D008               	goto	l7
-  2882  00763E  5015               	movf	display_array@i+1,w,c
-  2883  007640  E105               	bnz	u910
-  2884  007642  0E80               	movlw	128
-  2885  007644  5C14               	subwf	display_array@i,w,c
-  2886  007646  B0D8               	btfsc	status,0,c
-  2887  007648  0012               	return	
-  2888  00764A  D001               	goto	l7
-  2889  00764C                     u910:
-  2890  00764C  0012               	return	
-  2891  00764E                     l7:
+  2876  007530  0E00               	movlw	0
+  2877  007532  6E15               	movwf	display_array@i+1,c
+  2878  007534  0E00               	movlw	0
+  2879  007536  6E14               	movwf	display_array@i,c
+  2880  007538  BE15               	btfsc	display_array@i+1,7,c
+  2881  00753A  D008               	goto	l7
+  2882  00753C  5015               	movf	display_array@i+1,w,c
+  2883  00753E  E105               	bnz	u1100
+  2884  007540  0E80               	movlw	128
+  2885  007542  5C14               	subwf	display_array@i,w,c
+  2886  007544  B0D8               	btfsc	status,0,c
+  2887  007546  0012               	return	
+  2888  007548  D001               	goto	l7
+  2889  00754A                     u1100:
+  2890  00754A  0012               	return	
+  2891  00754C                     l7:
   2892                           
   2893                           ;main.c: 26: for(int j=0;j<64;j++){
-  2894  00764E  0E00               	movlw	0
-  2895  007650  6E13               	movwf	display_array@j+1,c
-  2896  007652  0E00               	movlw	0
-  2897  007654  6E12               	movwf	display_array@j,c
-  2898  007656  BE13               	btfsc	display_array@j+1,7,c
-  2899  007658  D006               	goto	l9
-  2900  00765A  5013               	movf	display_array@j+1,w,c
-  2901  00765C  E166               	bnz	l10
-  2902  00765E  0E40               	movlw	64
-  2903  007660  5C12               	subwf	display_array@j,w,c
-  2904  007662  B0D8               	btfsc	status,0,c
-  2905  007664  D062               	goto	u1030
-  2906  007666                     l9:
-  2907                           
-  2908                           ;main.c: 27: if ((j>=0 && j<=1) || (j>=62 && j<=63))
-  2909  007666  BE13               	btfsc	display_array@j+1,7,c
-  2910  007668  D008               	goto	u940
-  2911  00766A  BE13               	btfsc	display_array@j+1,7,c
-  2912  00766C  D016               	goto	u960
-  2913  00766E  5013               	movf	display_array@j+1,w,c
-  2914  007670  E104               	bnz	l1485
-  2915  007672  0E02               	movlw	2
-  2916  007674  5C12               	subwf	display_array@j,w,c
-  2917  007676  A0D8               	btfss	status,0,c
-  2918  007678  D010               	goto	u960
-  2919  00767A                     u940:
-  2920  00767A                     l1485:
-  2921  00767A  BE13               	btfsc	display_array@j+1,7,c
-  2922  00767C  D016               	goto	l11
-  2923  00767E  5013               	movf	display_array@j+1,w,c
-  2924  007680  E104               	bnz	u950
-  2925  007682  0E3E               	movlw	62
-  2926  007684  5C12               	subwf	display_array@j,w,c
-  2927  007686  A0D8               	btfss	status,0,c
-  2928  007688  D010               	goto	l11
-  2929  00768A                     u950:
-  2930  00768A  BE13               	btfsc	display_array@j+1,7,c
-  2931  00768C  D006               	goto	u960
-  2932  00768E  5013               	movf	display_array@j+1,w,c
-  2933  007690  E10C               	bnz	l1491
-  2934  007692  0E40               	movlw	64
-  2935  007694  5C12               	subwf	display_array@j,w,c
-  2936  007696  B0D8               	btfsc	status,0,c
-  2937  007698  D008               	goto	l11
-  2938  00769A                     u960:
-  2939                           
-  2940                           ;main.c: 28: glcd_PlotPixel(i,j,1);
-  2941  00769A  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
-  2942  00769E  0E01               	movlw	1
-  2943  0076A0  6E0C               	movwf	glcd_PlotPixel@color,c
-  2944  0076A2  5014               	movf	display_array@i,w,c
-  2945  0076A4  EC61  F03A         	call	_glcd_PlotPixel
-  2946  0076A8  D039               	goto	l23
-  2947  0076AA                     l11:
-  2948  0076AA                     l1491:
+  2894  00754C  0E00               	movlw	0
+  2895  00754E  6E13               	movwf	display_array@j+1,c
+  2896  007550  0E00               	movlw	0
+  2897  007552  6E12               	movwf	display_array@j,c
+  2898  007554  BE13               	btfsc	display_array@j+1,7,c
+  2899  007556  D008               	goto	l9
+  2900  007558  5013               	movf	display_array@j+1,w,c
+  2901  00755A  E105               	bnz	u1110
+  2902  00755C  0E40               	movlw	64
+  2903  00755E  5C12               	subwf	display_array@j,w,c
+  2904  007560  B0D8               	btfsc	status,0,c
+  2905  007562  D0E3               	goto	u1410
+  2906  007564  D001               	goto	l9
+  2907  007566                     u1110:
+  2908  007566  D0E1               	goto	u1410
+  2909  007568                     l9:
+  2910                           
+  2911                           ;main.c: 27: if ((j>=3 && j<=4) || (j>=62 && j<=63))
+  2912  007568  BE13               	btfsc	display_array@j+1,7,c
+  2913  00756A  D00E               	goto	u1130
+  2914  00756C  5013               	movf	display_array@j+1,w,c
+  2915  00756E  E104               	bnz	u1120
+  2916  007570  0E03               	movlw	3
+  2917  007572  5C12               	subwf	display_array@j,w,c
+  2918  007574  A0D8               	btfss	status,0,c
+  2919  007576  D008               	goto	u1130
+  2920  007578                     u1120:
+  2921  007578  BE13               	btfsc	display_array@j+1,7,c
+  2922  00757A  D016               	goto	u1150
+  2923  00757C  5013               	movf	display_array@j+1,w,c
+  2924  00757E  E104               	bnz	l1533
+  2925  007580  0E05               	movlw	5
+  2926  007582  5C12               	subwf	display_array@j,w,c
+  2927  007584  A0D8               	btfss	status,0,c
+  2928  007586  D010               	goto	u1150
+  2929  007588                     u1130:
+  2930  007588                     l1533:
+  2931  007588  BE13               	btfsc	display_array@j+1,7,c
+  2932  00758A  D016               	goto	l11
+  2933  00758C  5013               	movf	display_array@j+1,w,c
+  2934  00758E  E104               	bnz	u1140
+  2935  007590  0E3E               	movlw	62
+  2936  007592  5C12               	subwf	display_array@j,w,c
+  2937  007594  A0D8               	btfss	status,0,c
+  2938  007596  D010               	goto	l11
+  2939  007598                     u1140:
+  2940  007598  BE13               	btfsc	display_array@j+1,7,c
+  2941  00759A  D006               	goto	u1150
+  2942  00759C  5013               	movf	display_array@j+1,w,c
+  2943  00759E  E10C               	bnz	l1539
+  2944  0075A0  0E40               	movlw	64
+  2945  0075A2  5C12               	subwf	display_array@j,w,c
+  2946  0075A4  B0D8               	btfsc	status,0,c
+  2947  0075A6  D008               	goto	l11
+  2948  0075A8                     u1150:
   2949                           
-  2950                           ;main.c: 29: else if ((i>=0 && i<=1) || ( i>=126 && i<=127))
-  2951  0076AA  BE15               	btfsc	display_array@i+1,7,c
-  2952  0076AC  D008               	goto	u980
-  2953  0076AE  BE15               	btfsc	display_array@i+1,7,c
-  2954  0076B0  D016               	goto	u1000
-  2955  0076B2  5015               	movf	display_array@i+1,w,c
-  2956  0076B4  E104               	bnz	l1495
-  2957  0076B6  0E02               	movlw	2
-  2958  0076B8  5C14               	subwf	display_array@i,w,c
-  2959  0076BA  A0D8               	btfss	status,0,c
-  2960  0076BC  D010               	goto	u1000
-  2961  0076BE                     u980:
-  2962  0076BE                     l1495:
-  2963  0076BE  BE15               	btfsc	display_array@i+1,7,c
-  2964  0076C0  D016               	goto	l17
-  2965  0076C2  5015               	movf	display_array@i+1,w,c
-  2966  0076C4  E104               	bnz	u990
-  2967  0076C6  0E7E               	movlw	126
-  2968  0076C8  5C14               	subwf	display_array@i,w,c
-  2969  0076CA  A0D8               	btfss	status,0,c
-  2970  0076CC  D010               	goto	l17
-  2971  0076CE                     u990:
-  2972  0076CE  BE15               	btfsc	display_array@i+1,7,c
-  2973  0076D0  D006               	goto	u1000
-  2974  0076D2  5015               	movf	display_array@i+1,w,c
-  2975  0076D4  E10C               	bnz	l1501
-  2976  0076D6  0E80               	movlw	128
-  2977  0076D8  5C14               	subwf	display_array@i,w,c
-  2978  0076DA  B0D8               	btfsc	status,0,c
-  2979  0076DC  D008               	goto	l17
-  2980  0076DE                     u1000:
-  2981                           
-  2982                           ;main.c: 30: glcd_PlotPixel(i,j,1);
-  2983  0076DE  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
-  2984  0076E2  0E01               	movlw	1
-  2985  0076E4  6E0C               	movwf	glcd_PlotPixel@color,c
-  2986  0076E6  5014               	movf	display_array@i,w,c
-  2987  0076E8  EC61  F03A         	call	_glcd_PlotPixel
-  2988  0076EC  D017               	goto	l23
-  2989  0076EE                     l17:
-  2990  0076EE                     l1501:
-  2991                           
-  2992                           ;main.c: 31: else if (i>=91 && i<=92)
-  2993  0076EE  BE15               	btfsc	display_array@i+1,7,c
-  2994  0076F0  D015               	goto	l23
-  2995  0076F2  5015               	movf	display_array@i+1,w,c
-  2996  0076F4  E104               	bnz	u1010
-  2997  0076F6  0E5B               	movlw	91
-  2998  0076F8  5C14               	subwf	display_array@i,w,c
-  2999  0076FA  A0D8               	btfss	status,0,c
-  3000  0076FC  D00F               	goto	l23
-  3001  0076FE                     u1010:
-  3002  0076FE  BE15               	btfsc	display_array@i+1,7,c
-  3003  007700  D006               	goto	u1020
-  3004  007702  5015               	movf	display_array@i+1,w,c
-  3005  007704  E10B               	bnz	l1507
-  3006  007706  0E5D               	movlw	93
-  3007  007708  5C14               	subwf	display_array@i,w,c
-  3008  00770A  B0D8               	btfsc	status,0,c
-  3009  00770C  D007               	goto	l23
-  3010  00770E                     u1020:
-  3011                           
-  3012                           ;main.c: 32: glcd_PlotPixel(i,j,1);
-  3013  00770E  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
-  3014  007712  0E01               	movlw	1
-  3015  007714  6E0C               	movwf	glcd_PlotPixel@color,c
-  3016  007716  5014               	movf	display_array@i,w,c
-  3017  007718  EC61  F03A         	call	_glcd_PlotPixel
-  3018  00771C                     l23:
-  3019  00771C                     l1507:
-  3020  00771C  4A12               	infsnz	display_array@j,f,c
-  3021  00771E  2A13               	incf	display_array@j+1,f,c
-  3022  007720  BE13               	btfsc	display_array@j+1,7,c
-  3023  007722  D7A1               	goto	l9
-  3024  007724  5013               	movf	display_array@j+1,w,c
-  3025  007726  E101               	bnz	l1511
-  3026  007728  D79A               	goto	L1
-  3027  00772A                     u1030:
-  3028  00772A                     l10:
-  3029  00772A                     l1511:
-  3030  00772A  4A14               	infsnz	display_array@i,f,c
-  3031  00772C  2A15               	incf	display_array@i+1,f,c
-  3032  00772E  BE15               	btfsc	display_array@i+1,7,c
-  3033  007730  D78E               	goto	l7
-  3034  007732  5015               	movf	display_array@i+1,w,c
-  3035  007734  E101               	bnz	l24
-  3036  007736  D785               	goto	L2
-  3037  007738                     l24:
-  3038  007738  0012               	return		;funcret
-  3039  00773A                     __end_of_display_array:
-  3040                           	opt stack 0
-  3041                           tblptru	equ	0xFF8
-  3042                           prodl	equ	0xFF3
-  3043                           wreg	equ	0xFE8
-  3044                           status	equ	0xFD8
-  3045                           
-  3046 ;; *************** function _glcd_PlotPixel *****************
-  3047 ;; Defined at:
-  3048 ;;		line 469 in file "glcd_library/glcd.c"
-  3049 ;; Parameters:    Size  Location     Type
-  3050 ;;  xpos            1    wreg     unsigned char 
-  3051 ;;  ypos            1   10[COMRAM] unsigned char 
-  3052 ;;  color           1   11[COMRAM] unsigned char 
-  3053 ;; Auto vars:     Size  Location     Type
-  3054 ;;  xpos            1   14[COMRAM] unsigned char 
-  3055 ;;  side            1   16[COMRAM] unsigned char 
-  3056 ;;  data            1   15[COMRAM] unsigned char 
-  3057 ;; Return value:  Size  Location     Type
-  3058 ;;                  1    wreg      void 
-  3059 ;; Registers used:
-  3060 ;;		wreg, status,2, status,0, cstack
-  3061 ;; Tracked objects:
-  3062 ;;		On entry : 0/0
-  3063 ;;		On exit  : 0/0
-  3064 ;;		Unchanged: 0/0
-  3065 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-  3066 ;;      Params:         2       0       0       0       0       0       0       0       0
-  3067 ;;      Locals:         3       0       0       0       0       0       0       0       0
-  3068 ;;      Temps:          2       0       0       0       0       0       0       0       0
-  3069 ;;      Totals:         7       0       0       0       0       0       0       0       0
-  3070 ;;Total ram usage:        7 bytes
-  3071 ;; Hardware stack levels used:    1
-  3072 ;; Hardware stack levels required when called:    1
-  3073 ;; This function calls:
-  3074 ;;		___awdiv
-  3075 ;;		_glcd_ReadByte
-  3076 ;;		_glcd_WriteByte
-  3077 ;; This function is called by:
-  3078 ;;		_display_array
-  3079 ;;		_glcd_Rect
-  3080 ;; This function uses a non-reentrant model
-  3081 ;;
-  3082                           
-  3083                           	psect	text4
-  3084  0074C2                     __ptext4:
-  3085                           	opt stack 0
-  3086  0074C2                     _glcd_PlotPixel:
-  3087                           	opt stack 28
-  3088                           
-  3089                           ;incstack = 0
-  3090                           ;glcd_PlotPixel@xpos stored from wreg
-  3091  0074C2  6E0F               	movwf	glcd_PlotPixel@xpos,c
-  3092                           
-  3093                           ;glcd.c: 471: unsigned char data;
-  3094                           ;glcd.c: 472: unsigned char side = 0;
-  3095  0074C4  0E00               	movlw	0
-  3096  0074C6  6E11               	movwf	glcd_PlotPixel@side,c
-  3097                           
-  3098                           ;glcd.c: 474: if(xpos > 63)
-  3099  0074C8  0E3F               	movlw	63
-  3100  0074CA  640F               	cpfsgt	glcd_PlotPixel@xpos,c
-  3101  0074CC  D004               	goto	l90
-  3102                           
-  3103                           ;glcd.c: 475: {
-  3104                           ;glcd.c: 476: xpos -= 64;
-  3105  0074CE  0E40               	movlw	64
-  3106  0074D0  5E0F               	subwf	glcd_PlotPixel@xpos,f,c
-  3107                           
-  3108                           ;glcd.c: 477: side = 1;
-  3109  0074D2  0E01               	movlw	1
-  3110  0074D4  6E11               	movwf	glcd_PlotPixel@side,c
-  3111  0074D6                     l90:
-  3112                           
-  3113                           ;glcd.c: 478: }
-  3114                           ;glcd.c: 479: LATBbits.LATB2=0;
-  3115  0074D6  948A               	bcf	3978,2,c	;volatile
-  3116                           
-  3117                           ;glcd.c: 481: xpos &=0b01111111;
-  3118  0074D8  9E0F               	bcf	glcd_PlotPixel@xpos,7,c
-  3119                           
-  3120                           ;glcd.c: 482: xpos |=0b01000000;
-  3121  0074DA  8C0F               	bsf	glcd_PlotPixel@xpos,6,c
-  3122                           
-  3123                           ;glcd.c: 483: glcd_WriteByte(side, (xpos));
-  3124  0074DC  C00F  F009         	movff	glcd_PlotPixel@xpos,glcd_WriteByte@data
-  3125  0074E0  5011               	movf	glcd_PlotPixel@side,w,c
-  3126  0074E2  ECCD  F039         	call	_glcd_WriteByte
-  3127                           
-  3128                           ;glcd.c: 484: glcd_WriteByte(side, (((ypos/8)) & 0xBF) | 0xB8);
-  3129  0074E6  C00B  F001         	movff	glcd_PlotPixel@ypos,___awdiv@dividend
-  3130  0074EA  6A02               	clrf	___awdiv@dividend+1,c
-  3131  0074EC  0E00               	movlw	0
-  3132  0074EE  6E04               	movwf	___awdiv@divisor+1,c
-  3133  0074F0  0E08               	movlw	8
-  3134  0074F2  6E03               	movwf	___awdiv@divisor,c
-  3135  0074F4  EC1F  F03A         	call	___awdiv	;wreg free
-  3136  0074F8  5001               	movf	?___awdiv,w,c
-  3137  0074FA  0BBF               	andlw	191
-  3138  0074FC  09B8               	iorlw	184
-  3139  0074FE  6E09               	movwf	glcd_WriteByte@data,c
-  3140  007500  5011               	movf	glcd_PlotPixel@side,w,c
-  3141  007502  ECCD  F039         	call	_glcd_WriteByte
-  3142                           
-  3143                           ;glcd.c: 486: LATBbits.LATB2=1;
-  3144  007506  848A               	bsf	3978,2,c	;volatile
-  3145                           
-  3146                           ;glcd.c: 488: glcd_ReadByte(side);
-  3147  007508  5011               	movf	glcd_PlotPixel@side,w,c
-  3148  00750A  ECB2  F039         	call	_glcd_ReadByte
-  3149                           
-  3150                           ;glcd.c: 489: data = glcd_ReadByte(side);
-  3151  00750E  5011               	movf	glcd_PlotPixel@side,w,c
-  3152  007510  ECB2  F039         	call	_glcd_ReadByte
-  3153  007514  6E10               	movwf	glcd_PlotPixel@data,c
-  3154                           
-  3155                           ;glcd.c: 491: LATBbits.LATB2=0;
-  3156  007516  948A               	bcf	3978,2,c	;volatile
-  3157                           
-  3158                           ;glcd.c: 493: glcd_WriteByte(side, xpos);
-  3159  007518  C00F  F009         	movff	glcd_PlotPixel@xpos,glcd_WriteByte@data
-  3160  00751C  5011               	movf	glcd_PlotPixel@side,w,c
-  3161  00751E  ECCD  F039         	call	_glcd_WriteByte
-  3162                           
-  3163                           ;glcd.c: 495: if(color)
-  3164  007522  500C               	movf	glcd_PlotPixel@color,w,c
-  3165  007524  B4D8               	btfsc	status,2,c
-  3166  007526  D00F               	goto	l91
-  3167                           
-  3168                           ;glcd.c: 496: data=(data)|(1<<(ypos%8));
-  3169  007528  C00B  F00D         	movff	glcd_PlotPixel@ypos,??_glcd_PlotPixel
-  3170  00752C  0E07               	movlw	7
-  3171  00752E  160D               	andwf	??_glcd_PlotPixel,f,c
-  3172  007530  0E01               	movlw	1
-  3173  007532  6E0E               	movwf	(??_glcd_PlotPixel+1)& (0+255),c
-  3174  007534  2A0D               	incf	??_glcd_PlotPixel,f,c
-  3175  007536  D002               	goto	u734
-  3176  007538                     u735:
-  3177  007538  90D8               	bcf	status,0,c
-  3178  00753A  360E               	rlcf	??_glcd_PlotPixel+1,f,c
-  3179  00753C                     u734:
-  3180  00753C  2E0D               	decfsz	??_glcd_PlotPixel,f,c
-  3181  00753E  D7FC               	goto	u735
-  3182  007540  500E               	movf	??_glcd_PlotPixel+1,w,c
-  3183  007542  1010               	iorwf	glcd_PlotPixel@data,w,c
-  3184  007544  D00F               	goto	L3
-  3185  007546                     l91:
-  3186                           
-  3187                           ;glcd.c: 497: else
-  3188                           ;glcd.c: 498: data =(data)&(~(1<<(ypos%8)));
-  3189  007546  C00B  F00D         	movff	glcd_PlotPixel@ypos,??_glcd_PlotPixel
-  3190  00754A  0E07               	movlw	7
-  3191  00754C  160D               	andwf	??_glcd_PlotPixel,f,c
-  3192  00754E  0E01               	movlw	1
-  3193  007550  6E0E               	movwf	(??_glcd_PlotPixel+1)& (0+255),c
-  3194  007552  2A0D               	incf	??_glcd_PlotPixel,f,c
-  3195  007554  D002               	goto	u744
-  3196  007556                     u745:
-  3197  007556  90D8               	bcf	status,0,c
-  3198  007558  360E               	rlcf	??_glcd_PlotPixel+1,f,c
-  3199  00755A                     u744:
-  3200  00755A  2E0D               	decfsz	??_glcd_PlotPixel,f,c
-  3201  00755C  D7FC               	goto	u745
-  3202  00755E  500E               	movf	??_glcd_PlotPixel+1,w,c
-  3203  007560  0AFF               	xorlw	255
-  3204  007562  1410               	andwf	glcd_PlotPixel@data,w,c
-  3205  007564                     L3:
-  3206  007564  6E10               	movwf	glcd_PlotPixel@data,c
-  3207                           
-  3208                           ;glcd.c: 500: LATBbits.LATB2=1;
-  3209  007566  848A               	bsf	3978,2,c	;volatile
-  3210                           
-  3211                           ;glcd.c: 502: glcd_WriteByte(side, data);
-  3212  007568  C010  F009         	movff	glcd_PlotPixel@data,glcd_WriteByte@data
-  3213  00756C  5011               	movf	glcd_PlotPixel@side,w,c
-  3214  00756E  ECCD  F039         	call	_glcd_WriteByte
-  3215  007572  0012               	return		;funcret
-  3216  007574                     __end_of_glcd_PlotPixel:
-  3217                           	opt stack 0
-  3218                           tblptru	equ	0xFF8
-  3219                           prodl	equ	0xFF3
-  3220                           wreg	equ	0xFE8
-  3221                           status	equ	0xFD8
-  3222                           
-  3223 ;; *************** function _glcd_WriteByte *****************
-  3224 ;; Defined at:
-  3225 ;;		line 394 in file "glcd_library/glcd.c"
-  3226 ;; Parameters:    Size  Location     Type
-  3227 ;;  side            1    wreg     unsigned char 
-  3228 ;;  data            1    8[COMRAM] unsigned char 
-  3229 ;; Auto vars:     Size  Location     Type
-  3230 ;;  side            1    9[COMRAM] unsigned char 
-  3231 ;; Return value:  Size  Location     Type
-  3232 ;;                  1    wreg      void 
-  3233 ;; Registers used:
-  3234 ;;		wreg, status,2
-  3235 ;; Tracked objects:
-  3236 ;;		On entry : 0/0
-  3237 ;;		On exit  : 0/0
-  3238 ;;		Unchanged: 0/0
-  3239 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-  3240 ;;      Params:         1       0       0       0       0       0       0       0       0
-  3241 ;;      Locals:         1       0       0       0       0       0       0       0       0
-  3242 ;;      Temps:          0       0       0       0       0       0       0       0       0
-  3243 ;;      Totals:         2       0       0       0       0       0       0       0       0
-  3244 ;;Total ram usage:        2 bytes
-  3245 ;; Hardware stack levels used:    1
-  3246 ;; This function calls:
-  3247 ;;		Nothing
-  3248 ;; This function is called by:
-  3249 ;;		_glcd_Init
-  3250 ;;		_glcd_PlotPixel
-  3251 ;;		_glcd_FillScreen
-  3252 ;;		_glcd_SetCursor
-  3253 ;;		_glcd_WriteChar8X8
-  3254 ;;		_glcd_WriteChar3x6
-  3255 ;;		_glcd_Image
-  3256 ;; This function uses a non-reentrant model
-  3257 ;;
-  3258                           
-  3259                           	psect	text5
-  3260  00739A                     __ptext5:
-  3261                           	opt stack 0
-  3262  00739A                     _glcd_WriteByte:
-  3263                           	opt stack 29
-  3264                           
-  3265                           ;incstack = 0
-  3266                           ;glcd_WriteByte@side stored from wreg
-  3267  00739A  6E0A               	movwf	glcd_WriteByte@side,c
-  3268                           
-  3269                           ;glcd.c: 396: if(side)
-  3270  00739C  500A               	movf	glcd_WriteByte@side,w,c
-  3271  00739E  B4D8               	btfsc	status,2,c
-  3272  0073A0  D003               	goto	l80
-  3273                           
-  3274                           ;glcd.c: 397: {
-  3275                           ;glcd.c: 398: LATBbits.LATB0 = 1;
-  3276  0073A2  808A               	bsf	3978,0,c	;volatile
-  3277                           
-  3278                           ;glcd.c: 399: LATBbits.LATB1 = 0;
-  3279  0073A4  928A               	bcf	3978,1,c	;volatile
-  3280                           
-  3281                           ;glcd.c: 400: }
-  3282  0073A6  D002               	goto	l81
-  3283  0073A8                     l80:
-  3284                           
-  3285                           ;glcd.c: 401: else
-  3286                           ;glcd.c: 402: {
-  3287                           ;glcd.c: 403: LATBbits.LATB1 = 0;
-  3288  0073A8  928A               	bcf	3978,1,c	;volatile
-  3289                           
-  3290                           ;glcd.c: 404: LATBbits.LATB1 = 1;
-  3291  0073AA  828A               	bsf	3978,1,c	;volatile
-  3292  0073AC                     l81:
-  3293                           
-  3294                           ;glcd.c: 405: }
-  3295                           ;glcd.c: 407: TRISD=0;
-  3296  0073AC  0E00               	movlw	0
-  3297  0073AE  6E95               	movwf	3989,c	;volatile
-  3298                           
-  3299                           ;glcd.c: 408: LATBbits.LATB3=0;
-  3300  0073B0  968A               	bcf	3978,3,c	;volatile
-  3301                           
-  3302                           ;glcd.c: 410: LATD = data;
-  3303  0073B2  C009  FF8C         	movff	glcd_WriteByte@data,3980	;volatile
-  3304                           
-  3305                           ;glcd.c: 414: LATBbits.LATB4 = 1;
-  3306  0073B6  888A               	bsf	3978,4,c	;volatile
-  3307                           
-  3308                           ;glcd.c: 416: _delay((unsigned long)((1)*(100000/4000.0)));
-  3309  0073B8  0E08               	movlw	8
-  3310  0073BA                     u1277:
-  3311  0073BA  2EE8               	decfsz	wreg,f,c
-  3312  0073BC  D7FE               	bra	u1277
-  3313  0073BE  F000               	nop	
-  3314                           
-  3315                           ;glcd.c: 417: LATBbits.LATB4 = 0;
-  3316  0073C0  988A               	bcf	3978,4,c	;volatile
-  3317                           
-  3318                           ;glcd.c: 419: _delay((unsigned long)((1)*(100000/4000.0)));
-  3319  0073C2  0E08               	movlw	8
-  3320  0073C4                     u1287:
-  3321  0073C4  2EE8               	decfsz	wreg,f,c
-  3322  0073C6  D7FE               	bra	u1287
-  3323  0073C8  F000               	nop	
-  3324                           
-  3325                           ;glcd.c: 422: LATBbits.LATB0 = 0;
-  3326  0073CA  908A               	bcf	3978,0,c	;volatile
-  3327                           
-  3328                           ;glcd.c: 423: LATBbits.LATB1 = 0;
-  3329  0073CC  928A               	bcf	3978,1,c	;volatile
-  3330  0073CE  0012               	return		;funcret
-  3331  0073D0                     __end_of_glcd_WriteByte:
-  3332                           	opt stack 0
-  3333                           tblptru	equ	0xFF8
-  3334                           prodl	equ	0xFF3
-  3335                           wreg	equ	0xFE8
-  3336                           status	equ	0xFD8
-  3337                           
-  3338 ;; *************** function _glcd_ReadByte *****************
-  3339 ;; Defined at:
-  3340 ;;		line 431 in file "glcd_library/glcd.c"
-  3341 ;; Parameters:    Size  Location     Type
-  3342 ;;  side            1    wreg     unsigned char 
-  3343 ;; Auto vars:     Size  Location     Type
-  3344 ;;  side            1    0[COMRAM] unsigned char 
-  3345 ;;  data            1    1[COMRAM] unsigned char 
-  3346 ;; Return value:  Size  Location     Type
-  3347 ;;                  1    wreg      unsigned char 
-  3348 ;; Registers used:
-  3349 ;;		wreg, status,2, cstack
-  3350 ;; Tracked objects:
-  3351 ;;		On entry : 0/0
-  3352 ;;		On exit  : 0/0
-  3353 ;;		Unchanged: 0/0
-  3354 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-  3355 ;;      Params:         0       0       0       0       0       0       0       0       0
-  3356 ;;      Locals:         2       0       0       0       0       0       0       0       0
-  3357 ;;      Temps:          0       0       0       0       0       0       0       0       0
-  3358 ;;      Totals:         2       0       0       0       0       0       0       0       0
-  3359 ;;Total ram usage:        2 bytes
-  3360 ;; Hardware stack levels used:    1
-  3361 ;; This function calls:
-  3362 ;;		Nothing
-  3363 ;; This function is called by:
-  3364 ;;		_glcd_PlotPixel
-  3365 ;; This function uses a non-reentrant model
-  3366 ;;
-  3367                           
-  3368                           	psect	text6
-  3369  007364                     __ptext6:
-  3370                           	opt stack 0
-  3371  007364                     _glcd_ReadByte:
-  3372                           	opt stack 28
-  3373                           
-  3374                           ;incstack = 0
-  3375                           ;glcd_ReadByte@side stored from wreg
-  3376  007364  6E01               	movwf	glcd_ReadByte@side,c
-  3377                           
-  3378                           ;glcd.c: 433: unsigned char data;
-  3379                           ;glcd.c: 435: if(side)
-  3380  007366  5001               	movf	glcd_ReadByte@side,w,c
-  3381  007368  B4D8               	btfsc	status,2,c
-  3382  00736A  D003               	goto	l85
-  3383                           
-  3384                           ;glcd.c: 436: {
-  3385                           ;glcd.c: 437: LATBbits.LATB0 = 1;
-  3386  00736C  808A               	bsf	3978,0,c	;volatile
-  3387                           
-  3388                           ;glcd.c: 438: LATBbits.LATB1 = 0;
-  3389  00736E  928A               	bcf	3978,1,c	;volatile
-  3390                           
-  3391                           ;glcd.c: 439: }
-  3392  007370  D002               	goto	l86
-  3393  007372                     l85:
-  3394                           
-  3395                           ;glcd.c: 440: else
-  3396                           ;glcd.c: 441: {
-  3397                           ;glcd.c: 442: LATBbits.LATB1 = 0;
-  3398  007372  928A               	bcf	3978,1,c	;volatile
-  3399                           
-  3400                           ;glcd.c: 443: LATBbits.LATB1 = 1;
-  3401  007374  828A               	bsf	3978,1,c	;volatile
-  3402  007376                     l86:
-  3403                           
-  3404                           ;glcd.c: 444: }
-  3405                           ;glcd.c: 446: TRISD = 0xFF;
-  3406  007376  6895               	setf	3989,c	;volatile
+  2950                           ;main.c: 28: glcd_PlotPixel(i,j,1);
+  2951  0075A8  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
+  2952  0075AC  0E01               	movlw	1
+  2953  0075AE  6E0C               	movwf	glcd_PlotPixel@color,c
+  2954  0075B0  5014               	movf	display_array@i,w,c
+  2955  0075B2  ECE0  F039         	call	_glcd_PlotPixel
+  2956  0075B6  D049               	goto	l23
+  2957  0075B8                     l11:
+  2958  0075B8                     l1539:
+  2959                           
+  2960                           ;main.c: 29: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))
+  2961  0075B8  BE15               	btfsc	display_array@i+1,7,c
+  2962  0075BA  D008               	goto	u1170
+  2963  0075BC  BE15               	btfsc	display_array@i+1,7,c
+  2964  0075BE  D016               	goto	u1190
+  2965  0075C0  5015               	movf	display_array@i+1,w,c
+  2966  0075C2  E104               	bnz	l1543
+  2967  0075C4  0E02               	movlw	2
+  2968  0075C6  5C14               	subwf	display_array@i,w,c
+  2969  0075C8  A0D8               	btfss	status,0,c
+  2970  0075CA  D010               	goto	u1190
+  2971  0075CC                     u1170:
+  2972  0075CC                     l1543:
+  2973  0075CC  BE15               	btfsc	display_array@i+1,7,c
+  2974  0075CE  D01E               	goto	l17
+  2975  0075D0  5015               	movf	display_array@i+1,w,c
+  2976  0075D2  E104               	bnz	u1180
+  2977  0075D4  0E7E               	movlw	126
+  2978  0075D6  5C14               	subwf	display_array@i,w,c
+  2979  0075D8  A0D8               	btfss	status,0,c
+  2980  0075DA  D018               	goto	l17
+  2981  0075DC                     u1180:
+  2982  0075DC  BE15               	btfsc	display_array@i+1,7,c
+  2983  0075DE  D006               	goto	u1190
+  2984  0075E0  5015               	movf	display_array@i+1,w,c
+  2985  0075E2  E114               	bnz	l1551
+  2986  0075E4  0E80               	movlw	128
+  2987  0075E6  5C14               	subwf	display_array@i,w,c
+  2988  0075E8  B0D8               	btfsc	status,0,c
+  2989  0075EA  D010               	goto	l17
+  2990  0075EC                     u1190:
+  2991  0075EC  BE13               	btfsc	display_array@j+1,7,c
+  2992  0075EE  D00E               	goto	l17
+  2993  0075F0  5013               	movf	display_array@j+1,w,c
+  2994  0075F2  E104               	bnz	u1200
+  2995  0075F4  0E05               	movlw	5
+  2996  0075F6  5C12               	subwf	display_array@j,w,c
+  2997  0075F8  A0D8               	btfss	status,0,c
+  2998  0075FA  D008               	goto	l17
+  2999  0075FC                     u1200:
+  3000                           
+  3001                           ;main.c: 30: glcd_PlotPixel(i,j,1);
+  3002  0075FC  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
+  3003  007600  0E01               	movlw	1
+  3004  007602  6E0C               	movwf	glcd_PlotPixel@color,c
+  3005  007604  5014               	movf	display_array@i,w,c
+  3006  007606  ECE0  F039         	call	_glcd_PlotPixel
+  3007  00760A  D01F               	goto	l23
+  3008  00760C                     l17:
+  3009  00760C                     l1551:
+  3010                           
+  3011                           ;main.c: 31: else if (i>=91 && i<=92 && j>4)
+  3012  00760C  BE15               	btfsc	display_array@i+1,7,c
+  3013  00760E  D01D               	goto	l23
+  3014  007610  5015               	movf	display_array@i+1,w,c
+  3015  007612  E104               	bnz	u1210
+  3016  007614  0E5B               	movlw	91
+  3017  007616  5C14               	subwf	display_array@i,w,c
+  3018  007618  A0D8               	btfss	status,0,c
+  3019  00761A  D017               	goto	l23
+  3020  00761C                     u1210:
+  3021  00761C  BE15               	btfsc	display_array@i+1,7,c
+  3022  00761E  D006               	goto	u1220
+  3023  007620  5015               	movf	display_array@i+1,w,c
+  3024  007622  E113               	bnz	l1559
+  3025  007624  0E5D               	movlw	93
+  3026  007626  5C14               	subwf	display_array@i,w,c
+  3027  007628  B0D8               	btfsc	status,0,c
+  3028  00762A  D00F               	goto	l23
+  3029  00762C                     u1220:
+  3030  00762C  BE13               	btfsc	display_array@j+1,7,c
+  3031  00762E  D00D               	goto	l23
+  3032  007630  5013               	movf	display_array@j+1,w,c
+  3033  007632  E104               	bnz	u1230
+  3034  007634  0E05               	movlw	5
+  3035  007636  5C12               	subwf	display_array@j,w,c
+  3036  007638  A0D8               	btfss	status,0,c
+  3037  00763A  D007               	goto	l23
+  3038  00763C                     u1230:
+  3039                           
+  3040                           ;main.c: 32: glcd_PlotPixel(i,j,1);
+  3041  00763C  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
+  3042  007640  0E01               	movlw	1
+  3043  007642  6E0C               	movwf	glcd_PlotPixel@color,c
+  3044  007644  5014               	movf	display_array@i,w,c
+  3045  007646  ECE0  F039         	call	_glcd_PlotPixel
+  3046  00764A                     l23:
+  3047  00764A                     l1559:
+  3048                           
+  3049                           ;main.c: 35: if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i=
+      +                          =64) || (i==73) || (i==82)) && (j>4) )
+  3050  00764A  0E0A               	movlw	10
+  3051  00764C  1814               	xorwf	display_array@i,w,c
+  3052  00764E  1015               	iorwf	display_array@i+1,w,c
+  3053  007650  B4D8               	btfsc	status,2,c
+  3054  007652  D028               	goto	u1320
+  3055  007654  0E13               	movlw	19
+  3056  007656  1814               	xorwf	display_array@i,w,c
+  3057  007658  1015               	iorwf	display_array@i+1,w,c
+  3058  00765A  B4D8               	btfsc	status,2,c
+  3059  00765C  D023               	goto	u1320
+  3060  00765E  0E1C               	movlw	28
+  3061  007660  1814               	xorwf	display_array@i,w,c
+  3062  007662  1015               	iorwf	display_array@i+1,w,c
+  3063  007664  B4D8               	btfsc	status,2,c
+  3064  007666  D01E               	goto	u1320
+  3065  007668  0E25               	movlw	37
+  3066  00766A  1814               	xorwf	display_array@i,w,c
+  3067  00766C  1015               	iorwf	display_array@i+1,w,c
+  3068  00766E  B4D8               	btfsc	status,2,c
+  3069  007670  D019               	goto	u1320
+  3070  007672  0E2E               	movlw	46
+  3071  007674  1814               	xorwf	display_array@i,w,c
+  3072  007676  1015               	iorwf	display_array@i+1,w,c
+  3073  007678  B4D8               	btfsc	status,2,c
+  3074  00767A  D014               	goto	u1320
+  3075  00767C  0E37               	movlw	55
+  3076  00767E  1814               	xorwf	display_array@i,w,c
+  3077  007680  1015               	iorwf	display_array@i+1,w,c
+  3078  007682  B4D8               	btfsc	status,2,c
+  3079  007684  D00F               	goto	u1320
+  3080  007686  0E40               	movlw	64
+  3081  007688  1814               	xorwf	display_array@i,w,c
+  3082  00768A  1015               	iorwf	display_array@i+1,w,c
+  3083  00768C  B4D8               	btfsc	status,2,c
+  3084  00768E  D00A               	goto	u1320
+  3085  007690  0E49               	movlw	73
+  3086  007692  1814               	xorwf	display_array@i,w,c
+  3087  007694  1015               	iorwf	display_array@i+1,w,c
+  3088  007696  B4D8               	btfsc	status,2,c
+  3089  007698  D005               	goto	u1320
+  3090  00769A  0E52               	movlw	82
+  3091  00769C  1814               	xorwf	display_array@i,w,c
+  3092  00769E  1015               	iorwf	display_array@i+1,w,c
+  3093  0076A0  A4D8               	btfss	status,2,c
+  3094  0076A2  D00F               	goto	l24
+  3095  0076A4                     u1320:
+  3096  0076A4  BE13               	btfsc	display_array@j+1,7,c
+  3097  0076A6  D00D               	goto	l24
+  3098  0076A8  5013               	movf	display_array@j+1,w,c
+  3099  0076AA  E104               	bnz	u1330
+  3100  0076AC  0E05               	movlw	5
+  3101  0076AE  5C12               	subwf	display_array@j,w,c
+  3102  0076B0  A0D8               	btfss	status,0,c
+  3103  0076B2  D007               	goto	l24
+  3104  0076B4                     u1330:
+  3105                           
+  3106                           ;main.c: 36: glcd_PlotPixel(i,j,1);
+  3107  0076B4  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
+  3108  0076B8  0E01               	movlw	1
+  3109  0076BA  6E0C               	movwf	glcd_PlotPixel@color,c
+  3110  0076BC  5014               	movf	display_array@i,w,c
+  3111  0076BE  ECE0  F039         	call	_glcd_PlotPixel
+  3112  0076C2                     l24:
+  3113                           
+  3114                           ;main.c: 39: if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i
+      +                          <92))
+  3115  0076C2  0E11               	movlw	17
+  3116  0076C4  1812               	xorwf	display_array@j,w,c
+  3117  0076C6  1013               	iorwf	display_array@j+1,w,c
+  3118  0076C8  B4D8               	btfsc	status,2,c
+  3119  0076CA  D019               	goto	u1390
+  3120  0076CC  0E1A               	movlw	26
+  3121  0076CE  1812               	xorwf	display_array@j,w,c
+  3122  0076D0  1013               	iorwf	display_array@j+1,w,c
+  3123  0076D2  B4D8               	btfsc	status,2,c
+  3124  0076D4  D014               	goto	u1390
+  3125  0076D6  0E23               	movlw	35
+  3126  0076D8  1812               	xorwf	display_array@j,w,c
+  3127  0076DA  1013               	iorwf	display_array@j+1,w,c
+  3128  0076DC  B4D8               	btfsc	status,2,c
+  3129  0076DE  D00F               	goto	u1390
+  3130  0076E0  0E2C               	movlw	44
+  3131  0076E2  1812               	xorwf	display_array@j,w,c
+  3132  0076E4  1013               	iorwf	display_array@j+1,w,c
+  3133  0076E6  B4D8               	btfsc	status,2,c
+  3134  0076E8  D00A               	goto	u1390
+  3135  0076EA  0E35               	movlw	53
+  3136  0076EC  1812               	xorwf	display_array@j,w,c
+  3137  0076EE  1013               	iorwf	display_array@j+1,w,c
+  3138  0076F0  B4D8               	btfsc	status,2,c
+  3139  0076F2  D005               	goto	u1390
+  3140  0076F4  0E3E               	movlw	62
+  3141  0076F6  1812               	xorwf	display_array@j,w,c
+  3142  0076F8  1013               	iorwf	display_array@j+1,w,c
+  3143  0076FA  A4D8               	btfss	status,2,c
+  3144  0076FC  D00F               	goto	l27
+  3145  0076FE                     u1390:
+  3146  0076FE  BE15               	btfsc	display_array@i+1,7,c
+  3147  007700  D006               	goto	u1400
+  3148  007702  5015               	movf	display_array@i+1,w,c
+  3149  007704  E10B               	bnz	l1597
+  3150  007706  0E5C               	movlw	92
+  3151  007708  5C14               	subwf	display_array@i,w,c
+  3152  00770A  B0D8               	btfsc	status,0,c
+  3153  00770C  D007               	goto	l27
+  3154  00770E                     u1400:
+  3155                           
+  3156                           ;main.c: 40: glcd_PlotPixel(i,j,1);
+  3157  00770E  C012  F00B         	movff	display_array@j,glcd_PlotPixel@ypos
+  3158  007712  0E01               	movlw	1
+  3159  007714  6E0C               	movwf	glcd_PlotPixel@color,c
+  3160  007716  5014               	movf	display_array@i,w,c
+  3161  007718  ECE0  F039         	call	_glcd_PlotPixel
+  3162  00771C                     l27:
+  3163  00771C                     l1597:
+  3164  00771C  4A12               	infsnz	display_array@j,f,c
+  3165  00771E  2A13               	incf	display_array@j+1,f,c
+  3166  007720  BE13               	btfsc	display_array@j+1,7,c
+  3167  007722  D722               	goto	l9
+  3168  007724  5013               	movf	display_array@j+1,w,c
+  3169  007726  E101               	bnz	l1601
+  3170  007728  D719               	goto	L1
+  3171  00772A                     u1410:
+  3172  00772A                     l1601:
+  3173  00772A  4A14               	infsnz	display_array@i,f,c
+  3174  00772C  2A15               	incf	display_array@i+1,f,c
+  3175  00772E  BE15               	btfsc	display_array@i+1,7,c
+  3176  007730  D70D               	goto	l7
+  3177  007732  5015               	movf	display_array@i+1,w,c
+  3178  007734  E101               	bnz	l30
+  3179  007736  D704               	goto	L2
+  3180  007738                     l30:
+  3181  007738  0012               	return		;funcret
+  3182  00773A                     __end_of_display_array:
+  3183                           	opt stack 0
+  3184                           tblptru	equ	0xFF8
+  3185                           prodl	equ	0xFF3
+  3186                           wreg	equ	0xFE8
+  3187                           status	equ	0xFD8
+  3188                           
+  3189 ;; *************** function _glcd_PlotPixel *****************
+  3190 ;; Defined at:
+  3191 ;;		line 469 in file "glcd_library/glcd.c"
+  3192 ;; Parameters:    Size  Location     Type
+  3193 ;;  xpos            1    wreg     unsigned char 
+  3194 ;;  ypos            1   10[COMRAM] unsigned char 
+  3195 ;;  color           1   11[COMRAM] unsigned char 
+  3196 ;; Auto vars:     Size  Location     Type
+  3197 ;;  xpos            1   14[COMRAM] unsigned char 
+  3198 ;;  side            1   16[COMRAM] unsigned char 
+  3199 ;;  data            1   15[COMRAM] unsigned char 
+  3200 ;; Return value:  Size  Location     Type
+  3201 ;;                  1    wreg      void 
+  3202 ;; Registers used:
+  3203 ;;		wreg, status,2, status,0, cstack
+  3204 ;; Tracked objects:
+  3205 ;;		On entry : 0/0
+  3206 ;;		On exit  : 0/0
+  3207 ;;		Unchanged: 0/0
+  3208 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  3209 ;;      Params:         2       0       0       0       0       0       0       0       0
+  3210 ;;      Locals:         3       0       0       0       0       0       0       0       0
+  3211 ;;      Temps:          2       0       0       0       0       0       0       0       0
+  3212 ;;      Totals:         7       0       0       0       0       0       0       0       0
+  3213 ;;Total ram usage:        7 bytes
+  3214 ;; Hardware stack levels used:    1
+  3215 ;; Hardware stack levels required when called:    1
+  3216 ;; This function calls:
+  3217 ;;		___awdiv
+  3218 ;;		_glcd_ReadByte
+  3219 ;;		_glcd_WriteByte
+  3220 ;; This function is called by:
+  3221 ;;		_display_array
+  3222 ;;		_glcd_Rect
+  3223 ;; This function uses a non-reentrant model
+  3224 ;;
+  3225                           
+  3226                           	psect	text4
+  3227  0073C0                     __ptext4:
+  3228                           	opt stack 0
+  3229  0073C0                     _glcd_PlotPixel:
+  3230                           	opt stack 28
+  3231                           
+  3232                           ;incstack = 0
+  3233                           ;glcd_PlotPixel@xpos stored from wreg
+  3234  0073C0  6E0F               	movwf	glcd_PlotPixel@xpos,c
+  3235                           
+  3236                           ;glcd.c: 471: unsigned char data;
+  3237                           ;glcd.c: 472: unsigned char side = 0;
+  3238  0073C2  0E00               	movlw	0
+  3239  0073C4  6E11               	movwf	glcd_PlotPixel@side,c
+  3240                           
+  3241                           ;glcd.c: 474: if(xpos > 63)
+  3242  0073C6  0E3F               	movlw	63
+  3243  0073C8  640F               	cpfsgt	glcd_PlotPixel@xpos,c
+  3244  0073CA  D004               	goto	l96
+  3245                           
+  3246                           ;glcd.c: 475: {
+  3247                           ;glcd.c: 476: xpos -= 64;
+  3248  0073CC  0E40               	movlw	64
+  3249  0073CE  5E0F               	subwf	glcd_PlotPixel@xpos,f,c
+  3250                           
+  3251                           ;glcd.c: 477: side = 1;
+  3252  0073D0  0E01               	movlw	1
+  3253  0073D2  6E11               	movwf	glcd_PlotPixel@side,c
+  3254  0073D4                     l96:
+  3255                           
+  3256                           ;glcd.c: 478: }
+  3257                           ;glcd.c: 479: LATBbits.LATB2=0;
+  3258  0073D4  948A               	bcf	3978,2,c	;volatile
+  3259                           
+  3260                           ;glcd.c: 481: xpos &=0b01111111;
+  3261  0073D6  9E0F               	bcf	glcd_PlotPixel@xpos,7,c
+  3262                           
+  3263                           ;glcd.c: 482: xpos |=0b01000000;
+  3264  0073D8  8C0F               	bsf	glcd_PlotPixel@xpos,6,c
+  3265                           
+  3266                           ;glcd.c: 483: glcd_WriteByte(side, (xpos));
+  3267  0073DA  C00F  F009         	movff	glcd_PlotPixel@xpos,glcd_WriteByte@data
+  3268  0073DE  5011               	movf	glcd_PlotPixel@side,w,c
+  3269  0073E0  EC4C  F039         	call	_glcd_WriteByte
+  3270                           
+  3271                           ;glcd.c: 484: glcd_WriteByte(side, (((ypos/8)) & 0xBF) | 0xB8);
+  3272  0073E4  C00B  F001         	movff	glcd_PlotPixel@ypos,___awdiv@dividend
+  3273  0073E8  6A02               	clrf	___awdiv@dividend+1,c
+  3274  0073EA  0E00               	movlw	0
+  3275  0073EC  6E04               	movwf	___awdiv@divisor+1,c
+  3276  0073EE  0E08               	movlw	8
+  3277  0073F0  6E03               	movwf	___awdiv@divisor,c
+  3278  0073F2  EC9E  F039         	call	___awdiv	;wreg free
+  3279  0073F6  5001               	movf	?___awdiv,w,c
+  3280  0073F8  0BBF               	andlw	191
+  3281  0073FA  09B8               	iorlw	184
+  3282  0073FC  6E09               	movwf	glcd_WriteByte@data,c
+  3283  0073FE  5011               	movf	glcd_PlotPixel@side,w,c
+  3284  007400  EC4C  F039         	call	_glcd_WriteByte
+  3285                           
+  3286                           ;glcd.c: 486: LATBbits.LATB2=1;
+  3287  007404  848A               	bsf	3978,2,c	;volatile
+  3288                           
+  3289                           ;glcd.c: 488: glcd_ReadByte(side);
+  3290  007406  5011               	movf	glcd_PlotPixel@side,w,c
+  3291  007408  EC31  F039         	call	_glcd_ReadByte
+  3292                           
+  3293                           ;glcd.c: 489: data = glcd_ReadByte(side);
+  3294  00740C  5011               	movf	glcd_PlotPixel@side,w,c
+  3295  00740E  EC31  F039         	call	_glcd_ReadByte
+  3296  007412  6E10               	movwf	glcd_PlotPixel@data,c
+  3297                           
+  3298                           ;glcd.c: 491: LATBbits.LATB2=0;
+  3299  007414  948A               	bcf	3978,2,c	;volatile
+  3300                           
+  3301                           ;glcd.c: 493: glcd_WriteByte(side, xpos);
+  3302  007416  C00F  F009         	movff	glcd_PlotPixel@xpos,glcd_WriteByte@data
+  3303  00741A  5011               	movf	glcd_PlotPixel@side,w,c
+  3304  00741C  EC4C  F039         	call	_glcd_WriteByte
+  3305                           
+  3306                           ;glcd.c: 495: if(color)
+  3307  007420  500C               	movf	glcd_PlotPixel@color,w,c
+  3308  007422  B4D8               	btfsc	status,2,c
+  3309  007424  D00F               	goto	l97
+  3310                           
+  3311                           ;glcd.c: 496: data=(data)|(1<<(ypos%8));
+  3312  007426  C00B  F00D         	movff	glcd_PlotPixel@ypos,??_glcd_PlotPixel
+  3313  00742A  0E07               	movlw	7
+  3314  00742C  160D               	andwf	??_glcd_PlotPixel,f,c
+  3315  00742E  0E01               	movlw	1
+  3316  007430  6E0E               	movwf	(??_glcd_PlotPixel+1)& (0+255),c
+  3317  007432  2A0D               	incf	??_glcd_PlotPixel,f,c
+  3318  007434  D002               	goto	u924
+  3319  007436                     u925:
+  3320  007436  90D8               	bcf	status,0,c
+  3321  007438  360E               	rlcf	??_glcd_PlotPixel+1,f,c
+  3322  00743A                     u924:
+  3323  00743A  2E0D               	decfsz	??_glcd_PlotPixel,f,c
+  3324  00743C  D7FC               	goto	u925
+  3325  00743E  500E               	movf	??_glcd_PlotPixel+1,w,c
+  3326  007440  1010               	iorwf	glcd_PlotPixel@data,w,c
+  3327  007442  D00F               	goto	L3
+  3328  007444                     l97:
+  3329                           
+  3330                           ;glcd.c: 497: else
+  3331                           ;glcd.c: 498: data =(data)&(~(1<<(ypos%8)));
+  3332  007444  C00B  F00D         	movff	glcd_PlotPixel@ypos,??_glcd_PlotPixel
+  3333  007448  0E07               	movlw	7
+  3334  00744A  160D               	andwf	??_glcd_PlotPixel,f,c
+  3335  00744C  0E01               	movlw	1
+  3336  00744E  6E0E               	movwf	(??_glcd_PlotPixel+1)& (0+255),c
+  3337  007450  2A0D               	incf	??_glcd_PlotPixel,f,c
+  3338  007452  D002               	goto	u934
+  3339  007454                     u935:
+  3340  007454  90D8               	bcf	status,0,c
+  3341  007456  360E               	rlcf	??_glcd_PlotPixel+1,f,c
+  3342  007458                     u934:
+  3343  007458  2E0D               	decfsz	??_glcd_PlotPixel,f,c
+  3344  00745A  D7FC               	goto	u935
+  3345  00745C  500E               	movf	??_glcd_PlotPixel+1,w,c
+  3346  00745E  0AFF               	xorlw	255
+  3347  007460  1410               	andwf	glcd_PlotPixel@data,w,c
+  3348  007462                     L3:
+  3349  007462  6E10               	movwf	glcd_PlotPixel@data,c
+  3350                           
+  3351                           ;glcd.c: 500: LATBbits.LATB2=1;
+  3352  007464  848A               	bsf	3978,2,c	;volatile
+  3353                           
+  3354                           ;glcd.c: 502: glcd_WriteByte(side, data);
+  3355  007466  C010  F009         	movff	glcd_PlotPixel@data,glcd_WriteByte@data
+  3356  00746A  5011               	movf	glcd_PlotPixel@side,w,c
+  3357  00746C  EC4C  F039         	call	_glcd_WriteByte
+  3358  007470  0012               	return		;funcret
+  3359  007472                     __end_of_glcd_PlotPixel:
+  3360                           	opt stack 0
+  3361                           tblptru	equ	0xFF8
+  3362                           prodl	equ	0xFF3
+  3363                           wreg	equ	0xFE8
+  3364                           status	equ	0xFD8
+  3365                           
+  3366 ;; *************** function _glcd_WriteByte *****************
+  3367 ;; Defined at:
+  3368 ;;		line 394 in file "glcd_library/glcd.c"
+  3369 ;; Parameters:    Size  Location     Type
+  3370 ;;  side            1    wreg     unsigned char 
+  3371 ;;  data            1    8[COMRAM] unsigned char 
+  3372 ;; Auto vars:     Size  Location     Type
+  3373 ;;  side            1    9[COMRAM] unsigned char 
+  3374 ;; Return value:  Size  Location     Type
+  3375 ;;                  1    wreg      void 
+  3376 ;; Registers used:
+  3377 ;;		wreg, status,2
+  3378 ;; Tracked objects:
+  3379 ;;		On entry : 0/0
+  3380 ;;		On exit  : 0/0
+  3381 ;;		Unchanged: 0/0
+  3382 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  3383 ;;      Params:         1       0       0       0       0       0       0       0       0
+  3384 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  3385 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  3386 ;;      Totals:         2       0       0       0       0       0       0       0       0
+  3387 ;;Total ram usage:        2 bytes
+  3388 ;; Hardware stack levels used:    1
+  3389 ;; This function calls:
+  3390 ;;		Nothing
+  3391 ;; This function is called by:
+  3392 ;;		_glcd_Init
+  3393 ;;		_glcd_PlotPixel
+  3394 ;;		_glcd_FillScreen
+  3395 ;;		_glcd_SetCursor
+  3396 ;;		_glcd_WriteChar8X8
+  3397 ;;		_glcd_WriteChar3x6
+  3398 ;;		_glcd_Image
+  3399 ;; This function uses a non-reentrant model
+  3400 ;;
+  3401                           
+  3402                           	psect	text5
+  3403  007298                     __ptext5:
+  3404                           	opt stack 0
+  3405  007298                     _glcd_WriteByte:
+  3406                           	opt stack 29
   3407                           
-  3408                           ;glcd.c: 447: LATBbits.LATB3 = 1;
-  3409  007378  868A               	bsf	3978,3,c	;volatile
-  3410                           
-  3411                           ;glcd.c: 451: LATBbits.LATB4 = 1;
-  3412  00737A  888A               	bsf	3978,4,c	;volatile
-  3413                           
-  3414                           ;glcd.c: 453: _delay((unsigned long)((1)*(100000/4000.0)));
-  3415  00737C  0E08               	movlw	8
-  3416  00737E                     u1297:
-  3417  00737E  2EE8               	decfsz	wreg,f,c
-  3418  007380  D7FE               	bra	u1297
-  3419  007382  F000               	nop	
+  3408                           ;incstack = 0
+  3409                           ;glcd_WriteByte@side stored from wreg
+  3410  007298  6E0A               	movwf	glcd_WriteByte@side,c
+  3411                           
+  3412                           ;glcd.c: 396: if(side)
+  3413  00729A  500A               	movf	glcd_WriteByte@side,w,c
+  3414  00729C  B4D8               	btfsc	status,2,c
+  3415  00729E  D003               	goto	l86
+  3416                           
+  3417                           ;glcd.c: 397: {
+  3418                           ;glcd.c: 398: LATBbits.LATB0 = 1;
+  3419  0072A0  808A               	bsf	3978,0,c	;volatile
   3420                           
-  3421                           ;glcd.c: 455: data = PORTD;
-  3422  007384  CF83 F002          	movff	3971,glcd_ReadByte@data	;volatile
+  3421                           ;glcd.c: 399: LATBbits.LATB1 = 0;
+  3422  0072A2  928A               	bcf	3978,1,c	;volatile
   3423                           
-  3424                           ;glcd.c: 456: LATBbits.LATB4 = 0;
-  3425  007388  988A               	bcf	3978,4,c	;volatile
-  3426                           
-  3427                           ;glcd.c: 458: _delay((unsigned long)((1)*(100000/4000.0)));
-  3428  00738A  0E08               	movlw	8
-  3429  00738C                     u1307:
-  3430  00738C  2EE8               	decfsz	wreg,f,c
-  3431  00738E  D7FE               	bra	u1307
-  3432  007390  F000               	nop	
-  3433                           
-  3434                           ;glcd.c: 459: LATBbits.LATB0 = 0;
-  3435  007392  908A               	bcf	3978,0,c	;volatile
+  3424                           ;glcd.c: 400: }
+  3425  0072A4  D002               	goto	l87
+  3426  0072A6                     l86:
+  3427                           
+  3428                           ;glcd.c: 401: else
+  3429                           ;glcd.c: 402: {
+  3430                           ;glcd.c: 403: LATBbits.LATB1 = 0;
+  3431  0072A6  928A               	bcf	3978,1,c	;volatile
+  3432                           
+  3433                           ;glcd.c: 404: LATBbits.LATB1 = 1;
+  3434  0072A8  828A               	bsf	3978,1,c	;volatile
+  3435  0072AA                     l87:
   3436                           
-  3437                           ;glcd.c: 460: LATBbits.LATB1 = 0;
-  3438  007394  928A               	bcf	3978,1,c	;volatile
-  3439                           
-  3440                           ;glcd.c: 462: return data;
-  3441  007396  5002               	movf	glcd_ReadByte@data,w,c
-  3442  007398  0012               	return	
-  3443  00739A                     __end_of_glcd_ReadByte:
-  3444                           	opt stack 0
-  3445                           tblptru	equ	0xFF8
-  3446                           prodl	equ	0xFF3
-  3447                           wreg	equ	0xFE8
-  3448                           status	equ	0xFD8
-  3449                           
-  3450 ;; *************** function ___awdiv *****************
-  3451 ;; Defined at:
-  3452 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awdiv.c"
-  3453 ;; Parameters:    Size  Location     Type
-  3454 ;;  dividend        2    0[COMRAM] int 
-  3455 ;;  divisor         2    2[COMRAM] int 
-  3456 ;; Auto vars:     Size  Location     Type
-  3457 ;;  quotient        2    6[COMRAM] int 
-  3458 ;;  sign            1    5[COMRAM] unsigned char 
-  3459 ;;  counter         1    4[COMRAM] unsigned char 
-  3460 ;; Return value:  Size  Location     Type
-  3461 ;;                  2    0[COMRAM] int 
-  3462 ;; Registers used:
-  3463 ;;		wreg, status,2, status,0
-  3464 ;; Tracked objects:
-  3465 ;;		On entry : 0/0
-  3466 ;;		On exit  : 0/0
-  3467 ;;		Unchanged: 0/0
-  3468 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-  3469 ;;      Params:         4       0       0       0       0       0       0       0       0
-  3470 ;;      Locals:         4       0       0       0       0       0       0       0       0
-  3471 ;;      Temps:          0       0       0       0       0       0       0       0       0
-  3472 ;;      Totals:         8       0       0       0       0       0       0       0       0
-  3473 ;;Total ram usage:        8 bytes
-  3474 ;; Hardware stack levels used:    1
-  3475 ;; This function calls:
-  3476 ;;		Nothing
-  3477 ;; This function is called by:
-  3478 ;;		_glcd_PlotPixel
-  3479 ;; This function uses a non-reentrant model
-  3480 ;;
-  3481                           
-  3482                           	psect	text7
-  3483  00743E                     __ptext7:
-  3484                           	opt stack 0
-  3485  00743E                     ___awdiv:
-  3486                           	opt stack 28
-  3487                           
-  3488                           ;incstack = 0
-  3489  00743E  0E00               	movlw	0
-  3490  007440  6E06               	movwf	___awdiv@sign,c
-  3491  007442  AE04               	btfss	___awdiv@divisor+1,7,c
-  3492  007444  D006               	goto	l331
-  3493  007446  6C03               	negf	___awdiv@divisor,c
-  3494  007448  1E04               	comf	___awdiv@divisor+1,f,c
-  3495  00744A  B0D8               	btfsc	status,0,c
-  3496  00744C  2A04               	incf	___awdiv@divisor+1,f,c
-  3497  00744E  0E01               	movlw	1
-  3498  007450  6E06               	movwf	___awdiv@sign,c
-  3499  007452                     l331:
-  3500  007452  AE02               	btfss	___awdiv@dividend+1,7,c
-  3501  007454  D006               	goto	l332
-  3502  007456  6C01               	negf	___awdiv@dividend,c
-  3503  007458  1E02               	comf	___awdiv@dividend+1,f,c
-  3504  00745A  B0D8               	btfsc	status,0,c
-  3505  00745C  2A02               	incf	___awdiv@dividend+1,f,c
-  3506  00745E  0E01               	movlw	1
-  3507  007460  1A06               	xorwf	___awdiv@sign,f,c
-  3508  007462                     l332:
-  3509  007462  0E00               	movlw	0
-  3510  007464  6E08               	movwf	___awdiv@quotient+1,c
-  3511  007466  0E00               	movlw	0
-  3512  007468  6E07               	movwf	___awdiv@quotient,c
-  3513  00746A  5003               	movf	___awdiv@divisor,w,c
-  3514  00746C  1004               	iorwf	___awdiv@divisor+1,w,c
-  3515  00746E  B4D8               	btfsc	status,2,c
-  3516  007470  D01C               	goto	l339
-  3517  007472  0E01               	movlw	1
-  3518  007474  6E05               	movwf	___awdiv@counter,c
-  3519  007476  D004               	goto	l334
-  3520  007478  90D8               	bcf	status,0,c
-  3521  00747A  3603               	rlcf	___awdiv@divisor,f,c
-  3522  00747C  3604               	rlcf	___awdiv@divisor+1,f,c
-  3523  00747E  2A05               	incf	___awdiv@counter,f,c
-  3524  007480                     l334:
-  3525  007480  AE04               	btfss	___awdiv@divisor+1,7,c
-  3526  007482  D7FA               	goto	l335
-  3527  007484                     u680:
-  3528  007484  90D8               	bcf	status,0,c
-  3529  007486  3607               	rlcf	___awdiv@quotient,f,c
-  3530  007488  3608               	rlcf	___awdiv@quotient+1,f,c
-  3531  00748A  5003               	movf	___awdiv@divisor,w,c
-  3532  00748C  5C01               	subwf	___awdiv@dividend,w,c
-  3533  00748E  5004               	movf	___awdiv@divisor+1,w,c
-  3534  007490  5802               	subwfb	___awdiv@dividend+1,w,c
-  3535  007492  A0D8               	btfss	status,0,c
-  3536  007494  D005               	goto	l338
-  3537  007496  5003               	movf	___awdiv@divisor,w,c
-  3538  007498  5E01               	subwf	___awdiv@dividend,f,c
-  3539  00749A  5004               	movf	___awdiv@divisor+1,w,c
-  3540  00749C  5A02               	subwfb	___awdiv@dividend+1,f,c
-  3541  00749E  8007               	bsf	___awdiv@quotient,0,c
-  3542  0074A0                     l338:
-  3543  0074A0  90D8               	bcf	status,0,c
-  3544  0074A2  3204               	rrcf	___awdiv@divisor+1,f,c
-  3545  0074A4  3203               	rrcf	___awdiv@divisor,f,c
-  3546  0074A6  2E05               	decfsz	___awdiv@counter,f,c
-  3547  0074A8  D7ED               	goto	u680
-  3548  0074AA                     l339:
-  3549  0074AA  5006               	movf	___awdiv@sign,w,c
-  3550  0074AC  B4D8               	btfsc	status,2,c
-  3551  0074AE  D004               	goto	l340
-  3552  0074B0  6C07               	negf	___awdiv@quotient,c
-  3553  0074B2  1E08               	comf	___awdiv@quotient+1,f,c
-  3554  0074B4  B0D8               	btfsc	status,0,c
-  3555  0074B6  2A08               	incf	___awdiv@quotient+1,f,c
-  3556  0074B8                     l340:
-  3557  0074B8  C007  F001         	movff	___awdiv@quotient,?___awdiv
-  3558  0074BC  C008  F002         	movff	___awdiv@quotient+1,?___awdiv+1
-  3559  0074C0  0012               	return	
-  3560  0074C2                     __end_of___awdiv:
-  3561                           	opt stack 0
-  3562                           tblptru	equ	0xFF8
-  3563                           prodl	equ	0xFF3
-  3564                           wreg	equ	0xFE8
-  3565                           status	equ	0xFD8
-  3566                           tblptru	equ	0xFF8
-  3567                           prodl	equ	0xFF3
-  3568                           wreg	equ	0xFE8
-  3569                           status	equ	0xFD8
-  3570                           
-  3571                           	psect	rparam
-  3572  0000                     tblptru	equ	0xFF8
-  3573                           prodl	equ	0xFF3
-  3574                           wreg	equ	0xFE8
-  3575                           status	equ	0xFD8
+  3437                           ;glcd.c: 405: }
+  3438                           ;glcd.c: 407: TRISD=0;
+  3439  0072AA  0E00               	movlw	0
+  3440  0072AC  6E95               	movwf	3989,c	;volatile
+  3441                           
+  3442                           ;glcd.c: 408: LATBbits.LATB3=0;
+  3443  0072AE  968A               	bcf	3978,3,c	;volatile
+  3444                           
+  3445                           ;glcd.c: 410: LATD = data;
+  3446  0072B0  C009  FF8C         	movff	glcd_WriteByte@data,3980	;volatile
+  3447                           
+  3448                           ;glcd.c: 414: LATBbits.LATB4 = 1;
+  3449  0072B4  888A               	bsf	3978,4,c	;volatile
+  3450                           
+  3451                           ;glcd.c: 416: _delay((unsigned long)((1)*(100000/4000.0)));
+  3452  0072B6  0E08               	movlw	8
+  3453  0072B8                     u1657:
+  3454  0072B8  2EE8               	decfsz	wreg,f,c
+  3455  0072BA  D7FE               	bra	u1657
+  3456  0072BC  F000               	nop	
+  3457                           
+  3458                           ;glcd.c: 417: LATBbits.LATB4 = 0;
+  3459  0072BE  988A               	bcf	3978,4,c	;volatile
+  3460                           
+  3461                           ;glcd.c: 419: _delay((unsigned long)((1)*(100000/4000.0)));
+  3462  0072C0  0E08               	movlw	8
+  3463  0072C2                     u1667:
+  3464  0072C2  2EE8               	decfsz	wreg,f,c
+  3465  0072C4  D7FE               	bra	u1667
+  3466  0072C6  F000               	nop	
+  3467                           
+  3468                           ;glcd.c: 422: LATBbits.LATB0 = 0;
+  3469  0072C8  908A               	bcf	3978,0,c	;volatile
+  3470                           
+  3471                           ;glcd.c: 423: LATBbits.LATB1 = 0;
+  3472  0072CA  928A               	bcf	3978,1,c	;volatile
+  3473  0072CC  0012               	return		;funcret
+  3474  0072CE                     __end_of_glcd_WriteByte:
+  3475                           	opt stack 0
+  3476                           tblptru	equ	0xFF8
+  3477                           prodl	equ	0xFF3
+  3478                           wreg	equ	0xFE8
+  3479                           status	equ	0xFD8
+  3480                           
+  3481 ;; *************** function _glcd_ReadByte *****************
+  3482 ;; Defined at:
+  3483 ;;		line 431 in file "glcd_library/glcd.c"
+  3484 ;; Parameters:    Size  Location     Type
+  3485 ;;  side            1    wreg     unsigned char 
+  3486 ;; Auto vars:     Size  Location     Type
+  3487 ;;  side            1    0[COMRAM] unsigned char 
+  3488 ;;  data            1    1[COMRAM] unsigned char 
+  3489 ;; Return value:  Size  Location     Type
+  3490 ;;                  1    wreg      unsigned char 
+  3491 ;; Registers used:
+  3492 ;;		wreg, status,2, cstack
+  3493 ;; Tracked objects:
+  3494 ;;		On entry : 0/0
+  3495 ;;		On exit  : 0/0
+  3496 ;;		Unchanged: 0/0
+  3497 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  3498 ;;      Params:         0       0       0       0       0       0       0       0       0
+  3499 ;;      Locals:         2       0       0       0       0       0       0       0       0
+  3500 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  3501 ;;      Totals:         2       0       0       0       0       0       0       0       0
+  3502 ;;Total ram usage:        2 bytes
+  3503 ;; Hardware stack levels used:    1
+  3504 ;; This function calls:
+  3505 ;;		Nothing
+  3506 ;; This function is called by:
+  3507 ;;		_glcd_PlotPixel
+  3508 ;; This function uses a non-reentrant model
+  3509 ;;
+  3510                           
+  3511                           	psect	text6
+  3512  007262                     __ptext6:
+  3513                           	opt stack 0
+  3514  007262                     _glcd_ReadByte:
+  3515                           	opt stack 28
+  3516                           
+  3517                           ;incstack = 0
+  3518                           ;glcd_ReadByte@side stored from wreg
+  3519  007262  6E01               	movwf	glcd_ReadByte@side,c
+  3520                           
+  3521                           ;glcd.c: 433: unsigned char data;
+  3522                           ;glcd.c: 435: if(side)
+  3523  007264  5001               	movf	glcd_ReadByte@side,w,c
+  3524  007266  B4D8               	btfsc	status,2,c
+  3525  007268  D003               	goto	l91
+  3526                           
+  3527                           ;glcd.c: 436: {
+  3528                           ;glcd.c: 437: LATBbits.LATB0 = 1;
+  3529  00726A  808A               	bsf	3978,0,c	;volatile
+  3530                           
+  3531                           ;glcd.c: 438: LATBbits.LATB1 = 0;
+  3532  00726C  928A               	bcf	3978,1,c	;volatile
+  3533                           
+  3534                           ;glcd.c: 439: }
+  3535  00726E  D002               	goto	l92
+  3536  007270                     l91:
+  3537                           
+  3538                           ;glcd.c: 440: else
+  3539                           ;glcd.c: 441: {
+  3540                           ;glcd.c: 442: LATBbits.LATB1 = 0;
+  3541  007270  928A               	bcf	3978,1,c	;volatile
+  3542                           
+  3543                           ;glcd.c: 443: LATBbits.LATB1 = 1;
+  3544  007272  828A               	bsf	3978,1,c	;volatile
+  3545  007274                     l92:
+  3546                           
+  3547                           ;glcd.c: 444: }
+  3548                           ;glcd.c: 446: TRISD = 0xFF;
+  3549  007274  6895               	setf	3989,c	;volatile
+  3550                           
+  3551                           ;glcd.c: 447: LATBbits.LATB3 = 1;
+  3552  007276  868A               	bsf	3978,3,c	;volatile
+  3553                           
+  3554                           ;glcd.c: 451: LATBbits.LATB4 = 1;
+  3555  007278  888A               	bsf	3978,4,c	;volatile
+  3556                           
+  3557                           ;glcd.c: 453: _delay((unsigned long)((1)*(100000/4000.0)));
+  3558  00727A  0E08               	movlw	8
+  3559  00727C                     u1677:
+  3560  00727C  2EE8               	decfsz	wreg,f,c
+  3561  00727E  D7FE               	bra	u1677
+  3562  007280  F000               	nop	
+  3563                           
+  3564                           ;glcd.c: 455: data = PORTD;
+  3565  007282  CF83 F002          	movff	3971,glcd_ReadByte@data	;volatile
+  3566                           
+  3567                           ;glcd.c: 456: LATBbits.LATB4 = 0;
+  3568  007286  988A               	bcf	3978,4,c	;volatile
+  3569                           
+  3570                           ;glcd.c: 458: _delay((unsigned long)((1)*(100000/4000.0)));
+  3571  007288  0E08               	movlw	8
+  3572  00728A                     u1687:
+  3573  00728A  2EE8               	decfsz	wreg,f,c
+  3574  00728C  D7FE               	bra	u1687
+  3575  00728E  F000               	nop	
+  3576                           
+  3577                           ;glcd.c: 459: LATBbits.LATB0 = 0;
+  3578  007290  908A               	bcf	3978,0,c	;volatile
+  3579                           
+  3580                           ;glcd.c: 460: LATBbits.LATB1 = 0;
+  3581  007292  928A               	bcf	3978,1,c	;volatile
+  3582                           
+  3583                           ;glcd.c: 462: return data;
+  3584  007294  5002               	movf	glcd_ReadByte@data,w,c
+  3585  007296  0012               	return	
+  3586  007298                     __end_of_glcd_ReadByte:
+  3587                           	opt stack 0
+  3588                           tblptru	equ	0xFF8
+  3589                           prodl	equ	0xFF3
+  3590                           wreg	equ	0xFE8
+  3591                           status	equ	0xFD8
+  3592                           
+  3593 ;; *************** function ___awdiv *****************
+  3594 ;; Defined at:
+  3595 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awdiv.c"
+  3596 ;; Parameters:    Size  Location     Type
+  3597 ;;  dividend        2    0[COMRAM] int 
+  3598 ;;  divisor         2    2[COMRAM] int 
+  3599 ;; Auto vars:     Size  Location     Type
+  3600 ;;  quotient        2    6[COMRAM] int 
+  3601 ;;  sign            1    5[COMRAM] unsigned char 
+  3602 ;;  counter         1    4[COMRAM] unsigned char 
+  3603 ;; Return value:  Size  Location     Type
+  3604 ;;                  2    0[COMRAM] int 
+  3605 ;; Registers used:
+  3606 ;;		wreg, status,2, status,0
+  3607 ;; Tracked objects:
+  3608 ;;		On entry : 0/0
+  3609 ;;		On exit  : 0/0
+  3610 ;;		Unchanged: 0/0
+  3611 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  3612 ;;      Params:         4       0       0       0       0       0       0       0       0
+  3613 ;;      Locals:         4       0       0       0       0       0       0       0       0
+  3614 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  3615 ;;      Totals:         8       0       0       0       0       0       0       0       0
+  3616 ;;Total ram usage:        8 bytes
+  3617 ;; Hardware stack levels used:    1
+  3618 ;; This function calls:
+  3619 ;;		Nothing
+  3620 ;; This function is called by:
+  3621 ;;		_glcd_PlotPixel
+  3622 ;; This function uses a non-reentrant model
+  3623 ;;
+  3624                           
+  3625                           	psect	text7
+  3626  00733C                     __ptext7:
+  3627                           	opt stack 0
+  3628  00733C                     ___awdiv:
+  3629                           	opt stack 28
+  3630                           
+  3631                           ;incstack = 0
+  3632  00733C  0E00               	movlw	0
+  3633  00733E  6E06               	movwf	___awdiv@sign,c
+  3634  007340  AE04               	btfss	___awdiv@divisor+1,7,c
+  3635  007342  D006               	goto	l337
+  3636  007344  6C03               	negf	___awdiv@divisor,c
+  3637  007346  1E04               	comf	___awdiv@divisor+1,f,c
+  3638  007348  B0D8               	btfsc	status,0,c
+  3639  00734A  2A04               	incf	___awdiv@divisor+1,f,c
+  3640  00734C  0E01               	movlw	1
+  3641  00734E  6E06               	movwf	___awdiv@sign,c
+  3642  007350                     l337:
+  3643  007350  AE02               	btfss	___awdiv@dividend+1,7,c
+  3644  007352  D006               	goto	l338
+  3645  007354  6C01               	negf	___awdiv@dividend,c
+  3646  007356  1E02               	comf	___awdiv@dividend+1,f,c
+  3647  007358  B0D8               	btfsc	status,0,c
+  3648  00735A  2A02               	incf	___awdiv@dividend+1,f,c
+  3649  00735C  0E01               	movlw	1
+  3650  00735E  1A06               	xorwf	___awdiv@sign,f,c
+  3651  007360                     l338:
+  3652  007360  0E00               	movlw	0
+  3653  007362  6E08               	movwf	___awdiv@quotient+1,c
+  3654  007364  0E00               	movlw	0
+  3655  007366  6E07               	movwf	___awdiv@quotient,c
+  3656  007368  5003               	movf	___awdiv@divisor,w,c
+  3657  00736A  1004               	iorwf	___awdiv@divisor+1,w,c
+  3658  00736C  B4D8               	btfsc	status,2,c
+  3659  00736E  D01C               	goto	l345
+  3660  007370  0E01               	movlw	1
+  3661  007372  6E05               	movwf	___awdiv@counter,c
+  3662  007374  D004               	goto	l340
+  3663  007376  90D8               	bcf	status,0,c
+  3664  007378  3603               	rlcf	___awdiv@divisor,f,c
+  3665  00737A  3604               	rlcf	___awdiv@divisor+1,f,c
+  3666  00737C  2A05               	incf	___awdiv@counter,f,c
+  3667  00737E                     l340:
+  3668  00737E  AE04               	btfss	___awdiv@divisor+1,7,c
+  3669  007380  D7FA               	goto	l341
+  3670  007382                     u870:
+  3671  007382  90D8               	bcf	status,0,c
+  3672  007384  3607               	rlcf	___awdiv@quotient,f,c
+  3673  007386  3608               	rlcf	___awdiv@quotient+1,f,c
+  3674  007388  5003               	movf	___awdiv@divisor,w,c
+  3675  00738A  5C01               	subwf	___awdiv@dividend,w,c
+  3676  00738C  5004               	movf	___awdiv@divisor+1,w,c
+  3677  00738E  5802               	subwfb	___awdiv@dividend+1,w,c
+  3678  007390  A0D8               	btfss	status,0,c
+  3679  007392  D005               	goto	l344
+  3680  007394  5003               	movf	___awdiv@divisor,w,c
+  3681  007396  5E01               	subwf	___awdiv@dividend,f,c
+  3682  007398  5004               	movf	___awdiv@divisor+1,w,c
+  3683  00739A  5A02               	subwfb	___awdiv@dividend+1,f,c
+  3684  00739C  8007               	bsf	___awdiv@quotient,0,c
+  3685  00739E                     l344:
+  3686  00739E  90D8               	bcf	status,0,c
+  3687  0073A0  3204               	rrcf	___awdiv@divisor+1,f,c
+  3688  0073A2  3203               	rrcf	___awdiv@divisor,f,c
+  3689  0073A4  2E05               	decfsz	___awdiv@counter,f,c
+  3690  0073A6  D7ED               	goto	u870
+  3691  0073A8                     l345:
+  3692  0073A8  5006               	movf	___awdiv@sign,w,c
+  3693  0073AA  B4D8               	btfsc	status,2,c
+  3694  0073AC  D004               	goto	l346
+  3695  0073AE  6C07               	negf	___awdiv@quotient,c
+  3696  0073B0  1E08               	comf	___awdiv@quotient+1,f,c
+  3697  0073B2  B0D8               	btfsc	status,0,c
+  3698  0073B4  2A08               	incf	___awdiv@quotient+1,f,c
+  3699  0073B6                     l346:
+  3700  0073B6  C007  F001         	movff	___awdiv@quotient,?___awdiv
+  3701  0073BA  C008  F002         	movff	___awdiv@quotient+1,?___awdiv+1
+  3702  0073BE  0012               	return	
+  3703  0073C0                     __end_of___awdiv:
+  3704                           	opt stack 0
+  3705                           tblptru	equ	0xFF8
+  3706                           prodl	equ	0xFF3
+  3707                           wreg	equ	0xFE8
+  3708                           status	equ	0xFD8
+  3709                           tblptru	equ	0xFF8
+  3710                           prodl	equ	0xFF3
+  3711                           wreg	equ	0xFE8
+  3712                           status	equ	0xFD8
+  3713                           
+  3714                           	psect	rparam
+  3715  0000                     tblptru	equ	0xFF8
+  3716                           prodl	equ	0xFF3
+  3717                           wreg	equ	0xFE8
+  3718                           status	equ	0xFD8
 
 
 Data Sizes:
@@ -3659,7 +3804,7 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                               140   140      0    9524
+ (0) _main                                               140   140      0   10334
                       _display_array
                           _glcd_Init
  ---------------------------------------------------------------------------------
@@ -3672,11 +3817,11 @@ Call Graph Tables:
                                              10 COMRAM     3     3      0
                      _glcd_WriteByte
  ---------------------------------------------------------------------------------
- (1) _display_array                                        4     4      0    4370
+ (1) _display_array                                        4     4      0    5180
                                              17 COMRAM     4     4      0
                      _glcd_PlotPixel
  ---------------------------------------------------------------------------------
- (2) _glcd_PlotPixel                                       7     5      2    3926
+ (2) _glcd_PlotPixel                                       7     5      2    4230
                                              10 COMRAM     7     5      2
                             ___awdiv
                       _glcd_ReadByte
@@ -3743,60 +3888,64 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.43 build -156212558 
-Symbol Table                                                                                   Mon Nov 08 11:34:45 2021
+Symbol Table                                                                                   Wed Nov 10 14:24:10 2021
 
-                       l7 764E                         l9 7666                         _x 0017  
-                       _y 0016                        l10 772A                        l11 76AA  
-                      l23 771C                        l24 7738                        l17 76EE  
-                      l29 7354                        l80 73A8                        l81 73AC  
-                      l90 74D6                        l91 7546                        l75 7616  
-                      l76 762A                        l85 7372                        l86 7376  
-            ___awdiv@sign 0006          ??_glcd_PlotPixel 000D                       l110 73DE  
-                     l112 741A                       l331 7452                       l340 74B8  
-                     l332 7462                       l334 7480                       l335 7478  
-                     l338 74A0                       l339 74AA                       u734 753C  
-                     u910 764C                       u735 7538                       u680 7484  
-                     u744 755A                       u745 7556                       u770 743A  
-                     u940 767A                       u950 768A                       u960 769A  
-                     u980 76BE                       u990 76CE                       wreg 000FE8  
-            __CFG_FOSC$HS 000000              __CFG_LVP$OFF 000000                      l1501 76EE  
-                    l1511 772A                      l1351 7412                      l1337 73D6  
-                    l1507 771C                      l1491 76AA                      l1485 767A  
-                    l1495 76BE            ?_display_array 0001                      u1000 76DE  
-                    u1010 76FE                      u1020 770E                      u1030 772A  
-                    u1307 738C                      _LATD 000F8C                      u1257 759C  
-                    u1267 75B2                      u1277 73BA                      u1287 73C4  
-                    u1297 737E          ??_glcd_WriteByte 000A                      _main 734A  
-                    prodl 000FF3                      start 0000           __end_of_Font3x6 7FFE  
-            ___param_bank 000000           __end_of_Font8x8 7F3B                     ?_main 0001  
-         __end_of___awdiv 74C2           ___awdiv@divisor 0003           ___awdiv@counter 0005  
-                   _PORTA 000F80                     _PORTB 000F81                     _PORTD 000F83  
-                   _TRISA 000F92                     _TRISB 000F93                     _TRISD 000F95  
-                   status 000FD8        glcd_WriteByte@data 0009           __initialization 7356  
-      glcd_WriteByte@side 000A              __end_of_main 7356                    ??_main 0016  
-           __activetblptr 000002           _glcd_FillScreen 73D0           ??_display_array 0012  
-                  _ADCON1 000FC1          ___awdiv@dividend 0001                 ??___awdiv 0005  
-        ___awdiv@quotient 0007              __mediumconst 773A                    tblptru 000FF8  
-              __accesstop 0060   __end_of__initialization 735A             ___rparam_used 000001  
-          __pcstackCOMRAM 0001   __end_of_glcd_FillScreen 743E        __size_of_glcd_Init 00BE  
-   __end_of_glcd_ReadByte 739A                   _Font3x6 7F3B                   _Font8x8 773B  
-       __end_of_glcd_Init 7632                   __Hparam 0000                   __Lparam 0000  
-                 ___awdiv 743E          ?_glcd_FillScreen 0001                   __pcinit 7356  
-                 __ramtop 0800                   __ptext0 734A                   __ptext1 7574  
-                 __ptext2 73D0                   __ptext3 7632                   __ptext4 74C2  
-                 __ptext5 739A                   __ptext6 7364                   __ptext7 743E  
- __size_of_glcd_PlotPixel 00B2      end_of_initialization 735A             __Lmediumconst 773A  
-          display_array@i 0014            display_array@j 0012   __size_of_glcd_WriteByte 0036  
-               _PORTEbits 000F84     __end_of_display_array 773A       start_initialization 7356  
-    glcd_FillScreen@color 000B               __pbssCOMRAM 0016            _glcd_PlotPixel 74C2  
-           __pmediumconst 773A            _glcd_WriteByte 739A                  ?___awdiv 0001  
-               _glcd_Init 7574    __end_of_glcd_PlotPixel 7574    __size_of_glcd_ReadByte 0036  
-                _LATBbits 000F8A    __end_of_glcd_WriteByte 73D0                ?_glcd_Init 0001  
-         ?_glcd_PlotPixel 000B  __size_of_glcd_FillScreen 006E          glcd_FillScreen@i 000D  
-        glcd_FillScreen@j 000C                  __Hrparam 0000           ?_glcd_WriteByte 0009  
-                __Lrparam 0000             _glcd_ReadByte 7364          __size_of___awdiv 0084  
-           __size_of_main 000C            ?_glcd_ReadByte 0001             glcd_Init@mode 000F  
-             ??_glcd_Init 000E    __size_of_display_array 0108       glcd_PlotPixel@color 000C  
-       ??_glcd_FillScreen 000B        glcd_PlotPixel@data 0010        glcd_PlotPixel@side 0011  
-      glcd_PlotPixel@xpos 000F        glcd_PlotPixel@ypos 000B         glcd_ReadByte@data 0002  
-       glcd_ReadByte@side 0001             _display_array 7632           ??_glcd_ReadByte 0001  
+                       l7 754C                         l9 7568                         _x 0017  
+                       _y 0016                        l11 75B8                        l30 7738  
+                      l23 764A                        l24 76C2                        l17 760C  
+                      l27 771C                        l35 7252                        l81 7514  
+                      l82 7528                        l91 7270                        l92 7274  
+                      l86 72A6                        l87 72AA                        l96 73D4  
+                      l97 7444              ___awdiv@sign 0006          ??_glcd_PlotPixel 000D  
+                     l116 72DC                       l118 7318                       l340 737E  
+                     l341 7376                       l344 739E                       l345 73A8  
+                     l337 7350                       l346 73B6                       l338 7360  
+                     u924 743A                       u925 7436                       u870 7382  
+                     u934 7458                       u935 7454                       u960 7338  
+                     wreg 000FE8              __CFG_FOSC$HS 000000              __CFG_LVP$OFF 000000  
+                    l1601 772A                      l1533 7588                      l1551 760C  
+                    l1543 75CC                      l1385 72D4                      l1539 75B8  
+                    l1559 764A                      l1399 7310                      l1597 771C  
+          ?_display_array 0001                      u1100 754A                      u1110 7566  
+                    u1200 75FC                      u1120 7578                      u1210 761C  
+                    u1130 7588                      u1220 762C                      u1140 7598  
+                    u1230 763C                      u1150 75A8                      u1400 770E  
+                    u1320 76A4                      u1410 772A                      u1330 76B4  
+                    u1170 75CC                      u1180 75DC                      u1190 75EC  
+                    _LATD 000F8C                      u1390 76FE                      u1637 749A  
+                    u1647 74B0                      u1657 72B8                      u1667 72C2  
+                    u1677 727C                      u1687 728A          ??_glcd_WriteByte 000A  
+                    _main 7248                      prodl 000FF3                      start 0000  
+         __end_of_Font3x6 7FFE              ___param_bank 000000           __end_of_Font8x8 7F3B  
+                   ?_main 0001           __end_of___awdiv 73C0           ___awdiv@divisor 0003  
+         ___awdiv@counter 0005                     _PORTA 000F80                     _PORTB 000F81  
+                   _PORTD 000F83                     _TRISA 000F92                     _TRISB 000F93  
+                   _TRISD 000F95                     status 000FD8        glcd_WriteByte@data 0009  
+         __initialization 7254        glcd_WriteByte@side 000A              __end_of_main 7254  
+                  ??_main 0016             __activetblptr 000002           _glcd_FillScreen 72CE  
+         ??_display_array 0012                    _ADCON1 000FC1          ___awdiv@dividend 0001  
+               ??___awdiv 0005          ___awdiv@quotient 0007              __mediumconst 773A  
+                  tblptru 000FF8                __accesstop 0060   __end_of__initialization 7258  
+           ___rparam_used 000001            __pcstackCOMRAM 0001   __end_of_glcd_FillScreen 733C  
+      __size_of_glcd_Init 00BE     __end_of_glcd_ReadByte 7298                   _Font3x6 7F3B  
+                 _Font8x8 773B         __end_of_glcd_Init 7530                   __Hparam 0000  
+                 __Lparam 0000                   ___awdiv 733C          ?_glcd_FillScreen 0001  
+                 __pcinit 7254                   __ramtop 0800                   __ptext0 7248  
+                 __ptext1 7472                   __ptext2 72CE                   __ptext3 7530  
+                 __ptext4 73C0                   __ptext5 7298                   __ptext6 7262  
+                 __ptext7 733C   __size_of_glcd_PlotPixel 00B2      end_of_initialization 7258  
+           __Lmediumconst 773A            display_array@i 0014            display_array@j 0012  
+ __size_of_glcd_WriteByte 0036                 _PORTEbits 000F84     __end_of_display_array 773A  
+     start_initialization 7254      glcd_FillScreen@color 000B               __pbssCOMRAM 0016  
+          _glcd_PlotPixel 73C0             __pmediumconst 773A            _glcd_WriteByte 7298  
+                ?___awdiv 0001                 _glcd_Init 7472    __end_of_glcd_PlotPixel 7472  
+  __size_of_glcd_ReadByte 0036                  _LATBbits 000F8A    __end_of_glcd_WriteByte 72CE  
+              ?_glcd_Init 0001           ?_glcd_PlotPixel 000B  __size_of_glcd_FillScreen 006E  
+        glcd_FillScreen@i 000D          glcd_FillScreen@j 000C                  __Hrparam 0000  
+         ?_glcd_WriteByte 0009                  __Lrparam 0000             _glcd_ReadByte 7262  
+        __size_of___awdiv 0084             __size_of_main 000C            ?_glcd_ReadByte 0001  
+           glcd_Init@mode 000F               ??_glcd_Init 000E    __size_of_display_array 020A  
+     glcd_PlotPixel@color 000C         ??_glcd_FillScreen 000B        glcd_PlotPixel@data 0010  
+      glcd_PlotPixel@side 0011        glcd_PlotPixel@xpos 000F        glcd_PlotPixel@ypos 000B  
+       glcd_ReadByte@data 0002         glcd_ReadByte@side 0001             _display_array 7530  
+         ??_glcd_ReadByte 0001  
