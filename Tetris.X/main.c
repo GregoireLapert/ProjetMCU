@@ -8,10 +8,10 @@
 #pragma config LVP = OFF
 #pragma config WDT=OFF // watchdog is off
 
-/*typedef struct box{
+typedef struct box{
     int empty; //0=empty 1=busy
-}t_box;*/
-/**
+}t_box;
+
 typedef struct pos{
     int x;
     int y;
@@ -46,18 +46,20 @@ void display_array(){
     }
     
 }
-**/
+
 void main(void) {
-    
-    setupADCR0();
-    TRISB = 0;
-    TRISC = 0;
+
+    glcd_Init(GLCD_ON);
+    glcd_SetCursor(1,1);
+    char str[20]="chaussette";
     while (1){
+        if(readX()>5)
+        {
+            glcd_text_write(str, 1, 1);
+        }
         
-        ADCON0bits.GO=1; //start the AD conversion 
-        while(ADCON0bits.GO==1); //wait for the conversion
-        PORTC = ADRESH;
-        PORTB = ADRESL;
+        
+        
     }
     
     return;

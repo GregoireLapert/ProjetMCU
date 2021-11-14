@@ -33,6 +33,10 @@
 
 void setupADCR0();
 void interrupt ISR();
+int readX();
+void setupADCR1();
+int R1Value();
+int readY();
 
 
 #endif	

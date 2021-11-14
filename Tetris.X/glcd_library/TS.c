@@ -21,7 +21,6 @@ void interrupt ISR()
 //function
 void setupADCR0()
 {
-    PORTA = 0; // reset PORTA
     TRISA = 0b00000011; // set pin RA0 and RA1 as input
     
     //set ADC
@@ -36,13 +35,48 @@ void setupADCR0()
     
     INTCONbits.GIE = 1;//enable global interrupt
     INTCONbits.PEIE = 1;//enable peripheral interrupt
+}
+void setupADCR1()
+{
+    TRISA = 0b00000011; // set pin RA0 and RA1 as input
     
-    ADCON0bits.GODONE = 0;
+    //set ADC
+    
+    ADCON0 = 0b00000101; //enable the AD conversion and select RA1 as the input pin
+    ADCON1 = 0b00111101; // set voltage reference and RA1 as analog pin
+    ADCON2bits.ADFM = 1; // set read bit as : MSB is on the right : MSB0 0000000LSB
+    
+    PIR1bits.ADIF = 0; // clear ADC interrupt flag
+    PIE1bits.ADIE = 1; // ADC interrupt enable
+     
+    
+    INTCONbits.GIE = 1;//enable global interrupt
+    INTCONbits.PEIE = 1;//enable peripheral interrupt
 }
 
-int R0Value()
+int R1Value()
 {
+    setupADCR1();
     ADCON0bits.GO=1; //start the AD conversion 
     while(ADCON0bits.GO==1); //wait for the conversion
-    return result=((ADRESH<<8)+ADRESL);
+    return ADRES; 
+}
+int R0Value()
+{
+    setupADCR0();
+    ADCON0bits.GO=1; //start the AD conversion 
+    while(ADCON0bits.GO==1); //wait for the conversion
+    return ADRES;
+}
+
+int readX()
+{
+    int value = R0Value();
+    return (128*value)/1024;
+}
+
+int readY()
+{
+    int value = R1Value();
+    return (64*value)/1024;
 }

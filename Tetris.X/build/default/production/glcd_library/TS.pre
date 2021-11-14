@@ -4,6 +4,10 @@
 # 34 "glcd_library/TS.h"
 void setupADCR0();
 void interrupt ISR();
+int readX();
+void setupADCR1();
+int R1Value();
+int readY();
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4823,7 +4827,6 @@ PIR1bits.ADIF = 0;
 
 void setupADCR0()
 {
-PORTA = 0;
 TRISA = 0b00000011;
 
 
@@ -4838,6 +4841,48 @@ PIE1bits.ADIE = 1;
 
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
+}
+void setupADCR1()
+{
+TRISA = 0b00000011;
 
-ADCON0bits.GODONE = 0;
+
+
+ADCON0 = 0b00000101;
+ADCON1 = 0b00111101;
+ADCON2bits.ADFM = 1;
+
+PIR1bits.ADIF = 0;
+PIE1bits.ADIE = 1;
+
+
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+}
+
+int R1Value()
+{
+setupADCR1();
+ADCON0bits.GO=1;
+while(ADCON0bits.GO==1);
+return ADRES;
+}
+int R0Value()
+{
+setupADCR0();
+ADCON0bits.GO=1;
+while(ADCON0bits.GO==1);
+return ADRES;
+}
+
+int readX()
+{
+int value = R0Value();
+return (128*value)/1024;
+}
+
+int readY()
+{
+int value = R1Value();
+return (64*value)/1024;
 }

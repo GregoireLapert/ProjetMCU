@@ -4999,6 +4999,10 @@ void glcd_text_write(const char str[], unsigned char x, unsigned char y);
 # 34 "glcd_library/TS.h"
 void setupADCR0();
 void interrupt ISR();
+int readX();
+void setupADCR1();
+int R1Value();
+int readY();
 
 
 # 7 "main.c"
@@ -5006,18 +5010,58 @@ void interrupt ISR();
 #pragma config LVP = OFF
 #pragma config WDT=OFF
 
-# 50
+typedef struct box{
+int empty;
+}t_box;
+
+typedef struct pos{
+int x;
+int y;
+}t_pos;
+
+typedef struct shape{
+int nBox;
+t_pos index[];
+int orientation;
+}t_shape;
+
+
+
+void display_array(){
+for (int i=0;i<128;i++){
+for(int j=0;j<64;j++){
+if ((j>=3 && j<=4) || (j>=62 && j<=63))
+glcd_PlotPixel(i,j,1);
+else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))
+glcd_PlotPixel(i,j,1);
+else if (i>=91 && i<=92 && j>4)
+glcd_PlotPixel(i,j,1);
+
+
+if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i==64) || (i==73) || (i==82)) && (j>4) )
+glcd_PlotPixel(i,j,1);
+
+
+if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i<92))
+glcd_PlotPixel(i,j,1);
+}
+}
+
+}
+
 void main(void) {
 
-setupADCR0();
-TRISB = 0;
-TRISC = 0;
+glcd_Init(1);
+glcd_SetCursor(1,1);
+char str[20]="chaussette";
 while (1){
+if(readX()>5)
+{
+glcd_text_write(str, 1, 1);
+}
 
-ADCON0bits.GO=1;
-while(ADCON0bits.GO==1);
-PORTC = ADRESH;
-PORTB = ADRESL;
+
+
 }
 
 return;

@@ -10,8 +10,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S172 . . . ]
 "4490
 [v _PIR1bits `VS172 ~T0 @X0 0 e@3998 ]
-"2312
-[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
 "3425
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "6664
@@ -83,8 +81,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S267 . . . . . . . . . ]
 "6708
 [v _ADCON0bits `VS267 ~T0 @X0 0 e@4034 ]
+"6783
+[v _ADRES `Vus ~T0 @X0 0 e@4035 ]
 [; ;TS.h: 34: void setupADCR0();
 [; ;TS.h: 35: void interrupt ISR();
+[; ;TS.h: 36: int readX();
+[; ;TS.h: 37: void setupADCR1();
+[; ;TS.h: 38: int R1Value();
+[; ;TS.h: 39: int readY();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3630,37 +3634,165 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;TS.c: 23: {
 [e :U _setupADCR0 ]
 [f ]
-[; ;TS.c: 24: PORTA = 0;
+[; ;TS.c: 24: TRISA = 0b00000011;
 "24
-[e = _PORTA -> -> 0 `i `uc ]
-[; ;TS.c: 25: TRISA = 0b00000011;
-"25
 [e = _TRISA -> -> 3 `i `uc ]
-[; ;TS.c: 29: ADCON0 = 0b00000001;
-"29
+[; ;TS.c: 28: ADCON0 = 0b00000001;
+"28
 [e = _ADCON0 -> -> 1 `i `uc ]
-[; ;TS.c: 30: ADCON1 = 0b00111110;
-"30
+[; ;TS.c: 29: ADCON1 = 0b00111110;
+"29
 [e = _ADCON1 -> -> 62 `i `uc ]
-[; ;TS.c: 31: ADCON2bits.ADFM = 1;
-"31
+[; ;TS.c: 30: ADCON2bits.ADFM = 1;
+"30
 [e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
-[; ;TS.c: 33: PIR1bits.ADIF = 0;
-"33
+[; ;TS.c: 32: PIR1bits.ADIF = 0;
+"32
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-[; ;TS.c: 34: PIE1bits.ADIE = 1;
-"34
+[; ;TS.c: 33: PIE1bits.ADIE = 1;
+"33
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-[; ;TS.c: 37: INTCONbits.GIE = 1;
-"37
+[; ;TS.c: 36: INTCONbits.GIE = 1;
+"36
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;TS.c: 38: INTCONbits.PEIE = 1;
-"38
+[; ;TS.c: 37: INTCONbits.PEIE = 1;
+"37
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;TS.c: 40: ADCON0bits.GODONE = 0;
-"40
-[e = . . _ADCON0bits 7 1 -> -> 0 `i `uc ]
-[; ;TS.c: 41: }
-"41
+[; ;TS.c: 38: }
+"38
 [e :UE 364 ]
+}
+"39
+[v _setupADCR1 `(v ~T0 @X0 1 ef ]
+"40
+{
+[; ;TS.c: 39: void setupADCR1()
+[; ;TS.c: 40: {
+[e :U _setupADCR1 ]
+[f ]
+[; ;TS.c: 41: TRISA = 0b00000011;
+"41
+[e = _TRISA -> -> 3 `i `uc ]
+[; ;TS.c: 45: ADCON0 = 0b00000101;
+"45
+[e = _ADCON0 -> -> 5 `i `uc ]
+[; ;TS.c: 46: ADCON1 = 0b00111101;
+"46
+[e = _ADCON1 -> -> 61 `i `uc ]
+[; ;TS.c: 47: ADCON2bits.ADFM = 1;
+"47
+[e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
+[; ;TS.c: 49: PIR1bits.ADIF = 0;
+"49
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;TS.c: 50: PIE1bits.ADIE = 1;
+"50
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;TS.c: 53: INTCONbits.GIE = 1;
+"53
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;TS.c: 54: INTCONbits.PEIE = 1;
+"54
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;TS.c: 55: }
+"55
+[e :UE 365 ]
+}
+"57
+[v _R1Value `(i ~T0 @X0 1 ef ]
+"58
+{
+[; ;TS.c: 57: int R1Value()
+[; ;TS.c: 58: {
+[e :U _R1Value ]
+[f ]
+[; ;TS.c: 59: setupADCR1();
+"59
+[e ( _setupADCR1 ..  ]
+[; ;TS.c: 60: ADCON0bits.GO=1;
+"60
+[e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
+[; ;TS.c: 61: while(ADCON0bits.GO==1);
+"61
+[e $U 367  ]
+[e :U 368 ]
+[e :U 367 ]
+[e $ == -> . . _ADCON0bits 4 1 `i -> 1 `i 368  ]
+[e :U 369 ]
+[; ;TS.c: 62: return ADRES;
+"62
+[e ) -> _ADRES `i ]
+[e $UE 366  ]
+[; ;TS.c: 63: }
+"63
+[e :UE 366 ]
+}
+"64
+[v _R0Value `(i ~T0 @X0 1 ef ]
+"65
+{
+[; ;TS.c: 64: int R0Value()
+[; ;TS.c: 65: {
+[e :U _R0Value ]
+[f ]
+[; ;TS.c: 66: setupADCR0();
+"66
+[e ( _setupADCR0 ..  ]
+[; ;TS.c: 67: ADCON0bits.GO=1;
+"67
+[e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
+[; ;TS.c: 68: while(ADCON0bits.GO==1);
+"68
+[e $U 371  ]
+[e :U 372 ]
+[e :U 371 ]
+[e $ == -> . . _ADCON0bits 4 1 `i -> 1 `i 372  ]
+[e :U 373 ]
+[; ;TS.c: 69: return ADRES;
+"69
+[e ) -> _ADRES `i ]
+[e $UE 370  ]
+[; ;TS.c: 70: }
+"70
+[e :UE 370 ]
+}
+"72
+[v _readX `(i ~T0 @X0 1 ef ]
+"73
+{
+[; ;TS.c: 72: int readX()
+[; ;TS.c: 73: {
+[e :U _readX ]
+[f ]
+"74
+[v _value `i ~T0 @X0 1 a ]
+[; ;TS.c: 74: int value = R0Value();
+[e = _value ( _R0Value ..  ]
+[; ;TS.c: 75: return (128*value)/1024;
+"75
+[e ) / * -> 128 `i _value -> 1024 `i ]
+[e $UE 374  ]
+[; ;TS.c: 76: }
+"76
+[e :UE 374 ]
+}
+"78
+[v _readY `(i ~T0 @X0 1 ef ]
+"79
+{
+[; ;TS.c: 78: int readY()
+[; ;TS.c: 79: {
+[e :U _readY ]
+[f ]
+"80
+[v _value `i ~T0 @X0 1 a ]
+[; ;TS.c: 80: int value = R1Value();
+[e = _value ( _R1Value ..  ]
+[; ;TS.c: 81: return (64*value)/1024;
+"81
+[e ) / * -> 64 `i _value -> 1024 `i ]
+[e $UE 375  ]
+[; ;TS.c: 82: }
+"82
+[e :UE 375 ]
 }

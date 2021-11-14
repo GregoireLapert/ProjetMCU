@@ -1,48 +1,15 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"46 glcd_library/glcd.h
+[v _glcd_PlotPixel `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [p mainexit ]
-"34 glcd_library/TS.h
-[v _setupADCR0 `(v ~T0 @X0 0 ef ]
-"3623 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"3845
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"6670
-[s S268 :1 `uc 1 :1 `uc 1 ]
-[n S268 . . GO_NOT_DONE ]
-"6674
-[s S269 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S269 . ADON GO_nDONE CHS ]
-"6679
-[s S270 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S270 . . GO_DONE CHS0 CHS1 CHS2 CHS3 ]
-"6687
-[s S271 :1 `uc 1 :1 `uc 1 ]
-[n S271 . . DONE ]
-"6691
-[s S272 :1 `uc 1 :1 `uc 1 ]
-[n S272 . . GO ]
-"6695
-[s S273 :1 `uc 1 :1 `uc 1 ]
-[n S273 . . NOT_DONE ]
-"6699
-[s S274 :1 `uc 1 :1 `uc 1 ]
-[n S274 . . nDONE ]
-"6703
-[s S275 :1 `uc 1 :1 `uc 1 ]
-[n S275 . . GODONE ]
-"6669
-[u S267 `S268 1 `S269 1 `S270 1 `S271 1 `S272 1 `S273 1 `S274 1 `S275 1 ]
-[n S267 . . . . . . . . . ]
-"6708
-[v _ADCON0bits `VS267 ~T0 @X0 0 e@4034 ]
-"2561
-[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
-"6797
-[v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
-"2451
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"6790
-[v _ADRESL `Vuc ~T0 @X0 0 e@4035 ]
+"43
+[v _glcd_Init `(v ~T0 @X0 0 ef1`uc ]
+"47
+[v _glcd_SetCursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"36 glcd_library/TS.h
+[v _readX `(i ~T0 @X0 0 ef ]
+"54 glcd_library/glcd.h
+[v _glcd_text_write `(v ~T0 @X0 0 ef3`*Cuc`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3686,12 +3653,113 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;glcd.h: 54: void glcd_text_write(const char str[], unsigned char x, unsigned char y);
 [; ;TS.h: 34: void setupADCR0();
 [; ;TS.h: 35: void interrupt ISR();
+[; ;TS.h: 36: int readX();
+[; ;TS.h: 37: void setupADCR1();
+[; ;TS.h: 38: int R1Value();
+[; ;TS.h: 39: int readY();
 "7 main.c
 [p x FOSC=HS ]
 "8
 [p x LVP=OFF ]
 "9
 [p x WDT=OFF ]
+[; ;main.c: 11: typedef struct box{
+[; ;main.c: 12: int empty;
+[; ;main.c: 13: }t_box;
+[; ;main.c: 15: typedef struct pos{
+[; ;main.c: 16: int x;
+[; ;main.c: 17: int y;
+[; ;main.c: 18: }t_pos;
+[; ;main.c: 20: typedef struct shape{
+[; ;main.c: 21: int nBox;
+[; ;main.c: 22: t_pos index[];
+[; ;main.c: 23: int orientation;
+[; ;main.c: 24: }t_shape;
+"28
+[v _display_array `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 28: void display_array(){
+[e :U _display_array ]
+[f ]
+[; ;main.c: 29: for (int i=0;i<128;i++){
+"29
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 128 `i 371  ]
+[e $U 372  ]
+[e :U 371 ]
+{
+[; ;main.c: 30: for(int j=0;j<64;j++){
+"30
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $ < _j -> 64 `i 374  ]
+[e $U 375  ]
+[e :U 374 ]
+{
+[; ;main.c: 31: if ((j>=3 && j<=4) || (j>=62 && j<=63))
+"31
+[e $ ! || && >= _j -> 3 `i <= _j -> 4 `i && >= _j -> 62 `i <= _j -> 63 `i 377  ]
+[; ;main.c: 32: glcd_PlotPixel(i,j,1);
+"32
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e $U 378  ]
+"33
+[e :U 377 ]
+[; ;main.c: 33: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))
+[e $ ! && || && >= _i -> 0 `i <= _i -> 1 `i && >= _i -> 126 `i <= _i -> 127 `i > _j -> 4 `i 379  ]
+[; ;main.c: 34: glcd_PlotPixel(i,j,1);
+"34
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e $U 380  ]
+"35
+[e :U 379 ]
+[; ;main.c: 35: else if (i>=91 && i<=92 && j>4)
+[e $ ! && && >= _i -> 91 `i <= _i -> 92 `i > _j -> 4 `i 381  ]
+[; ;main.c: 36: glcd_PlotPixel(i,j,1);
+"36
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e :U 381 ]
+"39
+[e :U 380 ]
+[e :U 378 ]
+[; ;main.c: 39: if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i==64) || (i==73) || (i==82)) && (j>4) )
+[e $ ! && || || || || || || || || == _i -> 10 `i == _i -> 19 `i == _i -> 28 `i == _i -> 37 `i == _i -> 46 `i == _i -> 55 `i == _i -> 64 `i == _i -> 73 `i == _i -> 82 `i > _j -> 4 `i 382  ]
+[; ;main.c: 40: glcd_PlotPixel(i,j,1);
+"40
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e :U 382 ]
+[; ;main.c: 43: if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i<92))
+"43
+[e $ ! && || || || || || == _j -> 17 `i == _j -> 26 `i == _j -> 35 `i == _j -> 44 `i == _j -> 53 `i == _j -> 62 `i < _i -> 92 `i 383  ]
+[; ;main.c: 44: glcd_PlotPixel(i,j,1);
+"44
+[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e :U 383 ]
+"45
+}
+"30
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 64 `i 374  ]
+[e :U 375 ]
+"45
+}
+"46
+}
+"29
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 128 `i 371  ]
+[e :U 372 ]
+"46
+}
+[; ;main.c: 45: }
+[; ;main.c: 46: }
+[; ;main.c: 48: }
+"48
+[e :UE 370 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
 "50
 [v _main `(v ~T0 @X0 1 ef ]
@@ -3699,46 +3767,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 50: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 52: setupADCR0();
+[; ;main.c: 52: glcd_Init(1);
 "52
-[e ( _setupADCR0 ..  ]
-[; ;main.c: 53: TRISB = 0;
+[e ( _glcd_Init (1 -> -> 1 `i `uc ]
+[; ;main.c: 53: glcd_SetCursor(1,1);
 "53
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 54: TRISC = 0;
+[e ( _glcd_SetCursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[v F4119 `uc ~T0 @X0 -> 20 `i s ]
+[i F4119
+:U ..
+-> 99 `c
+-> 104 `c
+-> 97 `c
+-> 117 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 116 `c
+-> 116 `c
+-> 101 `c
+-> 0 `c
+..
+]
 "54
-[e = _TRISC -> -> 0 `i `uc ]
+[v _str `uc ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 54: char str[20]="chaussette";
+[e = _str F4119 ]
 [; ;main.c: 55: while (1){
 "55
-[e :U 369 ]
+[e :U 386 ]
 {
-[; ;main.c: 57: ADCON0bits.GO=1;
+[; ;main.c: 56: if(readX()>5)
+"56
+[e $ ! > ( _readX ..  -> 5 `i 388  ]
+[; ;main.c: 57: {
 "57
-[e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
-[; ;main.c: 58: while(ADCON0bits.GO==1);
+{
+[; ;main.c: 58: glcd_text_write(str, 1, 1);
 "58
-[e $U 371  ]
-[e :U 372 ]
-[e :U 371 ]
-[e $ == -> . . _ADCON0bits 4 1 `i -> 1 `i 372  ]
-[e :U 373 ]
-[; ;main.c: 59: PORTC = ADRESH;
+[e ( _glcd_text_write (3 , , -> &U _str `*Cuc -> -> 1 `i `uc -> -> 1 `i `uc ]
 "59
-[e = _PORTC _ADRESH ]
-[; ;main.c: 60: PORTB = ADRESL;
-"60
-[e = _PORTB _ADRESL ]
-"61
 }
-[e :U 368 ]
-"55
-[e $U 369  ]
-[e :U 370 ]
-[; ;main.c: 61: }
-[; ;main.c: 63: return;
+[e :U 388 ]
 "63
-[e $UE 367  ]
-[; ;main.c: 64: }
-"64
-[e :UE 367 ]
+}
+[e :U 385 ]
+"55
+[e $U 386  ]
+[e :U 387 ]
+[; ;main.c: 59: }
+[; ;main.c: 63: }
+[; ;main.c: 65: return;
+"65
+[e $UE 384  ]
+[; ;main.c: 66: }
+"66
+[e :UE 384 ]
 }
