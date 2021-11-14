@@ -1,8 +1,17 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "46 glcd_library/glcd.h
 [v _glcd_PlotPixel `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"17 main.c
+[s S367 `uc 1 `uc 1 ]
+[n S367 pos x y ]
+"57
+[c E4206 0 1 2 3 .. ]
+[n E4206 orientation UP DOWN LEFT RIGHT  ]
+"23
+[s S368 `S367 -> 4 `i `E4206 1 ]
+[n S368 shape index orientation ]
 [p mainexit ]
-"43
+"43 glcd_library/glcd.h
 [v _glcd_Init `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3514,33 +3523,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;math.h: 30: extern double fabs(double);
-[; ;math.h: 31: extern double floor(double);
-[; ;math.h: 32: extern double ceil(double);
-[; ;math.h: 33: extern double modf(double, double *);
-[; ;math.h: 34: extern double sqrt(double);
-[; ;math.h: 35: extern double atof(const char *);
-[; ;math.h: 36: extern double sin(double) ;
-[; ;math.h: 37: extern double cos(double) ;
-[; ;math.h: 38: extern double tan(double) ;
-[; ;math.h: 39: extern double asin(double) ;
-[; ;math.h: 40: extern double acos(double) ;
-[; ;math.h: 41: extern double atan(double);
-[; ;math.h: 42: extern double atan2(double, double) ;
-[; ;math.h: 43: extern double log(double);
-[; ;math.h: 44: extern double log10(double);
-[; ;math.h: 45: extern double pow(double, double) ;
-[; ;math.h: 46: extern double exp(double) ;
-[; ;math.h: 47: extern double sinh(double) ;
-[; ;math.h: 48: extern double cosh(double) ;
-[; ;math.h: 49: extern double tanh(double);
-[; ;math.h: 50: extern double eval_poly(double, const double *, int);
-[; ;math.h: 51: extern double frexp(double, int *);
-[; ;math.h: 52: extern double ldexp(double, int);
-[; ;math.h: 53: extern double fmod(double, double);
-[; ;math.h: 54: extern double trunc(double);
-[; ;math.h: 55: extern double round(double);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -3591,35 +3657,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
 [; ;ctype.h: 4: extern __bit isalpha(char);
 [; ;ctype.h: 5: extern __bit isupper(char);
 [; ;ctype.h: 6: extern __bit islower(char);
@@ -3645,122 +3708,849 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;glcd.h: 52: extern void glcd_WriteString(const char str[],unsigned char font,unsigned char color);
 [; ;glcd.h: 53: extern void glcd_Image(void);
 [; ;glcd.h: 54: void glcd_text_write(const char str[], unsigned char x, unsigned char y);
-"4 main.c
+"8 main.c
 [p x FOSC=HS ]
-"5
+"9
 [p x LVP=OFF ]
-[; ;main.c: 11: typedef struct pos{
-[; ;main.c: 12: int x;
-[; ;main.c: 13: int y;
-[; ;main.c: 14: }t_pos;
-[; ;main.c: 16: typedef struct shape{
-[; ;main.c: 17: int nBox;
-[; ;main.c: 18: t_pos index[];
-[; ;main.c: 19: int orientation;
-[; ;main.c: 20: }t_shape;
-"24
-[v _display_array `(v ~T0 @X0 1 ef ]
+[; ;main.c: 14: enum orientation{UP,DOWN,LEFT,RIGHT};
+[; ;main.c: 17: typedef struct pos{
+[; ;main.c: 18: uint8_t x;
+[; ;main.c: 19: uint8_t y;
+[; ;main.c: 20: }t_pos;
+[; ;main.c: 23: typedef struct shape{
+[; ;main.c: 24: t_pos index[4];
+[; ;main.c: 25: enum orientation orientation;
+[; ;main.c: 26: }t_shape;
+"29
+[v _display_grid `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 24: void display_array(){
-[e :U _display_array ]
+[; ;main.c: 29: void display_grid(){
+[e :U _display_grid ]
 [f ]
-[; ;main.c: 25: for (int i=0;i<128;i++){
-"25
+[; ;main.c: 30: for (uint8_t i=0;i<128;i++){
+"30
 {
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 128 `i 370  ]
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 128 `i 370  ]
 [e $U 371  ]
 [e :U 370 ]
 {
-[; ;main.c: 26: for(int j=0;j<64;j++){
-"26
+[; ;main.c: 31: for(uint8_t j=0;j<64;j++){
+"31
 {
-[v _j `i ~T0 @X0 1 a ]
-[e = _j -> 0 `i ]
-[e $ < _j -> 64 `i 373  ]
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 64 `i 373  ]
 [e $U 374  ]
 [e :U 373 ]
 {
-[; ;main.c: 27: if ((j>=0 && j<=1) || (j>=62 && j<=63))
-"27
-[e $ ! || && >= _j -> 0 `i <= _j -> 1 `i && >= _j -> 62 `i <= _j -> 63 `i 376  ]
-[; ;main.c: 28: glcd_PlotPixel(i,j,1);
-"28
-[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
-[e $U 377  ]
-"29
-[e :U 376 ]
-[; ;main.c: 29: else if ((i>=0 && i<=1) || ( i>=126 && i<=127))
-[e $ ! || && >= _i -> 0 `i <= _i -> 1 `i && >= _i -> 126 `i <= _i -> 127 `i 378  ]
-[; ;main.c: 30: glcd_PlotPixel(i,j,1);
-"30
-[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
-[e $U 379  ]
-"31
-[e :U 378 ]
-[; ;main.c: 31: else if (i>=91 && i<=92)
-[e $ ! && >= _i -> 91 `i <= _i -> 92 `i 380  ]
-[; ;main.c: 32: glcd_PlotPixel(i,j,1);
+[; ;main.c: 32: if ((j>=0 && j<=1) || (j>=62 && j<=63))
 "32
-[e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+[e $ ! || && >= -> _j `i -> 0 `i <= -> _j `i -> 1 `i && >= -> _j `i -> 62 `i <= -> _j `i -> 63 `i 376  ]
+[; ;main.c: 33: glcd_PlotPixel(i,j,1);
+"33
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e $U 377  ]
+"34
+[e :U 376 ]
+[; ;main.c: 34: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)))
+[e $ ! || && >= -> _i `i -> 0 `i <= -> _i `i -> 1 `i && >= -> _i `i -> 126 `i <= -> _i `i -> 127 `i 378  ]
+[; ;main.c: 35: glcd_PlotPixel(i,j,1);
+"35
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e $U 379  ]
+"36
+[e :U 378 ]
+[; ;main.c: 36: else if (i>=91 && i<=92 )
+[e $ ! && >= -> _i `i -> 91 `i <= -> _i `i -> 92 `i 380  ]
+[; ;main.c: 37: glcd_PlotPixel(i,j,1);
+"37
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e :U 380 ]
-"41
+"40
 [e :U 379 ]
 [e :U 377 ]
-}
-"26
-[e ++ _j -> 1 `i ]
-[e $ < _j -> 64 `i 373  ]
-[e :U 374 ]
+[; ;main.c: 40: if (i>=2 && i<=90 && j==61)
+[e $ ! && && >= -> _i `i -> 2 `i <= -> _i `i -> 90 `i == -> _j `i -> 61 `i 381  ]
+[; ;main.c: 41: glcd_PlotPixel(i,j,1);
 "41
-}
-"42
-}
-"25
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 128 `i 370  ]
-[e :U 371 ]
-"42
-}
-[; ;main.c: 41: }
-[; ;main.c: 42: }
-[; ;main.c: 44: }
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 381 ]
+[; ;main.c: 44: if ( ((i==6) || (i==11) || (i==16) || (i==21) || (i==26) || (i==31) || (i==36) || (i==41) || (i==46) || (i==51) || (i==56) || (i==61) || (i==66) || (i==71) || (i==76) || (i==81) || (i==86)) )
 "44
+[e $ ! || || || || || || || || || || || || || || || || == -> _i `i -> 6 `i == -> _i `i -> 11 `i == -> _i `i -> 16 `i == -> _i `i -> 21 `i == -> _i `i -> 26 `i == -> _i `i -> 31 `i == -> _i `i -> 36 `i == -> _i `i -> 41 `i == -> _i `i -> 46 `i == -> _i `i -> 51 `i == -> _i `i -> 56 `i == -> _i `i -> 61 `i == -> _i `i -> 66 `i == -> _i `i -> 71 `i == -> _i `i -> 76 `i == -> _i `i -> 81 `i == -> _i `i -> 86 `i 382  ]
+[; ;main.c: 45: glcd_PlotPixel(i,j,1);
+"45
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 382 ]
+[; ;main.c: 48: if ( ((j==6) || (j==11) || (j==16) || (j==21) || (j==26) || (j==31) || (j==36) || (j==41) || (j==46) || (j==51) || (j==56)) && (i<92))
+"48
+[e $ ! && || || || || || || || || || || == -> _j `i -> 6 `i == -> _j `i -> 11 `i == -> _j `i -> 16 `i == -> _j `i -> 21 `i == -> _j `i -> 26 `i == -> _j `i -> 31 `i == -> _j `i -> 36 `i == -> _j `i -> 41 `i == -> _j `i -> 46 `i == -> _j `i -> 51 `i == -> _j `i -> 56 `i < -> _i `i -> 92 `i 383  ]
+[; ;main.c: 49: glcd_PlotPixel(i,j,1);
+"49
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 383 ]
+"50
+}
+"31
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 64 `i 373  ]
+[e :U 374 ]
+"50
+}
+"51
+}
+"30
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 128 `i 370  ]
+[e :U 371 ]
+"51
+}
+[; ;main.c: 50: }
+[; ;main.c: 51: }
+[; ;main.c: 52: }
+"52
 [e :UE 369 ]
 }
+"57
+[v _update_display_shapes `(v ~T0 @X0 1 ef2`*S368`uc ]
+{
+[; ;main.c: 57: void update_display_shapes(t_shape all_shapes[], char operation){
+[e :U _update_display_shapes ]
+[v _all_shapes `*S368 ~T0 @X0 1 r1 ]
+[v _operation `uc ~T0 @X0 1 r2 ]
+[f ]
+"59
+[v _x `uc ~T0 @X0 1 a ]
+[v _y `uc ~T0 @X0 1 a ]
+[v _i `uc ~T0 @X0 1 a ]
+[; ;main.c: 59: uint8_t x,y,i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;main.c: 61: while (all_shapes[i].index[0].x != 99){
+"61
+[e $U 385  ]
+[e :U 386 ]
+{
+[; ;main.c: 62: for(uint8_t j=0;j<4;j++){
+"62
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 388  ]
+[e $U 389  ]
+[e :U 388 ]
+{
+[; ;main.c: 64: switch (all_shapes[i].index[j].x){
+"64
+[e $U 392  ]
+{
+[; ;main.c: 65: case 0 :
+"65
+[e :U 393 ]
+[; ;main.c: 66: x=2;
+"66
+[e = _x -> -> 2 `i `uc ]
+[; ;main.c: 67: break;
+"67
+[e $U 391  ]
+[; ;main.c: 68: case 1 :
+"68
+[e :U 394 ]
+[; ;main.c: 69: x=7;
+"69
+[e = _x -> -> 7 `i `uc ]
+[; ;main.c: 70: break;
+"70
+[e $U 391  ]
+[; ;main.c: 71: case 2 :
+"71
+[e :U 395 ]
+[; ;main.c: 72: x=12;
+"72
+[e = _x -> -> 12 `i `uc ]
+[; ;main.c: 73: break;
+"73
+[e $U 391  ]
+[; ;main.c: 74: case 3 :
+"74
+[e :U 396 ]
+[; ;main.c: 75: x=17;
+"75
+[e = _x -> -> 17 `i `uc ]
+[; ;main.c: 76: break;
+"76
+[e $U 391  ]
+[; ;main.c: 77: case 4 :
+"77
+[e :U 397 ]
+[; ;main.c: 78: x=22;
+"78
+[e = _x -> -> 22 `i `uc ]
+[; ;main.c: 79: break;
+"79
+[e $U 391  ]
+[; ;main.c: 80: case 5 :
+"80
+[e :U 398 ]
+[; ;main.c: 81: x=27;
+"81
+[e = _x -> -> 27 `i `uc ]
+[; ;main.c: 82: break;
+"82
+[e $U 391  ]
+[; ;main.c: 83: case 6 :
+"83
+[e :U 399 ]
+[; ;main.c: 84: x=32;
+"84
+[e = _x -> -> 32 `i `uc ]
+[; ;main.c: 85: break;
+"85
+[e $U 391  ]
+[; ;main.c: 86: case 7 :
+"86
+[e :U 400 ]
+[; ;main.c: 87: x=37;
+"87
+[e = _x -> -> 37 `i `uc ]
+[; ;main.c: 88: break;
+"88
+[e $U 391  ]
+[; ;main.c: 89: case 8 :
+"89
+[e :U 401 ]
+[; ;main.c: 90: x=42;
+"90
+[e = _x -> -> 42 `i `uc ]
+[; ;main.c: 91: break;
+"91
+[e $U 391  ]
+[; ;main.c: 92: case 9 :
+"92
+[e :U 402 ]
+[; ;main.c: 93: x=47;
+"93
+[e = _x -> -> 47 `i `uc ]
+[; ;main.c: 94: break;
+"94
+[e $U 391  ]
+[; ;main.c: 95: case 10 :
+"95
+[e :U 403 ]
+[; ;main.c: 96: x=52;
+"96
+[e = _x -> -> 52 `i `uc ]
+[; ;main.c: 97: break;
+"97
+[e $U 391  ]
+[; ;main.c: 98: case 11 :
+"98
+[e :U 404 ]
+[; ;main.c: 99: x=57;
+"99
+[e = _x -> -> 57 `i `uc ]
+[; ;main.c: 100: break;
+"100
+[e $U 391  ]
+[; ;main.c: 101: case 12 :
+"101
+[e :U 405 ]
+[; ;main.c: 102: x=62;
+"102
+[e = _x -> -> 62 `i `uc ]
+[; ;main.c: 103: break;
+"103
+[e $U 391  ]
+[; ;main.c: 104: case 13 :
+"104
+[e :U 406 ]
+[; ;main.c: 105: x=67;
+"105
+[e = _x -> -> 67 `i `uc ]
+[; ;main.c: 106: break;
+"106
+[e $U 391  ]
+[; ;main.c: 107: case 14 :
+"107
+[e :U 407 ]
+[; ;main.c: 108: x=72;
+"108
+[e = _x -> -> 72 `i `uc ]
+[; ;main.c: 109: break;
+"109
+[e $U 391  ]
+[; ;main.c: 110: case 15 :
+"110
+[e :U 408 ]
+[; ;main.c: 111: x=77;
+"111
+[e = _x -> -> 77 `i `uc ]
+[; ;main.c: 112: break;
+"112
+[e $U 391  ]
+[; ;main.c: 113: case 16 :
+"113
+[e :U 409 ]
+[; ;main.c: 114: x=82;
+"114
+[e = _x -> -> 82 `i `uc ]
+[; ;main.c: 115: break;
+"115
+[e $U 391  ]
+[; ;main.c: 116: case 17 :
+"116
+[e :U 410 ]
+[; ;main.c: 117: x=87;
+"117
+[e = _x -> -> 87 `i `uc ]
+[; ;main.c: 118: break;
+"118
+[e $U 391  ]
+[; ;main.c: 119: default :
+"119
+[e :U 411 ]
+[; ;main.c: 120: break;
+"120
+[e $U 391  ]
+"121
+}
+[; ;main.c: 121: }
+[e $U 391  ]
+"64
+[e :U 392 ]
+[e [\ . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 0 , $ -> -> 0 `i `uc 393
+ , $ -> -> 1 `i `uc 394
+ , $ -> -> 2 `i `uc 395
+ , $ -> -> 3 `i `uc 396
+ , $ -> -> 4 `i `uc 397
+ , $ -> -> 5 `i `uc 398
+ , $ -> -> 6 `i `uc 399
+ , $ -> -> 7 `i `uc 400
+ , $ -> -> 8 `i `uc 401
+ , $ -> -> 9 `i `uc 402
+ , $ -> -> 10 `i `uc 403
+ , $ -> -> 11 `i `uc 404
+ , $ -> -> 12 `i `uc 405
+ , $ -> -> 13 `i `uc 406
+ , $ -> -> 14 `i `uc 407
+ , $ -> -> 15 `i `uc 408
+ , $ -> -> 16 `i `uc 409
+ , $ -> -> 17 `i `uc 410
+ 411 ]
+"121
+[e :U 391 ]
+[; ;main.c: 122: switch (all_shapes[i].index[j].y){
+"122
+[e $U 413  ]
+{
+[; ;main.c: 123: case 0 :
+"123
+[e :U 414 ]
+[; ;main.c: 124: y=2;
+"124
+[e = _y -> -> 2 `i `uc ]
+[; ;main.c: 125: break;
+"125
+[e $U 412  ]
+[; ;main.c: 126: case 1 :
+"126
+[e :U 415 ]
+[; ;main.c: 127: y=7;
+"127
+[e = _y -> -> 7 `i `uc ]
+[; ;main.c: 128: break;
+"128
+[e $U 412  ]
+[; ;main.c: 129: case 2 :
+"129
+[e :U 416 ]
+[; ;main.c: 130: y=12;
+"130
+[e = _y -> -> 12 `i `uc ]
+[; ;main.c: 131: break;
+"131
+[e $U 412  ]
+[; ;main.c: 132: case 3 :
+"132
+[e :U 417 ]
+[; ;main.c: 133: y=17;
+"133
+[e = _y -> -> 17 `i `uc ]
+[; ;main.c: 134: break;
+"134
+[e $U 412  ]
+[; ;main.c: 135: case 4 :
+"135
+[e :U 418 ]
+[; ;main.c: 136: y=22;
+"136
+[e = _y -> -> 22 `i `uc ]
+[; ;main.c: 137: break;
+"137
+[e $U 412  ]
+[; ;main.c: 138: case 5 :
+"138
+[e :U 419 ]
+[; ;main.c: 139: y=27;
+"139
+[e = _y -> -> 27 `i `uc ]
+[; ;main.c: 140: break;
+"140
+[e $U 412  ]
+[; ;main.c: 141: case 6 :
+"141
+[e :U 420 ]
+[; ;main.c: 142: y=32;
+"142
+[e = _y -> -> 32 `i `uc ]
+[; ;main.c: 143: break;
+"143
+[e $U 412  ]
+[; ;main.c: 144: case 7 :
+"144
+[e :U 421 ]
+[; ;main.c: 145: y=37;
+"145
+[e = _y -> -> 37 `i `uc ]
+[; ;main.c: 146: break;
+"146
+[e $U 412  ]
+[; ;main.c: 147: case 8 :
+"147
+[e :U 422 ]
+[; ;main.c: 148: y=42;
+"148
+[e = _y -> -> 42 `i `uc ]
+[; ;main.c: 149: break;
+"149
+[e $U 412  ]
+[; ;main.c: 150: case 9 :
+"150
+[e :U 423 ]
+[; ;main.c: 151: y=47;
+"151
+[e = _y -> -> 47 `i `uc ]
+[; ;main.c: 152: break;
+"152
+[e $U 412  ]
+[; ;main.c: 153: case 10 :
+"153
+[e :U 424 ]
+[; ;main.c: 154: y=52;
+"154
+[e = _y -> -> 52 `i `uc ]
+[; ;main.c: 155: break;
+"155
+[e $U 412  ]
+[; ;main.c: 156: case 11 :
+"156
+[e :U 425 ]
+[; ;main.c: 157: y=57;
+"157
+[e = _y -> -> 57 `i `uc ]
+[; ;main.c: 158: break;
+"158
+[e $U 412  ]
+[; ;main.c: 159: default :
+"159
+[e :U 426 ]
+[; ;main.c: 160: break;
+"160
+[e $U 412  ]
+"161
+}
+[; ;main.c: 161: }
+[e $U 412  ]
+"122
+[e :U 413 ]
+[e [\ . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 1 , $ -> -> 0 `i `uc 414
+ , $ -> -> 1 `i `uc 415
+ , $ -> -> 2 `i `uc 416
+ , $ -> -> 3 `i `uc 417
+ , $ -> -> 4 `i `uc 418
+ , $ -> -> 5 `i `uc 419
+ , $ -> -> 6 `i `uc 420
+ , $ -> -> 7 `i `uc 421
+ , $ -> -> 8 `i `uc 422
+ , $ -> -> 9 `i `uc 423
+ , $ -> -> 10 `i `uc 424
+ , $ -> -> 11 `i `uc 425
+ 426 ]
+"161
+[e :U 412 ]
+[; ;main.c: 162: if(operation=='1'){
+"162
+[e $ ! == -> _operation `ui -> 49 `ui 427  ]
+{
+[; ;main.c: 164: for(uint8_t m=x;m<x+4;m++){
+"164
+{
+[v _m `uc ~T0 @X0 1 a ]
+[e = _m _x ]
+[e $U 431  ]
+[e :U 428 ]
+{
+[; ;main.c: 165: for(uint8_t n=y;n<y+4;n++){
+"165
+{
+[v _n `uc ~T0 @X0 1 a ]
+[e = _n _y ]
+[e $U 435  ]
+[e :U 432 ]
+{
+[; ;main.c: 166: glcd_PlotPixel(m,n,1);
+"166
+[e ( _glcd_PlotPixel (3 , , _m _n -> -> 1 `i `uc ]
+"167
+}
+"165
+[e ++ _n -> -> 1 `i `uc ]
+[e :U 435 ]
+[e $ < -> _n `i + -> _y `i -> 4 `i 432  ]
+[e :U 433 ]
+"167
+}
+"168
+}
+"164
+[e ++ _m -> -> 1 `i `uc ]
+[e :U 431 ]
+[e $ < -> _m `i + -> _x `i -> 4 `i 428  ]
+[e :U 429 ]
+"168
+}
+"169
+}
+[; ;main.c: 167: }
+[; ;main.c: 168: }
+[; ;main.c: 169: }
+[e $U 436  ]
+"170
+[e :U 427 ]
+[; ;main.c: 170: else {
+{
+[; ;main.c: 172: for(uint8_t m=x;m<x+4;m++){
+"172
+{
+[v _m `uc ~T0 @X0 1 a ]
+[e = _m _x ]
+[e $U 440  ]
+[e :U 437 ]
+{
+[; ;main.c: 173: for(uint8_t n=y;n<y+4;n++){
+"173
+{
+[v _n `uc ~T0 @X0 1 a ]
+[e = _n _y ]
+[e $U 444  ]
+[e :U 441 ]
+{
+[; ;main.c: 174: glcd_PlotPixel(m,n,0);
+"174
+[e ( _glcd_PlotPixel (3 , , _m _n -> -> 0 `i `uc ]
+"175
+}
+"173
+[e ++ _n -> -> 1 `i `uc ]
+[e :U 444 ]
+[e $ < -> _n `i + -> _y `i -> 4 `i 441  ]
+[e :U 442 ]
+"175
+}
+"176
+}
+"172
+[e ++ _m -> -> 1 `i `uc ]
+[e :U 440 ]
+[e $ < -> _m `i + -> _x `i -> 4 `i 437  ]
+[e :U 438 ]
+"176
+}
+"177
+}
+[e :U 436 ]
+"178
+}
+"62
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 388  ]
+[e :U 389 ]
+"178
+}
+[; ;main.c: 175: }
+[; ;main.c: 176: }
+[; ;main.c: 177: }
+[; ;main.c: 178: }
+[; ;main.c: 179: i++;
+"179
+[e ++ _i -> -> 1 `i `uc ]
+"180
+}
+[e :U 385 ]
+"61
+[e $ != -> . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 99 `i 386  ]
+[e :U 387 ]
+[; ;main.c: 180: }
+[; ;main.c: 181: }
+"181
+[e :UE 384 ]
+}
+"183
+[v _gravity `(v ~T0 @X0 1 ef1`*S368 ]
+{
+[; ;main.c: 183: void gravity(t_shape all_shapes[]){
+[e :U _gravity ]
+[v _all_shapes `*S368 ~T0 @X0 1 r1 ]
+[f ]
+"185
+[v _i `uc ~T0 @X0 1 a ]
+[; ;main.c: 185: uint8_t i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;main.c: 186: while (all_shapes[i].index[0].x != 99){
+"186
+[e $U 446  ]
+[e :U 447 ]
+{
+[; ;main.c: 187: for(uint8_t j=0;j<4;j++){
+"187
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 449  ]
+[e $U 450  ]
+[e :U 449 ]
+{
+[; ;main.c: 188: if(all_shapes[i].index[j].y <11 ){
+"188
+[e $ ! < -> . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 11 `i 452  ]
+{
+[; ;main.c: 189: all_shapes[i].index[j].y +=1;
+"189
+[e =+ . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+"192
+}
+[; ;main.c: 192: }
+[e $U 453  ]
+"193
+[e :U 452 ]
+[; ;main.c: 193: else
+[; ;main.c: 194: break;
+"194
+[e $U 450  ]
+[e :U 453 ]
+"195
+}
+"187
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 449  ]
+[e :U 450 ]
+"195
+}
+[; ;main.c: 195: }
+[; ;main.c: 196: i++;
+"196
+[e ++ _i -> -> 1 `i `uc ]
+"197
+}
+[e :U 446 ]
+"186
+[e $ != -> . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 99 `i 447  ]
+[e :U 448 ]
+[; ;main.c: 197: }
+[; ;main.c: 198: }
+"198
+[e :UE 445 ]
+}
+"200
+[v _delay `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 200: void delay(){
+[e :U _delay ]
+[f ]
+"201
+[v _c `ui ~T0 @X0 1 a ]
+[v _d `ui ~T0 @X0 1 a ]
+[; ;main.c: 201: uint16_t c, d;
+[; ;main.c: 202: for (c = 0; c <= 65530; c++){
+"202
+{
+[e = _c -> -> 0 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 455  ]
+[e $U 456  ]
+[e :U 455 ]
+{
+"205
+}
+"202
+[e ++ _c -> -> 1 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 455  ]
+[e :U 456 ]
+"205
+}
+[; ;main.c: 205: }
+[; ;main.c: 206: return;
+"206
+[e $UE 454  ]
+[; ;main.c: 207: }
+"207
+[e :UE 454 ]
+}
+[v F4241 `uc ~T0 @X0 -> 12 `i t ]
+"210
+[v _array_data `F4241 ~T0 @X0 -> 18 `i e ]
+[; ;main.c: 210: char array_data[18][12];
 [v $root$_main `(v ~T0 @X0 0 e ]
-"46
+"214
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 46: void main(void) {
+[; ;main.c: 214: void main(void) {
 [e :U _main ]
 [f ]
-[v F4109 `i ~T0 @X0 -> 7 `i t ]
-"48
-[v _array `F4109 ~T0 @X0 -> 10 `i a ]
-[; ;main.c: 48: int array [10][7];
-[; ;main.c: 51: glcd_Init(1);
-"51
+"216
+[v _all_shapes `S368 ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 216: t_shape all_shapes [20];
+[; ;main.c: 217: glcd_Init(1);
+"217
 [e ( _glcd_Init (1 -> -> 1 `i `uc ]
-[; ;main.c: 52: display_array();
-"52
-[e ( _display_array ..  ]
-[; ;main.c: 53: while (1){
-"53
-[e :U 383 ]
+[; ;main.c: 218: display_grid();
+"218
+[e ( _display_grid ..  ]
+[; ;main.c: 220: for(uint8_t i=0;i<20;i++){
+"220
 {
-"56
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 459  ]
+[e $U 460  ]
+[e :U 459 ]
+{
+[; ;main.c: 221: for(uint8_t y=0;y<4;y++){
+"221
+{
+[v _y `uc ~T0 @X0 1 a ]
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 4 `i 462  ]
+[e $U 463  ]
+[e :U 462 ]
+{
+[; ;main.c: 222: all_shapes[i].index[y].x=99;
+"222
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _y `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 99 `i `uc ]
+[; ;main.c: 223: all_shapes[i].index[y].y=99;
+"223
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _y `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 99 `i `uc ]
+"224
 }
-[e :U 382 ]
-"53
-[e $U 383  ]
-[e :U 384 ]
-[; ;main.c: 56: }
-[; ;main.c: 58: return;
-"58
-[e $UE 381  ]
-[; ;main.c: 59: }
-"59
-[e :UE 381 ]
+"221
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 4 `i 462  ]
+[e :U 463 ]
+"224
+}
+"225
+}
+"220
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 459  ]
+[e :U 460 ]
+"225
+}
+[; ;main.c: 224: }
+[; ;main.c: 225: }
+[; ;main.c: 227: for(uint8_t i=0;i<18;i++){
+"227
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 18 `i 465  ]
+[e $U 466  ]
+[e :U 465 ]
+{
+[; ;main.c: 228: for(uint8_t y=0;y<12;y++){
+"228
+{
+[v _y `uc ~T0 @X0 1 a ]
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 12 `i 468  ]
+[e $U 469  ]
+[e :U 468 ]
+{
+[; ;main.c: 229: array_data[i][y]='0';
+"229
+[e = *U + &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> _y `ux -> -> # *U &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
+"230
+}
+"228
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 12 `i 468  ]
+[e :U 469 ]
+"230
+}
+"231
+}
+"227
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 18 `i 465  ]
+[e :U 466 ]
+"231
+}
+[; ;main.c: 230: }
+[; ;main.c: 231: }
+[; ;main.c: 235: all_shapes[0].index[0].x=6;
+"235
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 6 `i `uc ]
+[; ;main.c: 236: all_shapes[0].index[0].y=1;
+"236
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 237: all_shapes[0].index[1].x=7;
+"237
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 7 `i `uc ]
+[; ;main.c: 238: all_shapes[0].index[1].y=1;
+"238
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 239: all_shapes[0].index[2].x=8;
+"239
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 8 `i `uc ]
+[; ;main.c: 240: all_shapes[0].index[2].y=1;
+"240
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 241: all_shapes[0].index[3].x=7;
+"241
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 7 `i `uc ]
+[; ;main.c: 242: all_shapes[0].index[3].y=0;
+"242
+[e = . *U + &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 245: update_display_shapes(all_shapes,'1');
+"245
+[e ( _update_display_shapes (2 , &U _all_shapes -> -> 49 `ui `uc ]
+[; ;main.c: 248: while (1){
+"248
+[e :U 472 ]
+{
+[; ;main.c: 249: delay();
+"249
+[e ( _delay ..  ]
+[; ;main.c: 250: update_display_shapes(all_shapes,'0');
+"250
+[e ( _update_display_shapes (2 , &U _all_shapes -> -> 48 `ui `uc ]
+[; ;main.c: 251: gravity(all_shapes);
+"251
+[e ( _gravity (1 &U _all_shapes ]
+[; ;main.c: 252: update_display_shapes(all_shapes,'1');
+"252
+[e ( _update_display_shapes (2 , &U _all_shapes -> -> 49 `ui `uc ]
+"253
+}
+[e :U 471 ]
+"248
+[e $U 472  ]
+[e :U 473 ]
+[; ;main.c: 253: }
+[; ;main.c: 254: return;
+"254
+[e $UE 458  ]
+[; ;main.c: 255: }
+"255
+[e :UE 458 ]
 }
