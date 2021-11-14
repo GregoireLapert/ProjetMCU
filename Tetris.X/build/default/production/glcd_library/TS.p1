@@ -1,11 +1,59 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"34 glcd_library/TS.h
-[v _setupADCR0 `(v ~T0 @X0 0 ef ]
-"3623 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"3845
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"4472 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
+[s S173 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S173 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF SPPIF ]
+"4482
+[s S174 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S174 . . TX1IF RC1IF . PSPIF ]
+"4471
+[u S172 `S173 1 `S174 1 ]
+[n S172 . . . ]
+"4490
+[v _PIR1bits `VS172 ~T0 @X0 0 e@3998 ]
+"2312
+[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
+"3425
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"6664
+[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
+"6579
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"6514
+[s S261 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S261 . ADCS ACQT . ADFM ]
+"6520
+[s S262 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S262 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACQT2 ]
+"6513
+[u S260 `S261 1 `S262 1 ]
+[n S260 . . . ]
+"6529
+[v _ADCON2bits `VS260 ~T0 @X0 0 e@4032 ]
+"4388
+[s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S170 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE SPPIE ]
+"4398
+[s S171 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S171 . . TX1IE RC1IE . PSPIE ]
+"4387
+[u S169 `S170 1 `S171 1 ]
+[n S169 . . . ]
+"4406
+[v _PIE1bits `VS169 ~T0 @X0 0 e@3997 ]
+"8586
+[s S355 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S355 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"8596
+[s S356 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S356 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"8606
+[s S357 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S357 . . GIEL GIEH ]
+"8585
+[u S354 `S355 1 `S356 1 `S357 1 ]
+[n S354 . . . . ]
+"8612
+[v _INTCONbits `VS354 ~T0 @X0 0 e@4082 ]
 "6670
 [s S268 :1 `uc 1 :1 `uc 1 ]
 [n S268 . . GO_NOT_DONE ]
@@ -35,14 +83,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S267 . . . . . . . . . ]
 "6708
 [v _ADCON0bits `VS267 ~T0 @X0 0 e@4034 ]
-"2561
-[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
-"6797
-[v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
-"2451
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"6790
-[v _ADRESL `Vuc ~T0 @X0 0 e@4035 ]
+[; ;TS.h: 34: void setupADCR0();
+[; ;TS.h: 35: void interrupt ISR();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3553,192 +3595,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;math.h: 30: extern double fabs(double);
-[; ;math.h: 31: extern double floor(double);
-[; ;math.h: 32: extern double ceil(double);
-[; ;math.h: 33: extern double modf(double, double *);
-[; ;math.h: 34: extern double sqrt(double);
-[; ;math.h: 35: extern double atof(const char *);
-[; ;math.h: 36: extern double sin(double) ;
-[; ;math.h: 37: extern double cos(double) ;
-[; ;math.h: 38: extern double tan(double) ;
-[; ;math.h: 39: extern double asin(double) ;
-[; ;math.h: 40: extern double acos(double) ;
-[; ;math.h: 41: extern double atan(double);
-[; ;math.h: 42: extern double atan2(double, double) ;
-[; ;math.h: 43: extern double log(double);
-[; ;math.h: 44: extern double log10(double);
-[; ;math.h: 45: extern double pow(double, double) ;
-[; ;math.h: 46: extern double exp(double) ;
-[; ;math.h: 47: extern double sinh(double) ;
-[; ;math.h: 48: extern double cosh(double) ;
-[; ;math.h: 49: extern double tanh(double);
-[; ;math.h: 50: extern double eval_poly(double, const double *, int);
-[; ;math.h: 51: extern double frexp(double, int *);
-[; ;math.h: 52: extern double ldexp(double, int);
-[; ;math.h: 53: extern double fmod(double, double);
-[; ;math.h: 54: extern double trunc(double);
-[; ;math.h: 55: extern double round(double);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdlib.h: 7: typedef unsigned short wchar_t;
-[; ;stdlib.h: 15: typedef struct {
-[; ;stdlib.h: 16: int rem;
-[; ;stdlib.h: 17: int quot;
-[; ;stdlib.h: 18: } div_t;
-[; ;stdlib.h: 19: typedef struct {
-[; ;stdlib.h: 20: unsigned rem;
-[; ;stdlib.h: 21: unsigned quot;
-[; ;stdlib.h: 22: } udiv_t;
-[; ;stdlib.h: 23: typedef struct {
-[; ;stdlib.h: 24: long quot;
-[; ;stdlib.h: 25: long rem;
-[; ;stdlib.h: 26: } ldiv_t;
-[; ;stdlib.h: 27: typedef struct {
-[; ;stdlib.h: 28: unsigned long quot;
-[; ;stdlib.h: 29: unsigned long rem;
-[; ;stdlib.h: 30: } uldiv_t;
-[; ;stdlib.h: 53: extern double atof(const char *);
-[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
-[; ;stdlib.h: 55: extern int atoi(const char *);
-[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
-[; ;stdlib.h: 57: extern long atol(const char *);
-[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
-[; ;stdlib.h: 60: extern int rand(void);
-[; ;stdlib.h: 61: extern void srand(unsigned int);
-[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
-[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
-[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
-[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
-[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 75: extern void * malloc(size_t);
-[; ;stdlib.h: 76: extern void free(void *);
-[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
-[; ;stdlib.h: 86: extern int atexit(void (*)(void));
-[; ;stdlib.h: 87: extern char * getenv(const char *);
-[; ;stdlib.h: 88: extern char ** environ;
-[; ;stdlib.h: 89: extern int system(char *);
-[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-[; ;stdlib.h: 92: extern int abs(int);
-[; ;stdlib.h: 93: extern long labs(long);
-[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
-[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
-[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
-[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
-[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;ctype.h: 4: extern __bit isalpha(char);
-[; ;ctype.h: 5: extern __bit isupper(char);
-[; ;ctype.h: 6: extern __bit islower(char);
-[; ;ctype.h: 7: extern __bit isdigit(char);
-[; ;ctype.h: 8: extern __bit isxdigit(char);
-[; ;ctype.h: 9: extern __bit isspace(char);
-[; ;ctype.h: 10: extern __bit ispunct(char);
-[; ;ctype.h: 11: extern __bit isalnum(char);
-[; ;ctype.h: 12: extern __bit isprint(char);
-[; ;ctype.h: 13: extern __bit isgraph(char);
-[; ;ctype.h: 14: extern __bit iscntrl(char);
-[; ;ctype.h: 17: extern char toupper(char);
-[; ;ctype.h: 18: extern char tolower(char);
-[; ;glcd.h: 43: extern void glcd_Init(unsigned char mode);
-[; ;glcd.h: 44: extern void glcd_WriteByte(unsigned char side, unsigned char data);
-[; ;glcd.h: 45: extern unsigned char glcd_ReadByte(unsigned char side);
-[; ;glcd.h: 46: extern void glcd_PlotPixel(unsigned char x, unsigned char y, unsigned char color);
-[; ;glcd.h: 47: extern void glcd_SetCursor(unsigned char xpos,unsigned char ypos);
-[; ;glcd.h: 48: void glcd_Rect(unsigned char xs, unsigned char ys, unsigned char xe ,unsigned char ye,unsigned char color);
-[; ;glcd.h: 49: extern void glcd_FillScreen(unsigned char color);
-[; ;glcd.h: 50: extern void glcd_WriteChar8X8( unsigned char ch, unsigned char color);
-[; ;glcd.h: 51: extern void glcd_WriteChar3x6( unsigned char ch, unsigned char color);
-[; ;glcd.h: 52: extern void glcd_WriteString(const char str[],unsigned char font,unsigned char color);
-[; ;glcd.h: 53: extern void glcd_Image(void);
-[; ;glcd.h: 54: void glcd_text_write(const char str[], unsigned char x, unsigned char y);
-[; ;TS.h: 34: void setupADCR0();
-[; ;TS.h: 35: void interrupt ISR();
-"7 main.c
-[p x FOSC=HS ]
-"8
-[p x LVP=OFF ]
-"9
-[p x WDT=OFF ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"50
-[v _main `(v ~T0 @X0 1 ef ]
+[v $root$_ISR `(v ~T0 @X0 0 e ]
+[v F3 `(v ~T0 @X0 1 tf ]
+"11 glcd_library/TS.c
+[v _ISR `IF3 ~T0 @X0 1 e ]
+"12
 {
-[; ;main.c: 50: void main(void) {
-[e :U _main ]
+[; ;TS.c: 11: void interrupt ISR()
+[; ;TS.c: 12: {
+[e :U _ISR ]
 [f ]
-[; ;main.c: 52: setupADCR0();
-"52
-[e ( _setupADCR0 ..  ]
-[; ;main.c: 53: TRISB = 0;
-"53
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 54: TRISC = 0;
-"54
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 55: while (1){
-"55
-[e :U 369 ]
+[; ;TS.c: 13: if(PIR1bits.ADIF)
+"13
+[e $ ! != -> . . _PIR1bits 0 6 `i -> -> -> 0 `i `Vuc `i 363  ]
+[; ;TS.c: 14: {
+"14
 {
-[; ;main.c: 57: ADCON0bits.GO=1;
-"57
-[e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
-[; ;main.c: 58: while(ADCON0bits.GO==1);
-"58
-[e $U 371  ]
-[e :U 372 ]
-[e :U 371 ]
-[e $ == -> . . _ADCON0bits 4 1 `i -> 1 `i 372  ]
-[e :U 373 ]
-[; ;main.c: 59: PORTC = ADRESH;
-"59
-[e = _PORTC _ADRESH ]
-[; ;main.c: 60: PORTB = ADRESL;
-"60
-[e = _PORTB _ADRESL ]
-"61
+[; ;TS.c: 15: PIR1bits.ADIF = 0;
+"15
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"17
 }
-[e :U 368 ]
-"55
-[e $U 369  ]
-[e :U 370 ]
-[; ;main.c: 61: }
-[; ;main.c: 63: return;
-"63
-[e $UE 367  ]
-[; ;main.c: 64: }
-"64
-[e :UE 367 ]
+[e :U 363 ]
+[; ;TS.c: 17: }
+[; ;TS.c: 18: }
+"18
+[e :UE 362 ]
+}
+"22
+[v _setupADCR0 `(v ~T0 @X0 1 ef ]
+"23
+{
+[; ;TS.c: 22: void setupADCR0()
+[; ;TS.c: 23: {
+[e :U _setupADCR0 ]
+[f ]
+[; ;TS.c: 24: PORTA = 0;
+"24
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;TS.c: 25: TRISA = 0b00000011;
+"25
+[e = _TRISA -> -> 3 `i `uc ]
+[; ;TS.c: 29: ADCON0 = 0b00000001;
+"29
+[e = _ADCON0 -> -> 1 `i `uc ]
+[; ;TS.c: 30: ADCON1 = 0b00111110;
+"30
+[e = _ADCON1 -> -> 62 `i `uc ]
+[; ;TS.c: 31: ADCON2bits.ADFM = 1;
+"31
+[e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
+[; ;TS.c: 33: PIR1bits.ADIF = 0;
+"33
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;TS.c: 34: PIE1bits.ADIE = 1;
+"34
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;TS.c: 37: INTCONbits.GIE = 1;
+"37
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;TS.c: 38: INTCONbits.PEIE = 1;
+"38
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;TS.c: 40: ADCON0bits.GODONE = 0;
+"40
+[e = . . _ADCON0bits 7 1 -> -> 0 `i `uc ]
+[; ;TS.c: 41: }
+"41
+[e :UE 364 ]
 }

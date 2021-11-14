@@ -1,13 +1,17 @@
 #include <xc.h>
 #include "glcd_library/glcd.h"
+#include "glcd_library/TS.h"
+
+#define _XTAL_FREQ 4000000 // 4Mhz
 
 #pragma config FOSC = HS
 #pragma config LVP = OFF
+#pragma config WDT=OFF // watchdog is off
 
 /*typedef struct box{
     int empty; //0=empty 1=busy
 }t_box;*/
-
+/**
 typedef struct pos{
     int x;
     int y;
@@ -42,17 +46,18 @@ void display_array(){
     }
     
 }
-
+**/
 void main(void) {
     
-    int array [10][7];
-    
-    // Swith the screen ON 
-    glcd_Init(GLCD_ON);
-    display_array();
+    setupADCR0();
+    TRISB = 0;
+    TRISC = 0;
     while (1){
-        // Clear the screen
-        //glcd_FillScreen(0);
+        
+        ADCON0bits.GO=1; //start the AD conversion 
+        while(ADCON0bits.GO==1); //wait for the conversion
+        PORTC = ADRESH;
+        PORTB = ADRESL;
     }
     
     return;
