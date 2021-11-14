@@ -1,6 +1,32 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "46 glcd_library/glcd.h
 [v _glcd_PlotPixel `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+"17 main.c
+[s S367 `uc 1 `uc 1 ]
+[n S367 pos x y ]
+"57
+[c E4206 0 1 2 3 .. ]
+[n E4206 orientation UP DOWN LEFT RIGHT  ]
+"23
+[s S368 `S367 -> 4 `i `E4206 1 ]
+[n S368 shape index orientation ]
+=======
+"14 main.c
+[s S367 `uc 1 `uc 1 ]
+[n S367 pos x y ]
+"51
+[c E4206 0 1 2 3 .. ]
+[n E4206 orientation UP DOWN LEFT RIGHT  ]
+"19
+[s S368 `S367 -> 4 `i `E4206 1 ]
+[n S368 shape index orientation ]
+"56 C:\Program Files (x86)\Microchip\xc8\v1.43\include\string.h
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 [p mainexit ]
 "43
 [v _glcd_Init `(v ~T0 @X0 0 ef1`uc ]
@@ -3541,6 +3567,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 54: extern double trunc(double);
 [; ;math.h: 55: extern double round(double);
 [; ;__size_t.h: 4: typedef unsigned size_t;
+<<<<<<< Updated upstream
+=======
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
+<<<<<<< Updated upstream
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+=======
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -3645,7 +3758,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;glcd.h: 52: extern void glcd_WriteString(const char str[],unsigned char font,unsigned char color);
 [; ;glcd.h: 53: extern void glcd_Image(void);
 [; ;glcd.h: 54: void glcd_text_write(const char str[], unsigned char x, unsigned char y);
+<<<<<<< Updated upstream
 "4 main.c
+=======
+<<<<<<< Updated upstream
+"8 main.c
+>>>>>>> Stashed changes
 [p x FOSC=HS ]
 "5
 [p x LVP=OFF ]
@@ -3664,8 +3782,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 24: void display_array(){
 [e :U _display_array ]
 [f ]
+<<<<<<< Updated upstream
 [; ;main.c: 25: for (int i=0;i<128;i++){
 "25
+=======
+[; ;main.c: 30: for (uint8_t i=0;i<128;i++){
+"30
+=======
+"6 main.c
+[p x FOSC=HS ]
+"7
+[p x LVP=OFF ]
+[; ;main.c: 12: enum orientation{UP,DOWN,LEFT,RIGHT};
+[; ;main.c: 14: typedef struct pos{
+[; ;main.c: 15: uint8_t x;
+[; ;main.c: 16: uint8_t y;
+[; ;main.c: 17: }t_pos;
+[; ;main.c: 19: typedef struct shape{
+[; ;main.c: 20: t_pos index[4];
+[; ;main.c: 21: enum orientation orientation;
+[; ;main.c: 22: }t_shape;
+"26
+[v _display_grid `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 26: void display_grid(){
+[e :U _display_grid ]
+[f ]
+[; ;main.c: 27: for (uint8_t i=0;i<128;i++){
+"27
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -3673,8 +3819,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 371  ]
 [e :U 370 ]
 {
+<<<<<<< Updated upstream
 [; ;main.c: 26: for(int j=0;j<64;j++){
 "26
+=======
+<<<<<<< Updated upstream
+[; ;main.c: 31: for(uint8_t j=0;j<64;j++){
+"31
+=======
+[; ;main.c: 28: for(uint8_t j=0;j<64;j++){
+"28
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
@@ -3682,12 +3838,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 374  ]
 [e :U 373 ]
 {
+<<<<<<< Updated upstream
 [; ;main.c: 27: if ((j>=3 && j<=4) || (j>=62 && j<=63))
 "27
 [e $ ! || && >= _j -> 3 `i <= _j -> 4 `i && >= _j -> 62 `i <= _j -> 63 `i 376  ]
 [; ;main.c: 28: glcd_PlotPixel(i,j,1);
 "28
 [e ( _glcd_PlotPixel (3 , , -> _i `uc -> _j `uc -> -> 1 `i `uc ]
+=======
+<<<<<<< Updated upstream
+[; ;main.c: 32: if ((j>=0 && j<=1) || (j>=62 && j<=63))
+"32
+[e $ ! || && >= -> _j `i -> 0 `i <= -> _j `i -> 1 `i && >= -> _j `i -> 62 `i <= -> _j `i -> 63 `i 376  ]
+[; ;main.c: 33: glcd_PlotPixel(i,j,1);
+"33
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+>>>>>>> Stashed changes
 [e $U 377  ]
 "29
 [e :U 376 ]
@@ -3766,6 +3932,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 "56
 }
+<<<<<<< Updated upstream
 [e :U 384 ]
 "53
 [e $U 385  ]
@@ -3777,4 +3944,350 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 59: }
 "59
 [e :UE 383 ]
+=======
+[e :U 471 ]
+"248
+[e $U 472  ]
+[e :U 473 ]
+[; ;main.c: 253: }
+[; ;main.c: 254: return;
+"254
+[e $UE 458  ]
+[; ;main.c: 255: }
+"255
+[e :UE 458 ]
+=======
+[; ;main.c: 29: if ((j>=0 && j<=1) || (j>=62 && j<=63))
+"29
+[e $ ! || && >= -> _j `i -> 0 `i <= -> _j `i -> 1 `i && >= -> _j `i -> 62 `i <= -> _j `i -> 63 `i 376  ]
+[; ;main.c: 30: glcd_PlotPixel(i,j,1);
+"30
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e $U 377  ]
+"31
+[e :U 376 ]
+[; ;main.c: 31: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)))
+[e $ ! || && >= -> _i `i -> 0 `i <= -> _i `i -> 1 `i && >= -> _i `i -> 126 `i <= -> _i `i -> 127 `i 378  ]
+[; ;main.c: 32: glcd_PlotPixel(i,j,1);
+"32
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e $U 379  ]
+"33
+[e :U 378 ]
+[; ;main.c: 33: else if (i>=91 && i<=92 )
+[e $ ! && >= -> _i `i -> 91 `i <= -> _i `i -> 92 `i 380  ]
+[; ;main.c: 34: glcd_PlotPixel(i,j,1);
+"34
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 380 ]
+"37
+[e :U 379 ]
+[e :U 377 ]
+[; ;main.c: 37: if (i>=2 && i<=90 && j==61)
+[e $ ! && && >= -> _i `i -> 2 `i <= -> _i `i -> 90 `i == -> _j `i -> 61 `i 381  ]
+[; ;main.c: 38: glcd_PlotPixel(i,j,1);
+"38
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 381 ]
+[; ;main.c: 41: if ( ((i==6) || (i==11) || (i==16) || (i==21) || (i==26) || (i==31) || (i==36) || (i==41) || (i==46) || (i==51) || (i==56) || (i==61) || (i==66) || (i==71) || (i==76) || (i==81) || (i==86)) )
+"41
+[e $ ! || || || || || || || || || || || || || || || || == -> _i `i -> 6 `i == -> _i `i -> 11 `i == -> _i `i -> 16 `i == -> _i `i -> 21 `i == -> _i `i -> 26 `i == -> _i `i -> 31 `i == -> _i `i -> 36 `i == -> _i `i -> 41 `i == -> _i `i -> 46 `i == -> _i `i -> 51 `i == -> _i `i -> 56 `i == -> _i `i -> 61 `i == -> _i `i -> 66 `i == -> _i `i -> 71 `i == -> _i `i -> 76 `i == -> _i `i -> 81 `i == -> _i `i -> 86 `i 382  ]
+[; ;main.c: 42: glcd_PlotPixel(i,j,1);
+"42
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 382 ]
+[; ;main.c: 45: if ( ((j==6) || (j==11) || (j==16) || (j==21) || (j==26) || (j==31) || (j==36) || (j==41) || (j==46) || (j==51) || (j==56)) && (i<92))
+"45
+[e $ ! && || || || || || || || || || || == -> _j `i -> 6 `i == -> _j `i -> 11 `i == -> _j `i -> 16 `i == -> _j `i -> 21 `i == -> _j `i -> 26 `i == -> _j `i -> 31 `i == -> _j `i -> 36 `i == -> _j `i -> 41 `i == -> _j `i -> 46 `i == -> _j `i -> 51 `i == -> _j `i -> 56 `i < -> _i `i -> 92 `i 383  ]
+[; ;main.c: 46: glcd_PlotPixel(i,j,1);
+"46
+[e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
+[e :U 383 ]
+"47
+}
+"28
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 64 `i 373  ]
+[e :U 374 ]
+"47
+}
+"48
+}
+"27
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 128 `i 370  ]
+[e :U 371 ]
+"48
+}
+[; ;main.c: 47: }
+[; ;main.c: 48: }
+[; ;main.c: 49: }
+"49
+[e :UE 369 ]
+}
+"51
+[v _display_shapes `(v ~T0 @X0 1 ef1`*S368 ]
+{
+[; ;main.c: 51: void display_shapes(t_shape all_shapes[]){
+[e :U _display_shapes ]
+[v _all_shapes `*S368 ~T0 @X0 1 r1 ]
+[f ]
+[; ;main.c: 53: for(uint8_t i=0;i<strlen(all_shapes);i++){
+"53
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 388  ]
+[e :U 385 ]
+{
+[; ;main.c: 54: for(uint8_t j=0;j<4;j++){
+"54
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 389  ]
+[e $U 390  ]
+[e :U 389 ]
+{
+[; ;main.c: 56: switch (all_shapes[i].index[j].x){
+"56
+[e $U 393  ]
+{
+[; ;main.c: 57: case 0 :
+"57
+[e :U 394 ]
+[; ;main.c: 58: break;
+"58
+[e $U 392  ]
+[; ;main.c: 59: case 1 :
+"59
+[e :U 395 ]
+[; ;main.c: 60: break;
+"60
+[e $U 392  ]
+[; ;main.c: 61: case 2 :
+"61
+[e :U 396 ]
+[; ;main.c: 62: break;
+"62
+[e $U 392  ]
+[; ;main.c: 63: case 3 :
+"63
+[e :U 397 ]
+[; ;main.c: 64: break;
+"64
+[e $U 392  ]
+[; ;main.c: 65: case 4 :
+"65
+[e :U 398 ]
+[; ;main.c: 66: break;
+"66
+[e $U 392  ]
+[; ;main.c: 67: case 5 :
+"67
+[e :U 399 ]
+[; ;main.c: 68: break;
+"68
+[e $U 392  ]
+[; ;main.c: 69: case 6 :
+"69
+[e :U 400 ]
+[; ;main.c: 70: break;
+"70
+[e $U 392  ]
+[; ;main.c: 71: case 7 :
+"71
+[e :U 401 ]
+[; ;main.c: 72: break;
+"72
+[e $U 392  ]
+[; ;main.c: 73: case 8 :
+"73
+[e :U 402 ]
+[; ;main.c: 74: break;
+"74
+[e $U 392  ]
+[; ;main.c: 75: case 9 :
+"75
+[e :U 403 ]
+[; ;main.c: 76: break;
+"76
+[e $U 392  ]
+[; ;main.c: 77: case 10 :
+"77
+[e :U 404 ]
+[; ;main.c: 78: break;
+"78
+[e $U 392  ]
+[; ;main.c: 79: case 11 :
+"79
+[e :U 405 ]
+[; ;main.c: 80: break;
+"80
+[e $U 392  ]
+[; ;main.c: 81: case 12 :
+"81
+[e :U 406 ]
+[; ;main.c: 82: break;
+"82
+[e $U 392  ]
+[; ;main.c: 83: default :
+"83
+[e :U 407 ]
+[; ;main.c: 84: break;
+"84
+[e $U 392  ]
+"85
+}
+[; ;main.c: 85: }
+[e $U 392  ]
+"56
+[e :U 393 ]
+[e [\ . *U + &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + _all_shapes * -> _i `ux -> -> # *U _all_shapes `ui `ux 0 `ui `ux 0 , $ -> -> 0 `i `uc 394
+ , $ -> -> 1 `i `uc 395
+ , $ -> -> 2 `i `uc 396
+ , $ -> -> 3 `i `uc 397
+ , $ -> -> 4 `i `uc 398
+ , $ -> -> 5 `i `uc 399
+ , $ -> -> 6 `i `uc 400
+ , $ -> -> 7 `i `uc 401
+ , $ -> -> 8 `i `uc 402
+ , $ -> -> 9 `i `uc 403
+ , $ -> -> 10 `i `uc 404
+ , $ -> -> 11 `i `uc 405
+ , $ -> -> 12 `i `uc 406
+ 407 ]
+"85
+[e :U 392 ]
+"86
+}
+"54
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 389  ]
+[e :U 390 ]
+"86
+}
+"87
+}
+"53
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 388 ]
+[e $ < -> _i `ui ( _strlen (1 -> _all_shapes `*Cuc 385  ]
+[e :U 386 ]
+"87
+}
+[; ;main.c: 86: }
+[; ;main.c: 87: }
+[; ;main.c: 88: }
+"88
+[e :UE 384 ]
+}
+[v F4227 `uc ~T0 @X0 -> 12 `i t ]
+"93
+[v _array_data `F4227 ~T0 @X0 -> 18 `i e ]
+[; ;main.c: 93: char array_data[18][12];
+[v $root$_main `(v ~T0 @X0 0 e ]
+"95
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 95: void main(void) {
+[e :U _main ]
+[f ]
+"97
+[v _all_shapes `S368 ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 97: t_shape all_shapes [20];
+[; ;main.c: 98: glcd_Init(1);
+"98
+[e ( _glcd_Init (1 -> -> 1 `i `uc ]
+[; ;main.c: 99: display_grid();
+"99
+[e ( _display_grid ..  ]
+"102
+[v _shape1 `S368 ~T0 @X0 1 a ]
+"103
+[v _i0 `S367 ~T0 @X0 1 a ]
+[; ;main.c: 102: t_shape shape1;
+[; ;main.c: 103: t_pos i0;
+[; ;main.c: 104: i0.x=0;
+"104
+[e = . _i0 0 -> -> 0 `i `uc ]
+[; ;main.c: 105: i0.y=10;
+"105
+[e = . _i0 1 -> -> 10 `i `uc ]
+"106
+[v _i1 `S367 ~T0 @X0 1 a ]
+[; ;main.c: 106: t_pos i1;
+[; ;main.c: 107: i1.x=1;
+"107
+[e = . _i1 0 -> -> 1 `i `uc ]
+[; ;main.c: 108: i1.y=9;
+"108
+[e = . _i1 1 -> -> 9 `i `uc ]
+"109
+[v _i2 `S367 ~T0 @X0 1 a ]
+[; ;main.c: 109: t_pos i2;
+[; ;main.c: 110: i2.x=1;
+"110
+[e = . _i2 0 -> -> 1 `i `uc ]
+[; ;main.c: 111: i2.y=10;
+"111
+[e = . _i2 1 -> -> 10 `i `uc ]
+"112
+[v _i3 `S367 ~T0 @X0 1 a ]
+[; ;main.c: 112: t_pos i3;
+[; ;main.c: 113: i3.x=1;
+"113
+[e = . _i3 0 -> -> 1 `i `uc ]
+[; ;main.c: 114: i3.y=11;
+"114
+[e = . _i3 1 -> -> 11 `i `uc ]
+[; ;main.c: 115: shape1.index[0].x=i0.x;
+"115
+[e = . *U + &U . _shape1 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 0 . _i0 0 ]
+[; ;main.c: 116: shape1.index[0].y=i0.y;
+"116
+[e = . *U + &U . _shape1 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 1 . _i0 1 ]
+[; ;main.c: 117: shape1.index[1].x=i1.x;
+"117
+[e = . *U + &U . _shape1 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 0 . _i1 0 ]
+[; ;main.c: 118: shape1.index[1].y=i1.y;
+"118
+[e = . *U + &U . _shape1 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 1 . _i1 1 ]
+[; ;main.c: 119: shape1.index[2].x=i2.x;
+"119
+[e = . *U + &U . _shape1 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 0 . _i2 0 ]
+[; ;main.c: 120: shape1.index[2].y=i2.y;
+"120
+[e = . *U + &U . _shape1 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 1 . _i2 1 ]
+[; ;main.c: 121: shape1.index[3].x=i3.x;
+"121
+[e = . *U + &U . _shape1 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 0 . _i3 0 ]
+[; ;main.c: 122: shape1.index[3].y=i3.y;
+"122
+[e = . *U + &U . _shape1 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _shape1 0 `ui `ux 1 . _i3 1 ]
+[; ;main.c: 124: all_shapes[0]=shape1;
+"124
+[e = *U + &U _all_shapes * -> -> -> 0 `i `ui `ux -> -> # *U &U _all_shapes `ui `ux _shape1 ]
+[; ;main.c: 126: display_shapes(all_shapes);
+"126
+[e ( _display_shapes (1 &U _all_shapes ]
+[; ;main.c: 128: while (1){
+"128
+[e :U 410 ]
+{
+"131
+}
+[e :U 409 ]
+"128
+[e $U 410  ]
+[e :U 411 ]
+[; ;main.c: 131: }
+[; ;main.c: 133: return;
+"133
+[e $UE 408  ]
+[; ;main.c: 134: }
+"134
+[e :UE 408 ]
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
