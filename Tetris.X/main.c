@@ -51,13 +51,12 @@ void main(void) {
 
     glcd_Init(GLCD_ON);
     glcd_SetCursor(1,1);
-    char str[20]="chaussette";
+    setupADC();
+    char str[20]="test";
     while (1){
-        if(readX()>5)
-        {
-            glcd_text_write(str, 1, 1);
-        }
         
+        sprintf(str, "%d",R0Value());
+        glcd_text_write(str, 1, 1);
         
         
     }

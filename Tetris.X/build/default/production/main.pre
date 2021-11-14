@@ -4997,12 +4997,12 @@ extern void glcd_Image(void);
 void glcd_text_write(const char str[], unsigned char x, unsigned char y);
 
 # 34 "glcd_library/TS.h"
-void setupADCR0();
+void setupADC();
 void interrupt ISR();
-int readX();
-void setupADCR1();
+int R0Value();
 int R1Value();
-int readY();
+float readX();
+float readY();
 
 
 # 7 "main.c"
@@ -5053,13 +5053,12 @@ void main(void) {
 
 glcd_Init(1);
 glcd_SetCursor(1,1);
-char str[20]="chaussette";
+setupADC();
+char str[20]="test";
 while (1){
-if(readX()>5)
-{
-glcd_text_write(str, 1, 1);
-}
 
+sprintf(str, "%d",R0Value());
+glcd_text_write(str, 1, 1);
 
 
 }

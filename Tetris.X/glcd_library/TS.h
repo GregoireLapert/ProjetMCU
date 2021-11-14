@@ -31,12 +31,12 @@
 #ifndef _TS_H
 #define	_TS_H 
 
-void setupADCR0();
+void setupADC();
 void interrupt ISR();
-int readX();
-void setupADCR1();
+int R0Value();
 int R1Value();
-int readY();
+float readX();
+float readY();
 
 
 #endif	

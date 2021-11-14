@@ -6,8 +6,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _glcd_Init `(v ~T0 @X0 0 ef1`uc ]
 "47
 [v _glcd_SetCursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"34 glcd_library/TS.h
+[v _setupADC `(v ~T0 @X0 0 ef ]
+"194 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "36 glcd_library/TS.h
-[v _readX `(i ~T0 @X0 0 ef ]
+[v _R0Value `(i ~T0 @X0 0 ef ]
 "54 glcd_library/glcd.h
 [v _glcd_text_write `(v ~T0 @X0 0 ef3`*Cuc`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3651,12 +3655,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;glcd.h: 52: extern void glcd_WriteString(const char str[],unsigned char font,unsigned char color);
 [; ;glcd.h: 53: extern void glcd_Image(void);
 [; ;glcd.h: 54: void glcd_text_write(const char str[], unsigned char x, unsigned char y);
-[; ;TS.h: 34: void setupADCR0();
+[; ;TS.h: 34: void setupADC();
 [; ;TS.h: 35: void interrupt ISR();
-[; ;TS.h: 36: int readX();
-[; ;TS.h: 37: void setupADCR1();
-[; ;TS.h: 38: int R1Value();
-[; ;TS.h: 39: int readY();
+[; ;TS.h: 36: int R0Value();
+[; ;TS.h: 37: int R1Value();
+[; ;TS.h: 38: float readX();
+[; ;TS.h: 39: float readY();
 "7 main.c
 [p x FOSC=HS ]
 "8
@@ -3773,54 +3777,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 53: glcd_SetCursor(1,1);
 "53
 [e ( _glcd_SetCursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 54: setupADC();
+"54
+[e ( _setupADC ..  ]
 [v F4119 `uc ~T0 @X0 -> 20 `i s ]
 [i F4119
 :U ..
--> 99 `c
--> 104 `c
--> 97 `c
--> 117 `c
--> 115 `c
--> 115 `c
--> 101 `c
--> 116 `c
 -> 116 `c
 -> 101 `c
+-> 115 `c
+-> 116 `c
 -> 0 `c
 ..
 ]
-"54
-[v _str `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 54: char str[20]="chaussette";
-[e = _str F4119 ]
-[; ;main.c: 55: while (1){
 "55
+[v _str `uc ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 55: char str[20]="test";
+[e = _str F4119 ]
+[; ;main.c: 56: while (1){
+"56
 [e :U 386 ]
 {
-[; ;main.c: 56: if(readX()>5)
-"56
-[e $ ! > ( _readX ..  -> 5 `i 388  ]
-[; ;main.c: 57: {
-"57
-{
-[; ;main.c: 58: glcd_text_write(str, 1, 1);
+[; ;main.c: 58: sprintf(str, "%d",R0Value());
 "58
-[e ( _glcd_text_write (3 , , -> &U _str `*Cuc -> -> 1 `i `uc -> -> 1 `i `uc ]
+[e ( _sprintf (1 , (. , &U _str :s 1C ( _R0Value ..  ]
+[; ;main.c: 59: glcd_text_write(str, 1, 1);
 "59
-}
-[e :U 388 ]
-"63
+[e ( _glcd_text_write (3 , , -> &U _str `*Cuc -> -> 1 `i `uc -> -> 1 `i `uc ]
+"62
 }
 [e :U 385 ]
-"55
+"56
 [e $U 386  ]
 [e :U 387 ]
-[; ;main.c: 59: }
-[; ;main.c: 63: }
-[; ;main.c: 65: return;
-"65
+[; ;main.c: 62: }
+[; ;main.c: 64: return;
+"64
 [e $UE 384  ]
-[; ;main.c: 66: }
-"66
+[; ;main.c: 65: }
+"65
 [e :UE 384 ]
 }
+[p f _sprintf 8388736 ]
+[a 1C 37 100 0 ]
+
