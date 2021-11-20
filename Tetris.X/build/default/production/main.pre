@@ -4990,6 +4990,63 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
+# 8 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\time.h"
+typedef long time_t;
+struct tm {
+int tm_sec;
+int tm_min;
+int tm_hour;
+int tm_mday;
+int tm_mon;
+int tm_year;
+int tm_wday;
+int tm_yday;
+int tm_isdst;
+};
+
+# 25
+extern int time_zone;
+
+# 30
+extern time_t time(time_t *);
+extern int stime(time_t *);
+
+# 47
+extern char * asctime(const struct tm *) ;
+extern char * ctime(const time_t *) ;
+extern struct tm * gmtime(const time_t *) ;
+extern struct tm * localtime(const time_t *) ;
+extern size_t strftime(char *, size_t, const char *, const struct tm *) ;
+extern time_t mktime(struct tm *);
+
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdlib.h"
 typedef unsigned short wchar_t;
 
@@ -5059,34 +5116,6 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 30 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\math.h"
-extern double fabs(double);
-extern double floor(double);
-extern double ceil(double);
-extern double modf(double, double *);
-extern double sqrt(double);
-extern double atof(const char *);
-extern double sin(double) ;
-extern double cos(double) ;
-extern double tan(double) ;
-extern double asin(double) ;
-extern double acos(double) ;
-extern double atan(double);
-extern double atan2(double, double) ;
-extern double log(double);
-extern double log10(double);
-extern double pow(double, double) ;
-extern double exp(double) ;
-extern double sinh(double) ;
-extern double cosh(double) ;
-extern double tanh(double);
-extern double eval_poly(double, const double *, int);
-extern double frexp(double, int *);
-extern double ldexp(double, int);
-extern double fmod(double, double);
-extern double trunc(double);
-extern double round(double);
-
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\ctype.h"
 extern __bit isalpha(char);
 extern __bit isupper(char);
@@ -5123,9 +5152,7 @@ void glcd_text_write(const char str[], unsigned char x, unsigned char y);
 #pragma config FOSC = HS
 #pragma config LVP = OFF
 
-
-
-
+# 15
 enum orientation{UP,DOWN,LEFT,RIGHT};
 
 
@@ -5139,6 +5166,13 @@ typedef struct shape{
 t_pos index[4];
 enum orientation orientation;
 }t_shape;
+
+
+
+char array_data[18][12];
+
+t_shape all_shapes [20];
+
 
 
 void display_grid(){
@@ -5169,7 +5203,7 @@ glcd_PlotPixel(i,j,1);
 
 
 
-void update_display_shapes(t_shape all_shapes[], char operation){
+void update_display_shapes(char operation){
 
 uint8_t x,y,i=0;
 
@@ -5295,21 +5329,39 @@ i++;
 }
 }
 
-void gravity(t_shape all_shapes[]){
 
-uint8_t i=0;
-while (all_shapes[i].index[0].x != 99){
+uint8_t gravity(uint8_t index){
+
+
+
+
+uint8_t a,b;
+for (uint8_t i = 0; i < 4; ++i){
+for (uint8_t j = i + 1; j < 4; ++j){
+if (all_shapes[index].index[i].y < all_shapes[index].index[j].y){
+a = all_shapes[index].index[i].y;
+b = all_shapes[index].index[i].x;
+all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+all_shapes[index].index[j].y = a;
+all_shapes[index].index[j].x = b;
+}
+}
+}
+
+# 217
 for(uint8_t j=0;j<4;j++){
-if(all_shapes[i].index[j].y <11 ){
-all_shapes[i].index[j].y +=1;
 
-
+if(all_shapes[index].index[j].y <11 && array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1'){
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
+all_shapes[index].index[j].y +=1;
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
 }
-else
-break;
+else {
+return 1;
 }
-i++;
 }
+return 0;
 }
 
 void delay(){
@@ -5322,13 +5374,355 @@ return;
 }
 
 
-char array_data[18][12];
+void createRandomShape(uint8_t i){
 
+# 261
+uint8_t type = (rand() % (7)) + 1;
+type =2;
+
+
+
+
+uint8_t orientation = (rand() % (4));
+orientation=0;
+
+
+
+switch (type){
+case 1 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+uint8_t start=8;
+for (uint8_t k=0;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=0;
+start++;
+}
+break;
+case 1 :
+all_shapes[i].orientation=1;
+uint8_t start=8;
+for (uint8_t k=0;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 2 :
+all_shapes[i].orientation=2;
+uint8_t start=0;
+for (uint8_t k=0;k<4;k++){
+all_shapes[i].index[k].x=10;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+case 3 :
+all_shapes[i].orientation=3;
+uint8_t start=0;
+for (uint8_t k=0;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+default :
+break;
+}
+break;
+case 2 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+uint8_t start=10;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=0;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 1 :
+all_shapes[i].orientation=1;
+uint8_t start=10;
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=2;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 2 :
+all_shapes[i].orientation=2;
+uint8_t start=0;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=2;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+case 3 :
+all_shapes[i].orientation=3;
+uint8_t start=0;
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=0;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+default :
+break;
+}
+break;
+case 3 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+uint8_t start=10;
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=0;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 1 :
+all_shapes[i].orientation=1;
+uint8_t start=10;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=2;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 2 :
+all_shapes[i].orientation=2;
+uint8_t start=0;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=0;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+case 3 :
+all_shapes[i].orientation=3;
+uint8_t start=0;
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=2;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+default :
+break;
+}
+break;
+case 4 :
+all_shapes[i].index[0].x=11;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=12;
+all_shapes[i].index[1].y=0;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=1;
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+break;
+case 1 :
+all_shapes[i].orientation=1;
+break;
+case 2 :
+all_shapes[i].orientation=2;
+break;
+case 3 :
+all_shapes[i].orientation=3;
+break;
+default :
+break;
+}
+break;
+case 5 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=1;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=0;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=0;
+break;
+case 1 :
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=2;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=2;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=1;
+all_shapes[i].orientation=1;
+break;
+case 2 :
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=10;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=11;
+all_shapes[i].index[3].y=2;
+all_shapes[i].orientation=2;
+break;
+case 3 :
+all_shapes[i].index[0].x=11;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=12;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=2;
+all_shapes[i].orientation=3;
+break;
+default :
+break;
+}
+break;
+case 6 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+uint8_t start=10;
+all_shapes[i].index[0].x=11;
+all_shapes[i].index[0].y=0;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 1 :
+all_shapes[i].orientation=1;
+uint8_t start=10;
+all_shapes[i].index[0].x=11;
+all_shapes[i].index[0].y=2;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=start;
+all_shapes[i].index[k].y=1;
+start++;
+}
+break;
+case 2 :
+all_shapes[i].orientation=2;
+uint8_t start=0;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=1;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+case 3 :
+all_shapes[i].orientation=3;
+uint8_t start=0;
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=1;
+for (uint8_t k=1;k<4;k++){
+all_shapes[i].index[k].x=11;
+all_shapes[i].index[k].y=start;
+start++;
+}
+break;
+default :
+break;
+}
+break;
+case 7 :
+switch (orientation){
+case 0 :
+all_shapes[i].orientation=0;
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=0;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=1;
+break;
+case 1 :
+all_shapes[i].index[0].x=10;
+all_shapes[i].index[0].y=1;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=2;
+all_shapes[i].index[3].x=12;
+all_shapes[i].index[3].y=2;
+all_shapes[i].orientation=1;
+break;
+case 2 :
+all_shapes[i].index[0].x=11;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=11;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=10;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=10;
+all_shapes[i].index[3].y=2;
+all_shapes[i].orientation=2;
+break;
+case 3 :
+all_shapes[i].index[0].x=12;
+all_shapes[i].index[0].y=0;
+all_shapes[i].index[1].x=12;
+all_shapes[i].index[1].y=1;
+all_shapes[i].index[2].x=11;
+all_shapes[i].index[2].y=1;
+all_shapes[i].index[3].x=11;
+all_shapes[i].index[3].y=2;
+all_shapes[i].orientation=3;
+break;
+default :
+break;
+}
+break;
+default :
+break;
+}
+
+
+for (uint8_t k=0;k<4;k++){
+array_data[all_shapes[i].index[k].x][all_shapes[i].index[k].y]='1';
+}
+
+}
 
 
 void main(void) {
 
-t_shape all_shapes [20];
+uint8_t index=-1,next=1;
+
 glcd_Init(1);
 display_grid();
 
@@ -5345,26 +5739,16 @@ array_data[i][y]='0';
 }
 }
 
-
-
-all_shapes[0].index[0].x=6;
-all_shapes[0].index[0].y=1;
-all_shapes[0].index[1].x=7;
-all_shapes[0].index[1].y=1;
-all_shapes[0].index[2].x=8;
-all_shapes[0].index[2].y=1;
-all_shapes[0].index[3].x=7;
-all_shapes[0].index[3].y=0;
-
-
-update_display_shapes(all_shapes,'1');
-
-
 while (1){
+if (next){
+index++;
+createRandomShape(index);
+next=0;
+}
+update_display_shapes('1');
 delay();
-update_display_shapes(all_shapes,'0');
-gravity(all_shapes);
-update_display_shapes(all_shapes,'1');
+update_display_shapes('0');
+next=gravity(index);
 }
 return;
 }

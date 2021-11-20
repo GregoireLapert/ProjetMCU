@@ -1,14 +1,15 @@
 #include <xc.h>
 #include <stdint.h>
 #include <string.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <time.h>
 #include "glcd_library/glcd.h"
 
 #pragma config FOSC = HS
 #pragma config LVP = OFF
 
 //GLCD SCREEN 128X64
+//ATTENTION bit focntionne que en global ou static et pas de tableau 
 
 //enum state{OFF,ON};//OFF=0 ON=1
 enum orientation{UP,DOWN,LEFT,RIGHT};// 0 1 2 3
@@ -24,6 +25,13 @@ typedef struct shape{
     t_pos index[4]; //x between 0 and 17 / y between 0 and 11 in the grid 
     enum orientation orientation; //1,2,3 ou 4
 }t_shape;
+
+///GLOBAL VARIABLE 
+//store the state of the game. 0 = free box and 1 = busy box 
+char array_data[18][12]; //18 columns 12 lines
+//array of all the shapes of the game 
+t_shape all_shapes [20]; 
+
 
 //display the grid on the GLCD
 void display_grid(){
@@ -54,7 +62,7 @@ void display_grid(){
 //update the dsplay of all the shapes on the grid from the array "all_shapes"
 //operation = 1 --> display the shapes on the grid 
 //operation = 0 --> erase the shape from the grid 
-void update_display_shapes(t_shape all_shapes[], char operation){
+void update_display_shapes(char operation){
     
     uint8_t x,y,i=0;
 
@@ -180,21 +188,39 @@ void update_display_shapes(t_shape all_shapes[], char operation){
     }
 }
 
-void gravity(t_shape all_shapes[]){
+//gravity on the shape n°index of the array all_shapes
+uint8_t gravity(uint8_t index){
     
-    uint8_t i=0;
-    while (all_shapes[i].index[0].x != 99){
-        for(uint8_t j=0;j<4;j++){
-            if(all_shapes[i].index[j].y <11 ){//que pour les box du bas sinon s'écrase 
-                all_shapes[i].index[j].y +=1;
-                //update array data
-                //détecter collision
-            }
-            else 
-                break;
+    //sort the array "index" of the current (n° index) shape (array "index" part of the structure shape)
+    //so that the array contains the (x,y) position sorted in the descendant order for y 
+    //avoid the shape to crash when arrived at the bottom of the grid  
+    uint8_t a,b;
+    for (uint8_t i = 0; i < 4; ++i){
+      for (uint8_t j = i + 1; j < 4; ++j){
+         if (all_shapes[index].index[i].y < all_shapes[index].index[j].y){
+            a = all_shapes[index].index[i].y; 
+            b = all_shapes[index].index[i].x;
+            all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+            all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+            all_shapes[index].index[j].y = a;
+            all_shapes[index].index[j].x = b;
+         }
+      }
+   }
+    
+    //try to increment y position of the current shape 
+    for(uint8_t j=0;j<4;j++){
+        //if the shape hasn't reached the bottom of the grid or hasn't toutch another shape 
+        if(all_shapes[index].index[j].y <11 && array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1'){ //détecter collision
+            array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';//erase the old y pos from array_data
+            all_shapes[index].index[j].y +=1;//increment y
+            array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';//update with the new y pos from array_data
         }
-        i++;
+        else {
+            return 1;
+        }      
     }
+    return 0;
 }
 
 void delay(){
@@ -206,14 +232,373 @@ void delay(){
    return;
 }
 
-//store the state of the game. 0 = free box and 1 = busy box 
-char array_data[18][12]; //18 columns 12 lines
+//create a random shape in the array all_shapes at index i
+void createRandomShape(uint8_t i){
+      
+    //example xc8 ou valeur int non init (marche pas apparament)
+    
+    //time_t toc;
+   // time(&toc);
+   // srand((int)toc);
+  /*  int x,y;
+    if(x!=0){
+        while(x>7 || x <1){
+            x/=2;
+        }
+    }
+    if(y!=0){
+        while(y>4 || y <1){
+            y/=2;
+        }
+    }*/
+    
+    //random de 1 à 7 pour le type de forme 
+    uint8_t type = (rand() % (7)) + 1;//int num = (rand() % (upper - lower + 1)) + lower;
+    type =2;
+    //uint8_t type =x;
+    //uint8_t orientation=y;
+    
+    //random de 1 à 4 pour l'orientation 
+    uint8_t orientation = (rand() % (4));
+    orientation=0;
+    
+     
+    //switch type 
+    switch (type){
+        case 1 :
+            switch (orientation){ //din each case of type switch orientation 
+                case 0 :  //define the position of blocks accordingly
+                    all_shapes[i].orientation=0;
+                    uint8_t start=8;
+                    for (uint8_t k=0;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=0;
+                        start++;
+                    }
+                    break;
+                case 1 : 
+                    all_shapes[i].orientation=1;
+                    uint8_t start=8;
+                    for (uint8_t k=0;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 2 :
+                    all_shapes[i].orientation=2;
+                    uint8_t start=0;
+                    for (uint8_t k=0;k<4;k++){
+                        all_shapes[i].index[k].x=10;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                case 3 : 
+                    all_shapes[i].orientation=3;
+                    uint8_t start=0;
+                    for (uint8_t k=0;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 2 :
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=0;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 1 : 
+                    all_shapes[i].orientation=1;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=2;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 2 :
+                    all_shapes[i].orientation=2;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=2;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                case 3 : 
+                    all_shapes[i].orientation=3;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=0;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 3 :
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=0;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 1 :
+                    all_shapes[i].orientation=1;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=2;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 2 :
+                    all_shapes[i].orientation=2;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=0;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                case 3 :
+                    all_shapes[i].orientation=3;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=2;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 4 :
+            all_shapes[i].index[0].x=11;
+            all_shapes[i].index[0].y=0;
+            all_shapes[i].index[1].x=12;
+            all_shapes[i].index[1].y=0;
+            all_shapes[i].index[2].x=11;
+            all_shapes[i].index[2].y=1;
+            all_shapes[i].index[3].x=12;
+            all_shapes[i].index[3].y=1;
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    break;
+                case 1 : 
+                    all_shapes[i].orientation=1;
+                    break;
+                case 2 :
+                    all_shapes[i].orientation=2;
+                    break;
+                case 3 : 
+                    all_shapes[i].orientation=3;
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 5 :
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=1;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=0;
+                    all_shapes[i].index[3].x=12;
+                    all_shapes[i].index[3].y=0;
+                    break;
+                case 1 : 
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=2;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=2;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=12;
+                    all_shapes[i].index[3].y=1;
+                    all_shapes[i].orientation=1;
+                    break;
+                case 2 :
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=0;
+                    all_shapes[i].index[1].x=10;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=11;
+                    all_shapes[i].index[3].y=2;
+                    all_shapes[i].orientation=2;
+                    break;
+                case 3 : 
+                    all_shapes[i].index[0].x=11;
+                    all_shapes[i].index[0].y=0;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=12;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=12;
+                    all_shapes[i].index[3].y=2;
+                    all_shapes[i].orientation=3;
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 6 :
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=11;
+                    all_shapes[i].index[0].y=0;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 1 : 
+                    all_shapes[i].orientation=1;
+                    uint8_t start=10;
+                    all_shapes[i].index[0].x=11;
+                    all_shapes[i].index[0].y=2;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=start;
+                        all_shapes[i].index[k].y=1;
+                        start++;
+                    }
+                    break;
+                case 2 :
+                    all_shapes[i].orientation=2;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=1;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                case 3 : 
+                    all_shapes[i].orientation=3;
+                    uint8_t start=0;
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=1;
+                    for (uint8_t k=1;k<4;k++){
+                        all_shapes[i].index[k].x=11;
+                        all_shapes[i].index[k].y=start;
+                        start++;
+                    }
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        case 7 :
+            switch (orientation){
+                case 0 :
+                    all_shapes[i].orientation=0;
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=0;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=0;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=12;
+                    all_shapes[i].index[3].y=1;
+                    break;
+                case 1 : 
+                    all_shapes[i].index[0].x=10;
+                    all_shapes[i].index[0].y=1;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=2;
+                    all_shapes[i].index[3].x=12;
+                    all_shapes[i].index[3].y=2;
+                    all_shapes[i].orientation=1;
+                    break;
+                case 2 :
+                    all_shapes[i].index[0].x=11;
+                    all_shapes[i].index[0].y=0;
+                    all_shapes[i].index[1].x=11;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=10;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=10;
+                    all_shapes[i].index[3].y=2;
+                    all_shapes[i].orientation=2;
+                    break;
+                case 3 : 
+                    all_shapes[i].index[0].x=12;
+                    all_shapes[i].index[0].y=0;
+                    all_shapes[i].index[1].x=12;
+                    all_shapes[i].index[1].y=1;
+                    all_shapes[i].index[2].x=11;
+                    all_shapes[i].index[2].y=1;
+                    all_shapes[i].index[3].x=11;
+                    all_shapes[i].index[3].y=2;
+                    all_shapes[i].orientation=3;
+                    break;
+                default : 
+                    break;
+            }
+            break; 
+        default :
+            break; 
+    }
+    
+    //insert the new shape into the "array data"
+    for (uint8_t k=0;k<4;k++){
+        array_data[all_shapes[i].index[k].x][all_shapes[i].index[k].y]='1';
+    }
+    
+}
 
-//ATTENTION bit focntionne que en global ou static et pas de tableau 
 
 void main(void) {
     
-    t_shape all_shapes [20]; //array of all the shapes of the game 
+    uint8_t index=-1,next=1;//index = index of the current shape / next=1 if we have to generate a new shape
+    
     glcd_Init(GLCD_ON);// Swith the screen ON
     display_grid();//display the grid 
     
@@ -230,26 +615,16 @@ void main(void) {
         }
     }
     
-    ///////test creation une shape
-    ///ATTENTION METTRE LES BLOC DU BAS DE LA FORME AU INDICES LES PLUS PETITS 
-    all_shapes[0].index[0].x=6;
-    all_shapes[0].index[0].y=1;
-    all_shapes[0].index[1].x=7;
-    all_shapes[0].index[1].y=1;
-    all_shapes[0].index[2].x=8;
-    all_shapes[0].index[2].y=1;
-    all_shapes[0].index[3].x=7;
-    all_shapes[0].index[3].y=0;
-    ///////////////////////////////////////////////////////////////////////////
-    
-    update_display_shapes(all_shapes,'1');
-    //mettre chaque shape créée dans array data
-    
-    while (1){
-        delay();
-        update_display_shapes(all_shapes,'0');
-        gravity(all_shapes);
-        update_display_shapes(all_shapes,'1');
+    while (1){  
+        if (next){//if the current shape is blocked
+            index++;
+            createRandomShape(index);//create a new shape 
+            next=0;
+        }
+        update_display_shapes('1');//display all the shapes in the grid
+        delay();//wait 
+        update_display_shapes('0');//erase the old position of all the shape in the grid
+        next=gravity(index);//gravity on the current shape 
     }
     return;
 }
