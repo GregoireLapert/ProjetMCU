@@ -5054,10 +5054,11 @@ void main(void) {
 glcd_Init(1);
 glcd_SetCursor(1,1);
 setupADC();
-char str[20]="test";
+char str[20]="x = ";
 while (1){
 
-sprintf(str, "%d",R0Value());
+_delay((unsigned long)((1000)*(4000000/4000.0)));
+sprintf(str, "%f",readX());
 glcd_text_write(str, 1, 1);
 
 

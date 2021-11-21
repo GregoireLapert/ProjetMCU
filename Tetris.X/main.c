@@ -52,10 +52,11 @@ void main(void) {
     glcd_Init(GLCD_ON);
     glcd_SetCursor(1,1);
     setupADC();
-    char str[20]="test";
+    char str[20]="x = ";
     while (1){
         
-        sprintf(str, "%d",R0Value());
+        __delay_ms(1000);
+        sprintf(str, "%f",readX());
         glcd_text_write(str, 1, 1);
         
         

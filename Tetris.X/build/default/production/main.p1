@@ -8,10 +8,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _glcd_SetCursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "34 glcd_library/TS.h
 [v _setupADC `(v ~T0 @X0 0 ef ]
+[v F3783 `(v ~T0 @X0 1 tf1`ul ]
+"164 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18.h
+[v __delay `JF3783 ~T0 @X0 0 e ]
+[p i __delay ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"36 glcd_library/TS.h
-[v _R0Value `(i ~T0 @X0 0 ef ]
+"38 glcd_library/TS.h
+[v _readX `(f ~T0 @X0 0 ef ]
 "54 glcd_library/glcd.h
 [v _glcd_text_write `(v ~T0 @X0 0 ef3`*Cuc`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3783,41 +3787,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v F4119 `uc ~T0 @X0 -> 20 `i s ]
 [i F4119
 :U ..
--> 116 `c
--> 101 `c
--> 115 `c
--> 116 `c
+-> 120 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
 -> 0 `c
 ..
 ]
 "55
 [v _str `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 55: char str[20]="test";
+[; ;main.c: 55: char str[20]="x = ";
 [e = _str F4119 ]
 [; ;main.c: 56: while (1){
 "56
 [e :U 386 ]
 {
-[; ;main.c: 58: sprintf(str, "%d",R0Value());
+[; ;main.c: 58: _delay((unsigned long)((1000)*(4000000/4000.0)));
 "58
-[e ( _sprintf (1 , (. , &U _str :s 1C ( _R0Value ..  ]
-[; ;main.c: 59: glcd_text_write(str, 1, 1);
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 59: sprintf(str, "%f",readX());
 "59
+[e ( _sprintf (1 , (. , &U _str :s 1C -> ( _readX ..  `d ]
+[; ;main.c: 60: glcd_text_write(str, 1, 1);
+"60
 [e ( _glcd_text_write (3 , , -> &U _str `*Cuc -> -> 1 `i `uc -> -> 1 `i `uc ]
-"62
+"63
 }
 [e :U 385 ]
 "56
 [e $U 386  ]
 [e :U 387 ]
-[; ;main.c: 62: }
-[; ;main.c: 64: return;
-"64
-[e $UE 384  ]
-[; ;main.c: 65: }
+[; ;main.c: 63: }
+[; ;main.c: 65: return;
 "65
+[e $UE 384  ]
+[; ;main.c: 66: }
+"66
 [e :UE 384 ]
 }
-[p f _sprintf 8388736 ]
-[a 1C 37 100 0 ]
+[p f _sprintf 8396800 ]
+[a 1C 37 102 0 ]
 
