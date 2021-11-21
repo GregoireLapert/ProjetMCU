@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "glcd_library/mcu.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4805,272 +4805,32 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 30 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\math.h"
-extern double fabs(double);
-extern double floor(double);
-extern double ceil(double);
-extern double modf(double, double *);
-extern double sqrt(double);
-extern double atof(const char *);
-extern double sin(double) ;
-extern double cos(double) ;
-extern double tan(double) ;
-extern double asin(double) ;
-extern double acos(double) ;
-extern double atan(double);
-extern double atan2(double, double) ;
-extern double log(double);
-extern double log10(double);
-extern double pow(double, double) ;
-extern double exp(double) ;
-extern double sinh(double) ;
-extern double cosh(double) ;
-extern double tanh(double);
-extern double eval_poly(double, const double *, int);
-extern double frexp(double, int *);
-extern double ldexp(double, int);
-extern double fmod(double, double);
-extern double trunc(double);
-extern double round(double);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdlib.h"
-typedef unsigned short wchar_t;
-
-# 15
-typedef struct {
-int rem;
-int quot;
-} div_t;
-typedef struct {
-unsigned rem;
-unsigned quot;
-} udiv_t;
-typedef struct {
-long quot;
-long rem;
-} ldiv_t;
-typedef struct {
-unsigned long quot;
-unsigned long rem;
-} uldiv_t;
-
-# 53
-extern double atof(const char *);
-extern double strtod(const char *, const char **);
-extern int atoi(const char *);
-extern unsigned xtoi(const char *);
-extern long atol(const char *);
-extern long strtol(const char *, char **, int);
-
-extern int rand(void);
-extern void srand(unsigned int);
-extern void * calloc(size_t, size_t);
-extern div_t div(int numer, int denom);
-extern udiv_t udiv(unsigned numer, unsigned denom);
-extern ldiv_t ldiv(long numer, long denom);
-extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-extern unsigned int _rotl(unsigned int value, unsigned int shift);
-extern unsigned int _rotr(unsigned int value, unsigned int shift);
-
-
-
-
-extern void * malloc(size_t);
-extern void free(void *);
-extern void * realloc(void *, size_t);
-
-# 86
-extern int atexit(void (*)(void));
-extern char * getenv(const char *);
-extern char ** environ;
-extern int system(char *);
-extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-extern int abs(int);
-extern long labs(long);
-
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\ctype.h"
-extern __bit isalpha(char);
-extern __bit isupper(char);
-extern __bit islower(char);
-extern __bit isdigit(char);
-extern __bit isxdigit(char);
-extern __bit isspace(char);
-extern __bit ispunct(char);
-extern __bit isalnum(char);
-extern __bit isprint(char);
-extern __bit isgraph(char);
-extern __bit iscntrl(char);
-
-
-extern char toupper(char);
-extern char tolower(char);
-
-# 43 "glcd_library/glcd.h"
-extern void glcd_Init(unsigned char mode);
-extern void glcd_WriteByte(unsigned char side, unsigned char data);
-extern unsigned char glcd_ReadByte(unsigned char side);
-extern void glcd_PlotPixel(unsigned char x, unsigned char y, unsigned char color);
-extern void glcd_SetCursor(unsigned char xpos,unsigned char ypos);
-void glcd_Rect(unsigned char xs, unsigned char ys, unsigned char xe ,unsigned char ye,unsigned char color);
-extern void glcd_FillScreen(unsigned char color);
-extern void glcd_WriteChar8X8( unsigned char ch, unsigned char color);
-extern void glcd_WriteChar3x6( unsigned char ch, unsigned char color);
-extern void glcd_WriteString(const char str[],unsigned char font,unsigned char color);
-extern void glcd_Image(void);
-void glcd_text_write(const char str[], unsigned char x, unsigned char y);
-
-# 34 "glcd_library/TS.h"
-void setupADC();
-void interrupt ISR();
-int R0Value();
-int R1Value();
-float readX();
-float readY();
-
 # 37 "glcd_library/mcu.h"
 char EEPROM_Read (int address);
 void EEPROM_Write (int address, char data);
 
-
-# 8 "main.c"
-#pragma config FOSC = HS
-#pragma config LVP = OFF
-#pragma config WDT=OFF
-
-typedef struct box{
-int empty;
-}t_box;
-
-typedef struct pos{
-int x;
-int y;
-}t_pos;
-
-typedef struct shape{
-int nBox;
-t_pos index[];
-int orientation;
-}t_shape;
-
-
-
-void display_array(){
-for (int i=0;i<128;i++){
-for(int j=0;j<64;j++){
-if ((j>=3 && j<=4) || (j>=62 && j<=63))
-glcd_PlotPixel(i,j,1);
-else if (((i>=0 && i<=1) || ( i>=126 && i<=127)) && (j>4))
-glcd_PlotPixel(i,j,1);
-else if (i>=91 && i<=92 && j>4)
-glcd_PlotPixel(i,j,1);
-
-
-if ( ((i==10) || (i==19) || (i==28) || (i==37) || (i==46) || (i==55) || (i==64) || (i==73) || (i==82)) && (j>4) )
-glcd_PlotPixel(i,j,1);
-
-
-if ( ((j==17) || (j==26) || (j==35) || (j==44) || (j==53) || (j==62)) && (i<92))
-glcd_PlotPixel(i,j,1);
-}
+# 12 "glcd_library/mcu.c"
+char EEPROM_Read (int address)
+{
+EEADR=address;
+EECON1bits.WREN=0;
+EECON1bits.EEPGD=0;
+EECON1bits.RD=1;
+return(EEDATA);
 }
 
-}
-
-void main(void) {
-
-glcd_Init(1);
-glcd_SetCursor(1,1);
-setupADC();
-char str[20]="x = ";
-char data = 0;
-EEPROM_Write(0x00, 230);
-while (1){
-
-
-data = EEPROM_Read(0x00);
-_delay((unsigned long)((500)*(4000000/4000.0)));
-sprintf(str, "%d",data);
-glcd_text_write(str, 1, 1);
-
-
-}
-
-return;
+void EEPROM_Write (int address, char data)
+{
+EEADR=address;
+EEDATA=data;
+EECON1bits.EEPGD=0;
+EECON1bits.CFGS=0;
+EECON1bits.WREN=1;
+INTCONbits.GIE=0;
+EECON2=0x55;
+EECON2=0xaa;
+EECON1bits.WR=1;
+INTCONbits.GIE=1;
+while(PIR2bits.EEIF==0);
+PIR2bits.EEIF=0;
 }

@@ -17,6 +17,8 @@
       <itemPath>glcd_library/glcd.h</itemPath>
       <itemPath>glcd_library/TS.c</itemPath>
       <itemPath>glcd_library/TS.h</itemPath>
+      <itemPath>glcd_library/mcu.c</itemPath>
+      <itemPath>glcd_library/mcu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

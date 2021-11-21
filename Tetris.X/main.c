@@ -1,6 +1,7 @@
 #include <xc.h>
 #include "glcd_library/glcd.h"
 #include "glcd_library/TS.h"
+#include "glcd_library/mcu.h"
 
 #define _XTAL_FREQ 4000000 // 4Mhz
 
@@ -53,10 +54,14 @@ void main(void) {
     glcd_SetCursor(1,1);
     setupADC();
     char str[20]="x = ";
+    char data = 0; 
+    EEPROM_Write(addressZero, 230);
     while (1){
+       
         
-        __delay_ms(1000);
-        sprintf(str, "%f",readX());
+        data = EEPROM_Read(addressZero);
+        __delay_ms(500);
+        sprintf(str, "%d",data);
         glcd_text_write(str, 1, 1);
         
         
