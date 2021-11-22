@@ -6572,12 +6572,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _pivot_x `uc ~T0 @X0 1 a ]
 [; ;main.c: 908: uint8_t temp_x,temp_y,ok;
 [; ;main.c: 909: uint8_t new_coord[8];
-[; ;main.c: 910: uint8_t pivot_x=all_shapes[index].index[3].x;
-[e = _pivot_x . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 910: uint8_t pivot_x=all_shapes[index].index[1].x;
+[e = _pivot_x . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
 "911
 [v _pivot_y `uc ~T0 @X0 1 a ]
-[; ;main.c: 911: uint8_t pivot_y=all_shapes[index].index[3].y;
-[e = _pivot_y . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 911: uint8_t pivot_y=all_shapes[index].index[1].y;
+[e = _pivot_y . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
 [; ;main.c: 914: for (uint8_t k=0;k<4;k++){
 "914
 {
@@ -6593,15 +6593,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 916: temp_y=all_shapes[index].index[k].y;
 "916
 [e = _temp_y . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
-[; ;main.c: 917: new_coord[k]=pivot_x - pivot_y + temp_y;
+[; ;main.c: 917: new_coord[2*k]=pivot_x - pivot_y + temp_y;
 "917
-[e = *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux -> + - -> _pivot_x `i -> _pivot_y `i -> _temp_y `i `uc ]
-[; ;main.c: 918: new_coord[k+1]=pivot_x + pivot_y - temp_x;
+[e = *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux -> + - -> _pivot_x `i -> _pivot_y `i -> _temp_y `i `uc ]
+[; ;main.c: 918: new_coord[2*k+1]=pivot_x + pivot_y - temp_x;
 "918
-[e = *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux -> - + -> _pivot_x `i -> _pivot_y `i -> _temp_x `i `uc ]
-[; ;main.c: 921: if(new_coord[k] >= 0 && new_coord[k] <=17 && new_coord[k+1] >= 0 && new_coord[k+1] <=11 && (array_data[new_coord[k]][new_coord[k+1]]!='1' || dontBelong2Shape(index,new_coord[k],new_coord[k+1]))){
+[e = *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux -> - + -> _pivot_x `i -> _pivot_y `i -> _temp_x `i `uc ]
+[; ;main.c: 921: if(new_coord[2*k] >= 0 && new_coord[2*k] <=17 && new_coord[2*k+1] >= 0 && new_coord[2*k+1] <=11 && (array_data[new_coord[2*k]][new_coord[2*k+1]]!='1' || dontBelong2Shape(index,new_coord[2*k],new_coord[2*k+1]))){
 "921
-[e $ ! && && && && >= -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `i -> 17 `i >= -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 11 `i || != -> *U + &U *U + &U _array_data * -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `ux -> -> # *U &U *U + &U _array_data * -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> -> -> 0 `i `uc `i 667  ]
+[e $ ! && && && && >= -> *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 17 `i >= -> *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 11 `i || != -> *U + &U *U + &U _array_data * -> *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `ux -> -> # *U &U *U + &U _array_data * -> *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> -> -> 0 `i `uc `i 667  ]
 {
 [; ;main.c: 922: ok=1;
 "922
@@ -6649,12 +6649,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 933: array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='0';
 "933
 [e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
-[; ;main.c: 934: all_shapes[index].index[k].x=new_coord[k];
+[; ;main.c: 934: all_shapes[index].index[k].x=new_coord[2*k];
 "934
-[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux ]
-[; ;main.c: 935: all_shapes[index].index[k].y=new_coord[k+1];
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 *U + &U _new_coord * -> -> * -> 2 `i -> _k `i `ui `ux -> -> # *U &U _new_coord `ui `ux ]
+[; ;main.c: 935: all_shapes[index].index[k].y=new_coord[2*k+1];
 "935
-[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux ]
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 *U + &U _new_coord * -> -> + * -> 2 `i -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux ]
 [; ;main.c: 936: array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='1';
 "936
 [e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]

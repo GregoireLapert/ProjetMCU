@@ -907,18 +907,18 @@ void rotate(uint8_t index){
     
     uint8_t temp_x,temp_y,ok;
     uint8_t new_coord[8];//x,y for 4 box 
-    uint8_t pivot_x=all_shapes[index].index[3].x;//(pivot_x,pivot_y) = point to rotate around 
-    uint8_t pivot_y=all_shapes[index].index[3].y;
+    uint8_t pivot_x=all_shapes[index].index[1].x;//(pivot_x,pivot_y) = point to rotate around 
+    uint8_t pivot_y=all_shapes[index].index[1].y;
     
     //calculate the new position for each box of the shape 
     for (uint8_t k=0;k<4;k++){
         temp_x=all_shapes[index].index[k].x;
         temp_y=all_shapes[index].index[k].y;
-        new_coord[k]=pivot_x - pivot_y + temp_y;//new x position
-        new_coord[k+1]=pivot_x + pivot_y - temp_x;//new y position 
+        new_coord[2*k]=pivot_x - pivot_y + temp_y;//new x position
+        new_coord[2*k+1]=pivot_x + pivot_y - temp_x;//new y position 
         
         //if the new position is in the grid && (empty || dont belong to the shape)
-        if(new_coord[k] >= 0 && new_coord[k] <=17 && new_coord[k+1] >= 0 && new_coord[k+1] <=11 && (array_data[new_coord[k]][new_coord[k+1]]!='1' || dontBelong2Shape(index,new_coord[k],new_coord[k+1]))){
+        if(new_coord[2*k] >= 0 && new_coord[2*k] <=17 && new_coord[2*k+1] >= 0 && new_coord[2*k+1] <=11 && (array_data[new_coord[2*k]][new_coord[2*k+1]]!='1' || dontBelong2Shape(index,new_coord[2*k],new_coord[2*k+1]))){
             ok=1;
         }
         else {
@@ -931,8 +931,8 @@ void rotate(uint8_t index){
 
         for (uint8_t k=0;k<4;k++){
             array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='0';//erase old position of the shape in array data
-            all_shapes[index].index[k].x=new_coord[k];//update the position of the shape with the value previously calculated and stored in the array new_coord
-            all_shapes[index].index[k].y=new_coord[k+1];
+            all_shapes[index].index[k].x=new_coord[2*k];//update the position of the shape with the value previously calculated and stored in the array new_coord
+            all_shapes[index].index[k].y=new_coord[2*k+1];
             array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='1';//insert new position of the shape in array data
         }
     }
