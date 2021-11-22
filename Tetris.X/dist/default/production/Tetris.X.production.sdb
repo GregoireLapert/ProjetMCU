@@ -34,6 +34,8 @@ RIGHT 3
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "340 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\glcd_library/glcd.c
@@ -56,19 +58,31 @@ RIGHT 3
 [v _glcd_WriteString glcd_WriteString `(v  1 e 1 0 ]
 "693
 [v _glcd_Image glcd_Image `(v  1 e 1 0 ]
-"59 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
+"60 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
 [v _display_grid display_grid `(v  1 e 1 0 ]
-"87
+"215
 [v _update_display_shapes update_display_shapes `(v  1 e 1 0 ]
-"214
+"348
+[v _dontBelong2Shape dontBelong2Shape `(uc  1 e 1 0 ]
+"362
 [v _gravity gravity `(uc  1 e 1 0 ]
-"248
+"417
+[v _moveRight moveRight `(v  1 e 1 0 ]
+"456
+[v _moveLeft moveLeft `(v  1 e 1 0 ]
+"496
 [v _delay delay `(v  1 e 1 0 ]
-"257
+"505
 [v _delayHomeScreen delayHomeScreen `(v  1 e 1 0 ]
-"267
+"515
 [v _createRandomShape createRandomShape `(v  1 e 1 0 ]
-"630
+"854
+[v _completedUpdate completedUpdate `(v  1 e 1 0 ]
+"886
+[v _lineCompletedTest lineCompletedTest `(v  1 e 1 0 ]
+"906
+[v _rotate rotate `(v  1 e 1 0 ]
+"944
 [v _main main `(v  1 e 1 0 ]
 "2312 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
@@ -76,7 +90,9 @@ RIGHT 3
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 "2703
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
-[s S132 . 1 `uc 1 RE0 1 0 :1:0 
+"2824
+[v _PORTE PORTE `VEuc  1 e 1 @3972 ]
+[s S59 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
@@ -84,32 +100,32 @@ RIGHT 3
 `uc 1 RDPU 1 0 :1:7 
 ]
 "2866
-[s S139 . 1 `uc 1 CK1SPP 1 0 :1:0 
+[s S66 . 1 `uc 1 CK1SPP 1 0 :1:0 
 `uc 1 CK2SPP 1 0 :1:1 
 `uc 1 OESPP 1 0 :1:2 
 ]
-[s S143 . 1 `uc 1 PD2 1 0 :1:0 
+[s S70 . 1 `uc 1 PD2 1 0 :1:0 
 `uc 1 PC2 1 0 :1:1 
 `uc 1 CCP10 1 0 :1:2 
 `uc 1 CCP9E 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 CCP2E 1 0 :1:7 
 ]
-[s S150 . 1 `uc 1 RDE 1 0 :1:0 
+[s S77 . 1 `uc 1 RDE 1 0 :1:0 
 `uc 1 WRE 1 0 :1:1 
 `uc 1 CS 1 0 :1:2 
 `uc 1 PC3E 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 PA2E 1 0 :1:7 
 ]
-[s S157 . 1 `uc 1 . 1 0 :2:0 
+[s S84 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PB2 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RE7 1 0 :1:7 
 ]
-[u S162 . 1 `S132 1 . 1 0 `S139 1 . 1 0 `S143 1 . 1 0 `S150 1 . 1 0 `S157 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES162  1 e 1 @3972 ]
-[s S206 . 1 `uc 1 LATB0 1 0 :1:0 
+[u S89 . 1 `S59 1 . 1 0 `S66 1 . 1 0 `S70 1 . 1 0 `S77 1 . 1 0 `S84 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES89  1 e 1 @3972 ]
+[s S305 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -119,7 +135,7 @@ RIGHT 3
 `uc 1 LATB7 1 0 :1:7 
 ]
 "3098
-[s S215 . 1 `uc 1 LB0 1 0 :1:0 
+[s S314 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -128,8 +144,8 @@ RIGHT 3
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S224 . 1 `S206 1 . 1 0 `S215 1 . 1 0 ]
-[v _LATBbits LATBbits `VES224  1 e 1 @3978 ]
+[u S323 . 1 `S305 1 . 1 0 `S314 1 . 1 0 ]
+[v _LATBbits LATBbits `VES323  1 e 1 @3978 ]
 "3261
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
 "3425
@@ -138,6 +154,8 @@ RIGHT 3
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "3999
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"4221
+[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
 "6579
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "3 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\rand.c
@@ -157,64 +175,195 @@ RIGHT 3
 "54
 [s S29 shape 9 `[4]S21 1 index 8 0 `E4237 1 orientation 1 8 ]
 [v _all_shapes all_shapes `[20]S29  1 e 180 0 ]
-"630
+"55
+[v _score score `uc  1 e 1 0 ]
+"944
 [v _main main `(v  1 e 1 0 ]
 {
-"648
-[v main@y_127 y `uc  1 a 1 57 ]
-"641
-[v main@y y `uc  1 a 1 59 ]
-"647
-[v main@i_126 i `uc  1 a 1 56 ]
-"640
-[v main@i i `uc  1 a 1 58 ]
-"632
-[v main@index index `uc  1 a 1 55 ]
-[v main@next next `uc  1 a 1 54 ]
-"665
+"965
+[v main@y_247 y `uc  1 a 1 56 ]
+"958
+[v main@y y `uc  1 a 1 58 ]
+"964
+[v main@i_246 i `uc  1 a 1 55 ]
+"957
+[v main@i i `uc  1 a 1 57 ]
+"946
+[v main@index index `uc  1 a 1 59 ]
+"947
+[v main@next next `c  1 a 1 54 ]
+"1019
 } 0
-"87
+"906
+[v _rotate rotate `(v  1 e 1 0 ]
+{
+[v rotate@index index `uc  1 a 1 wreg ]
+"932
+[v rotate@k_234 k `uc  1 a 1 28 ]
+"914
+[v rotate@k k `uc  1 a 1 30 ]
+"909
+[v rotate@new_coord new_coord `[8]uc  1 a 8 15 ]
+"911
+[v rotate@pivot_y pivot_y `uc  1 a 1 27 ]
+"910
+[v rotate@pivot_x pivot_x `uc  1 a 1 26 ]
+"908
+[v rotate@ok ok `uc  1 a 1 25 ]
+[v rotate@temp_y temp_y `uc  1 a 1 24 ]
+[v rotate@temp_x temp_x `uc  1 a 1 23 ]
+"906
+[v rotate@index index `uc  1 a 1 wreg ]
+"910
+[v rotate@index index `uc  1 a 1 29 ]
+"940
+} 0
+"417
+[v _moveRight moveRight `(v  1 e 1 0 ]
+{
+[v moveRight@index index `uc  1 a 1 wreg ]
+"424
+[v moveRight@j j `uc  1 a 1 19 ]
+"448
+[v moveRight@j_171 j `uc  1 a 1 21 ]
+"437
+[v moveRight@j_170 j `uc  1 a 1 20 ]
+"423
+[v moveRight@i i `uc  1 a 1 22 ]
+"422
+[v moveRight@ok ok `uc  1 a 1 18 ]
+[v moveRight@b b `uc  1 a 1 17 ]
+[v moveRight@a a `uc  1 a 1 16 ]
+"417
+[v moveRight@index index `uc  1 a 1 wreg ]
+"423
+[v moveRight@index index `uc  1 a 1 23 ]
+"454
+} 0
+"456
+[v _moveLeft moveLeft `(v  1 e 1 0 ]
+{
+[v moveLeft@index index `uc  1 a 1 wreg ]
+"463
+[v moveLeft@j j `uc  1 a 1 19 ]
+"487
+[v moveLeft@j_180 j `uc  1 a 1 21 ]
+"476
+[v moveLeft@j_179 j `uc  1 a 1 20 ]
+"462
+[v moveLeft@i i `uc  1 a 1 22 ]
+"461
+[v moveLeft@ok ok `uc  1 a 1 18 ]
+[v moveLeft@b b `uc  1 a 1 17 ]
+[v moveLeft@a a `uc  1 a 1 16 ]
+"456
+[v moveLeft@index index `uc  1 a 1 wreg ]
+"462
+[v moveLeft@index index `uc  1 a 1 23 ]
+"493
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"886 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
+[v _lineCompletedTest lineCompletedTest `(v  1 e 1 0 ]
+{
+"890
+[v lineCompletedTest@i i `uc  1 a 1 49 ]
+"889
+[v lineCompletedTest@j j `uc  1 a 1 50 ]
+"888
+[v lineCompletedTest@completed completed `uc  1 a 1 48 ]
+"903
+} 0
+"854
+[v _completedUpdate completedUpdate `(v  1 e 1 0 ]
+{
+[v completedUpdate@line line `uc  1 a 1 wreg ]
+"877
+[v completedUpdate@i_218 i `uc  1 a 1 42 ]
+"868
+[v completedUpdate@j_216 j `uc  1 a 1 40 ]
+"858
+[v completedUpdate@j j `uc  1 a 1 43 ]
+"876
+[v completedUpdate@j_217 j `uc  1 a 1 41 ]
+"856
+[v completedUpdate@i i `uc  1 a 1 44 ]
+"854
+[v completedUpdate@line line `uc  1 a 1 wreg ]
+"856
+[v completedUpdate@line line `uc  1 a 1 39 ]
+"883
+} 0
+"215
 [v _update_display_shapes update_display_shapes `(v  1 e 1 0 ]
 {
 [v update_display_shapes@operation operation `uc  1 a 1 wreg ]
-"203
-[v update_display_shapes@n_76 n `uc  1 a 1 26 ]
-"195
+"335
+[v update_display_shapes@n_146 n `uc  1 a 1 26 ]
+"327
 [v update_display_shapes@n n `uc  1 a 1 24 ]
-"202
-[v update_display_shapes@m_75 m `uc  1 a 1 25 ]
-"194
+"334
+[v update_display_shapes@m_145 m `uc  1 a 1 25 ]
+"326
 [v update_display_shapes@m m `uc  1 a 1 23 ]
-"92
+"220
 [v update_display_shapes@j j `uc  1 a 1 28 ]
-"89
+"217
 [v update_display_shapes@x x `uc  1 a 1 30 ]
 [v update_display_shapes@y y `uc  1 a 1 29 ]
 [v update_display_shapes@i i `uc  1 a 1 27 ]
-"87
+"215
 [v update_display_shapes@operation operation `uc  1 a 1 wreg ]
-"89
+"217
 [v update_display_shapes@operation operation `uc  1 a 1 22 ]
-"211
+"344
 } 0
-"214
+"362
 [v _gravity gravity `(uc  1 e 1 0 ]
 {
 [v gravity@index index `uc  1 a 1 wreg ]
-"221
-[v gravity@j j `uc  1 a 1 12 ]
-"234
-[v gravity@j_83 j `uc  1 a 1 14 ]
-"220
-[v gravity@i i `uc  1 a 1 13 ]
-"219
-[v gravity@b b `uc  1 a 1 11 ]
-[v gravity@a a `uc  1 a 1 10 ]
-"214
+"369
+[v gravity@j j `uc  1 a 1 21 ]
+"407
+[v gravity@j_162 j `uc  1 a 1 20 ]
+"397
+[v gravity@j_161 j `uc  1 a 1 23 ]
+"382
+[v gravity@j_159 j `uc  1 a 1 22 ]
+"368
+[v gravity@i i `uc  1 a 1 24 ]
+"367
+[v gravity@ok ok `uc  1 a 1 19 ]
+[v gravity@b b `uc  1 a 1 18 ]
+[v gravity@a a `uc  1 a 1 17 ]
+"362
 [v gravity@index index `uc  1 a 1 wreg ]
-"220
-[v gravity@index index `uc  1 a 1 15 ]
-"246
+"368
+[v gravity@index index `uc  1 a 1 25 ]
+"415
+} 0
+"348
+[v _dontBelong2Shape dontBelong2Shape `(uc  1 e 1 0 ]
+{
+[v dontBelong2Shape@index index `uc  1 a 1 wreg ]
+"350
+[v dontBelong2Shape@k k `uc  1 a 1 6 ]
+"348
+[v dontBelong2Shape@index index `uc  1 a 1 wreg ]
+[v dontBelong2Shape@x x `uc  1 p 1 0 ]
+[v dontBelong2Shape@y y `uc  1 p 1 1 ]
+"350
+[v dontBelong2Shape@index index `uc  1 a 1 5 ]
+"356
 } 0
 "340 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\glcd_library/glcd.c
 [v _glcd_Init glcd_Init `(v  1 e 1 0 ]
@@ -250,14 +399,14 @@ RIGHT 3
 [v glcd_Image@j j `uc  1 a 1 12 ]
 "722
 } 0
-"59 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
+"60 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
 [v _display_grid display_grid `(v  1 e 1 0 ]
 {
-"61
+"62
 [v display_grid@j j `uc  1 a 1 17 ]
-"60
+"61
 [v display_grid@i i `uc  1 a 1 18 ]
-"82
+"83
 } 0
 "470 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\glcd_library/glcd.c
 [v _glcd_PlotPixel glcd_PlotPixel `(v  1 e 1 0 ]
@@ -310,76 +459,76 @@ RIGHT 3
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 "42
 } 0
-"257 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
+"505 C:\Users\marie\Documents\GitHub\ProjetMCU\Tetris.X\main.c
 [v _delayHomeScreen delayHomeScreen `(v  1 e 1 0 ]
 {
-"258
+"506
 [v delayHomeScreen@d d `ui  1 a 2 2 ]
 [v delayHomeScreen@c c `ui  1 a 2 0 ]
-"264
+"512
 } 0
-"248
+"496
 [v _delay delay `(v  1 e 1 0 ]
 {
-"249
+"497
 [v delay@c c `ui  1 a 2 0 ]
-"255
+"503
 } 0
-"267
+"515
 [v _createRandomShape createRandomShape `(v  1 e 1 0 ]
 {
 [v createRandomShape@i i `uc  1 a 1 wreg ]
-"557
-[v createRandomShape@k_113 k `uc  1 a 1 44 ]
-"546
-[v createRandomShape@k_112 k `uc  1 a 1 43 ]
-"535
-[v createRandomShape@k_111 k `uc  1 a 1 42 ]
-"524
-[v createRandomShape@k_110 k `uc  1 a 1 41 ]
-"431
-[v createRandomShape@k_108 k `uc  1 a 1 40 ]
-"420
-[v createRandomShape@k_107 k `uc  1 a 1 39 ]
-"409
-[v createRandomShape@k_106 k `uc  1 a 1 38 ]
-"398
-[v createRandomShape@k_105 k `uc  1 a 1 37 ]
-"381
-[v createRandomShape@k_103 k `uc  1 a 1 36 ]
-"370
-[v createRandomShape@k_102 k `uc  1 a 1 35 ]
-"359
-[v createRandomShape@k_101 k `uc  1 a 1 34 ]
-"348
-[v createRandomShape@k_100 k `uc  1 a 1 33 ]
-"331
-[v createRandomShape@k_98 k `uc  1 a 1 32 ]
-"322
-[v createRandomShape@k_97 k `uc  1 a 1 31 ]
-"313
-[v createRandomShape@k_96 k `uc  1 a 1 30 ]
-"304
+"782
+[v createRandomShape@k_210 k `uc  1 a 1 44 ]
+"771
+[v createRandomShape@k_209 k `uc  1 a 1 43 ]
+"760
+[v createRandomShape@k_208 k `uc  1 a 1 42 ]
+"749
+[v createRandomShape@k_207 k `uc  1 a 1 41 ]
+"656
+[v createRandomShape@k_205 k `uc  1 a 1 40 ]
+"645
+[v createRandomShape@k_204 k `uc  1 a 1 39 ]
+"634
+[v createRandomShape@k_203 k `uc  1 a 1 38 ]
+"623
+[v createRandomShape@k_202 k `uc  1 a 1 37 ]
+"606
+[v createRandomShape@k_200 k `uc  1 a 1 36 ]
+"595
+[v createRandomShape@k_199 k `uc  1 a 1 35 ]
+"584
+[v createRandomShape@k_198 k `uc  1 a 1 34 ]
+"573
+[v createRandomShape@k_197 k `uc  1 a 1 33 ]
+"556
+[v createRandomShape@k_195 k `uc  1 a 1 32 ]
+"547
+[v createRandomShape@k_194 k `uc  1 a 1 31 ]
+"538
+[v createRandomShape@k_193 k `uc  1 a 1 30 ]
+"529
 [v createRandomShape@k k `uc  1 a 1 29 ]
-"521
-[v createRandomShape@start_109 start `uc  1 a 1 49 ]
-"395
-[v createRandomShape@start_104 start `uc  1 a 1 48 ]
-"345
-[v createRandomShape@start_99 start `uc  1 a 1 47 ]
-"303
+"746
+[v createRandomShape@start_206 start `uc  1 a 1 49 ]
+"620
+[v createRandomShape@start_201 start `uc  1 a 1 48 ]
+"570
+[v createRandomShape@start_196 start `uc  1 a 1 47 ]
+"528
 [v createRandomShape@start start `uc  1 a 1 46 ]
-"622
-[v createRandomShape@k_114 k `uc  1 a 1 45 ]
-"293
+"847
+[v createRandomShape@k_211 k `uc  1 a 1 45 ]
+"520
 [v createRandomShape@orientation orientation `uc  1 a 1 50 ]
-"287
+"518
 [v createRandomShape@type type `uc  1 a 1 28 ]
-"267
+"515
 [v createRandomShape@i i `uc  1 a 1 wreg ]
-"287
+"518
 [v createRandomShape@i i `uc  1 a 1 51 ]
-"626
+"851
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\rand.c
 [v _rand rand `(i  1 e 2 0 ]

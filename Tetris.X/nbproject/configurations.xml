@@ -15,7 +15,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>glcd_library/glcd.c</itemPath>
       <itemPath>glcd_library/glcd.h</itemPath>
-      <itemPath>picture.h</itemPath>
+      <itemPath>glcd_library/picture.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
