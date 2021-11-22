@@ -5173,6 +5173,7 @@ enum orientation orientation;
 char array_data[18][12];
 
 t_shape all_shapes [20];
+uint8_t score=0;
 
 
 
@@ -5202,9 +5203,7 @@ glcd_PlotPixel(i,j,1);
 }
 }
 
-
-
-
+# 215
 void update_display_shapes(char operation){
 
 uint8_t x,y,i=0;
@@ -5268,6 +5267,7 @@ case 17 :
 x=87;
 break;
 default :
+x=-1;
 break;
 }
 switch (all_shapes[i].index[j].y){
@@ -5308,8 +5308,11 @@ case 11 :
 y=57;
 break;
 default :
+y=-1;
 break;
 }
+
+if(x!=-1 && y!=-1){
 if(operation=='1'){
 
 for(uint8_t m=x;m<x+4;m++){
@@ -5327,17 +5330,30 @@ glcd_PlotPixel(m,n,0);
 }
 }
 }
+}
 i++;
 }
 }
 
 
+
+uint8_t dontBelong2Shape(uint8_t index,uint8_t x,uint8_t y){
+
+for(uint8_t k=0;k<4;k++){
+if(all_shapes[index].index[k].x == x && all_shapes[index].index[k].y == y){
+return 1;
+}
+}
+return 0;
+}
+
+# 362
 uint8_t gravity(uint8_t index){
 
 
 
 
-uint8_t a,b;
+uint8_t a,b,ok;
 for (uint8_t i = 0; i < 4; ++i){
 for (uint8_t j = i + 1; j < 4; ++j){
 if (all_shapes[index].index[i].y < all_shapes[index].index[j].y){
@@ -5354,17 +5370,117 @@ all_shapes[index].index[j].x = b;
 
 for(uint8_t j=0;j<4;j++){
 
-if(all_shapes[index].index[j].y <11 && array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1'){
+if(all_shapes[index].index[j].x !=-1 && all_shapes[index].index[j].y !=-1){
+
+if(all_shapes[index].index[j].y <11 && (array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1' || dontBelong2Shape(index,all_shapes[index].index[j].x,(all_shapes[index].index[j].y)+1))){
+ok=1;
+}
+else {
+ok=0;
+break;
+}
+}
+
+}
+if(ok==1){
+for(uint8_t j=0;j<4;j++){
+if(all_shapes[index].index[j].x !=-1 && all_shapes[index].index[j].y !=-1){
 array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
 all_shapes[index].index[j].y +=1;
 array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
 }
-else {
-return 1;
-}
 }
 return 0;
 }
+else{
+for(uint8_t j=0;j<4;j++){
+if(all_shapes[index].index[j].y ==0){
+return -1;
+}
+}
+return 1;
+}
+
+}
+
+void moveRight(uint8_t index){
+
+
+
+
+uint8_t a,b,ok;
+for (uint8_t i = 0; i < 4; ++i){
+for (uint8_t j = i + 1; j < 4; ++j){
+if (all_shapes[index].index[i].x < all_shapes[index].index[j].x){
+a = all_shapes[index].index[i].y;
+b = all_shapes[index].index[i].x;
+all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+all_shapes[index].index[j].y = a;
+all_shapes[index].index[j].x = b;
+}
+}
+}
+
+
+for(uint8_t j=0;j<4;j++){
+
+if(all_shapes[index].index[j].x <17 && (array_data[(all_shapes[index].index[j].x)+1][all_shapes[index].index[j].y]!='1' || dontBelong2Shape(index,(all_shapes[index].index[j].x)+1,all_shapes[index].index[j].y))){
+ok=1;
+}
+else {
+ok=0;
+break;
+}
+}
+if(ok==1){
+for(uint8_t j=0;j<4;j++){
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
+all_shapes[index].index[j].x +=1;
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
+}
+}
+}
+
+void moveLeft(uint8_t index){
+
+
+
+
+uint8_t a,b,ok;
+for (uint8_t i = 0; i < 4; ++i){
+for (uint8_t j = i + 1; j < 4; ++j){
+if (all_shapes[index].index[i].x > all_shapes[index].index[j].x){
+a = all_shapes[index].index[i].y;
+b = all_shapes[index].index[i].x;
+all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+all_shapes[index].index[j].y = a;
+all_shapes[index].index[j].x = b;
+}
+}
+}
+
+
+for(uint8_t j=0;j<4;j++){
+
+if(all_shapes[index].index[j].x >0 && (array_data[(all_shapes[index].index[j].x)-1][all_shapes[index].index[j].y]!='1' || dontBelong2Shape(index,(all_shapes[index].index[j].x)-1,all_shapes[index].index[j].y))){
+ok=1;
+}
+else {
+ok=0;
+break;
+}
+}
+if(ok==1){
+for(uint8_t j=0;j<4;j++){
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
+all_shapes[index].index[j].x -=1;
+array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
+}
+}
+}
+
 
 void delay(){
 uint16_t c, d;
@@ -5387,16 +5503,10 @@ return;
 
 void createRandomShape(uint8_t i){
 
-# 287
+
 uint8_t type = (rand() % (7)) + 1;
-type =2;
 
-
-
-
-uint8_t orientation = (rand() % (4));
-orientation=0;
-
+uint8_t orientation =rand()%4;
 
 
 switch (type){
@@ -5730,10 +5840,102 @@ array_data[all_shapes[i].index[k].x][all_shapes[i].index[k].y]='1';
 }
 
 
+void completedUpdate(uint8_t line){
+
+uint8_t i=0;
+while (all_shapes[i].index[0].x != 99){
+for(uint8_t j=0;j<4;j++){
+if(all_shapes[i].index[j].y==line){
+all_shapes[i].index[j].x=-1;
+all_shapes[i].index[j].y=-1;
+}
+}
+
+}
+
+while (all_shapes[i].index[0].x != 99){
+for(uint8_t j=0;j<4;j++){
+if(all_shapes[i].index[j].y < line && all_shapes[i].index[j].y!=-1){
+all_shapes[i].index[j].y+=1;
+}
+}
+}
+
+
+for(uint8_t j=line;j>0;j--){
+for(uint8_t i=0;i<17;i++){
+array_data[i][j]=array_data[i][j-1];
+}
+}
+
+update_display_shapes('1');
+}
+
+
+void lineCompletedTest(){
+
+uint8_t completed=0;
+for(uint8_t j=0;j<11;j++){
+for(uint8_t i=0;i<17;i++){
+if(array_data[i][j]=='1')
+completed=1;
+else{
+completed=0;
+break;
+}
+}
+if(completed==1){
+completedUpdate(j);
+score+=10;
+}
+}
+}
+
+
+void rotate(uint8_t index){
+
+uint8_t temp_x,temp_y,ok;
+uint8_t new_coord[8];
+uint8_t pivot_x=all_shapes[index].index[3].x;
+uint8_t pivot_y=all_shapes[index].index[3].y;
+
+
+for (uint8_t k=0;k<4;k++){
+temp_x=all_shapes[index].index[k].x;
+temp_y=all_shapes[index].index[k].y;
+new_coord[k]=pivot_x - pivot_y + temp_y;
+new_coord[k+1]=pivot_x + pivot_y - temp_x;
+
+
+if(new_coord[k] >= 0 && new_coord[k] <=17 && new_coord[k+1] >= 0 && new_coord[k+1] <=11 && (array_data[new_coord[k]][new_coord[k+1]]!='1' || dontBelong2Shape(index,new_coord[k],new_coord[k+1]))){
+ok=1;
+}
+else {
+ok=0;
+break;
+}
+}
+
+if(ok){
+
+for (uint8_t k=0;k<4;k++){
+array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='0';
+all_shapes[index].index[k].x=new_coord[k];
+all_shapes[index].index[k].y=new_coord[k+1];
+array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='1';
+}
+}
+
+}
+
+
 
 void main(void) {
 
-uint8_t index=-1,next=1;
+uint8_t index=-1;
+int8_t next=1;
+TRISE = 0xFF;
+PORTE = 0x00;
 
 glcd_Init(1);
 glcd_Image();
@@ -5755,15 +5957,52 @@ array_data[i][y]='0';
 }
 
 while (1){
+if(next==-1){
+break;
+}
 if (next){
 index++;
 createRandomShape(index);
 next=0;
+score++;
 }
+
+if(PORTEbits.RE0 ==1){
+moveRight(index);
+}
+
+if(PORTEbits.RE1 ==1){
+moveLeft(index);
+}
+
+if(PORTEbits.RE2 ==1){
+rotate(index);
+}
+
 update_display_shapes('1');
 delay();
 update_display_shapes('0');
-next=gravity(index);
+
+
+if(PORTEbits.RE0 ==1){
+moveRight(index);
 }
+
+if(PORTEbits.RE1 ==1){
+moveLeft(index);
+}
+
+if(PORTEbits.RE2 ==1){
+rotate(index);
+}
+
+next=gravity(index);
+lineCompletedTest();
+
+}
+
+
+glcd_FillScreen(0);
+
 return;
 }

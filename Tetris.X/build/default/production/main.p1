@@ -13,12 +13,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdlib.h
 [v _rand `(i ~T0 @X0 0 ef ]
 [p mainexit ]
+"4221 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
+[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
+"2824
+[v _PORTE `Vuc ~T0 @X0 0 e@3972 ]
 "43 glcd_library/glcd.h
 [v _glcd_Init `(v ~T0 @X0 0 ef1`uc ]
 "53
 [v _glcd_Image `(v ~T0 @X0 0 ef ]
 "49
 [v _glcd_FillScreen `(v ~T0 @X0 0 ef1`uc ]
+"2830 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4550.h
+[s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S116 . RE0 RE1 RE2 RE3 . RDPU ]
+"2838
+[s S117 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S117 . CK1SPP CK2SPP OESPP ]
+"2843
+[s S118 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S118 . PD2 PC2 CCP10 CCP9E . CCP2E ]
+"2851
+[s S119 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S119 . RDE WRE CS PC3E . PA2E ]
+"2859
+[s S120 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S120 . . PB2 . RE7 ]
+"2829
+[u S115 `S116 1 `S117 1 `S118 1 `S119 1 `S120 1 ]
+[n S115 . . . . . . ]
+"2866
+[v _PORTEbits `VS115 ~T0 @X0 0 e@3972 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3755,14 +3779,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 "54
 [v _all_shapes `S369 ~T0 @X0 -> 20 `i e ]
 [; ;main.c: 54: t_shape all_shapes [20];
-"59
+"55
+[v _score `uc ~T0 @X0 1 e ]
+[i _score
+-> -> 0 `i `uc
+]
+[; ;main.c: 55: uint8_t score=0;
+"60
 [v _display_grid `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 59: void display_grid(){
+[; ;main.c: 60: void display_grid(){
 [e :U _display_grid ]
 [f ]
-[; ;main.c: 60: for (uint8_t i=0;i<128;i++){
-"60
+[; ;main.c: 61: for (uint8_t i=0;i<128;i++){
+"61
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -3770,8 +3800,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 372  ]
 [e :U 371 ]
 {
-[; ;main.c: 61: for(uint8_t j=0;j<64;j++){
-"61
+[; ;main.c: 62: for(uint8_t j=0;j<64;j++){
+"62
 {
 [v _j `uc ~T0 @X0 1 a ]
 [e = _j -> -> 0 `i `uc ]
@@ -3779,94 +3809,94 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 375  ]
 [e :U 374 ]
 {
-[; ;main.c: 62: if ((j>=0 && j<=1) || (j>=62 && j<=63))
-"62
-[e $ ! || && >= -> _j `i -> 0 `i <= -> _j `i -> 1 `i && >= -> _j `i -> 62 `i <= -> _j `i -> 63 `i 377  ]
-[; ;main.c: 63: glcd_PlotPixel(i,j,1);
+[; ;main.c: 63: if ((j>=0 && j<=1) || (j>=62 && j<=63))
 "63
+[e $ ! || && >= -> _j `i -> 0 `i <= -> _j `i -> 1 `i && >= -> _j `i -> 62 `i <= -> _j `i -> 63 `i 377  ]
+[; ;main.c: 64: glcd_PlotPixel(i,j,1);
+"64
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e $U 378  ]
-"64
-[e :U 377 ]
-[; ;main.c: 64: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)))
-[e $ ! || && >= -> _i `i -> 0 `i <= -> _i `i -> 1 `i && >= -> _i `i -> 126 `i <= -> _i `i -> 127 `i 379  ]
-[; ;main.c: 65: glcd_PlotPixel(i,j,1);
 "65
+[e :U 377 ]
+[; ;main.c: 65: else if (((i>=0 && i<=1) || ( i>=126 && i<=127)))
+[e $ ! || && >= -> _i `i -> 0 `i <= -> _i `i -> 1 `i && >= -> _i `i -> 126 `i <= -> _i `i -> 127 `i 379  ]
+[; ;main.c: 66: glcd_PlotPixel(i,j,1);
+"66
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e $U 380  ]
-"66
-[e :U 379 ]
-[; ;main.c: 66: else if (i>=91 && i<=92 )
-[e $ ! && >= -> _i `i -> 91 `i <= -> _i `i -> 92 `i 381  ]
-[; ;main.c: 67: glcd_PlotPixel(i,j,1);
 "67
+[e :U 379 ]
+[; ;main.c: 67: else if (i>=91 && i<=92 )
+[e $ ! && >= -> _i `i -> 91 `i <= -> _i `i -> 92 `i 381  ]
+[; ;main.c: 68: glcd_PlotPixel(i,j,1);
+"68
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e :U 381 ]
-"70
+"71
 [e :U 380 ]
 [e :U 378 ]
-[; ;main.c: 70: if (i>=2 && i<=90 && j==61)
+[; ;main.c: 71: if (i>=2 && i<=90 && j==61)
 [e $ ! && && >= -> _i `i -> 2 `i <= -> _i `i -> 90 `i == -> _j `i -> 61 `i 382  ]
-[; ;main.c: 71: glcd_PlotPixel(i,j,1);
-"71
+[; ;main.c: 72: glcd_PlotPixel(i,j,1);
+"72
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e :U 382 ]
-[; ;main.c: 74: if ( ((i==6) || (i==11) || (i==16) || (i==21) || (i==26) || (i==31) || (i==36) || (i==41) || (i==46) || (i==51) || (i==56) || (i==61) || (i==66) || (i==71) || (i==76) || (i==81) || (i==86)) )
-"74
-[e $ ! || || || || || || || || || || || || || || || || == -> _i `i -> 6 `i == -> _i `i -> 11 `i == -> _i `i -> 16 `i == -> _i `i -> 21 `i == -> _i `i -> 26 `i == -> _i `i -> 31 `i == -> _i `i -> 36 `i == -> _i `i -> 41 `i == -> _i `i -> 46 `i == -> _i `i -> 51 `i == -> _i `i -> 56 `i == -> _i `i -> 61 `i == -> _i `i -> 66 `i == -> _i `i -> 71 `i == -> _i `i -> 76 `i == -> _i `i -> 81 `i == -> _i `i -> 86 `i 383  ]
-[; ;main.c: 75: glcd_PlotPixel(i,j,1);
+[; ;main.c: 75: if ( ((i==6) || (i==11) || (i==16) || (i==21) || (i==26) || (i==31) || (i==36) || (i==41) || (i==46) || (i==51) || (i==56) || (i==61) || (i==66) || (i==71) || (i==76) || (i==81) || (i==86)) )
 "75
+[e $ ! || || || || || || || || || || || || || || || || == -> _i `i -> 6 `i == -> _i `i -> 11 `i == -> _i `i -> 16 `i == -> _i `i -> 21 `i == -> _i `i -> 26 `i == -> _i `i -> 31 `i == -> _i `i -> 36 `i == -> _i `i -> 41 `i == -> _i `i -> 46 `i == -> _i `i -> 51 `i == -> _i `i -> 56 `i == -> _i `i -> 61 `i == -> _i `i -> 66 `i == -> _i `i -> 71 `i == -> _i `i -> 76 `i == -> _i `i -> 81 `i == -> _i `i -> 86 `i 383  ]
+[; ;main.c: 76: glcd_PlotPixel(i,j,1);
+"76
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e :U 383 ]
-[; ;main.c: 78: if ( ((j==6) || (j==11) || (j==16) || (j==21) || (j==26) || (j==31) || (j==36) || (j==41) || (j==46) || (j==51) || (j==56)) && (i<92))
-"78
-[e $ ! && || || || || || || || || || || == -> _j `i -> 6 `i == -> _j `i -> 11 `i == -> _j `i -> 16 `i == -> _j `i -> 21 `i == -> _j `i -> 26 `i == -> _j `i -> 31 `i == -> _j `i -> 36 `i == -> _j `i -> 41 `i == -> _j `i -> 46 `i == -> _j `i -> 51 `i == -> _j `i -> 56 `i < -> _i `i -> 92 `i 384  ]
-[; ;main.c: 79: glcd_PlotPixel(i,j,1);
+[; ;main.c: 79: if ( ((j==6) || (j==11) || (j==16) || (j==21) || (j==26) || (j==31) || (j==36) || (j==41) || (j==46) || (j==51) || (j==56)) && (i<92))
 "79
+[e $ ! && || || || || || || || || || || == -> _j `i -> 6 `i == -> _j `i -> 11 `i == -> _j `i -> 16 `i == -> _j `i -> 21 `i == -> _j `i -> 26 `i == -> _j `i -> 31 `i == -> _j `i -> 36 `i == -> _j `i -> 41 `i == -> _j `i -> 46 `i == -> _j `i -> 51 `i == -> _j `i -> 56 `i < -> _i `i -> 92 `i 384  ]
+[; ;main.c: 80: glcd_PlotPixel(i,j,1);
+"80
 [e ( _glcd_PlotPixel (3 , , _i _j -> -> 1 `i `uc ]
 [e :U 384 ]
-"80
+"81
 }
-"61
+"62
 [e ++ _j -> -> 1 `i `uc ]
 [e $ < -> _j `i -> 64 `i 374  ]
 [e :U 375 ]
-"80
-}
 "81
 }
-"60
+"82
+}
+"61
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 128 `i 371  ]
 [e :U 372 ]
-"81
+"82
 }
-[; ;main.c: 80: }
 [; ;main.c: 81: }
 [; ;main.c: 82: }
-"82
+[; ;main.c: 83: }
+"83
 [e :UE 370 ]
 }
-"87
+"215
 [v _update_display_shapes `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 87: void update_display_shapes(char operation){
+[; ;main.c: 215: void update_display_shapes(char operation){
 [e :U _update_display_shapes ]
 [v _operation `uc ~T0 @X0 1 r1 ]
 [f ]
-"89
+"217
 [v _x `uc ~T0 @X0 1 a ]
 [v _y `uc ~T0 @X0 1 a ]
 [v _i `uc ~T0 @X0 1 a ]
-[; ;main.c: 89: uint8_t x,y,i=0;
+[; ;main.c: 217: uint8_t x,y,i=0;
 [e = _i -> -> 0 `i `uc ]
-[; ;main.c: 91: while (all_shapes[i].index[0].x != 99){
-"91
+[; ;main.c: 219: while (all_shapes[i].index[0].x != 99){
+"219
 [e $U 386  ]
 [e :U 387 ]
 {
-[; ;main.c: 92: for(uint8_t j=0;j<4;j++){
-"92
+[; ;main.c: 220: for(uint8_t j=0;j<4;j++){
+"220
 {
 [v _j `uc ~T0 @X0 1 a ]
 [e = _j -> -> 0 `i `uc ]
@@ -3874,183 +3904,186 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 390  ]
 [e :U 389 ]
 {
-[; ;main.c: 94: switch (all_shapes[i].index[j].x){
-"94
+[; ;main.c: 222: switch (all_shapes[i].index[j].x){
+"222
 [e $U 393  ]
 {
-[; ;main.c: 95: case 0 :
-"95
+[; ;main.c: 223: case 0 :
+"223
 [e :U 394 ]
-[; ;main.c: 96: x=2;
-"96
+[; ;main.c: 224: x=2;
+"224
 [e = _x -> -> 2 `i `uc ]
-[; ;main.c: 97: break;
-"97
+[; ;main.c: 225: break;
+"225
 [e $U 392  ]
-[; ;main.c: 98: case 1 :
-"98
+[; ;main.c: 226: case 1 :
+"226
 [e :U 395 ]
-[; ;main.c: 99: x=7;
-"99
+[; ;main.c: 227: x=7;
+"227
 [e = _x -> -> 7 `i `uc ]
-[; ;main.c: 100: break;
-"100
+[; ;main.c: 228: break;
+"228
 [e $U 392  ]
-[; ;main.c: 101: case 2 :
-"101
+[; ;main.c: 229: case 2 :
+"229
 [e :U 396 ]
-[; ;main.c: 102: x=12;
-"102
+[; ;main.c: 230: x=12;
+"230
 [e = _x -> -> 12 `i `uc ]
-[; ;main.c: 103: break;
-"103
+[; ;main.c: 231: break;
+"231
 [e $U 392  ]
-[; ;main.c: 104: case 3 :
-"104
+[; ;main.c: 232: case 3 :
+"232
 [e :U 397 ]
-[; ;main.c: 105: x=17;
-"105
+[; ;main.c: 233: x=17;
+"233
 [e = _x -> -> 17 `i `uc ]
-[; ;main.c: 106: break;
-"106
+[; ;main.c: 234: break;
+"234
 [e $U 392  ]
-[; ;main.c: 107: case 4 :
-"107
+[; ;main.c: 235: case 4 :
+"235
 [e :U 398 ]
-[; ;main.c: 108: x=22;
-"108
+[; ;main.c: 236: x=22;
+"236
 [e = _x -> -> 22 `i `uc ]
-[; ;main.c: 109: break;
-"109
+[; ;main.c: 237: break;
+"237
 [e $U 392  ]
-[; ;main.c: 110: case 5 :
-"110
+[; ;main.c: 238: case 5 :
+"238
 [e :U 399 ]
-[; ;main.c: 111: x=27;
-"111
+[; ;main.c: 239: x=27;
+"239
 [e = _x -> -> 27 `i `uc ]
-[; ;main.c: 112: break;
-"112
+[; ;main.c: 240: break;
+"240
 [e $U 392  ]
-[; ;main.c: 113: case 6 :
-"113
+[; ;main.c: 241: case 6 :
+"241
 [e :U 400 ]
-[; ;main.c: 114: x=32;
-"114
+[; ;main.c: 242: x=32;
+"242
 [e = _x -> -> 32 `i `uc ]
-[; ;main.c: 115: break;
-"115
+[; ;main.c: 243: break;
+"243
 [e $U 392  ]
-[; ;main.c: 116: case 7 :
-"116
+[; ;main.c: 244: case 7 :
+"244
 [e :U 401 ]
-[; ;main.c: 117: x=37;
-"117
+[; ;main.c: 245: x=37;
+"245
 [e = _x -> -> 37 `i `uc ]
-[; ;main.c: 118: break;
-"118
+[; ;main.c: 246: break;
+"246
 [e $U 392  ]
-[; ;main.c: 119: case 8 :
-"119
+[; ;main.c: 247: case 8 :
+"247
 [e :U 402 ]
-[; ;main.c: 120: x=42;
-"120
+[; ;main.c: 248: x=42;
+"248
 [e = _x -> -> 42 `i `uc ]
-[; ;main.c: 121: break;
-"121
+[; ;main.c: 249: break;
+"249
 [e $U 392  ]
-[; ;main.c: 122: case 9 :
-"122
+[; ;main.c: 250: case 9 :
+"250
 [e :U 403 ]
-[; ;main.c: 123: x=47;
-"123
+[; ;main.c: 251: x=47;
+"251
 [e = _x -> -> 47 `i `uc ]
-[; ;main.c: 124: break;
-"124
+[; ;main.c: 252: break;
+"252
 [e $U 392  ]
-[; ;main.c: 125: case 10 :
-"125
+[; ;main.c: 253: case 10 :
+"253
 [e :U 404 ]
-[; ;main.c: 126: x=52;
-"126
+[; ;main.c: 254: x=52;
+"254
 [e = _x -> -> 52 `i `uc ]
-[; ;main.c: 127: break;
-"127
+[; ;main.c: 255: break;
+"255
 [e $U 392  ]
-[; ;main.c: 128: case 11 :
-"128
+[; ;main.c: 256: case 11 :
+"256
 [e :U 405 ]
-[; ;main.c: 129: x=57;
-"129
+[; ;main.c: 257: x=57;
+"257
 [e = _x -> -> 57 `i `uc ]
-[; ;main.c: 130: break;
-"130
+[; ;main.c: 258: break;
+"258
 [e $U 392  ]
-[; ;main.c: 131: case 12 :
-"131
+[; ;main.c: 259: case 12 :
+"259
 [e :U 406 ]
-[; ;main.c: 132: x=62;
-"132
+[; ;main.c: 260: x=62;
+"260
 [e = _x -> -> 62 `i `uc ]
-[; ;main.c: 133: break;
-"133
+[; ;main.c: 261: break;
+"261
 [e $U 392  ]
-[; ;main.c: 134: case 13 :
-"134
+[; ;main.c: 262: case 13 :
+"262
 [e :U 407 ]
-[; ;main.c: 135: x=67;
-"135
+[; ;main.c: 263: x=67;
+"263
 [e = _x -> -> 67 `i `uc ]
-[; ;main.c: 136: break;
-"136
+[; ;main.c: 264: break;
+"264
 [e $U 392  ]
-[; ;main.c: 137: case 14 :
-"137
+[; ;main.c: 265: case 14 :
+"265
 [e :U 408 ]
-[; ;main.c: 138: x=72;
-"138
+[; ;main.c: 266: x=72;
+"266
 [e = _x -> -> 72 `i `uc ]
-[; ;main.c: 139: break;
-"139
+[; ;main.c: 267: break;
+"267
 [e $U 392  ]
-[; ;main.c: 140: case 15 :
-"140
+[; ;main.c: 268: case 15 :
+"268
 [e :U 409 ]
-[; ;main.c: 141: x=77;
-"141
+[; ;main.c: 269: x=77;
+"269
 [e = _x -> -> 77 `i `uc ]
-[; ;main.c: 142: break;
-"142
+[; ;main.c: 270: break;
+"270
 [e $U 392  ]
-[; ;main.c: 143: case 16 :
-"143
+[; ;main.c: 271: case 16 :
+"271
 [e :U 410 ]
-[; ;main.c: 144: x=82;
-"144
+[; ;main.c: 272: x=82;
+"272
 [e = _x -> -> 82 `i `uc ]
-[; ;main.c: 145: break;
-"145
+[; ;main.c: 273: break;
+"273
 [e $U 392  ]
-[; ;main.c: 146: case 17 :
-"146
+[; ;main.c: 274: case 17 :
+"274
 [e :U 411 ]
-[; ;main.c: 147: x=87;
-"147
+[; ;main.c: 275: x=87;
+"275
 [e = _x -> -> 87 `i `uc ]
-[; ;main.c: 148: break;
-"148
+[; ;main.c: 276: break;
+"276
 [e $U 392  ]
-[; ;main.c: 149: default :
-"149
+[; ;main.c: 277: default :
+"277
 [e :U 412 ]
-[; ;main.c: 150: break;
-"150
+[; ;main.c: 278: x=-1;
+"278
+[e = _x -> -U -> 1 `i `uc ]
+[; ;main.c: 279: break;
+"279
 [e $U 392  ]
-"151
+"280
 }
-[; ;main.c: 151: }
+[; ;main.c: 280: }
 [e $U 392  ]
-"94
+"222
 [e :U 393 ]
 [e [\ . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 , $ -> -> 0 `i `uc 394
  , $ -> -> 1 `i `uc 395
@@ -4071,131 +4104,134 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 16 `i `uc 410
  , $ -> -> 17 `i `uc 411
  412 ]
-"151
+"280
 [e :U 392 ]
-[; ;main.c: 152: switch (all_shapes[i].index[j].y){
-"152
+[; ;main.c: 281: switch (all_shapes[i].index[j].y){
+"281
 [e $U 414  ]
 {
-[; ;main.c: 153: case 0 :
-"153
+[; ;main.c: 282: case 0 :
+"282
 [e :U 415 ]
-[; ;main.c: 154: y=2;
-"154
+[; ;main.c: 283: y=2;
+"283
 [e = _y -> -> 2 `i `uc ]
-[; ;main.c: 155: break;
-"155
+[; ;main.c: 284: break;
+"284
 [e $U 413  ]
-[; ;main.c: 156: case 1 :
-"156
+[; ;main.c: 285: case 1 :
+"285
 [e :U 416 ]
-[; ;main.c: 157: y=7;
-"157
+[; ;main.c: 286: y=7;
+"286
 [e = _y -> -> 7 `i `uc ]
-[; ;main.c: 158: break;
-"158
+[; ;main.c: 287: break;
+"287
 [e $U 413  ]
-[; ;main.c: 159: case 2 :
-"159
+[; ;main.c: 288: case 2 :
+"288
 [e :U 417 ]
-[; ;main.c: 160: y=12;
-"160
+[; ;main.c: 289: y=12;
+"289
 [e = _y -> -> 12 `i `uc ]
-[; ;main.c: 161: break;
-"161
+[; ;main.c: 290: break;
+"290
 [e $U 413  ]
-[; ;main.c: 162: case 3 :
-"162
+[; ;main.c: 291: case 3 :
+"291
 [e :U 418 ]
-[; ;main.c: 163: y=17;
-"163
+[; ;main.c: 292: y=17;
+"292
 [e = _y -> -> 17 `i `uc ]
-[; ;main.c: 164: break;
-"164
+[; ;main.c: 293: break;
+"293
 [e $U 413  ]
-[; ;main.c: 165: case 4 :
-"165
+[; ;main.c: 294: case 4 :
+"294
 [e :U 419 ]
-[; ;main.c: 166: y=22;
-"166
+[; ;main.c: 295: y=22;
+"295
 [e = _y -> -> 22 `i `uc ]
-[; ;main.c: 167: break;
-"167
+[; ;main.c: 296: break;
+"296
 [e $U 413  ]
-[; ;main.c: 168: case 5 :
-"168
+[; ;main.c: 297: case 5 :
+"297
 [e :U 420 ]
-[; ;main.c: 169: y=27;
-"169
+[; ;main.c: 298: y=27;
+"298
 [e = _y -> -> 27 `i `uc ]
-[; ;main.c: 170: break;
-"170
+[; ;main.c: 299: break;
+"299
 [e $U 413  ]
-[; ;main.c: 171: case 6 :
-"171
+[; ;main.c: 300: case 6 :
+"300
 [e :U 421 ]
-[; ;main.c: 172: y=32;
-"172
+[; ;main.c: 301: y=32;
+"301
 [e = _y -> -> 32 `i `uc ]
-[; ;main.c: 173: break;
-"173
+[; ;main.c: 302: break;
+"302
 [e $U 413  ]
-[; ;main.c: 174: case 7 :
-"174
+[; ;main.c: 303: case 7 :
+"303
 [e :U 422 ]
-[; ;main.c: 175: y=37;
-"175
+[; ;main.c: 304: y=37;
+"304
 [e = _y -> -> 37 `i `uc ]
-[; ;main.c: 176: break;
-"176
+[; ;main.c: 305: break;
+"305
 [e $U 413  ]
-[; ;main.c: 177: case 8 :
-"177
+[; ;main.c: 306: case 8 :
+"306
 [e :U 423 ]
-[; ;main.c: 178: y=42;
-"178
+[; ;main.c: 307: y=42;
+"307
 [e = _y -> -> 42 `i `uc ]
-[; ;main.c: 179: break;
-"179
+[; ;main.c: 308: break;
+"308
 [e $U 413  ]
-[; ;main.c: 180: case 9 :
-"180
+[; ;main.c: 309: case 9 :
+"309
 [e :U 424 ]
-[; ;main.c: 181: y=47;
-"181
+[; ;main.c: 310: y=47;
+"310
 [e = _y -> -> 47 `i `uc ]
-[; ;main.c: 182: break;
-"182
+[; ;main.c: 311: break;
+"311
 [e $U 413  ]
-[; ;main.c: 183: case 10 :
-"183
+[; ;main.c: 312: case 10 :
+"312
 [e :U 425 ]
-[; ;main.c: 184: y=52;
-"184
+[; ;main.c: 313: y=52;
+"313
 [e = _y -> -> 52 `i `uc ]
-[; ;main.c: 185: break;
-"185
+[; ;main.c: 314: break;
+"314
 [e $U 413  ]
-[; ;main.c: 186: case 11 :
-"186
+[; ;main.c: 315: case 11 :
+"315
 [e :U 426 ]
-[; ;main.c: 187: y=57;
-"187
+[; ;main.c: 316: y=57;
+"316
 [e = _y -> -> 57 `i `uc ]
-[; ;main.c: 188: break;
-"188
+[; ;main.c: 317: break;
+"317
 [e $U 413  ]
-[; ;main.c: 189: default :
-"189
+[; ;main.c: 318: default :
+"318
 [e :U 427 ]
-[; ;main.c: 190: break;
-"190
+[; ;main.c: 319: y=-1;
+"319
+[e = _y -> -U -> 1 `i `uc ]
+[; ;main.c: 320: break;
+"320
 [e $U 413  ]
-"191
+"321
 }
-[; ;main.c: 191: }
+[; ;main.c: 321: }
 [e $U 413  ]
-"152
+"281
 [e :U 414 ]
 [e [\ . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 , $ -> -> 0 `i `uc 415
  , $ -> -> 1 `i `uc 416
@@ -4210,1790 +4246,2682 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 10 `i `uc 425
  , $ -> -> 11 `i `uc 426
  427 ]
-"191
+"321
 [e :U 413 ]
-[; ;main.c: 192: if(operation=='1'){
-"192
-[e $ ! == -> _operation `ui -> 49 `ui 428  ]
+[; ;main.c: 323: if(x!=-1 && y!=-1){
+"323
+[e $ ! && != -> _x `i -U -> 1 `i != -> _y `i -U -> 1 `i 428  ]
 {
-[; ;main.c: 194: for(uint8_t m=x;m<x+4;m++){
-"194
+[; ;main.c: 324: if(operation=='1'){
+"324
+[e $ ! == -> _operation `ui -> 49 `ui 429  ]
+{
+[; ;main.c: 326: for(uint8_t m=x;m<x+4;m++){
+"326
 {
 [v _m `uc ~T0 @X0 1 a ]
 [e = _m _x ]
-[e $U 432  ]
-[e :U 429 ]
-{
-[; ;main.c: 195: for(uint8_t n=y;n<y+4;n++){
-"195
-{
-[v _n `uc ~T0 @X0 1 a ]
-[e = _n _y ]
-[e $U 436  ]
-[e :U 433 ]
-{
-[; ;main.c: 196: glcd_PlotPixel(m,n,1);
-"196
-[e ( _glcd_PlotPixel (3 , , _m _n -> -> 1 `i `uc ]
-"197
-}
-"195
-[e ++ _n -> -> 1 `i `uc ]
-[e :U 436 ]
-[e $ < -> _n `i + -> _y `i -> 4 `i 433  ]
-[e :U 434 ]
-"197
-}
-"198
-}
-"194
-[e ++ _m -> -> 1 `i `uc ]
-[e :U 432 ]
-[e $ < -> _m `i + -> _x `i -> 4 `i 429  ]
+[e $U 433  ]
 [e :U 430 ]
-"198
-}
-"199
-}
-[; ;main.c: 197: }
-[; ;main.c: 198: }
-[; ;main.c: 199: }
-[e $U 437  ]
-"200
-[e :U 428 ]
-[; ;main.c: 200: else {
 {
-[; ;main.c: 202: for(uint8_t m=x;m<x+4;m++){
-"202
-{
-[v _m `uc ~T0 @X0 1 a ]
-[e = _m _x ]
-[e $U 441  ]
-[e :U 438 ]
-{
-[; ;main.c: 203: for(uint8_t n=y;n<y+4;n++){
-"203
+[; ;main.c: 327: for(uint8_t n=y;n<y+4;n++){
+"327
 {
 [v _n `uc ~T0 @X0 1 a ]
 [e = _n _y ]
-[e $U 445  ]
-[e :U 442 ]
+[e $U 437  ]
+[e :U 434 ]
 {
-[; ;main.c: 204: glcd_PlotPixel(m,n,0);
-"204
-[e ( _glcd_PlotPixel (3 , , _m _n -> -> 0 `i `uc ]
-"205
+[; ;main.c: 328: glcd_PlotPixel(m,n,1);
+"328
+[e ( _glcd_PlotPixel (3 , , _m _n -> -> 1 `i `uc ]
+"329
 }
-"203
+"327
 [e ++ _n -> -> 1 `i `uc ]
-[e :U 445 ]
-[e $ < -> _n `i + -> _y `i -> 4 `i 442  ]
-[e :U 443 ]
-"205
-}
-"206
-}
-"202
-[e ++ _m -> -> 1 `i `uc ]
-[e :U 441 ]
-[e $ < -> _m `i + -> _x `i -> 4 `i 438  ]
-[e :U 439 ]
-"206
-}
-"207
-}
 [e :U 437 ]
-"208
+[e $ < -> _n `i + -> _y `i -> 4 `i 434  ]
+[e :U 435 ]
+"329
 }
-"92
+"330
+}
+"326
+[e ++ _m -> -> 1 `i `uc ]
+[e :U 433 ]
+[e $ < -> _m `i + -> _x `i -> 4 `i 430  ]
+[e :U 431 ]
+"330
+}
+"331
+}
+[; ;main.c: 329: }
+[; ;main.c: 330: }
+[; ;main.c: 331: }
+[e $U 438  ]
+"332
+[e :U 429 ]
+[; ;main.c: 332: else {
+{
+[; ;main.c: 334: for(uint8_t m=x;m<x+4;m++){
+"334
+{
+[v _m `uc ~T0 @X0 1 a ]
+[e = _m _x ]
+[e $U 442  ]
+[e :U 439 ]
+{
+[; ;main.c: 335: for(uint8_t n=y;n<y+4;n++){
+"335
+{
+[v _n `uc ~T0 @X0 1 a ]
+[e = _n _y ]
+[e $U 446  ]
+[e :U 443 ]
+{
+[; ;main.c: 336: glcd_PlotPixel(m,n,0);
+"336
+[e ( _glcd_PlotPixel (3 , , _m _n -> -> 0 `i `uc ]
+"337
+}
+"335
+[e ++ _n -> -> 1 `i `uc ]
+[e :U 446 ]
+[e $ < -> _n `i + -> _y `i -> 4 `i 443  ]
+[e :U 444 ]
+"337
+}
+"338
+}
+"334
+[e ++ _m -> -> 1 `i `uc ]
+[e :U 442 ]
+[e $ < -> _m `i + -> _x `i -> 4 `i 439  ]
+[e :U 440 ]
+"338
+}
+"339
+}
+[e :U 438 ]
+"340
+}
+[e :U 428 ]
+"341
+}
+"220
 [e ++ _j -> -> 1 `i `uc ]
 [e $ < -> _j `i -> 4 `i 389  ]
 [e :U 390 ]
-"208
+"341
 }
-[; ;main.c: 205: }
-[; ;main.c: 206: }
-[; ;main.c: 207: }
-[; ;main.c: 208: }
-[; ;main.c: 209: i++;
-"209
+[; ;main.c: 337: }
+[; ;main.c: 338: }
+[; ;main.c: 339: }
+[; ;main.c: 340: }
+[; ;main.c: 341: }
+[; ;main.c: 342: i++;
+"342
 [e ++ _i -> -> 1 `i `uc ]
-"210
+"343
 }
 [e :U 386 ]
-"91
+"219
 [e $ != -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 99 `i 387  ]
 [e :U 388 ]
-[; ;main.c: 210: }
-[; ;main.c: 211: }
-"211
+[; ;main.c: 343: }
+[; ;main.c: 344: }
+"344
 [e :UE 385 ]
 }
-"214
+"348
+[v _dontBelong2Shape `(uc ~T0 @X0 1 ef3`uc`uc`uc ]
+{
+[; ;main.c: 348: uint8_t dontBelong2Shape(uint8_t index,uint8_t x,uint8_t y){
+[e :U _dontBelong2Shape ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[v _x `uc ~T0 @X0 1 r2 ]
+[v _y `uc ~T0 @X0 1 r3 ]
+[f ]
+[; ;main.c: 350: for(uint8_t k=0;k<4;k++){
+"350
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 448  ]
+[e $U 449  ]
+[e :U 448 ]
+{
+[; ;main.c: 351: if(all_shapes[index].index[k].x == x && all_shapes[index].index[k].y == y){
+"351
+[e $ ! && == -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> _x `i == -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> _y `i 451  ]
+{
+[; ;main.c: 352: return 1;
+"352
+[e ) -> -> 1 `i `uc ]
+[e $UE 447  ]
+"353
+}
+[e :U 451 ]
+"354
+}
+"350
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 448  ]
+[e :U 449 ]
+"354
+}
+[; ;main.c: 353: }
+[; ;main.c: 354: }
+[; ;main.c: 355: return 0;
+"355
+[e ) -> -> 0 `i `uc ]
+[e $UE 447  ]
+[; ;main.c: 356: }
+"356
+[e :UE 447 ]
+}
+"362
 [v _gravity `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 214: uint8_t gravity(uint8_t index){
+[; ;main.c: 362: uint8_t gravity(uint8_t index){
 [e :U _gravity ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
-"219
+"367
 [v _a `uc ~T0 @X0 1 a ]
 [v _b `uc ~T0 @X0 1 a ]
-[; ;main.c: 219: uint8_t a,b;
-[; ;main.c: 220: for (uint8_t i = 0; i < 4; ++i){
-"220
+[v _ok `uc ~T0 @X0 1 a ]
+[; ;main.c: 367: uint8_t a,b,ok;
+[; ;main.c: 368: for (uint8_t i = 0; i < 4; ++i){
+"368
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 447  ]
-[e $U 448  ]
-[e :U 447 ]
+[e $ < -> _i `i -> 4 `i 453  ]
+[e $U 454  ]
+[e :U 453 ]
 {
-[; ;main.c: 221: for (uint8_t j = i + 1; j < 4; ++j){
-"221
+[; ;main.c: 369: for (uint8_t j = i + 1; j < 4; ++j){
+"369
 {
 [v _j `uc ~T0 @X0 1 a ]
 [e = _j -> + -> _i `i -> 1 `i `uc ]
-[e $ < -> _j `i -> 4 `i 450  ]
-[e $U 451  ]
-[e :U 450 ]
+[e $ < -> _j `i -> 4 `i 456  ]
+[e $U 457  ]
+[e :U 456 ]
 {
-[; ;main.c: 222: if (all_shapes[index].index[i].y < all_shapes[index].index[j].y){
-"222
-[e $ ! < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i 453  ]
+[; ;main.c: 370: if (all_shapes[index].index[i].y < all_shapes[index].index[j].y){
+"370
+[e $ ! < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i 459  ]
 {
-[; ;main.c: 223: a = all_shapes[index].index[i].y;
-"223
+[; ;main.c: 371: a = all_shapes[index].index[i].y;
+"371
 [e = _a . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
-[; ;main.c: 224: b = all_shapes[index].index[i].x;
-"224
+[; ;main.c: 372: b = all_shapes[index].index[i].x;
+"372
 [e = _b . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
-[; ;main.c: 225: all_shapes[index].index[i].y = all_shapes[index].index[j].y;
-"225
+[; ;main.c: 373: all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+"373
 [e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
-[; ;main.c: 226: all_shapes[index].index[i].x = all_shapes[index].index[j].x;
-"226
+[; ;main.c: 374: all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+"374
 [e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
-[; ;main.c: 227: all_shapes[index].index[j].y = a;
-"227
+[; ;main.c: 375: all_shapes[index].index[j].y = a;
+"375
 [e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _a ]
-[; ;main.c: 228: all_shapes[index].index[j].x = b;
-"228
+[; ;main.c: 376: all_shapes[index].index[j].x = b;
+"376
 [e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _b ]
-"229
+"377
 }
-[e :U 453 ]
-"230
+[e :U 459 ]
+"378
 }
-"221
+"369
 [e =+ _j -> -> 1 `i `uc ]
-[e $ < -> _j `i -> 4 `i 450  ]
-[e :U 451 ]
-"230
+[e $ < -> _j `i -> 4 `i 456  ]
+[e :U 457 ]
+"378
 }
-"231
+"379
 }
-"220
+"368
 [e =+ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 447  ]
-[e :U 448 ]
-"231
+[e $ < -> _i `i -> 4 `i 453  ]
+[e :U 454 ]
+"379
 }
-[; ;main.c: 229: }
-[; ;main.c: 230: }
-[; ;main.c: 231: }
-[; ;main.c: 234: for(uint8_t j=0;j<4;j++){
-"234
+[; ;main.c: 377: }
+[; ;main.c: 378: }
+[; ;main.c: 379: }
+[; ;main.c: 382: for(uint8_t j=0;j<4;j++){
+"382
 {
 [v _j `uc ~T0 @X0 1 a ]
 [e = _j -> -> 0 `i `uc ]
-[e $ < -> _j `i -> 4 `i 454  ]
-[e $U 455  ]
-[e :U 454 ]
-{
-[; ;main.c: 236: if(all_shapes[index].index[j].y <11 && array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1'){
-"236
-[e $ ! && < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 11 `i != -> *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 1 `i `ui `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui 457  ]
-{
-[; ;main.c: 237: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
-"237
-[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
-[; ;main.c: 238: all_shapes[index].index[j].y +=1;
-"238
-[e =+ . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 239: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
-"239
-[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
-"240
-}
-[; ;main.c: 240: }
-[e $U 458  ]
-"241
-[e :U 457 ]
-[; ;main.c: 241: else {
-{
-[; ;main.c: 242: return 1;
-"242
-[e ) -> -> 1 `i `uc ]
-[e $UE 446  ]
-"243
-}
-[e :U 458 ]
-"244
-}
-"234
-[e ++ _j -> -> 1 `i `uc ]
-[e $ < -> _j `i -> 4 `i 454  ]
-[e :U 455 ]
-"244
-}
-[; ;main.c: 243: }
-[; ;main.c: 244: }
-[; ;main.c: 245: return 0;
-"245
-[e ) -> -> 0 `i `uc ]
-[e $UE 446  ]
-[; ;main.c: 246: }
-"246
-[e :UE 446 ]
-}
-"248
-[v _delay `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 248: void delay(){
-[e :U _delay ]
-[f ]
-"249
-[v _c `ui ~T0 @X0 1 a ]
-[v _d `ui ~T0 @X0 1 a ]
-[; ;main.c: 249: uint16_t c, d;
-[; ;main.c: 250: for (c = 0; c <= 65530; c++){
-"250
-{
-[e = _c -> -> 0 `i `ui ]
-[e $ <= -> _c `l -> 65530 `l 460  ]
+[e $ < -> _j `i -> 4 `i 460  ]
 [e $U 461  ]
 [e :U 460 ]
 {
-"253
-}
-"250
-[e ++ _c -> -> 1 `i `ui ]
-[e $ <= -> _c `l -> 65530 `l 460  ]
-[e :U 461 ]
-"253
-}
-[; ;main.c: 253: }
-[; ;main.c: 254: return;
-"254
-[e $UE 459  ]
-[; ;main.c: 255: }
-"255
-[e :UE 459 ]
-}
-"257
-[v _delayHomeScreen `(v ~T0 @X0 1 ef ]
+[; ;main.c: 384: if(all_shapes[index].index[j].x !=-1 && all_shapes[index].index[j].y !=-1){
+"384
+[e $ ! && != -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -U -> 1 `i != -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -U -> 1 `i 463  ]
 {
-[; ;main.c: 257: void delayHomeScreen(){
-[e :U _delayHomeScreen ]
-[f ]
-"258
-[v _c `ui ~T0 @X0 1 a ]
-[v _d `ui ~T0 @X0 1 a ]
-[; ;main.c: 258: uint16_t c, d;
-[; ;main.c: 259: for (c = 0; c <= 65530; c++){
-"259
+[; ;main.c: 386: if(all_shapes[index].index[j].y <11 && (array_data[all_shapes[index].index[j].x][(all_shapes[index].index[j].y)+1]!='1' || dontBelong2Shape(index,all_shapes[index].index[j].x,(all_shapes[index].index[j].y)+1))){
+"386
+[e $ ! && < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 11 `i || != -> *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 1 `i `ui `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 1 `i `uc `i -> -> -> 0 `i `uc `i 464  ]
 {
-[e = _c -> -> 0 `i `ui ]
-[e $ <= -> _c `l -> 65530 `l 464  ]
+[; ;main.c: 387: ok=1;
+"387
+[e = _ok -> -> 1 `i `uc ]
+"388
+}
+[; ;main.c: 388: }
 [e $U 465  ]
+"389
 [e :U 464 ]
+[; ;main.c: 389: else {
 {
-[; ;main.c: 260: for (d = 0; d <= 10; d++)
-"260
-{
-[e = _d -> -> 0 `i `ui ]
-[e $ <= _d -> -> 10 `i `ui 467  ]
-[e $U 468  ]
-"261
-[e :U 467 ]
-[; ;main.c: 261: {}
-{
+[; ;main.c: 390: ok=0;
+"390
+[e = _ok -> -> 0 `i `uc ]
+[; ;main.c: 391: break;
+"391
+[e $U 461  ]
+"392
 }
-"260
-[e ++ _d -> -> 1 `i `ui ]
-[e $ <= _d -> -> 10 `i `ui 467  ]
-[e :U 468 ]
-"261
-}
-"262
-}
-"259
-[e ++ _c -> -> 1 `i `ui ]
-[e $ <= -> _c `l -> 65530 `l 464  ]
 [e :U 465 ]
-"262
+"393
 }
-[; ;main.c: 262: }
-[; ;main.c: 263: return;
-"263
-[e $UE 463  ]
-[; ;main.c: 264: }
-"264
-[e :UE 463 ]
+[e :U 463 ]
+"395
 }
-"267
-[v _createRandomShape `(v ~T0 @X0 1 ef1`uc ]
+"382
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 460  ]
+[e :U 461 ]
+"395
+}
+[; ;main.c: 392: }
+[; ;main.c: 393: }
+[; ;main.c: 395: }
+[; ;main.c: 396: if(ok==1){
+"396
+[e $ ! == -> _ok `i -> 1 `i 466  ]
 {
-[; ;main.c: 267: void createRandomShape(uint8_t i){
-[e :U _createRandomShape ]
-[v _i `uc ~T0 @X0 1 r1 ]
-[f ]
-"287
-[v _type `uc ~T0 @X0 1 a ]
-[; ;main.c: 287: uint8_t type = (rand() % (7)) + 1;
-[e = _type -> + % ( _rand ..  -> 7 `i -> 1 `i `uc ]
-[; ;main.c: 288: type =2;
-"288
-[e = _type -> -> 2 `i `uc ]
-"293
-[v _orientation `uc ~T0 @X0 1 a ]
-[; ;main.c: 293: uint8_t orientation = (rand() % (4));
-[e = _orientation -> % ( _rand ..  -> 4 `i `uc ]
-[; ;main.c: 294: orientation=0;
-"294
-[e = _orientation -> -> 0 `i `uc ]
-[; ;main.c: 298: switch (type){
-"298
-[e $U 472  ]
+[; ;main.c: 397: for(uint8_t j=0;j<4;j++){
+"397
 {
-[; ;main.c: 299: case 1 :
-"299
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 467  ]
+[e $U 468  ]
+[e :U 467 ]
+{
+[; ;main.c: 398: if(all_shapes[index].index[j].x !=-1 && all_shapes[index].index[j].y !=-1){
+"398
+[e $ ! && != -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -U -> 1 `i != -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -U -> 1 `i 470  ]
+{
+[; ;main.c: 399: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
+"399
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
+[; ;main.c: 400: all_shapes[index].index[j].y +=1;
+"400
+[e =+ . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 401: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
+"401
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
+"402
+}
+[e :U 470 ]
+"403
+}
+"397
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 467  ]
+[e :U 468 ]
+"403
+}
+[; ;main.c: 402: }
+[; ;main.c: 403: }
+[; ;main.c: 404: return 0;
+"404
+[e ) -> -> 0 `i `uc ]
+[e $UE 452  ]
+"405
+}
+[; ;main.c: 405: }
+[e $U 471  ]
+"406
+[e :U 466 ]
+[; ;main.c: 406: else{
+{
+[; ;main.c: 407: for(uint8_t j=0;j<4;j++){
+"407
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 472  ]
+[e $U 473  ]
+[e :U 472 ]
+{
+[; ;main.c: 408: if(all_shapes[index].index[j].y ==0){
+"408
+[e $ ! == -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> 0 `i 475  ]
+{
+[; ;main.c: 409: return -1;
+"409
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 452  ]
+"410
+}
+[e :U 475 ]
+"411
+}
+"407
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 472  ]
 [e :U 473 ]
-[; ;main.c: 300: switch (orientation){
-"300
-[e $U 475  ]
+"411
+}
+[; ;main.c: 410: }
+[; ;main.c: 411: }
+[; ;main.c: 412: return 1;
+"412
+[e ) -> -> 1 `i `uc ]
+[e $UE 452  ]
+"413
+}
+[e :U 471 ]
+[; ;main.c: 413: }
+[; ;main.c: 415: }
+"415
+[e :UE 452 ]
+}
+"417
+[v _moveRight `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 301: case 0 :
-"301
-[e :U 476 ]
-[; ;main.c: 302: all_shapes[i].orientation=0;
-"302
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-"303
-[v _start `uc ~T0 @X0 1 a ]
-[; ;main.c: 303: uint8_t start=8;
-[e = _start -> -> 8 `i `uc ]
-[; ;main.c: 304: for (uint8_t k=0;k<4;k++){
-"304
+[; ;main.c: 417: void moveRight(uint8_t index){
+[e :U _moveRight ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+"422
+[v _a `uc ~T0 @X0 1 a ]
+[v _b `uc ~T0 @X0 1 a ]
+[v _ok `uc ~T0 @X0 1 a ]
+[; ;main.c: 422: uint8_t a,b,ok;
+[; ;main.c: 423: for (uint8_t i = 0; i < 4; ++i){
+"423
 {
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 4 `i 477  ]
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 477  ]
 [e $U 478  ]
 [e :U 477 ]
 {
-[; ;main.c: 305: all_shapes[i].index[k].x=start;
-"305
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 306: all_shapes[i].index[k].y=0;
-"306
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 307: start++;
-"307
-[e ++ _start -> -> 1 `i `uc ]
-"308
-}
-"304
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 477  ]
-[e :U 478 ]
-"308
-}
-[; ;main.c: 308: }
-[; ;main.c: 309: break;
-"309
-[e $U 474  ]
-[; ;main.c: 310: case 1 :
-"310
+[; ;main.c: 424: for (uint8_t j = i + 1; j < 4; ++j){
+"424
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> + -> _i `i -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 480  ]
+[e $U 481  ]
 [e :U 480 ]
-[; ;main.c: 311: all_shapes[i].orientation=1;
-"311
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 312: uint8_t start=8;
-"312
-[e = _start -> -> 8 `i `uc ]
-[; ;main.c: 313: for (uint8_t k=0;k<4;k++){
-"313
 {
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 4 `i 481  ]
-[e $U 482  ]
+[; ;main.c: 425: if (all_shapes[index].index[i].x < all_shapes[index].index[j].x){
+"425
+[e $ ! < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i 483  ]
+{
+[; ;main.c: 426: a = all_shapes[index].index[i].y;
+"426
+[e = _a . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 427: b = all_shapes[index].index[i].x;
+"427
+[e = _b . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 428: all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+"428
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 429: all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+"429
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 430: all_shapes[index].index[j].y = a;
+"430
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _a ]
+[; ;main.c: 431: all_shapes[index].index[j].x = b;
+"431
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _b ]
+"432
+}
+[e :U 483 ]
+"433
+}
+"424
+[e =+ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 480  ]
 [e :U 481 ]
+"433
+}
+"434
+}
+"423
+[e =+ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 477  ]
+[e :U 478 ]
+"434
+}
+[; ;main.c: 432: }
+[; ;main.c: 433: }
+[; ;main.c: 434: }
+[; ;main.c: 437: for(uint8_t j=0;j<4;j++){
+"437
 {
-[; ;main.c: 314: all_shapes[i].index[k].x=start;
-"314
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 315: all_shapes[i].index[k].y=1;
-"315
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 316: start++;
-"316
-[e ++ _start -> -> 1 `i `uc ]
-"317
-}
-"313
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 481  ]
-[e :U 482 ]
-"317
-}
-[; ;main.c: 317: }
-[; ;main.c: 318: break;
-"318
-[e $U 474  ]
-[; ;main.c: 319: case 2 :
-"319
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 484  ]
+[e $U 485  ]
 [e :U 484 ]
-[; ;main.c: 320: all_shapes[i].orientation=2;
-"320
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 321: uint8_t start=0;
-"321
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 322: for (uint8_t k=0;k<4;k++){
-"322
 {
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 4 `i 485  ]
-[e $U 486  ]
-[e :U 485 ]
+[; ;main.c: 439: if(all_shapes[index].index[j].x <17 && (array_data[(all_shapes[index].index[j].x)+1][all_shapes[index].index[j].y]!='1' || dontBelong2Shape(index,(all_shapes[index].index[j].x)+1,all_shapes[index].index[j].y))){
+"439
+[e $ ! && < -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 17 `i || != -> *U + &U *U + &U _array_data * -> -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index -> + -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `uc . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> -> -> 0 `i `uc `i 487  ]
 {
-[; ;main.c: 323: all_shapes[i].index[k].x=10;
-"323
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 324: all_shapes[i].index[k].y=start;
-"324
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 325: start++;
-"325
-[e ++ _start -> -> 1 `i `uc ]
-"326
+[; ;main.c: 440: ok=1;
+"440
+[e = _ok -> -> 1 `i `uc ]
+"441
 }
-"322
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 485  ]
-[e :U 486 ]
-"326
+[; ;main.c: 441: }
+[e $U 488  ]
+"442
+[e :U 487 ]
+[; ;main.c: 442: else {
+{
+[; ;main.c: 443: ok=0;
+"443
+[e = _ok -> -> 0 `i `uc ]
+[; ;main.c: 444: break;
+"444
+[e $U 485  ]
+"445
 }
-[; ;main.c: 326: }
-[; ;main.c: 327: break;
-"327
-[e $U 474  ]
-[; ;main.c: 328: case 3 :
-"328
 [e :U 488 ]
-[; ;main.c: 329: all_shapes[i].orientation=3;
-"329
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 330: uint8_t start=0;
-"330
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 331: for (uint8_t k=0;k<4;k++){
-"331
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 4 `i 489  ]
-[e $U 490  ]
-[e :U 489 ]
-{
-[; ;main.c: 332: all_shapes[i].index[k].x=11;
-"332
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 333: all_shapes[i].index[k].y=start;
-"333
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 334: start++;
-"334
-[e ++ _start -> -> 1 `i `uc ]
-"335
+"446
 }
-"331
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 489  ]
+"437
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 484  ]
+[e :U 485 ]
+"446
+}
+[; ;main.c: 445: }
+[; ;main.c: 446: }
+[; ;main.c: 447: if(ok==1){
+"447
+[e $ ! == -> _ok `i -> 1 `i 489  ]
+{
+[; ;main.c: 448: for(uint8_t j=0;j<4;j++){
+"448
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 490  ]
+[e $U 491  ]
 [e :U 490 ]
-"335
+{
+[; ;main.c: 449: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
+"449
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
+[; ;main.c: 450: all_shapes[index].index[j].x +=1;
+"450
+[e =+ . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 1 `i `uc ]
+[; ;main.c: 451: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
+"451
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
+"452
 }
-[; ;main.c: 335: }
-[; ;main.c: 336: break;
-"336
-[e $U 474  ]
-[; ;main.c: 337: default :
-"337
-[e :U 492 ]
-[; ;main.c: 338: break;
-"338
-[e $U 474  ]
-"339
+"448
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 490  ]
+[e :U 491 ]
+"452
 }
-[; ;main.c: 339: }
-[e $U 474  ]
-"300
-[e :U 475 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 476
- , $ -> -> 1 `i `uc 480
- , $ -> -> 2 `i `uc 484
- , $ -> -> 3 `i `uc 488
- 492 ]
-"339
-[e :U 474 ]
-[; ;main.c: 340: break;
-"340
-[e $U 471  ]
-[; ;main.c: 341: case 2 :
-"341
-[e :U 493 ]
-[; ;main.c: 342: switch (orientation){
-"342
+"453
+}
+[e :U 489 ]
+[; ;main.c: 452: }
+[; ;main.c: 453: }
+[; ;main.c: 454: }
+"454
+[e :UE 476 ]
+}
+"456
+[v _moveLeft `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;main.c: 456: void moveLeft(uint8_t index){
+[e :U _moveLeft ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+"461
+[v _a `uc ~T0 @X0 1 a ]
+[v _b `uc ~T0 @X0 1 a ]
+[v _ok `uc ~T0 @X0 1 a ]
+[; ;main.c: 461: uint8_t a,b,ok;
+[; ;main.c: 462: for (uint8_t i = 0; i < 4; ++i){
+"462
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 494  ]
 [e $U 495  ]
+[e :U 494 ]
 {
-[; ;main.c: 343: case 0 :
-"343
-[e :U 496 ]
-[; ;main.c: 344: all_shapes[i].orientation=0;
-"344
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-"345
-[v _start `uc ~T0 @X0 1 a ]
-[; ;main.c: 345: uint8_t start=10;
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 346: all_shapes[i].index[0].x=10;
-"346
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 347: all_shapes[i].index[0].y=0;
-"347
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 348: for (uint8_t k=1;k<4;k++){
-"348
+[; ;main.c: 463: for (uint8_t j = i + 1; j < 4; ++j){
+"463
 {
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 497  ]
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> + -> _i `i -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 497  ]
 [e $U 498  ]
 [e :U 497 ]
 {
-[; ;main.c: 349: all_shapes[i].index[k].x=start;
-"349
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 350: all_shapes[i].index[k].y=1;
-"350
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 351: start++;
-"351
-[e ++ _start -> -> 1 `i `uc ]
-"352
-}
-"348
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 497  ]
-[e :U 498 ]
-"352
-}
-[; ;main.c: 352: }
-[; ;main.c: 353: break;
-"353
-[e $U 494  ]
-[; ;main.c: 354: case 1 :
-"354
-[e :U 500 ]
-[; ;main.c: 355: all_shapes[i].orientation=1;
-"355
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 356: uint8_t start=10;
-"356
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 357: all_shapes[i].index[0].x=12;
-"357
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 358: all_shapes[i].index[0].y=2;
-"358
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 359: for (uint8_t k=1;k<4;k++){
-"359
+[; ;main.c: 464: if (all_shapes[index].index[i].x > all_shapes[index].index[j].x){
+"464
+[e $ ! > -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i 500  ]
 {
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 501  ]
+[; ;main.c: 465: a = all_shapes[index].index[i].y;
+"465
+[e = _a . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 466: b = all_shapes[index].index[i].x;
+"466
+[e = _b . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 467: all_shapes[index].index[i].y = all_shapes[index].index[j].y;
+"467
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 468: all_shapes[index].index[i].x = all_shapes[index].index[j].x;
+"468
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _i `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 469: all_shapes[index].index[j].y = a;
+"469
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _a ]
+[; ;main.c: 470: all_shapes[index].index[j].x = b;
+"470
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _b ]
+"471
+}
+[e :U 500 ]
+"472
+}
+"463
+[e =+ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 497  ]
+[e :U 498 ]
+"472
+}
+"473
+}
+"462
+[e =+ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 494  ]
+[e :U 495 ]
+"473
+}
+[; ;main.c: 471: }
+[; ;main.c: 472: }
+[; ;main.c: 473: }
+[; ;main.c: 476: for(uint8_t j=0;j<4;j++){
+"476
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 501  ]
 [e $U 502  ]
 [e :U 501 ]
 {
-[; ;main.c: 360: all_shapes[i].index[k].x=start;
-"360
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 361: all_shapes[i].index[k].y=1;
-"361
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 362: start++;
-"362
-[e ++ _start -> -> 1 `i `uc ]
-"363
-}
-"359
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 501  ]
-[e :U 502 ]
-"363
-}
-[; ;main.c: 363: }
-[; ;main.c: 364: break;
-"364
-[e $U 494  ]
-[; ;main.c: 365: case 2 :
-"365
-[e :U 504 ]
-[; ;main.c: 366: all_shapes[i].orientation=2;
-"366
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 367: uint8_t start=0;
-"367
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 368: all_shapes[i].index[0].x=10;
-"368
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 369: all_shapes[i].index[0].y=2;
-"369
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 370: for (uint8_t k=1;k<4;k++){
-"370
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 505  ]
-[e $U 506  ]
-[e :U 505 ]
-{
-[; ;main.c: 371: all_shapes[i].index[k].x=11;
-"371
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 372: all_shapes[i].index[k].y=start;
-"372
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 373: start++;
-"373
-[e ++ _start -> -> 1 `i `uc ]
-"374
-}
-"370
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 505  ]
-[e :U 506 ]
-"374
-}
-[; ;main.c: 374: }
-[; ;main.c: 375: break;
-"375
-[e $U 494  ]
-[; ;main.c: 376: case 3 :
-"376
-[e :U 508 ]
-[; ;main.c: 377: all_shapes[i].orientation=3;
-"377
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 378: uint8_t start=0;
-"378
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 379: all_shapes[i].index[0].x=12;
-"379
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 380: all_shapes[i].index[0].y=0;
-"380
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 381: for (uint8_t k=1;k<4;k++){
-"381
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 509  ]
-[e $U 510  ]
-[e :U 509 ]
-{
-[; ;main.c: 382: all_shapes[i].index[k].x=11;
-"382
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 383: all_shapes[i].index[k].y=start;
-"383
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 384: start++;
-"384
-[e ++ _start -> -> 1 `i `uc ]
-"385
-}
-"381
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 509  ]
-[e :U 510 ]
-"385
-}
-[; ;main.c: 385: }
-[; ;main.c: 386: break;
-"386
-[e $U 494  ]
-[; ;main.c: 387: default :
-"387
-[e :U 512 ]
-[; ;main.c: 388: break;
-"388
-[e $U 494  ]
-"389
-}
-[; ;main.c: 389: }
-[e $U 494  ]
-"342
-[e :U 495 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 496
- , $ -> -> 1 `i `uc 500
- , $ -> -> 2 `i `uc 504
- , $ -> -> 3 `i `uc 508
- 512 ]
-"389
-[e :U 494 ]
-[; ;main.c: 390: break;
-"390
-[e $U 471  ]
-[; ;main.c: 391: case 3 :
-"391
-[e :U 513 ]
-[; ;main.c: 392: switch (orientation){
-"392
-[e $U 515  ]
-{
-[; ;main.c: 393: case 0 :
-"393
-[e :U 516 ]
-[; ;main.c: 394: all_shapes[i].orientation=0;
-"394
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-"395
-[v _start `uc ~T0 @X0 1 a ]
-[; ;main.c: 395: uint8_t start=10;
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 396: all_shapes[i].index[0].x=12;
-"396
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 397: all_shapes[i].index[0].y=0;
-"397
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 398: for (uint8_t k=1;k<4;k++){
-"398
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 517  ]
-[e $U 518  ]
-[e :U 517 ]
-{
-[; ;main.c: 399: all_shapes[i].index[k].x=start;
-"399
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 400: all_shapes[i].index[k].y=1;
-"400
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 401: start++;
-"401
-[e ++ _start -> -> 1 `i `uc ]
-"402
-}
-"398
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 517  ]
-[e :U 518 ]
-"402
-}
-[; ;main.c: 402: }
-[; ;main.c: 403: break;
-"403
-[e $U 514  ]
-[; ;main.c: 404: case 1 :
-"404
-[e :U 520 ]
-[; ;main.c: 405: all_shapes[i].orientation=1;
-"405
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 406: uint8_t start=10;
-"406
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 407: all_shapes[i].index[0].x=10;
-"407
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 408: all_shapes[i].index[0].y=2;
-"408
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 409: for (uint8_t k=1;k<4;k++){
-"409
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 521  ]
-[e $U 522  ]
-[e :U 521 ]
-{
-[; ;main.c: 410: all_shapes[i].index[k].x=start;
-"410
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 411: all_shapes[i].index[k].y=1;
-"411
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 412: start++;
-"412
-[e ++ _start -> -> 1 `i `uc ]
-"413
-}
-"409
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 521  ]
-[e :U 522 ]
-"413
-}
-[; ;main.c: 413: }
-[; ;main.c: 414: break;
-"414
-[e $U 514  ]
-[; ;main.c: 415: case 2 :
-"415
-[e :U 524 ]
-[; ;main.c: 416: all_shapes[i].orientation=2;
-"416
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 417: uint8_t start=0;
-"417
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 418: all_shapes[i].index[0].x=10;
-"418
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 419: all_shapes[i].index[0].y=0;
-"419
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 420: for (uint8_t k=1;k<4;k++){
-"420
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 525  ]
-[e $U 526  ]
-[e :U 525 ]
-{
-[; ;main.c: 421: all_shapes[i].index[k].x=11;
-"421
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 422: all_shapes[i].index[k].y=start;
-"422
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 423: start++;
-"423
-[e ++ _start -> -> 1 `i `uc ]
-"424
-}
-"420
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 525  ]
-[e :U 526 ]
-"424
-}
-[; ;main.c: 424: }
-[; ;main.c: 425: break;
-"425
-[e $U 514  ]
-[; ;main.c: 426: case 3 :
-"426
-[e :U 528 ]
-[; ;main.c: 427: all_shapes[i].orientation=3;
-"427
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 428: uint8_t start=0;
-"428
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 429: all_shapes[i].index[0].x=12;
-"429
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 430: all_shapes[i].index[0].y=2;
-"430
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 431: for (uint8_t k=1;k<4;k++){
-"431
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 529  ]
-[e $U 530  ]
-[e :U 529 ]
-{
-[; ;main.c: 432: all_shapes[i].index[k].x=11;
-"432
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 433: all_shapes[i].index[k].y=start;
-"433
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 434: start++;
-"434
-[e ++ _start -> -> 1 `i `uc ]
-"435
-}
-"431
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 529  ]
-[e :U 530 ]
-"435
-}
-[; ;main.c: 435: }
-[; ;main.c: 436: break;
-"436
-[e $U 514  ]
-[; ;main.c: 437: default :
-"437
-[e :U 532 ]
-[; ;main.c: 438: break;
-"438
-[e $U 514  ]
-"439
-}
-[; ;main.c: 439: }
-[e $U 514  ]
-"392
-[e :U 515 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 516
- , $ -> -> 1 `i `uc 520
- , $ -> -> 2 `i `uc 524
- , $ -> -> 3 `i `uc 528
- 532 ]
-"439
-[e :U 514 ]
-[; ;main.c: 440: break;
-"440
-[e $U 471  ]
-[; ;main.c: 441: case 4 :
-"441
-[e :U 533 ]
-[; ;main.c: 442: all_shapes[i].index[0].x=11;
-"442
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 443: all_shapes[i].index[0].y=0;
-"443
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 444: all_shapes[i].index[1].x=12;
-"444
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 445: all_shapes[i].index[1].y=0;
-"445
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 446: all_shapes[i].index[2].x=11;
-"446
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 447: all_shapes[i].index[2].y=1;
-"447
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 448: all_shapes[i].index[3].x=12;
-"448
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 449: all_shapes[i].index[3].y=1;
-"449
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 450: switch (orientation){
-"450
-[e $U 535  ]
-{
-[; ;main.c: 451: case 0 :
-"451
-[e :U 536 ]
-[; ;main.c: 452: all_shapes[i].orientation=0;
-"452
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-[; ;main.c: 453: break;
-"453
-[e $U 534  ]
-[; ;main.c: 454: case 1 :
-"454
-[e :U 537 ]
-[; ;main.c: 455: all_shapes[i].orientation=1;
-"455
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 456: break;
-"456
-[e $U 534  ]
-[; ;main.c: 457: case 2 :
-"457
-[e :U 538 ]
-[; ;main.c: 458: all_shapes[i].orientation=2;
-"458
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 459: break;
-"459
-[e $U 534  ]
-[; ;main.c: 460: case 3 :
-"460
-[e :U 539 ]
-[; ;main.c: 461: all_shapes[i].orientation=3;
-"461
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 462: break;
-"462
-[e $U 534  ]
-[; ;main.c: 463: default :
-"463
-[e :U 540 ]
-[; ;main.c: 464: break;
-"464
-[e $U 534  ]
-"465
-}
-[; ;main.c: 465: }
-[e $U 534  ]
-"450
-[e :U 535 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 536
- , $ -> -> 1 `i `uc 537
- , $ -> -> 2 `i `uc 538
- , $ -> -> 3 `i `uc 539
- 540 ]
-"465
-[e :U 534 ]
-[; ;main.c: 466: break;
-"466
-[e $U 471  ]
-[; ;main.c: 467: case 5 :
-"467
-[e :U 541 ]
-[; ;main.c: 468: switch (orientation){
-"468
-[e $U 543  ]
-{
-[; ;main.c: 469: case 0 :
-"469
-[e :U 544 ]
-[; ;main.c: 470: all_shapes[i].orientation=0;
-"470
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-[; ;main.c: 471: all_shapes[i].index[0].x=10;
-"471
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 472: all_shapes[i].index[0].y=1;
-"472
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 473: all_shapes[i].index[1].x=11;
-"473
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 474: all_shapes[i].index[1].y=1;
-"474
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 475: all_shapes[i].index[2].x=11;
-"475
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 476: all_shapes[i].index[2].y=0;
-"476
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 477: all_shapes[i].index[3].x=12;
-"477
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 478: all_shapes[i].index[3].y=0;
+[; ;main.c: 478: if(all_shapes[index].index[j].x >0 && (array_data[(all_shapes[index].index[j].x)-1][all_shapes[index].index[j].y]!='1' || dontBelong2Shape(index,(all_shapes[index].index[j].x)-1,all_shapes[index].index[j].y))){
 "478
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 479: break;
+[e $ ! && > -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 0 `i || != -> *U + &U *U + &U _array_data * -> -> - -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> -> - -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index -> - -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 1 `i `uc . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> -> -> 0 `i `uc `i 504  ]
+{
+[; ;main.c: 479: ok=1;
 "479
-[e $U 542  ]
-[; ;main.c: 480: case 1 :
+[e = _ok -> -> 1 `i `uc ]
 "480
-[e :U 545 ]
-[; ;main.c: 481: all_shapes[i].index[0].x=10;
+}
+[; ;main.c: 480: }
+[e $U 505  ]
 "481
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 482: all_shapes[i].index[0].y=2;
+[e :U 504 ]
+[; ;main.c: 481: else {
+{
+[; ;main.c: 482: ok=0;
 "482
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 483: all_shapes[i].index[1].x=11;
+[e = _ok -> -> 0 `i `uc ]
+[; ;main.c: 483: break;
 "483
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 484: all_shapes[i].index[1].y=2;
+[e $U 502  ]
 "484
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 485: all_shapes[i].index[2].x=11;
+}
+[e :U 505 ]
 "485
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 486: all_shapes[i].index[2].y=1;
+}
+"476
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 501  ]
+[e :U 502 ]
+"485
+}
+[; ;main.c: 484: }
+[; ;main.c: 485: }
+[; ;main.c: 486: if(ok==1){
 "486
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 487: all_shapes[i].index[3].x=12;
+[e $ ! == -> _ok `i -> 1 `i 506  ]
+{
+[; ;main.c: 487: for(uint8_t j=0;j<4;j++){
 "487
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 488: all_shapes[i].index[3].y=1;
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 507  ]
+[e $U 508  ]
+[e :U 507 ]
+{
+[; ;main.c: 488: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='0';
 "488
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 489: all_shapes[i].orientation=1;
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
+[; ;main.c: 489: all_shapes[index].index[j].x -=1;
 "489
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 490: break;
+[e =- . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 1 `i `uc ]
+[; ;main.c: 490: array_data[all_shapes[index].index[j].x][all_shapes[index].index[j].y]='1';
 "490
-[e $U 542  ]
-[; ;main.c: 491: case 2 :
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
 "491
-[e :U 546 ]
-[; ;main.c: 492: all_shapes[i].index[0].x=10;
+}
+"487
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 507  ]
+[e :U 508 ]
+"491
+}
 "492
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 493: all_shapes[i].index[0].y=0;
+}
+[e :U 506 ]
+[; ;main.c: 491: }
+[; ;main.c: 492: }
+[; ;main.c: 493: }
 "493
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 494: all_shapes[i].index[1].x=10;
-"494
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 495: all_shapes[i].index[1].y=1;
-"495
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 496: all_shapes[i].index[2].x=11;
+[e :UE 493 ]
+}
 "496
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 497: all_shapes[i].index[2].y=1;
+[v _delay `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 496: void delay(){
+[e :U _delay ]
+[f ]
 "497
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 498: all_shapes[i].index[3].x=11;
+[v _c `ui ~T0 @X0 1 a ]
+[v _d `ui ~T0 @X0 1 a ]
+[; ;main.c: 497: uint16_t c, d;
+[; ;main.c: 498: for (c = 0; c <= 65530; c++){
 "498
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 499: all_shapes[i].index[3].y=2;
-"499
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 500: all_shapes[i].orientation=2;
-"500
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 501: break;
+{
+[e = _c -> -> 0 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 511  ]
+[e $U 512  ]
+[e :U 511 ]
+{
 "501
-[e $U 542  ]
-[; ;main.c: 502: case 3 :
+}
+"498
+[e ++ _c -> -> 1 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 511  ]
+[e :U 512 ]
+"501
+}
+[; ;main.c: 501: }
+[; ;main.c: 502: return;
 "502
-[e :U 547 ]
-[; ;main.c: 503: all_shapes[i].index[0].x=11;
+[e $UE 510  ]
+[; ;main.c: 503: }
 "503
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 504: all_shapes[i].index[0].y=0;
-"504
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 505: all_shapes[i].index[1].x=11;
+[e :UE 510 ]
+}
 "505
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 506: all_shapes[i].index[1].y=1;
+[v _delayHomeScreen `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 505: void delayHomeScreen(){
+[e :U _delayHomeScreen ]
+[f ]
 "506
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 507: all_shapes[i].index[2].x=12;
+[v _c `ui ~T0 @X0 1 a ]
+[v _d `ui ~T0 @X0 1 a ]
+[; ;main.c: 506: uint16_t c, d;
+[; ;main.c: 507: for (c = 0; c <= 65530; c++){
 "507
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 508: all_shapes[i].index[2].y=1;
+{
+[e = _c -> -> 0 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 515  ]
+[e $U 516  ]
+[e :U 515 ]
+{
+[; ;main.c: 508: for (d = 0; d <= 10; d++)
 "508
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 509: all_shapes[i].index[3].x=12;
+{
+[e = _d -> -> 0 `i `ui ]
+[e $ <= _d -> -> 10 `i `ui 518  ]
+[e $U 519  ]
 "509
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 510: all_shapes[i].index[3].y=2;
+[e :U 518 ]
+[; ;main.c: 509: {}
+{
+}
+"508
+[e ++ _d -> -> 1 `i `ui ]
+[e $ <= _d -> -> 10 `i `ui 518  ]
+[e :U 519 ]
+"509
+}
 "510
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 511: all_shapes[i].orientation=3;
+}
+"507
+[e ++ _c -> -> 1 `i `ui ]
+[e $ <= -> _c `l -> 65530 `l 515  ]
+[e :U 516 ]
+"510
+}
+[; ;main.c: 510: }
+[; ;main.c: 511: return;
 "511
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 512: break;
+[e $UE 514  ]
+[; ;main.c: 512: }
 "512
-[e $U 542  ]
-[; ;main.c: 513: default :
-"513
-[e :U 548 ]
-[; ;main.c: 514: break;
-"514
-[e $U 542  ]
-"515
+[e :UE 514 ]
 }
-[; ;main.c: 515: }
-[e $U 542  ]
-"468
-[e :U 543 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 544
- , $ -> -> 1 `i `uc 545
- , $ -> -> 2 `i `uc 546
- , $ -> -> 3 `i `uc 547
- 548 ]
 "515
-[e :U 542 ]
-[; ;main.c: 516: break;
-"516
-[e $U 471  ]
-[; ;main.c: 517: case 6 :
-"517
-[e :U 549 ]
-[; ;main.c: 518: switch (orientation){
-"518
-[e $U 551  ]
+[v _createRandomShape `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 519: case 0 :
-"519
-[e :U 552 ]
-[; ;main.c: 520: all_shapes[i].orientation=0;
+[; ;main.c: 515: void createRandomShape(uint8_t i){
+[e :U _createRandomShape ]
+[v _i `uc ~T0 @X0 1 r1 ]
+[f ]
+"518
+[v _type `uc ~T0 @X0 1 a ]
+[; ;main.c: 518: uint8_t type = (rand() % (7)) + 1;
+[e = _type -> + % ( _rand ..  -> 7 `i -> 1 `i `uc ]
 "520
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
-"521
-[v _start `uc ~T0 @X0 1 a ]
-[; ;main.c: 521: uint8_t start=10;
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 522: all_shapes[i].index[0].x=11;
-"522
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 523: all_shapes[i].index[0].y=0;
+[v _orientation `uc ~T0 @X0 1 a ]
+[; ;main.c: 520: uint8_t orientation =rand()%4;
+[e = _orientation -> % ( _rand ..  -> 4 `i `uc ]
+[; ;main.c: 523: switch (type){
 "523
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 524: for (uint8_t k=1;k<4;k++){
+[e $U 523  ]
+{
+[; ;main.c: 524: case 1 :
 "524
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 553  ]
-[e $U 554  ]
-[e :U 553 ]
-{
-[; ;main.c: 525: all_shapes[i].index[k].x=start;
+[e :U 524 ]
+[; ;main.c: 525: switch (orientation){
 "525
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 526: all_shapes[i].index[k].y=1;
+[e $U 526  ]
+{
+[; ;main.c: 526: case 0 :
 "526
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 527: start++;
+[e :U 527 ]
+[; ;main.c: 527: all_shapes[i].orientation=0;
 "527
-[e ++ _start -> -> 1 `i `uc ]
-"528
-}
-"524
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 553  ]
-[e :U 554 ]
-"528
-}
-[; ;main.c: 528: }
-[; ;main.c: 529: break;
-"529
-[e $U 550  ]
-[; ;main.c: 530: case 1 :
-"530
-[e :U 556 ]
-[; ;main.c: 531: all_shapes[i].orientation=1;
-"531
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 532: uint8_t start=10;
-"532
-[e = _start -> -> 10 `i `uc ]
-[; ;main.c: 533: all_shapes[i].index[0].x=11;
-"533
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 534: all_shapes[i].index[0].y=2;
-"534
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 535: for (uint8_t k=1;k<4;k++){
-"535
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 557  ]
-[e $U 558  ]
-[e :U 557 ]
-{
-[; ;main.c: 536: all_shapes[i].index[k].x=start;
-"536
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
-[; ;main.c: 537: all_shapes[i].index[k].y=1;
-"537
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 538: start++;
-"538
-[e ++ _start -> -> 1 `i `uc ]
-"539
-}
-"535
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 557  ]
-[e :U 558 ]
-"539
-}
-[; ;main.c: 539: }
-[; ;main.c: 540: break;
-"540
-[e $U 550  ]
-[; ;main.c: 541: case 2 :
-"541
-[e :U 560 ]
-[; ;main.c: 542: all_shapes[i].orientation=2;
-"542
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 543: uint8_t start=0;
-"543
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 544: all_shapes[i].index[0].x=10;
-"544
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 545: all_shapes[i].index[0].y=1;
-"545
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 546: for (uint8_t k=1;k<4;k++){
-"546
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 561  ]
-[e $U 562  ]
-[e :U 561 ]
-{
-[; ;main.c: 547: all_shapes[i].index[k].x=11;
-"547
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 548: all_shapes[i].index[k].y=start;
-"548
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 549: start++;
-"549
-[e ++ _start -> -> 1 `i `uc ]
-"550
-}
-"546
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 561  ]
-[e :U 562 ]
-"550
-}
-[; ;main.c: 550: }
-[; ;main.c: 551: break;
-"551
-[e $U 550  ]
-[; ;main.c: 552: case 3 :
-"552
-[e :U 564 ]
-[; ;main.c: 553: all_shapes[i].orientation=3;
-"553
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 554: uint8_t start=0;
-"554
-[e = _start -> -> 0 `i `uc ]
-[; ;main.c: 555: all_shapes[i].index[0].x=12;
-"555
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 556: all_shapes[i].index[0].y=1;
-"556
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 557: for (uint8_t k=1;k<4;k++){
-"557
-{
-[v _k `uc ~T0 @X0 1 a ]
-[e = _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 565  ]
-[e $U 566  ]
-[e :U 565 ]
-{
-[; ;main.c: 558: all_shapes[i].index[k].x=11;
-"558
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 559: all_shapes[i].index[k].y=start;
-"559
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
-[; ;main.c: 560: start++;
-"560
-[e ++ _start -> -> 1 `i `uc ]
-"561
-}
-"557
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 565  ]
-[e :U 566 ]
-"561
-}
-[; ;main.c: 561: }
-[; ;main.c: 562: break;
-"562
-[e $U 550  ]
-[; ;main.c: 563: default :
-"563
-[e :U 568 ]
-[; ;main.c: 564: break;
-"564
-[e $U 550  ]
-"565
-}
-[; ;main.c: 565: }
-[e $U 550  ]
-"518
-[e :U 551 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 552
- , $ -> -> 1 `i `uc 556
- , $ -> -> 2 `i `uc 560
- , $ -> -> 3 `i `uc 564
- 568 ]
-"565
-[e :U 550 ]
-[; ;main.c: 566: break;
-"566
-[e $U 471  ]
-[; ;main.c: 567: case 7 :
-"567
-[e :U 569 ]
-[; ;main.c: 568: switch (orientation){
-"568
-[e $U 571  ]
-{
-[; ;main.c: 569: case 0 :
-"569
-[e :U 572 ]
-[; ;main.c: 570: all_shapes[i].orientation=0;
-"570
 [e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+"528
+[v _start `uc ~T0 @X0 1 a ]
+[; ;main.c: 528: uint8_t start=8;
+[e = _start -> -> 8 `i `uc ]
+[; ;main.c: 529: for (uint8_t k=0;k<4;k++){
+"529
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 528  ]
+[e $U 529  ]
+[e :U 528 ]
+{
+[; ;main.c: 530: all_shapes[i].index[k].x=start;
+"530
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 531: all_shapes[i].index[k].y=0;
+"531
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 532: start++;
+"532
+[e ++ _start -> -> 1 `i `uc ]
+"533
+}
+"529
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 528  ]
+[e :U 529 ]
+"533
+}
+[; ;main.c: 533: }
+[; ;main.c: 534: break;
+"534
+[e $U 525  ]
+[; ;main.c: 535: case 1 :
+"535
+[e :U 531 ]
+[; ;main.c: 536: all_shapes[i].orientation=1;
+"536
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 537: uint8_t start=8;
+"537
+[e = _start -> -> 8 `i `uc ]
+[; ;main.c: 538: for (uint8_t k=0;k<4;k++){
+"538
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 532  ]
+[e $U 533  ]
+[e :U 532 ]
+{
+[; ;main.c: 539: all_shapes[i].index[k].x=start;
+"539
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 540: all_shapes[i].index[k].y=1;
+"540
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 541: start++;
+"541
+[e ++ _start -> -> 1 `i `uc ]
+"542
+}
+"538
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 532  ]
+[e :U 533 ]
+"542
+}
+[; ;main.c: 542: }
+[; ;main.c: 543: break;
+"543
+[e $U 525  ]
+[; ;main.c: 544: case 2 :
+"544
+[e :U 535 ]
+[; ;main.c: 545: all_shapes[i].orientation=2;
+"545
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 546: uint8_t start=0;
+"546
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 547: for (uint8_t k=0;k<4;k++){
+"547
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 536  ]
+[e $U 537  ]
+[e :U 536 ]
+{
+[; ;main.c: 548: all_shapes[i].index[k].x=10;
+"548
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 549: all_shapes[i].index[k].y=start;
+"549
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 550: start++;
+"550
+[e ++ _start -> -> 1 `i `uc ]
+"551
+}
+"547
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 536  ]
+[e :U 537 ]
+"551
+}
+[; ;main.c: 551: }
+[; ;main.c: 552: break;
+"552
+[e $U 525  ]
+[; ;main.c: 553: case 3 :
+"553
+[e :U 539 ]
+[; ;main.c: 554: all_shapes[i].orientation=3;
+"554
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 555: uint8_t start=0;
+"555
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 556: for (uint8_t k=0;k<4;k++){
+"556
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 540  ]
+[e $U 541  ]
+[e :U 540 ]
+{
+[; ;main.c: 557: all_shapes[i].index[k].x=11;
+"557
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 558: all_shapes[i].index[k].y=start;
+"558
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 559: start++;
+"559
+[e ++ _start -> -> 1 `i `uc ]
+"560
+}
+"556
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 540  ]
+[e :U 541 ]
+"560
+}
+[; ;main.c: 560: }
+[; ;main.c: 561: break;
+"561
+[e $U 525  ]
+[; ;main.c: 562: default :
+"562
+[e :U 543 ]
+[; ;main.c: 563: break;
+"563
+[e $U 525  ]
+"564
+}
+[; ;main.c: 564: }
+[e $U 525  ]
+"525
+[e :U 526 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 527
+ , $ -> -> 1 `i `uc 531
+ , $ -> -> 2 `i `uc 535
+ , $ -> -> 3 `i `uc 539
+ 543 ]
+"564
+[e :U 525 ]
+[; ;main.c: 565: break;
+"565
+[e $U 522  ]
+[; ;main.c: 566: case 2 :
+"566
+[e :U 544 ]
+[; ;main.c: 567: switch (orientation){
+"567
+[e $U 546  ]
+{
+[; ;main.c: 568: case 0 :
+"568
+[e :U 547 ]
+[; ;main.c: 569: all_shapes[i].orientation=0;
+"569
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+"570
+[v _start `uc ~T0 @X0 1 a ]
+[; ;main.c: 570: uint8_t start=10;
+[e = _start -> -> 10 `i `uc ]
 [; ;main.c: 571: all_shapes[i].index[0].x=10;
 "571
 [e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
 [; ;main.c: 572: all_shapes[i].index[0].y=0;
 "572
 [e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 573: all_shapes[i].index[1].x=11;
+[; ;main.c: 573: for (uint8_t k=1;k<4;k++){
 "573
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 574: all_shapes[i].index[1].y=0;
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 548  ]
+[e $U 549  ]
+[e :U 548 ]
+{
+[; ;main.c: 574: all_shapes[i].index[k].x=start;
 "574
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 575: all_shapes[i].index[2].x=11;
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 575: all_shapes[i].index[k].y=1;
 "575
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 576: all_shapes[i].index[2].y=1;
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 576: start++;
 "576
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 577: all_shapes[i].index[3].x=12;
+[e ++ _start -> -> 1 `i `uc ]
 "577
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 578: all_shapes[i].index[3].y=1;
+}
+"573
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 548  ]
+[e :U 549 ]
+"577
+}
+[; ;main.c: 577: }
+[; ;main.c: 578: break;
 "578
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 579: break;
+[e $U 545  ]
+[; ;main.c: 579: case 1 :
 "579
-[e $U 570  ]
-[; ;main.c: 580: case 1 :
+[e :U 551 ]
+[; ;main.c: 580: all_shapes[i].orientation=1;
 "580
-[e :U 573 ]
-[; ;main.c: 581: all_shapes[i].index[0].x=10;
-"581
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 582: all_shapes[i].index[0].y=1;
-"582
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 583: all_shapes[i].index[1].x=11;
-"583
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 584: all_shapes[i].index[1].y=1;
-"584
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 585: all_shapes[i].index[2].x=11;
-"585
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 586: all_shapes[i].index[2].y=2;
-"586
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 587: all_shapes[i].index[3].x=12;
-"587
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 588: all_shapes[i].index[3].y=2;
-"588
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 589: all_shapes[i].orientation=1;
-"589
 [e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
-[; ;main.c: 590: break;
-"590
-[e $U 570  ]
-[; ;main.c: 591: case 2 :
-"591
-[e :U 574 ]
-[; ;main.c: 592: all_shapes[i].index[0].x=11;
-"592
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 593: all_shapes[i].index[0].y=0;
-"593
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 594: all_shapes[i].index[1].x=11;
-"594
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 595: all_shapes[i].index[1].y=1;
-"595
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 596: all_shapes[i].index[2].x=10;
-"596
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 597: all_shapes[i].index[2].y=1;
-"597
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 598: all_shapes[i].index[3].x=10;
-"598
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
-[; ;main.c: 599: all_shapes[i].index[3].y=2;
-"599
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 600: all_shapes[i].orientation=2;
-"600
-[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
-[; ;main.c: 601: break;
-"601
-[e $U 570  ]
-[; ;main.c: 602: case 3 :
-"602
-[e :U 575 ]
-[; ;main.c: 603: all_shapes[i].index[0].x=12;
-"603
+[; ;main.c: 581: uint8_t start=10;
+"581
+[e = _start -> -> 10 `i `uc ]
+[; ;main.c: 582: all_shapes[i].index[0].x=12;
+"582
 [e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 604: all_shapes[i].index[0].y=0;
-"604
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 605: all_shapes[i].index[1].x=12;
-"605
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
-[; ;main.c: 606: all_shapes[i].index[1].y=1;
-"606
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 607: all_shapes[i].index[2].x=11;
-"607
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 608: all_shapes[i].index[2].y=1;
-"608
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
-[; ;main.c: 609: all_shapes[i].index[3].x=11;
-"609
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
-[; ;main.c: 610: all_shapes[i].index[3].y=2;
-"610
-[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
-[; ;main.c: 611: all_shapes[i].orientation=3;
-"611
+[; ;main.c: 583: all_shapes[i].index[0].y=2;
+"583
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 584: for (uint8_t k=1;k<4;k++){
+"584
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 552  ]
+[e $U 553  ]
+[e :U 552 ]
+{
+[; ;main.c: 585: all_shapes[i].index[k].x=start;
+"585
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 586: all_shapes[i].index[k].y=1;
+"586
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 587: start++;
+"587
+[e ++ _start -> -> 1 `i `uc ]
+"588
+}
+"584
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 552  ]
+[e :U 553 ]
+"588
+}
+[; ;main.c: 588: }
+[; ;main.c: 589: break;
+"589
+[e $U 545  ]
+[; ;main.c: 590: case 2 :
+"590
+[e :U 555 ]
+[; ;main.c: 591: all_shapes[i].orientation=2;
+"591
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 592: uint8_t start=0;
+"592
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 593: all_shapes[i].index[0].x=10;
+"593
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 594: all_shapes[i].index[0].y=2;
+"594
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 595: for (uint8_t k=1;k<4;k++){
+"595
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 556  ]
+[e $U 557  ]
+[e :U 556 ]
+{
+[; ;main.c: 596: all_shapes[i].index[k].x=11;
+"596
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 597: all_shapes[i].index[k].y=start;
+"597
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 598: start++;
+"598
+[e ++ _start -> -> 1 `i `uc ]
+"599
+}
+"595
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 556  ]
+[e :U 557 ]
+"599
+}
+[; ;main.c: 599: }
+[; ;main.c: 600: break;
+"600
+[e $U 545  ]
+[; ;main.c: 601: case 3 :
+"601
+[e :U 559 ]
+[; ;main.c: 602: all_shapes[i].orientation=3;
+"602
 [e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
-[; ;main.c: 612: break;
+[; ;main.c: 603: uint8_t start=0;
+"603
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 604: all_shapes[i].index[0].x=12;
+"604
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 605: all_shapes[i].index[0].y=0;
+"605
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 606: for (uint8_t k=1;k<4;k++){
+"606
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 560  ]
+[e $U 561  ]
+[e :U 560 ]
+{
+[; ;main.c: 607: all_shapes[i].index[k].x=11;
+"607
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 608: all_shapes[i].index[k].y=start;
+"608
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 609: start++;
+"609
+[e ++ _start -> -> 1 `i `uc ]
+"610
+}
+"606
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 560  ]
+[e :U 561 ]
+"610
+}
+[; ;main.c: 610: }
+[; ;main.c: 611: break;
+"611
+[e $U 545  ]
+[; ;main.c: 612: default :
 "612
-[e $U 570  ]
-[; ;main.c: 613: default :
+[e :U 563 ]
+[; ;main.c: 613: break;
 "613
-[e :U 576 ]
-[; ;main.c: 614: break;
+[e $U 545  ]
 "614
-[e $U 570  ]
-"615
 }
-[; ;main.c: 615: }
-[e $U 570  ]
-"568
-[e :U 571 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 572
- , $ -> -> 1 `i `uc 573
- , $ -> -> 2 `i `uc 574
- , $ -> -> 3 `i `uc 575
- 576 ]
+[; ;main.c: 614: }
+[e $U 545  ]
+"567
+[e :U 546 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 547
+ , $ -> -> 1 `i `uc 551
+ , $ -> -> 2 `i `uc 555
+ , $ -> -> 3 `i `uc 559
+ 563 ]
+"614
+[e :U 545 ]
+[; ;main.c: 615: break;
 "615
-[e :U 570 ]
-[; ;main.c: 616: break;
+[e $U 522  ]
+[; ;main.c: 616: case 3 :
 "616
-[e $U 471  ]
-[; ;main.c: 617: default :
+[e :U 564 ]
+[; ;main.c: 617: switch (orientation){
 "617
-[e :U 577 ]
-[; ;main.c: 618: break;
+[e $U 566  ]
+{
+[; ;main.c: 618: case 0 :
 "618
-[e $U 471  ]
+[e :U 567 ]
+[; ;main.c: 619: all_shapes[i].orientation=0;
 "619
-}
-[; ;main.c: 619: }
-[e $U 471  ]
-"298
-[e :U 472 ]
-[e [\ _type , $ -> -> 1 `i `uc 473
- , $ -> -> 2 `i `uc 493
- , $ -> -> 3 `i `uc 513
- , $ -> -> 4 `i `uc 533
- , $ -> -> 5 `i `uc 541
- , $ -> -> 6 `i `uc 549
- , $ -> -> 7 `i `uc 569
- 577 ]
-"619
-[e :U 471 ]
-[; ;main.c: 622: for (uint8_t k=0;k<4;k++){
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+"620
+[v _start `uc ~T0 @X0 1 a ]
+[; ;main.c: 620: uint8_t start=10;
+[e = _start -> -> 10 `i `uc ]
+[; ;main.c: 621: all_shapes[i].index[0].x=12;
+"621
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 622: all_shapes[i].index[0].y=0;
 "622
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 623: for (uint8_t k=1;k<4;k++){
+"623
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 568  ]
+[e $U 569  ]
+[e :U 568 ]
+{
+[; ;main.c: 624: all_shapes[i].index[k].x=start;
+"624
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 625: all_shapes[i].index[k].y=1;
+"625
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 626: start++;
+"626
+[e ++ _start -> -> 1 `i `uc ]
+"627
+}
+"623
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 568  ]
+[e :U 569 ]
+"627
+}
+[; ;main.c: 627: }
+[; ;main.c: 628: break;
+"628
+[e $U 565  ]
+[; ;main.c: 629: case 1 :
+"629
+[e :U 571 ]
+[; ;main.c: 630: all_shapes[i].orientation=1;
+"630
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 631: uint8_t start=10;
+"631
+[e = _start -> -> 10 `i `uc ]
+[; ;main.c: 632: all_shapes[i].index[0].x=10;
+"632
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 633: all_shapes[i].index[0].y=2;
+"633
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 634: for (uint8_t k=1;k<4;k++){
+"634
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 572  ]
+[e $U 573  ]
+[e :U 572 ]
+{
+[; ;main.c: 635: all_shapes[i].index[k].x=start;
+"635
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 636: all_shapes[i].index[k].y=1;
+"636
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 637: start++;
+"637
+[e ++ _start -> -> 1 `i `uc ]
+"638
+}
+"634
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 572  ]
+[e :U 573 ]
+"638
+}
+[; ;main.c: 638: }
+[; ;main.c: 639: break;
+"639
+[e $U 565  ]
+[; ;main.c: 640: case 2 :
+"640
+[e :U 575 ]
+[; ;main.c: 641: all_shapes[i].orientation=2;
+"641
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 642: uint8_t start=0;
+"642
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 643: all_shapes[i].index[0].x=10;
+"643
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 644: all_shapes[i].index[0].y=0;
+"644
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 645: for (uint8_t k=1;k<4;k++){
+"645
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 576  ]
+[e $U 577  ]
+[e :U 576 ]
+{
+[; ;main.c: 646: all_shapes[i].index[k].x=11;
+"646
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 647: all_shapes[i].index[k].y=start;
+"647
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 648: start++;
+"648
+[e ++ _start -> -> 1 `i `uc ]
+"649
+}
+"645
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 576  ]
+[e :U 577 ]
+"649
+}
+[; ;main.c: 649: }
+[; ;main.c: 650: break;
+"650
+[e $U 565  ]
+[; ;main.c: 651: case 3 :
+"651
+[e :U 579 ]
+[; ;main.c: 652: all_shapes[i].orientation=3;
+"652
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 653: uint8_t start=0;
+"653
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 654: all_shapes[i].index[0].x=12;
+"654
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 655: all_shapes[i].index[0].y=2;
+"655
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 656: for (uint8_t k=1;k<4;k++){
+"656
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 580  ]
+[e $U 581  ]
+[e :U 580 ]
+{
+[; ;main.c: 657: all_shapes[i].index[k].x=11;
+"657
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 658: all_shapes[i].index[k].y=start;
+"658
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 659: start++;
+"659
+[e ++ _start -> -> 1 `i `uc ]
+"660
+}
+"656
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 580  ]
+[e :U 581 ]
+"660
+}
+[; ;main.c: 660: }
+[; ;main.c: 661: break;
+"661
+[e $U 565  ]
+[; ;main.c: 662: default :
+"662
+[e :U 583 ]
+[; ;main.c: 663: break;
+"663
+[e $U 565  ]
+"664
+}
+[; ;main.c: 664: }
+[e $U 565  ]
+"617
+[e :U 566 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 567
+ , $ -> -> 1 `i `uc 571
+ , $ -> -> 2 `i `uc 575
+ , $ -> -> 3 `i `uc 579
+ 583 ]
+"664
+[e :U 565 ]
+[; ;main.c: 665: break;
+"665
+[e $U 522  ]
+[; ;main.c: 666: case 4 :
+"666
+[e :U 584 ]
+[; ;main.c: 667: all_shapes[i].index[0].x=11;
+"667
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 668: all_shapes[i].index[0].y=0;
+"668
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 669: all_shapes[i].index[1].x=12;
+"669
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 670: all_shapes[i].index[1].y=0;
+"670
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 671: all_shapes[i].index[2].x=11;
+"671
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 672: all_shapes[i].index[2].y=1;
+"672
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 673: all_shapes[i].index[3].x=12;
+"673
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 674: all_shapes[i].index[3].y=1;
+"674
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 675: switch (orientation){
+"675
+[e $U 586  ]
+{
+[; ;main.c: 676: case 0 :
+"676
+[e :U 587 ]
+[; ;main.c: 677: all_shapes[i].orientation=0;
+"677
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+[; ;main.c: 678: break;
+"678
+[e $U 585  ]
+[; ;main.c: 679: case 1 :
+"679
+[e :U 588 ]
+[; ;main.c: 680: all_shapes[i].orientation=1;
+"680
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 681: break;
+"681
+[e $U 585  ]
+[; ;main.c: 682: case 2 :
+"682
+[e :U 589 ]
+[; ;main.c: 683: all_shapes[i].orientation=2;
+"683
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 684: break;
+"684
+[e $U 585  ]
+[; ;main.c: 685: case 3 :
+"685
+[e :U 590 ]
+[; ;main.c: 686: all_shapes[i].orientation=3;
+"686
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 687: break;
+"687
+[e $U 585  ]
+[; ;main.c: 688: default :
+"688
+[e :U 591 ]
+[; ;main.c: 689: break;
+"689
+[e $U 585  ]
+"690
+}
+[; ;main.c: 690: }
+[e $U 585  ]
+"675
+[e :U 586 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 587
+ , $ -> -> 1 `i `uc 588
+ , $ -> -> 2 `i `uc 589
+ , $ -> -> 3 `i `uc 590
+ 591 ]
+"690
+[e :U 585 ]
+[; ;main.c: 691: break;
+"691
+[e $U 522  ]
+[; ;main.c: 692: case 5 :
+"692
+[e :U 592 ]
+[; ;main.c: 693: switch (orientation){
+"693
+[e $U 594  ]
+{
+[; ;main.c: 694: case 0 :
+"694
+[e :U 595 ]
+[; ;main.c: 695: all_shapes[i].orientation=0;
+"695
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+[; ;main.c: 696: all_shapes[i].index[0].x=10;
+"696
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 697: all_shapes[i].index[0].y=1;
+"697
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 698: all_shapes[i].index[1].x=11;
+"698
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 699: all_shapes[i].index[1].y=1;
+"699
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 700: all_shapes[i].index[2].x=11;
+"700
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 701: all_shapes[i].index[2].y=0;
+"701
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 702: all_shapes[i].index[3].x=12;
+"702
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 703: all_shapes[i].index[3].y=0;
+"703
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 704: break;
+"704
+[e $U 593  ]
+[; ;main.c: 705: case 1 :
+"705
+[e :U 596 ]
+[; ;main.c: 706: all_shapes[i].index[0].x=10;
+"706
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 707: all_shapes[i].index[0].y=2;
+"707
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 708: all_shapes[i].index[1].x=11;
+"708
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 709: all_shapes[i].index[1].y=2;
+"709
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 710: all_shapes[i].index[2].x=11;
+"710
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 711: all_shapes[i].index[2].y=1;
+"711
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 712: all_shapes[i].index[3].x=12;
+"712
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 713: all_shapes[i].index[3].y=1;
+"713
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 714: all_shapes[i].orientation=1;
+"714
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 715: break;
+"715
+[e $U 593  ]
+[; ;main.c: 716: case 2 :
+"716
+[e :U 597 ]
+[; ;main.c: 717: all_shapes[i].index[0].x=10;
+"717
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 718: all_shapes[i].index[0].y=0;
+"718
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 719: all_shapes[i].index[1].x=10;
+"719
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 720: all_shapes[i].index[1].y=1;
+"720
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 721: all_shapes[i].index[2].x=11;
+"721
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 722: all_shapes[i].index[2].y=1;
+"722
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 723: all_shapes[i].index[3].x=11;
+"723
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 724: all_shapes[i].index[3].y=2;
+"724
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 725: all_shapes[i].orientation=2;
+"725
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 726: break;
+"726
+[e $U 593  ]
+[; ;main.c: 727: case 3 :
+"727
+[e :U 598 ]
+[; ;main.c: 728: all_shapes[i].index[0].x=11;
+"728
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 729: all_shapes[i].index[0].y=0;
+"729
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 730: all_shapes[i].index[1].x=11;
+"730
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 731: all_shapes[i].index[1].y=1;
+"731
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 732: all_shapes[i].index[2].x=12;
+"732
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 733: all_shapes[i].index[2].y=1;
+"733
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 734: all_shapes[i].index[3].x=12;
+"734
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 735: all_shapes[i].index[3].y=2;
+"735
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 736: all_shapes[i].orientation=3;
+"736
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 737: break;
+"737
+[e $U 593  ]
+[; ;main.c: 738: default :
+"738
+[e :U 599 ]
+[; ;main.c: 739: break;
+"739
+[e $U 593  ]
+"740
+}
+[; ;main.c: 740: }
+[e $U 593  ]
+"693
+[e :U 594 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 595
+ , $ -> -> 1 `i `uc 596
+ , $ -> -> 2 `i `uc 597
+ , $ -> -> 3 `i `uc 598
+ 599 ]
+"740
+[e :U 593 ]
+[; ;main.c: 741: break;
+"741
+[e $U 522  ]
+[; ;main.c: 742: case 6 :
+"742
+[e :U 600 ]
+[; ;main.c: 743: switch (orientation){
+"743
+[e $U 602  ]
+{
+[; ;main.c: 744: case 0 :
+"744
+[e :U 603 ]
+[; ;main.c: 745: all_shapes[i].orientation=0;
+"745
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+"746
+[v _start `uc ~T0 @X0 1 a ]
+[; ;main.c: 746: uint8_t start=10;
+[e = _start -> -> 10 `i `uc ]
+[; ;main.c: 747: all_shapes[i].index[0].x=11;
+"747
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 748: all_shapes[i].index[0].y=0;
+"748
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 749: for (uint8_t k=1;k<4;k++){
+"749
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 604  ]
+[e $U 605  ]
+[e :U 604 ]
+{
+[; ;main.c: 750: all_shapes[i].index[k].x=start;
+"750
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 751: all_shapes[i].index[k].y=1;
+"751
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 752: start++;
+"752
+[e ++ _start -> -> 1 `i `uc ]
+"753
+}
+"749
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 604  ]
+[e :U 605 ]
+"753
+}
+[; ;main.c: 753: }
+[; ;main.c: 754: break;
+"754
+[e $U 601  ]
+[; ;main.c: 755: case 1 :
+"755
+[e :U 607 ]
+[; ;main.c: 756: all_shapes[i].orientation=1;
+"756
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 757: uint8_t start=10;
+"757
+[e = _start -> -> 10 `i `uc ]
+[; ;main.c: 758: all_shapes[i].index[0].x=11;
+"758
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 759: all_shapes[i].index[0].y=2;
+"759
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 760: for (uint8_t k=1;k<4;k++){
+"760
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 608  ]
+[e $U 609  ]
+[e :U 608 ]
+{
+[; ;main.c: 761: all_shapes[i].index[k].x=start;
+"761
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 _start ]
+[; ;main.c: 762: all_shapes[i].index[k].y=1;
+"762
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 763: start++;
+"763
+[e ++ _start -> -> 1 `i `uc ]
+"764
+}
+"760
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 608  ]
+[e :U 609 ]
+"764
+}
+[; ;main.c: 764: }
+[; ;main.c: 765: break;
+"765
+[e $U 601  ]
+[; ;main.c: 766: case 2 :
+"766
+[e :U 611 ]
+[; ;main.c: 767: all_shapes[i].orientation=2;
+"767
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 768: uint8_t start=0;
+"768
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 769: all_shapes[i].index[0].x=10;
+"769
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 770: all_shapes[i].index[0].y=1;
+"770
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 771: for (uint8_t k=1;k<4;k++){
+"771
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 612  ]
+[e $U 613  ]
+[e :U 612 ]
+{
+[; ;main.c: 772: all_shapes[i].index[k].x=11;
+"772
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 773: all_shapes[i].index[k].y=start;
+"773
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 774: start++;
+"774
+[e ++ _start -> -> 1 `i `uc ]
+"775
+}
+"771
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 612  ]
+[e :U 613 ]
+"775
+}
+[; ;main.c: 775: }
+[; ;main.c: 776: break;
+"776
+[e $U 601  ]
+[; ;main.c: 777: case 3 :
+"777
+[e :U 615 ]
+[; ;main.c: 778: all_shapes[i].orientation=3;
+"778
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 779: uint8_t start=0;
+"779
+[e = _start -> -> 0 `i `uc ]
+[; ;main.c: 780: all_shapes[i].index[0].x=12;
+"780
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 781: all_shapes[i].index[0].y=1;
+"781
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 782: for (uint8_t k=1;k<4;k++){
+"782
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 616  ]
+[e $U 617  ]
+[e :U 616 ]
+{
+[; ;main.c: 783: all_shapes[i].index[k].x=11;
+"783
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 784: all_shapes[i].index[k].y=start;
+"784
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 _start ]
+[; ;main.c: 785: start++;
+"785
+[e ++ _start -> -> 1 `i `uc ]
+"786
+}
+"782
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 616  ]
+[e :U 617 ]
+"786
+}
+[; ;main.c: 786: }
+[; ;main.c: 787: break;
+"787
+[e $U 601  ]
+[; ;main.c: 788: default :
+"788
+[e :U 619 ]
+[; ;main.c: 789: break;
+"789
+[e $U 601  ]
+"790
+}
+[; ;main.c: 790: }
+[e $U 601  ]
+"743
+[e :U 602 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 603
+ , $ -> -> 1 `i `uc 607
+ , $ -> -> 2 `i `uc 611
+ , $ -> -> 3 `i `uc 615
+ 619 ]
+"790
+[e :U 601 ]
+[; ;main.c: 791: break;
+"791
+[e $U 522  ]
+[; ;main.c: 792: case 7 :
+"792
+[e :U 620 ]
+[; ;main.c: 793: switch (orientation){
+"793
+[e $U 622  ]
+{
+[; ;main.c: 794: case 0 :
+"794
+[e :U 623 ]
+[; ;main.c: 795: all_shapes[i].orientation=0;
+"795
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 0 `i `E4237 ]
+[; ;main.c: 796: all_shapes[i].index[0].x=10;
+"796
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 797: all_shapes[i].index[0].y=0;
+"797
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 798: all_shapes[i].index[1].x=11;
+"798
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 799: all_shapes[i].index[1].y=0;
+"799
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 800: all_shapes[i].index[2].x=11;
+"800
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 801: all_shapes[i].index[2].y=1;
+"801
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 802: all_shapes[i].index[3].x=12;
+"802
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 803: all_shapes[i].index[3].y=1;
+"803
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 804: break;
+"804
+[e $U 621  ]
+[; ;main.c: 805: case 1 :
+"805
+[e :U 624 ]
+[; ;main.c: 806: all_shapes[i].index[0].x=10;
+"806
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 807: all_shapes[i].index[0].y=1;
+"807
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 808: all_shapes[i].index[1].x=11;
+"808
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 809: all_shapes[i].index[1].y=1;
+"809
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 810: all_shapes[i].index[2].x=11;
+"810
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 811: all_shapes[i].index[2].y=2;
+"811
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 812: all_shapes[i].index[3].x=12;
+"812
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 813: all_shapes[i].index[3].y=2;
+"813
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 814: all_shapes[i].orientation=1;
+"814
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 1 `i `E4237 ]
+[; ;main.c: 815: break;
+"815
+[e $U 621  ]
+[; ;main.c: 816: case 2 :
+"816
+[e :U 625 ]
+[; ;main.c: 817: all_shapes[i].index[0].x=11;
+"817
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 818: all_shapes[i].index[0].y=0;
+"818
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 819: all_shapes[i].index[1].x=11;
+"819
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 820: all_shapes[i].index[1].y=1;
+"820
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 821: all_shapes[i].index[2].x=10;
+"821
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 822: all_shapes[i].index[2].y=1;
+"822
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 823: all_shapes[i].index[3].x=10;
+"823
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 10 `i `uc ]
+[; ;main.c: 824: all_shapes[i].index[3].y=2;
+"824
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 825: all_shapes[i].orientation=2;
+"825
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 2 `i `E4237 ]
+[; ;main.c: 826: break;
+"826
+[e $U 621  ]
+[; ;main.c: 827: case 3 :
+"827
+[e :U 626 ]
+[; ;main.c: 828: all_shapes[i].index[0].x=12;
+"828
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 829: all_shapes[i].index[0].y=0;
+"829
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 830: all_shapes[i].index[1].x=12;
+"830
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 12 `i `uc ]
+[; ;main.c: 831: all_shapes[i].index[1].y=1;
+"831
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 832: all_shapes[i].index[2].x=11;
+"832
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 833: all_shapes[i].index[2].y=1;
+"833
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+[; ;main.c: 834: all_shapes[i].index[3].x=11;
+"834
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 11 `i `uc ]
+[; ;main.c: 835: all_shapes[i].index[3].y=2;
+"835
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 2 `i `uc ]
+[; ;main.c: 836: all_shapes[i].orientation=3;
+"836
+[e = . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 1 -> -> 3 `i `E4237 ]
+[; ;main.c: 837: break;
+"837
+[e $U 621  ]
+[; ;main.c: 838: default :
+"838
+[e :U 627 ]
+[; ;main.c: 839: break;
+"839
+[e $U 621  ]
+"840
+}
+[; ;main.c: 840: }
+[e $U 621  ]
+"793
+[e :U 622 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 623
+ , $ -> -> 1 `i `uc 624
+ , $ -> -> 2 `i `uc 625
+ , $ -> -> 3 `i `uc 626
+ 627 ]
+"840
+[e :U 621 ]
+[; ;main.c: 841: break;
+"841
+[e $U 522  ]
+[; ;main.c: 842: default :
+"842
+[e :U 628 ]
+[; ;main.c: 843: break;
+"843
+[e $U 522  ]
+"844
+}
+[; ;main.c: 844: }
+[e $U 522  ]
+"523
+[e :U 523 ]
+[e [\ _type , $ -> -> 1 `i `uc 524
+ , $ -> -> 2 `i `uc 544
+ , $ -> -> 3 `i `uc 564
+ , $ -> -> 4 `i `uc 584
+ , $ -> -> 5 `i `uc 592
+ , $ -> -> 6 `i `uc 600
+ , $ -> -> 7 `i `uc 620
+ 628 ]
+"844
+[e :U 522 ]
+[; ;main.c: 847: for (uint8_t k=0;k<4;k++){
+"847
 {
 [v _k `uc ~T0 @X0 1 a ]
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 4 `i 578  ]
-[e $U 579  ]
-[e :U 578 ]
+[e $ < -> _k `i -> 4 `i 629  ]
+[e $U 630  ]
+[e :U 629 ]
 {
-[; ;main.c: 623: array_data[all_shapes[i].index[k].x][all_shapes[i].index[k].y]='1';
-"623
+[; ;main.c: 848: array_data[all_shapes[i].index[k].x][all_shapes[i].index[k].y]='1';
+"848
 [e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
-"624
+"849
 }
-"622
+"847
 [e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 4 `i 578  ]
-[e :U 579 ]
-"624
+[e $ < -> _k `i -> 4 `i 629  ]
+[e :U 630 ]
+"849
 }
-[; ;main.c: 624: }
-[; ;main.c: 626: }
-"626
-[e :UE 470 ]
+[; ;main.c: 849: }
+[; ;main.c: 851: }
+"851
+[e :UE 521 ]
+}
+"854
+[v _completedUpdate `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;main.c: 854: void completedUpdate(uint8_t line){
+[e :U _completedUpdate ]
+[v _line `uc ~T0 @X0 1 r1 ]
+[f ]
+"856
+[v _i `uc ~T0 @X0 1 a ]
+[; ;main.c: 856: uint8_t i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;main.c: 857: while (all_shapes[i].index[0].x != 99){
+"857
+[e $U 633  ]
+[e :U 634 ]
+{
+[; ;main.c: 858: for(uint8_t j=0;j<4;j++){
+"858
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 636  ]
+[e $U 637  ]
+[e :U 636 ]
+{
+[; ;main.c: 859: if(all_shapes[i].index[j].y==line){
+"859
+[e $ ! == -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> _line `i 639  ]
+{
+[; ;main.c: 860: all_shapes[i].index[j].x=-1;
+"860
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -U -> 1 `i `uc ]
+[; ;main.c: 861: all_shapes[i].index[j].y=-1;
+"861
+[e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -U -> 1 `i `uc ]
+"862
+}
+[e :U 639 ]
+"863
+}
+"858
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 636  ]
+[e :U 637 ]
+"863
+}
+"865
+}
+[e :U 633 ]
+"857
+[e $ != -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 99 `i 634  ]
+[e :U 635 ]
+[; ;main.c: 862: }
+[; ;main.c: 863: }
+[; ;main.c: 865: }
+[; ;main.c: 867: while (all_shapes[i].index[0].x != 99){
+"867
+[e $U 640  ]
+[e :U 641 ]
+{
+[; ;main.c: 868: for(uint8_t j=0;j<4;j++){
+"868
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 4 `i 643  ]
+[e $U 644  ]
+[e :U 643 ]
+{
+[; ;main.c: 869: if(all_shapes[i].index[j].y < line && all_shapes[i].index[j].y!=-1){
+"869
+[e $ ! && < -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -> _line `i != -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `i -U -> 1 `i 646  ]
+{
+[; ;main.c: 870: all_shapes[i].index[j].y+=1;
+"870
+[e =+ . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _j `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 1 `i `uc ]
+"871
+}
+[e :U 646 ]
+"872
+}
+"868
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 4 `i 643  ]
+[e :U 644 ]
+"872
+}
+"873
+}
+[e :U 640 ]
+"867
+[e $ != -> . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `i -> 99 `i 641  ]
+[e :U 642 ]
+[; ;main.c: 871: }
+[; ;main.c: 872: }
+[; ;main.c: 873: }
+[; ;main.c: 876: for(uint8_t j=line;j>0;j--){
+"876
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j _line ]
+[e $ > -> _j `i -> 0 `i 647  ]
+[e $U 648  ]
+[e :U 647 ]
+{
+[; ;main.c: 877: for(uint8_t i=0;i<17;i++){
+"877
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 17 `i 650  ]
+[e $U 651  ]
+[e :U 650 ]
+{
+[; ;main.c: 878: array_data[i][j]=array_data[i][j-1];
+"878
+[e = *U + &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> _j `ux -> -> # *U &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux *U + &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> -> - -> _j `i -> 1 `i `ui `ux -> -> # *U &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux ]
+"879
+}
+"877
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 17 `i 650  ]
+[e :U 651 ]
+"879
+}
+"880
+}
+"876
+[e -- _j -> -> 1 `i `uc ]
+[e $ > -> _j `i -> 0 `i 647  ]
+[e :U 648 ]
+"880
+}
+[; ;main.c: 879: }
+[; ;main.c: 880: }
+[; ;main.c: 882: update_display_shapes('1');
+"882
+[e ( _update_display_shapes (1 -> -> 49 `ui `uc ]
+[; ;main.c: 883: }
+"883
+[e :UE 632 ]
+}
+"886
+[v _lineCompletedTest `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 886: void lineCompletedTest(){
+[e :U _lineCompletedTest ]
+[f ]
+"888
+[v _completed `uc ~T0 @X0 1 a ]
+[; ;main.c: 888: uint8_t completed=0;
+[e = _completed -> -> 0 `i `uc ]
+[; ;main.c: 889: for(uint8_t j=0;j<11;j++){
+"889
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 11 `i 654  ]
+[e $U 655  ]
+[e :U 654 ]
+{
+[; ;main.c: 890: for(uint8_t i=0;i<17;i++){
+"890
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 17 `i 657  ]
+[e $U 658  ]
+[e :U 657 ]
+{
+[; ;main.c: 891: if(array_data[i][j]=='1')
+"891
+[e $ ! == -> *U + &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> _j `ux -> -> # *U &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui 660  ]
+[; ;main.c: 892: completed=1;
+"892
+[e = _completed -> -> 1 `i `uc ]
+[e $U 661  ]
+"893
+[e :U 660 ]
+[; ;main.c: 893: else{
+{
+[; ;main.c: 894: completed=0;
+"894
+[e = _completed -> -> 0 `i `uc ]
+[; ;main.c: 895: break;
+"895
+[e $U 658  ]
+"896
+}
+[e :U 661 ]
+"897
+}
+"890
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 17 `i 657  ]
+[e :U 658 ]
+"897
+}
+[; ;main.c: 896: }
+[; ;main.c: 897: }
+[; ;main.c: 898: if(completed==1){
+"898
+[e $ ! == -> _completed `i -> 1 `i 662  ]
+{
+[; ;main.c: 899: completedUpdate(j);
+"899
+[e ( _completedUpdate (1 _j ]
+[; ;main.c: 900: score+=10;
+"900
+[e =+ _score -> -> 10 `i `uc ]
+"901
+}
+[e :U 662 ]
+"902
+}
+"889
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 11 `i 654  ]
+[e :U 655 ]
+"902
+}
+[; ;main.c: 901: }
+[; ;main.c: 902: }
+[; ;main.c: 903: }
+"903
+[e :UE 653 ]
+}
+"906
+[v _rotate `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;main.c: 906: void rotate(uint8_t index){
+[e :U _rotate ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+"908
+[v _temp_x `uc ~T0 @X0 1 a ]
+[v _temp_y `uc ~T0 @X0 1 a ]
+[v _ok `uc ~T0 @X0 1 a ]
+"909
+[v _new_coord `uc ~T0 @X0 -> 8 `i a ]
+"910
+[v _pivot_x `uc ~T0 @X0 1 a ]
+[; ;main.c: 908: uint8_t temp_x,temp_y,ok;
+[; ;main.c: 909: uint8_t new_coord[8];
+[; ;main.c: 910: uint8_t pivot_x=all_shapes[index].index[3].x;
+[e = _pivot_x . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+"911
+[v _pivot_y `uc ~T0 @X0 1 a ]
+[; ;main.c: 911: uint8_t pivot_y=all_shapes[index].index[3].y;
+[e = _pivot_y . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 914: for (uint8_t k=0;k<4;k++){
+"914
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 664  ]
+[e $U 665  ]
+[e :U 664 ]
+{
+[; ;main.c: 915: temp_x=all_shapes[index].index[k].x;
+"915
+[e = _temp_x . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 ]
+[; ;main.c: 916: temp_y=all_shapes[index].index[k].y;
+"916
+[e = _temp_y . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 ]
+[; ;main.c: 917: new_coord[k]=pivot_x - pivot_y + temp_y;
+"917
+[e = *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux -> + - -> _pivot_x `i -> _pivot_y `i -> _temp_y `i `uc ]
+[; ;main.c: 918: new_coord[k+1]=pivot_x + pivot_y - temp_x;
+"918
+[e = *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux -> - + -> _pivot_x `i -> _pivot_y `i -> _temp_x `i `uc ]
+[; ;main.c: 921: if(new_coord[k] >= 0 && new_coord[k] <=17 && new_coord[k+1] >= 0 && new_coord[k+1] <=11 && (array_data[new_coord[k]][new_coord[k+1]]!='1' || dontBelong2Shape(index,new_coord[k],new_coord[k+1]))){
+"921
+[e $ ! && && && && >= -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `i -> 17 `i >= -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 0 `i <= -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> 11 `i || != -> *U + &U *U + &U _array_data * -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `ux -> -> # *U &U *U + &U _array_data * -> *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux `ui -> 49 `ui != -> ( _dontBelong2Shape (3 , , _index *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux `i -> -> -> 0 `i `uc `i 667  ]
+{
+[; ;main.c: 922: ok=1;
+"922
+[e = _ok -> -> 1 `i `uc ]
+"923
+}
+[; ;main.c: 923: }
+[e $U 668  ]
+"924
+[e :U 667 ]
+[; ;main.c: 924: else {
+{
+[; ;main.c: 925: ok=0;
+"925
+[e = _ok -> -> 0 `i `uc ]
+[; ;main.c: 926: break;
+"926
+[e $U 665  ]
+"927
+}
+[e :U 668 ]
+"928
+}
+"914
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 664  ]
+[e :U 665 ]
+"928
+}
+[; ;main.c: 927: }
+[; ;main.c: 928: }
+[; ;main.c: 930: if(ok){
+"930
+[e $ ! != -> _ok `i -> -> -> 0 `i `uc `i 669  ]
+{
+[; ;main.c: 932: for (uint8_t k=0;k<4;k++){
+"932
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 4 `i 670  ]
+[e $U 671  ]
+[e :U 670 ]
+{
+[; ;main.c: 933: array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='0';
+"933
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
+[; ;main.c: 934: all_shapes[index].index[k].x=new_coord[k];
+"934
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 *U + &U _new_coord * -> _k `ux -> -> # *U &U _new_coord `ui `ux ]
+[; ;main.c: 935: all_shapes[index].index[k].y=new_coord[k+1];
+"935
+[e = . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 *U + &U _new_coord * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _new_coord `ui `ux ]
+[; ;main.c: 936: array_data[all_shapes[index].index[k].x][all_shapes[index].index[k].y]='1';
+"936
+[e = *U + &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 `ux -> -> # *U &U *U + &U _array_data * -> . *U + &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _k `ux -> -> # *U &U . *U + &U _all_shapes * -> _index `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
+"937
+}
+"932
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 4 `i 670  ]
+[e :U 671 ]
+"937
+}
+"938
+}
+[e :U 669 ]
+[; ;main.c: 937: }
+[; ;main.c: 938: }
+[; ;main.c: 940: }
+"940
+[e :UE 663 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"630
+"944
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 630: void main(void) {
+[; ;main.c: 944: void main(void) {
 [e :U _main ]
 [f ]
-"632
+"946
 [v _index `uc ~T0 @X0 1 a ]
-[; ;main.c: 632: uint8_t index=-1,next=1;
+[; ;main.c: 946: uint8_t index=-1;
 [e = _index -> -U -> 1 `i `uc ]
-[v _next `uc ~T0 @X0 1 a ]
-[e = _next -> -> 1 `i `uc ]
-[; ;main.c: 634: glcd_Init(1);
-"634
+"947
+[v _next `c ~T0 @X0 1 a ]
+[; ;main.c: 947: int8_t next=1;
+[e = _next -> -> 1 `i `c ]
+[; ;main.c: 948: TRISE = 0xFF;
+"948
+[e = _TRISE -> -> 255 `i `uc ]
+[; ;main.c: 949: PORTE = 0x00;
+"949
+[e = _PORTE -> -> 0 `i `uc ]
+[; ;main.c: 951: glcd_Init(1);
+"951
 [e ( _glcd_Init (1 -> -> 1 `i `uc ]
-[; ;main.c: 635: glcd_Image();
-"635
+[; ;main.c: 952: glcd_Image();
+"952
 [e ( _glcd_Image ..  ]
-[; ;main.c: 636: delayHomeScreen();
-"636
+[; ;main.c: 953: delayHomeScreen();
+"953
 [e ( _delayHomeScreen ..  ]
-[; ;main.c: 637: glcd_FillScreen(0);
-"637
+[; ;main.c: 954: glcd_FillScreen(0);
+"954
 [e ( _glcd_FillScreen (1 -> -> 0 `i `uc ]
-[; ;main.c: 638: display_grid();
-"638
+[; ;main.c: 955: display_grid();
+"955
 [e ( _display_grid ..  ]
-[; ;main.c: 640: for(uint8_t i=0;i<20;i++){
-"640
+[; ;main.c: 957: for(uint8_t i=0;i<20;i++){
+"957
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 20 `i 582  ]
-[e $U 583  ]
-[e :U 582 ]
+[e $ < -> _i `i -> 20 `i 674  ]
+[e $U 675  ]
+[e :U 674 ]
 {
-[; ;main.c: 641: for(uint8_t y=0;y<4;y++){
-"641
+[; ;main.c: 958: for(uint8_t y=0;y<4;y++){
+"958
 {
 [v _y `uc ~T0 @X0 1 a ]
 [e = _y -> -> 0 `i `uc ]
-[e $ < -> _y `i -> 4 `i 585  ]
-[e $U 586  ]
-[e :U 585 ]
+[e $ < -> _y `i -> 4 `i 677  ]
+[e $U 678  ]
+[e :U 677 ]
 {
-[; ;main.c: 642: all_shapes[i].index[y].x=99;
-"642
+[; ;main.c: 959: all_shapes[i].index[y].x=99;
+"959
 [e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _y `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 0 -> -> 99 `i `uc ]
-[; ;main.c: 643: all_shapes[i].index[y].y=99;
-"643
+[; ;main.c: 960: all_shapes[i].index[y].y=99;
+"960
 [e = . *U + &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 * -> _y `ux -> -> # *U &U . *U + &U _all_shapes * -> _i `ux -> -> # *U &U _all_shapes `ui `ux 0 `ui `ux 1 -> -> 99 `i `uc ]
-"644
+"961
 }
-"641
+"958
 [e ++ _y -> -> 1 `i `uc ]
-[e $ < -> _y `i -> 4 `i 585  ]
-[e :U 586 ]
-"644
+[e $ < -> _y `i -> 4 `i 677  ]
+[e :U 678 ]
+"961
 }
-"645
+"962
 }
-"640
+"957
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 20 `i 582  ]
-[e :U 583 ]
-"645
+[e $ < -> _i `i -> 20 `i 674  ]
+[e :U 675 ]
+"962
 }
-[; ;main.c: 644: }
-[; ;main.c: 645: }
-[; ;main.c: 647: for(uint8_t i=0;i<18;i++){
-"647
+[; ;main.c: 961: }
+[; ;main.c: 962: }
+[; ;main.c: 964: for(uint8_t i=0;i<18;i++){
+"964
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 18 `i 588  ]
-[e $U 589  ]
-[e :U 588 ]
+[e $ < -> _i `i -> 18 `i 680  ]
+[e $U 681  ]
+[e :U 680 ]
 {
-[; ;main.c: 648: for(uint8_t y=0;y<12;y++){
-"648
+[; ;main.c: 965: for(uint8_t y=0;y<12;y++){
+"965
 {
 [v _y `uc ~T0 @X0 1 a ]
 [e = _y -> -> 0 `i `uc ]
-[e $ < -> _y `i -> 12 `i 591  ]
-[e $U 592  ]
-[e :U 591 ]
+[e $ < -> _y `i -> 12 `i 683  ]
+[e $U 684  ]
+[e :U 683 ]
 {
-[; ;main.c: 649: array_data[i][y]='0';
-"649
+[; ;main.c: 966: array_data[i][y]='0';
+"966
 [e = *U + &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux * -> _y `ux -> -> # *U &U *U + &U _array_data * -> _i `ux -> * -> # *U &U *U &U _array_data `ui -> -> 12 `i `ui `ux `ui `ux -> -> 48 `ui `uc ]
-"650
+"967
 }
-"648
+"965
 [e ++ _y -> -> 1 `i `uc ]
-[e $ < -> _y `i -> 12 `i 591  ]
-[e :U 592 ]
-"650
+[e $ < -> _y `i -> 12 `i 683  ]
+[e :U 684 ]
+"967
 }
-"651
+"968
 }
-"647
+"964
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 18 `i 588  ]
-[e :U 589 ]
-"651
+[e $ < -> _i `i -> 18 `i 680  ]
+[e :U 681 ]
+"968
 }
-[; ;main.c: 650: }
-[; ;main.c: 651: }
-[; ;main.c: 653: while (1){
-"653
-[e :U 595 ]
+[; ;main.c: 967: }
+[; ;main.c: 968: }
+[; ;main.c: 970: while (1){
+"970
+[e :U 687 ]
 {
-[; ;main.c: 654: if (next){
-"654
-[e $ ! != -> _next `i -> -> -> 0 `i `uc `i 597  ]
+[; ;main.c: 971: if(next==-1){
+"971
+[e $ ! == -> _next `i -U -> 1 `i 689  ]
 {
-[; ;main.c: 655: index++;
-"655
+[; ;main.c: 972: break;
+"972
+[e $U 688  ]
+"973
+}
+[e :U 689 ]
+[; ;main.c: 973: }
+[; ;main.c: 974: if (next){
+"974
+[e $ ! != -> _next `i -> -> -> 0 `i `c `i 690  ]
+{
+[; ;main.c: 975: index++;
+"975
 [e ++ _index -> -> 1 `i `uc ]
-[; ;main.c: 656: createRandomShape(index);
-"656
+[; ;main.c: 976: createRandomShape(index);
+"976
 [e ( _createRandomShape (1 _index ]
-[; ;main.c: 657: next=0;
-"657
-[e = _next -> -> 0 `i `uc ]
-"658
+[; ;main.c: 977: next=0;
+"977
+[e = _next -> -> 0 `i `c ]
+[; ;main.c: 978: score++;
+"978
+[e ++ _score -> -> 1 `i `uc ]
+"979
 }
-[e :U 597 ]
-[; ;main.c: 658: }
-[; ;main.c: 659: update_display_shapes('1');
-"659
+[e :U 690 ]
+[; ;main.c: 979: }
+[; ;main.c: 981: if(PORTEbits.RE0 ==1){
+"981
+[e $ ! == -> . . _PORTEbits 0 0 `i -> 1 `i 691  ]
+{
+[; ;main.c: 982: moveRight(index);
+"982
+[e ( _moveRight (1 _index ]
+"983
+}
+[e :U 691 ]
+[; ;main.c: 983: }
+[; ;main.c: 985: if(PORTEbits.RE1 ==1){
+"985
+[e $ ! == -> . . _PORTEbits 0 1 `i -> 1 `i 692  ]
+{
+[; ;main.c: 986: moveLeft(index);
+"986
+[e ( _moveLeft (1 _index ]
+"987
+}
+[e :U 692 ]
+[; ;main.c: 987: }
+[; ;main.c: 989: if(PORTEbits.RE2 ==1){
+"989
+[e $ ! == -> . . _PORTEbits 0 2 `i -> 1 `i 693  ]
+{
+[; ;main.c: 990: rotate(index);
+"990
+[e ( _rotate (1 _index ]
+"991
+}
+[e :U 693 ]
+[; ;main.c: 991: }
+[; ;main.c: 993: update_display_shapes('1');
+"993
 [e ( _update_display_shapes (1 -> -> 49 `ui `uc ]
-[; ;main.c: 660: delay();
-"660
+[; ;main.c: 994: delay();
+"994
 [e ( _delay ..  ]
-[; ;main.c: 661: update_display_shapes('0');
-"661
+[; ;main.c: 995: update_display_shapes('0');
+"995
 [e ( _update_display_shapes (1 -> -> 48 `ui `uc ]
-[; ;main.c: 662: next=gravity(index);
-"662
-[e = _next ( _gravity (1 _index ]
-"663
+[; ;main.c: 998: if(PORTEbits.RE0 ==1){
+"998
+[e $ ! == -> . . _PORTEbits 0 0 `i -> 1 `i 694  ]
+{
+[; ;main.c: 999: moveRight(index);
+"999
+[e ( _moveRight (1 _index ]
+"1000
 }
-[e :U 594 ]
-"653
-[e $U 595  ]
-[e :U 596 ]
-[; ;main.c: 663: }
-[; ;main.c: 664: return;
-"664
-[e $UE 581  ]
-[; ;main.c: 665: }
-"665
-[e :UE 581 ]
+[e :U 694 ]
+[; ;main.c: 1000: }
+[; ;main.c: 1002: if(PORTEbits.RE1 ==1){
+"1002
+[e $ ! == -> . . _PORTEbits 0 1 `i -> 1 `i 695  ]
+{
+[; ;main.c: 1003: moveLeft(index);
+"1003
+[e ( _moveLeft (1 _index ]
+"1004
+}
+[e :U 695 ]
+[; ;main.c: 1004: }
+[; ;main.c: 1006: if(PORTEbits.RE2 ==1){
+"1006
+[e $ ! == -> . . _PORTEbits 0 2 `i -> 1 `i 696  ]
+{
+[; ;main.c: 1007: rotate(index);
+"1007
+[e ( _rotate (1 _index ]
+"1008
+}
+[e :U 696 ]
+[; ;main.c: 1008: }
+[; ;main.c: 1010: next=gravity(index);
+"1010
+[e = _next -> ( _gravity (1 _index `c ]
+[; ;main.c: 1011: lineCompletedTest();
+"1011
+[e ( _lineCompletedTest ..  ]
+"1013
+}
+[e :U 686 ]
+"970
+[e $U 687  ]
+[e :U 688 ]
+[; ;main.c: 1013: }
+[; ;main.c: 1016: glcd_FillScreen(0);
+"1016
+[e ( _glcd_FillScreen (1 -> -> 0 `i `uc ]
+[; ;main.c: 1018: return;
+"1018
+[e $UE 673  ]
+[; ;main.c: 1019: }
+"1019
+[e :UE 673 ]
 }
