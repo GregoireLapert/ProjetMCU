@@ -41,6 +41,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S181 . . . ]
 "4726
 [v _PIR2bits `VS181 ~T0 @X0 0 e@4001 ]
+"3856
+[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S149 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
+"3864
+[s S150 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S150 . RC0 RC1 RC2 . RC6 RC7 ]
+"3855
+[u S148 `S149 1 `S150 1 ]
+[n S148 . . . ]
+"3873
+[v _TRISCbits `VS148 ~T0 @X0 0 e@3988 ]
+"6336
+[s S255 :4 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S255 . CCP1M DC1B P1M ]
+"6341
+[s S256 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S256 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 DC1B0 DC1B1 P1M0 P1M1 ]
+"6335
+[u S254 `S255 1 `S256 1 ]
+[n S254 . . . ]
+"6352
+[v _CCP1CONbits `VS254 ~T0 @X0 0 e@4029 ]
+"7406
+[v _TMR2 `Vuc ~T0 @X0 0 e@4044 ]
+"4388
+[s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S170 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE SPPIE ]
+"4398
+[s S171 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S171 . . TX1IE RC1IE . PSPIE ]
+"4387
+[u S169 `S170 1 `S171 1 ]
+[n S169 . . . ]
+"4406
+[v _PIE1bits `VS169 ~T0 @X0 0 e@3997 ]
+"4472
+[s S173 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S173 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF SPPIF ]
+"4482
+[s S174 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S174 . . TX1IF RC1IF . PSPIF ]
+"4471
+[u S172 `S173 1 `S174 1 ]
+[n S172 . . . ]
+"4490
+[v _PIR1bits `VS172 ~T0 @X0 0 e@3998 ]
+"7204
+[s S296 :2 `uc 1 :1 `uc 1 :4 `uc 1 ]
+[n S296 . T2CKPS TMR2ON TOUTPS ]
+"7209
+[s S297 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S297 . T2CKPS0 T2CKPS1 . T2OUTPS0 T2OUTPS1 T2OUTPS2 T2OUTPS3 ]
+"7218
+[s S298 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S298 . . TOUTPS0 TOUTPS1 TOUTPS2 TOUTPS3 ]
+"7203
+[u S295 `S296 1 `S297 1 `S298 1 ]
+[n S295 . . . . ]
+"7226
+[v _T2CONbits `VS295 ~T0 @X0 0 e@4042 ]
+"7296
+[v _PR2 `Vuc ~T0 @X0 0 e@4043 ]
+"6494
+[v _CCPR1L `Vuc ~T0 @X0 0 e@4030 ]
+"48 glcd_library/mcu.h
+[v _pwmStart `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3551,92 +3617,185 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;mcu.h: 37: char EEPROM_Read (int address);
-[; ;mcu.h: 38: void EEPROM_Write (int address, char data);
-"12 glcd_library/mcu.c
+[; ;mcu.h: 45: char EEPROM_Read (int address);
+[; ;mcu.h: 46: void EEPROM_Write (int address, char data);
+[; ;mcu.h: 47: void setupPWM(int PR2value);
+[; ;mcu.h: 48: void pwmStart();
+[; ;mcu.h: 49: void pwmStop();
+"13 glcd_library/mcu.c
 [v _EEPROM_Read `(uc ~T0 @X0 1 ef1`i ]
-"13
-{
-[; ;mcu.c: 12: char EEPROM_Read (int address)
-[; ;mcu.c: 13: {
-[e :U _EEPROM_Read ]
-"12
-[v _address `i ~T0 @X0 1 r1 ]
-"13
-[f ]
-[; ;mcu.c: 14: EEADR=address;
 "14
-[e = _EEADR -> _address `uc ]
-[; ;mcu.c: 15: EECON1bits.WREN=0;
+{
+[; ;mcu.c: 13: char EEPROM_Read (int address)
+[; ;mcu.c: 14: {
+[e :U _EEPROM_Read ]
+"13
+[v _address `i ~T0 @X0 1 r1 ]
+"14
+[f ]
+[; ;mcu.c: 15: EEADR=address;
 "15
-[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
-[; ;mcu.c: 16: EECON1bits.EEPGD=0;
+[e = _EEADR -> _address `uc ]
+[; ;mcu.c: 16: EECON1bits.WREN=0;
 "16
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
-[; ;mcu.c: 17: EECON1bits.RD=1;
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+[; ;mcu.c: 17: EECON1bits.EEPGD=0;
 "17
-[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
-[; ;mcu.c: 18: return(EEDATA);
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;mcu.c: 18: EECON1bits.RD=1;
 "18
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;mcu.c: 19: return(EEDATA);
+"19
 [e ) _EEDATA ]
 [e $UE 362  ]
-[; ;mcu.c: 19: }
-"19
+[; ;mcu.c: 20: }
+"20
 [e :UE 362 ]
 }
-"21
-[v _EEPROM_Write `(v ~T0 @X0 1 ef2`i`uc ]
 "22
+[v _EEPROM_Write `(v ~T0 @X0 1 ef2`i`uc ]
+"23
 {
-[; ;mcu.c: 21: void EEPROM_Write (int address, char data)
-[; ;mcu.c: 22: {
+[; ;mcu.c: 22: void EEPROM_Write (int address, char data)
+[; ;mcu.c: 23: {
 [e :U _EEPROM_Write ]
-"21
+"22
 [v _address `i ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
-"22
-[f ]
-[; ;mcu.c: 23: EEADR=address;
 "23
-[e = _EEADR -> _address `uc ]
-[; ;mcu.c: 24: EEDATA=data;
+[f ]
+[; ;mcu.c: 24: EEADR=address;
 "24
-[e = _EEDATA _data ]
-[; ;mcu.c: 25: EECON1bits.EEPGD=0;
+[e = _EEADR -> _address `uc ]
+[; ;mcu.c: 25: EEDATA=data;
 "25
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
-[; ;mcu.c: 26: EECON1bits.CFGS=0;
+[e = _EEDATA _data ]
+[; ;mcu.c: 26: EECON1bits.EEPGD=0;
 "26
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
-[; ;mcu.c: 27: EECON1bits.WREN=1;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;mcu.c: 27: EECON1bits.CFGS=0;
 "27
-[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
-[; ;mcu.c: 28: INTCONbits.GIE=0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;mcu.c: 28: EECON1bits.WREN=1;
 "28
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;mcu.c: 29: EECON2=0x55;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;mcu.c: 29: INTCONbits.GIE=0;
 "29
-[e = _EECON2 -> -> 85 `i `uc ]
-[; ;mcu.c: 30: EECON2=0xaa;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;mcu.c: 30: EECON2=0x55;
 "30
-[e = _EECON2 -> -> 170 `i `uc ]
-[; ;mcu.c: 31: EECON1bits.WR=1;
+[e = _EECON2 -> -> 85 `i `uc ]
+[; ;mcu.c: 31: EECON2=0xaa;
 "31
-[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
-[; ;mcu.c: 32: INTCONbits.GIE=1;
+[e = _EECON2 -> -> 170 `i `uc ]
+[; ;mcu.c: 32: EECON1bits.WR=1;
 "32
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;mcu.c: 33: while(PIR2bits.EEIF==0);
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+[; ;mcu.c: 33: INTCONbits.GIE=1;
 "33
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;mcu.c: 34: while(PIR2bits.EEIF==0);
+"34
 [e $U 364  ]
 [e :U 365 ]
 [e :U 364 ]
 [e $ == -> . . _PIR2bits 0 4 `i -> 0 `i 365  ]
 [e :U 366 ]
-[; ;mcu.c: 34: PIR2bits.EEIF=0;
-"34
-[e = . . _PIR2bits 0 4 -> -> 0 `i `uc ]
-[; ;mcu.c: 35: }
+[; ;mcu.c: 35: PIR2bits.EEIF=0;
 "35
+[e = . . _PIR2bits 0 4 -> -> 0 `i `uc ]
+[; ;mcu.c: 36: }
+"36
 [e :UE 363 ]
+}
+"38
+[v _setupPWM `(v ~T0 @X0 1 ef1`i ]
+"39
+{
+[; ;mcu.c: 38: void setupPWM(int PR2value)
+[; ;mcu.c: 39: {
+[e :U _setupPWM ]
+"38
+[v _PR2value `i ~T0 @X0 1 r1 ]
+"39
+[f ]
+[; ;mcu.c: 40: TRISCbits.RC2 = 0;
+"40
+[e = . . _TRISCbits 1 2 -> -> 0 `i `uc ]
+[; ;mcu.c: 43: CCP1CONbits.CCP1M3 = 1;
+"43
+[e = . . _CCP1CONbits 1 3 -> -> 1 `i `uc ]
+[; ;mcu.c: 44: CCP1CONbits.CCP1M2 = 1;
+"44
+[e = . . _CCP1CONbits 1 2 -> -> 1 `i `uc ]
+[; ;mcu.c: 48: INTCONbits.GIE = 1;
+"48
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;mcu.c: 49: INTCONbits.PEIE = 1;
+"49
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;mcu.c: 52: TMR2 = 0;
+"52
+[e = _TMR2 -> -> 0 `i `uc ]
+[; ;mcu.c: 53: PIE1bits.TMR2IE = 1;
+"53
+[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
+[; ;mcu.c: 54: PIR1bits.TMR2IF = 0;
+"54
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;mcu.c: 56: T2CONbits.T2CKPS1 = 0;
+"56
+[e = . . _T2CONbits 1 1 -> -> 0 `i `uc ]
+[; ;mcu.c: 57: T2CONbits.T2CKPS0 = 1;
+"57
+[e = . . _T2CONbits 1 0 -> -> 1 `i `uc ]
+[; ;mcu.c: 59: PR2 = PR2value;
+"59
+[e = _PR2 -> _PR2value `uc ]
+[; ;mcu.c: 62: CCPR1L = 0b00000000;
+"62
+[e = _CCPR1L -> -> 0 `i `uc ]
+[; ;mcu.c: 63: CCP1CONbits.DC1B1 = 0;
+"63
+[e = . . _CCP1CONbits 1 5 -> -> 0 `i `uc ]
+[; ;mcu.c: 64: CCP1CONbits.DC1B0 = 1;
+"64
+[e = . . _CCP1CONbits 1 4 -> -> 1 `i `uc ]
+[; ;mcu.c: 66: pwmStart();
+"66
+[e ( _pwmStart ..  ]
+[; ;mcu.c: 69: }
+"69
+[e :UE 367 ]
+}
+"71
+[v _pwmStart `(v ~T0 @X0 1 ef ]
+"72
+{
+[; ;mcu.c: 71: void pwmStart()
+[; ;mcu.c: 72: {
+[e :U _pwmStart ]
+[f ]
+[; ;mcu.c: 73: T2CONbits.TMR2ON = 1;
+"73
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+[; ;mcu.c: 75: }
+"75
+[e :UE 368 ]
+}
+"77
+[v _pwmStop `(v ~T0 @X0 1 ef ]
+"78
+{
+[; ;mcu.c: 77: void pwmStop()
+[; ;mcu.c: 78: {
+[e :U _pwmStop ]
+[f ]
+[; ;mcu.c: 79: T2CONbits.TMR2ON = 0;
+"79
+[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+[; ;mcu.c: 80: }
+"80
+[e :UE 369 ]
 }

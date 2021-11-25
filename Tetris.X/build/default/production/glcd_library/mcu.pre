@@ -4805,11 +4805,14 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 37 "glcd_library/mcu.h"
+# 45 "glcd_library/mcu.h"
 char EEPROM_Read (int address);
 void EEPROM_Write (int address, char data);
+void setupPWM(int PR2value);
+void pwmStart();
+void pwmStop();
 
-# 12 "glcd_library/mcu.c"
+# 13 "glcd_library/mcu.c"
 char EEPROM_Read (int address)
 {
 EEADR=address;
@@ -4833,4 +4836,48 @@ EECON1bits.WR=1;
 INTCONbits.GIE=1;
 while(PIR2bits.EEIF==0);
 PIR2bits.EEIF=0;
+}
+
+void setupPWM(int PR2value)
+{
+TRISCbits.RC2 = 0;
+
+
+CCP1CONbits.CCP1M3 = 1;
+CCP1CONbits.CCP1M2 = 1;
+
+
+
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+
+
+TMR2 = 0;
+PIE1bits.TMR2IE = 1;
+PIR1bits.TMR2IF = 0;
+
+T2CONbits.T2CKPS1 = 0;
+T2CONbits.T2CKPS0 = 1;
+
+PR2 = PR2value;
+
+
+CCPR1L = 0b00000000;
+CCP1CONbits.DC1B1 = 0;
+CCP1CONbits.DC1B0 = 1;
+
+pwmStart();
+
+
+}
+
+void pwmStart()
+{
+T2CONbits.TMR2ON = 1;
+
+}
+
+void pwmStop()
+{
+T2CONbits.TMR2ON = 0;
 }

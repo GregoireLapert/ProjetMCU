@@ -8,6 +8,7 @@
 
 #include <xc.h>
 #include "mcu.h"
+#define _XTAL_FREQ 8000000 // 4Mhz
 
 char EEPROM_Read (int address)
 {
@@ -34,3 +35,46 @@ while(PIR2bits.EEIF==0); // Wait for write operation complete
 PIR2bits.EEIF=0; // Reset EEIF for further write operation
 }
 
+void setupPWM(int PR2value)
+{
+    TRISCbits.RC2 = 0;// set RC2 as an output
+    
+    //set CCP1 as PWM output
+    CCP1CONbits.CCP1M3 = 1;
+    CCP1CONbits.CCP1M2 = 1;
+    
+    
+    //enable global and peripheral interrupt
+    INTCONbits.GIE = 1; 
+    INTCONbits.PEIE = 1; 
+    
+    //set timer 2
+    TMR2 = 0;
+    PIE1bits.TMR2IE = 1;
+    PIR1bits.TMR2IF = 0;
+    //set prescaler of TMR2 at 4
+    T2CONbits.T2CKPS1 = 0;
+    T2CONbits.T2CKPS0 = 1;
+    //set PR2 register
+    PR2 = PR2value; // deduce due to the frequency of the buzzer
+    
+    //set duty cycle
+    CCPR1L = 0b00000000;
+    CCP1CONbits.DC1B1 = 0;
+    CCP1CONbits.DC1B0 = 1;
+
+    pwmStart();
+    //pwmStop();
+    
+}
+
+void pwmStart()
+{
+    T2CONbits.TMR2ON = 1;
+
+}
+
+void pwmStop()
+{
+    T2CONbits.TMR2ON = 0;
+}

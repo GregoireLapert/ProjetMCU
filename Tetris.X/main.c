@@ -3,7 +3,7 @@
 #include "glcd_library/TS.h"
 #include "glcd_library/mcu.h"
 
-#define _XTAL_FREQ 4000000 // 4Mhz
+#define _XTAL_FREQ 8000000 // 4Mhz
 
 #pragma config FOSC = HS
 #pragma config LVP = OFF
@@ -53,15 +53,15 @@ void main(void) {
     glcd_Init(GLCD_ON);
     glcd_SetCursor(1,1);
     setupADC();
-    char str[20]="x = ";
-    char data = 0; 
-    EEPROM_Write(addressZero, 230);
+    char str[20]="blavbloanzf";
+    
     while (1){
        
         
-        data = EEPROM_Read(addressZero);
-        __delay_ms(500);
-        sprintf(str, "%d",data);
+        setupPWM(PR2_VALUE_2);
+        glcd_text_write("wait...", 1, 1);
+        __delay_ms(2000);
+ 
         glcd_text_write(str, 1, 1);
         
         

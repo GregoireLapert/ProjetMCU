@@ -8,18 +8,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _glcd_SetCursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "34 glcd_library/TS.h
 [v _setupADC `(v ~T0 @X0 0 ef ]
-"38 glcd_library/mcu.h
-[v _EEPROM_Write `(v ~T0 @X0 0 ef2`i`uc ]
-"37
-[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`i ]
+"47 glcd_library/mcu.h
+[v _setupPWM `(v ~T0 @X0 0 ef1`i ]
+"54 glcd_library/glcd.h
+[v _glcd_text_write `(v ~T0 @X0 0 ef3`*Cuc`uc`uc ]
 [v F3783 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18.h
 [v __delay `JF3783 ~T0 @X0 0 e ]
 [p i __delay ]
-"194 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"54 glcd_library/glcd.h
-[v _glcd_text_write `(v ~T0 @X0 0 ef3`*Cuc`uc`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3667,8 +3663,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;TS.h: 37: int R1Value();
 [; ;TS.h: 38: float readX();
 [; ;TS.h: 39: float readY();
-[; ;mcu.h: 37: char EEPROM_Read (int address);
-[; ;mcu.h: 38: void EEPROM_Write (int address, char data);
+[; ;mcu.h: 45: char EEPROM_Read (int address);
+[; ;mcu.h: 46: void EEPROM_Write (int address, char data);
+[; ;mcu.h: 47: void setupPWM(int PR2value);
+[; ;mcu.h: 48: void pwmStart();
+[; ;mcu.h: 49: void pwmStop();
 "8 main.c
 [p x FOSC=HS ]
 "9
@@ -3788,47 +3787,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 55: setupADC();
 "55
 [e ( _setupADC ..  ]
-[v F4124 `uc ~T0 @X0 -> 20 `i s ]
-[i F4124
+[v F4128 `uc ~T0 @X0 -> 20 `i s ]
+[i F4128
 :U ..
--> 120 `c
--> 32 `c
--> 61 `c
--> 32 `c
+-> 98 `c
+-> 108 `c
+-> 97 `c
+-> 118 `c
+-> 98 `c
+-> 108 `c
+-> 111 `c
+-> 97 `c
+-> 110 `c
+-> 122 `c
+-> 102 `c
 -> 0 `c
 ..
 ]
 "56
 [v _str `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 56: char str[20]="x = ";
-[e = _str F4124 ]
-"57
-[v _data `uc ~T0 @X0 1 a ]
-[; ;main.c: 57: char data = 0;
-[e = _data -> -> 0 `i `uc ]
-[; ;main.c: 58: EEPROM_Write(0x00, 230);
+[; ;main.c: 56: char str[20]="blavbloanzf";
+[e = _str F4128 ]
+[; ;main.c: 58: while (1){
 "58
-[e ( _EEPROM_Write (2 , -> 0 `i -> -> 230 `i `uc ]
-[; ;main.c: 59: while (1){
-"59
 [e :U 386 ]
 {
-[; ;main.c: 62: data = EEPROM_Read(0x00);
+[; ;main.c: 61: setupPWM(131);
+"61
+[e ( _setupPWM (1 -> 131 `i ]
+[; ;main.c: 62: glcd_text_write("wait...", 1, 1);
 "62
-[e = _data ( _EEPROM_Read (1 -> 0 `i ]
-[; ;main.c: 63: _delay((unsigned long)((500)*(4000000/4000.0)));
+[e ( _glcd_text_write (3 , , :s 1C -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 63: _delay((unsigned long)((2000)*(8000000/4000.0)));
 "63
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main.c: 64: sprintf(str, "%d",data);
-"64
-[e ( _sprintf (1 , (. , &U _str :s 1C -> _data `i ]
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;main.c: 65: glcd_text_write(str, 1, 1);
 "65
 [e ( _glcd_text_write (3 , , -> &U _str `*Cuc -> -> 1 `i `uc -> -> 1 `i `uc ]
 "68
 }
 [e :U 385 ]
-"59
+"58
 [e $U 386  ]
 [e :U 387 ]
 [; ;main.c: 68: }
@@ -3839,6 +3838,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 "71
 [e :UE 384 ]
 }
-[p f _sprintf 8388736 ]
-[a 1C 37 100 0 ]
+[a 1C 119 97 105 116 46 46 46 0 ]
 

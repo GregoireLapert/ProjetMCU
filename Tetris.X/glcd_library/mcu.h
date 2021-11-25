@@ -29,6 +29,14 @@
 // This is a guard condition so that contents of this file are not included
 // more than once.  
 #define addressZero 0x00
+#define FREQUENCY 8000000 //set frequency as 8 MHz
+#define TMR2_PRESCALE 4 // set prescaler value for TMR2
+#define PR2_VALUE_1 249 //PR2 value for a 2 KHz signal on the buzzer
+#define PR2_VALUE_2 131 //PR2 value for a 3.8 KHz signal on the buzzer
+#define PR2_VALUE_3 124 //PR2 value for a 4 KHz signal on the buzzer
+
+#define DUTY_ CYCLE_MSB 0b01001011
+#define DUTY_CYCLE_LSB
 
 #ifndef _mcu_H
 #define	_mcu_H
@@ -36,6 +44,9 @@
 
 char EEPROM_Read (int address);
 void EEPROM_Write (int address, char data);// write a number on 8 bit so 0 to 255
+void setupPWM(int PR2value);
+void pwmStart();
+void pwmStop();
 
 #endif	
 
