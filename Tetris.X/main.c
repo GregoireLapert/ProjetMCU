@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "glcd_library/glcd.h"
+#include "glcd_library/mcu.h"
 
 //---------------------------	CONFIG		-----------------------------------
 
@@ -939,6 +940,21 @@ void rotate(uint8_t index){
     
 }
 
+//---------------------------	function score		-----------------------------------
+
+void displayStartScore(char bestScore)
+{
+    char string[20]="";
+    sprintf(string,"%d",bestScore);
+    glcd_WriteString("best score : ",64,32);
+    delayHomeScreen();
+    glcd_FillScreen(0);//clear screen
+    glcd_WriteString(string,64,32);
+    delayHomeScreen();
+    glcd_FillScreen(0);//clear screen
+    
+}
+
 //---------------------------	MAIN		-----------------------------------
 
 void main(void) {
@@ -947,12 +963,15 @@ void main(void) {
     int8_t next=1;// next=1 if we have to generate a new shape / 0 if not / -1 if the game is over 
     TRISE = 0xFF;
     PORTE = 0x00;
+    char bestScore = EEPROM_Read(ADDRESSZERO);
     
     glcd_Init(GLCD_ON);// Swith the screen ON
     glcd_Image();//Display home screen
     delayHomeScreen();//wait
     glcd_FillScreen(0);//clear screen
+    displayStartScore(bestScore);
     display_grid();//display the grid 
+    setupPWM(PR2_VALUE_2);
     
     for(uint8_t i=0;i<20;i++){//init of the array all_shapes
         for(uint8_t y=0;y<4;y++){
@@ -997,14 +1016,31 @@ void main(void) {
         
         if(PORTEbits.RE0 ==1){//if button right
             moveRight(index);
+            if(T2CONbits.TMR2ON == 0)
+            {
+                pwmStart();
+            }
+
         }
         
         if(PORTEbits.RE1 ==1){//if button left
             moveLeft(index);
+            if(T2CONbits.TMR2ON == 0)
+            {
+                pwmStart();
+            }
         }
         
         if(PORTEbits.RE2 ==1){//if button orientation
             rotate(index);
+            if(T2CONbits.TMR2ON == 0)
+            {
+                pwmStart();
+            }
+        }
+        if( (PORTEbits.RE0 != 1) && (PORTEbits.RE1 != 1) && (PORTEbits.RE2 != 1) )
+        {
+            pwmStop();
         }
         
         next=gravity(index);//gravity on the current shape 
@@ -1014,6 +1050,11 @@ void main(void) {
     
     //game is over 
     glcd_FillScreen(0);//clear screen
+    if(score >= bestScore )
+    {
+        glcd_text_write("you beat your best score !",1,1);
+    }
+    EEPROM_Write(ADDRESSZERO, score);
     
     return;
 }

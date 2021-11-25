@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.43\dat\en_msgs.txt -cs \
   -h+dist/default/production\Tetris.X.production.sym \
   --cmf=dist/default/production\Tetris.X.production.cmf -z -Q18F4550 \
-  -oC:\Users\marie\AppData\Local\Temp\srts.2 \
+  -oC:\Users\grego\AppData\Local\Temp\smr8.2 \
   -Mdist/default/production/Tetris.X.production.map -E1 -ver=XC8 \
   -ASTACK=02D8h-07ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
   -ASMALLCONST=0800h-08FFhx120 -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\marie\AppData\Local\Temp\srts.obj \
+  C:\Users\grego\AppData\Local\Temp\smr8.obj \
   dist/default/production\Tetris.X.production.obj 
 
 Object code version is 3.11
@@ -35,87 +35,115 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\marie\AppData\Local\Temp\srts.obj
+C:\Users\grego\AppData\Local\Temp\smr8.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\Tetris.X.production.obj
-                mediumconst                        733A     733A      CC6     399D       0
-                text23                             4316     4316       70     218B       0
-                text22                             41E6     41E6       56     20F3       0
-                text21                             4194     4194       52     20CA       0
-                text20                             5E9A     5E9A     14A0     2F4D       0
-                text19                             406C     406C       1A     2036       0
-                text18                             40AC     40AC       34     2056       0
-                text17                             4474     4474       84     223A       0
-                text16                             40E0     40E0       36     2070       0
-                text15                             4116     4116       36     208B       0
-                text14                             44F8     44F8       B2     227C       0
-                text13                             47CA     47CA      1A2     23E5       0
-                text12                             4386     4386       74     21C3       0
-                text11                             42A8     42A8       6E     2154       0
-                text10                             45AA     45AA       BE     22D5       0
-                text9                              43FA     43FA       7A     21FD       0
-                text8                              59EE     59EE      4AC     2CF7       0
-                text7                              4B38     4B38      2AA     259C       0
-                text6                              496C     496C      1CC     24B6       0
-                text5                              423C     423C       6C     211E       0
-                text4                              4086     4086       26     2043       0
-                text3                              5156     5156      44C     28AB       0
-                text2                              55A2     55A2      44C     2AD1       0
-                text1                              4DE2     4DE2      374     26F1       0
-                text0                              4668     4668      162     2334       0
-                cstackCOMRAM                          1        1       3C        1       1
+                mediumconst                        7304     7304      CFC     3982       0
+                text37                             3A8A     3A8A        E     1D45       0
+                text36                             3AD2     3AD2       24     1D69       0
+                text35                             3EF8     3EF8       70     1F7C       0
+                text34                             3D5C     3D5C       56     1EAE       0
+                text33                             3CB8     3CB8       52     1E5C       0
+                text32                             5E64     5E64     14A0     2F32       0
+                text31                             3A98     3A98       1A     1D4C       0
+                text30                             3B40     3B40       34     1DA0       0
+                text29                             3B74     3B74       36     1DBA       0
+                text28                             3E8A     3E8A       6E     1F45       0
+                text27                             439C     439C       E4     21CE       0
+                text26                             42D0     42D0       CC     2168       0
+                text25                             40DA     40DA       86     206D       0
+                text24                             3D0A     3D0A       52     1E85       0
+                text23                             3BE0     3BE0       42     1DF0       0
+                text22                             4480     4480      148     2240       0
+                text21                             3DB2     3DB2       6C     1ED9       0
+                text20                             4056     4056       84     202B       0
+                text19                             3BAA     3BAA       36     1DD5       0
+                text18                             4160     4160       B2     20B0       0
+                text17                             45C8     45C8      1A2     22E4       0
+                text16                             3F68     3F68       74     1FB4       0
+                text15                             4212     4212       BE     2109       0
+                text14                             3C22     3C22       48     1E11       0
+                text13                             3AB2     3AB2       20     1D59       0
+                text12                             3FDC     3FDC       7A     1FEE       0
+                text11                             59B8     59B8      4AC     2CDC       0
+                text10                             4B02     4B02      2AA     2581       0
+                text9                              476A     476A      1CC     23B5       0
+                text8                              3E1E     3E1E       6C     1F0F       0
+                text7                              3B1A     3B1A       26     1D8D       0
+                text6                              5120     5120      44C     2890       0
+                text5                              556C     556C      44C     2AB6       0
+                text4                              3A7E     3A7E        4     1D3F       0
+                text3                              3A82     3A82        4     1D41       0
+                text2                              4DAC     4DAC      374     26D6       0
+                text1                              3AF6     3AF6       24     1D7B       0
+                text0                              4936     4936      1CC     249B       0
+                cstackCOMRAM                          1        1       3D        1       1
                 bssBANK2                            200      200       D8      200       1
                 bssBANK1                            100      100       B4      100       1
-                dataCOMRAM                           3D       3D        4        1       1
-                bssCOMRAM                            41       41        3        1       1
-                cinit                              414C     414C       48     20A6       0
-                idataCOMRAM                        4068     4068        4     4068       0
+                dataCOMRAM                           55       55        4        1       1
+                bssCOMRAM                            3E       3E       17        1       1
+                cinit                              3C6A     3C6A       4E     1E35       0
+                idataCOMRAM                        3A86     3A86        4     3A86       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text23                             4316     4316       70         0
-                text22                             41E6     41E6       56         0
-                text21                             4194     4194       52         0
-                text20                             5E9A     5E9A     14A0         0
-                text19                             406C     406C       1A         0
-                text18                             40AC     40AC       34         0
-                text17                             4474     4474       84         0
-                text16                             40E0     40E0       36         0
-                text15                             4116     4116       36         0
-                text14                             44F8     44F8       B2         0
-                text13                             47CA     47CA      1A2         0
-                text12                             4386     4386       74         0
-                text11                             42A8     42A8       6E         0
-                text10                             45AA     45AA       BE         0
-                text9                              43FA     43FA       7A         0
-                text8                              59EE     59EE      4AC         0
-                text7                              4B38     4B38      2AA         0
-                text6                              496C     496C      1CC         0
-                text5                              423C     423C       6C         0
-                text4                              4086     4086       26         0
-                text3                              5156     5156      44C         0
-                text2                              55A2     55A2      44C         0
-                text1                              4DE2     4DE2      374         0
-                text0                              4668     4668      162         0
-                cinit                              414C     414C       48         0
-                idataCOMRAM                        4068     4068        4         0
+                text37                             3A8A     3A8A        E         0
+                text36                             3AD2     3AD2       24         0
+                text35                             3EF8     3EF8       70         0
+                text34                             3D5C     3D5C       56         0
+                text33                             3CB8     3CB8       52         0
+                text32                             5E64     5E64     14A0         0
+                text31                             3A98     3A98       1A         0
+                text30                             3B40     3B40       34         0
+                text29                             3B74     3B74       36         0
+                text28                             3E8A     3E8A       6E         0
+                text27                             439C     439C       E4         0
+                text26                             42D0     42D0       CC         0
+                text25                             40DA     40DA       86         0
+                text24                             3D0A     3D0A       52         0
+                text23                             3BE0     3BE0       42         0
+                text22                             4480     4480      148         0
+                text21                             3DB2     3DB2       6C         0
+                text20                             4056     4056       84         0
+                text19                             3BAA     3BAA       36         0
+                text18                             4160     4160       B2         0
+                text17                             45C8     45C8      1A2         0
+                text16                             3F68     3F68       74         0
+                text15                             4212     4212       BE         0
+                text14                             3C22     3C22       48         0
+                text13                             3AB2     3AB2       20         0
+                text12                             3FDC     3FDC       7A         0
+                text11                             59B8     59B8      4AC         0
+                text10                             4B02     4B02      2AA         0
+                text9                              476A     476A      1CC         0
+                text8                              3E1E     3E1E       6C         0
+                text7                              3B1A     3B1A       26         0
+                text6                              5120     5120      44C         0
+                text5                              556C     556C      44C         0
+                text4                              3A7E     3A7E        4         0
+                text3                              3A82     3A82        4         0
+                text2                              4DAC     4DAC      374         0
+                text1                              3AF6     3AF6       24         0
+                text0                              4936     4936      1CC         0
+                cinit                              3C6A     3C6A       4E         0
+                idataCOMRAM                        3A86     3A86        4         0
 
         CLASS   CONST          
 
         CLASS   SMALLCONST     
 
         CLASS   MEDIUMCONST    
-                mediumconst                        733A     733A      CC6         0
+                mediumconst                        7304     7304      CFC         0
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       3C         1
-                dataCOMRAM                           3D       3D        4         1
-                bssCOMRAM                            41       41        3         1
+                cstackCOMRAM                          1        1       3D         1
+                dataCOMRAM                           55       55        4         1
+                bssCOMRAM                            3E       3E       17         1
 
         CLASS   ABS1           
 
@@ -158,36 +186,50 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000043  000044         1       1  COMRAM  
+                cstackCOMRAM                   000001  000058  000059         1       1  COMRAM  
                 bssBANK1                       000100  0000B4  0001B4       100       1  BANK1   
                 bssBANK2                       000200  0000D8  0002D8       200       1  BANK2   
-                idataCOMRAM                    004068  000004  00406C      4068       0  CODE    
-                text19                         00406C  00001A  004086      2036       0  CODE    
-                text4                          004086  000026  0040AC      2043       0  CODE    
-                text18                         0040AC  000034  0040E0      2056       0  CODE    
-                text16                         0040E0  000036  004116      2070       0  CODE    
-                text15                         004116  000036  00414C      208B       0  CODE    
-                cinit                          00414C  000048  004194      20A6       0  CODE    
-                text21                         004194  000052  0041E6      20CA       0  CODE    
-                text22                         0041E6  000056  00423C      20F3       0  CODE    
-                text5                          00423C  00006C  0042A8      211E       0  CODE    
-                text11                         0042A8  00006E  004316      2154       0  CODE    
-                text23                         004316  000070  004386      218B       0  CODE    
-                text12                         004386  000074  0043FA      21C3       0  CODE    
-                text9                          0043FA  00007A  004474      21FD       0  CODE    
-                text17                         004474  000084  0044F8      223A       0  CODE    
-                text14                         0044F8  0000B2  0045AA      227C       0  CODE    
-                text10                         0045AA  0000BE  004668      22D5       0  CODE    
-                text0                          004668  000162  0047CA      2334       0  CODE    
-                text13                         0047CA  0001A2  00496C      23E5       0  CODE    
-                text6                          00496C  0001CC  004B38      24B6       0  CODE    
-                text7                          004B38  0002AA  004DE2      259C       0  CODE    
-                text1                          004DE2  000374  005156      26F1       0  CODE    
-                text3                          005156  00044C  0055A2      28AB       0  CODE    
-                text2                          0055A2  00044C  0059EE      2AD1       0  CODE    
-                text8                          0059EE  0004AC  005E9A      2CF7       0  CODE    
-                text20                         005E9A  0014A0  00733A      2F4D       0  CODE    
-                mediumconst                    00733A  000CC6  008000      399D       0  MEDIUMCO
+                text4                          003A7E  000004  003A82      1D3F       0  CODE    
+                text3                          003A82  000004  003A86      1D41       0  CODE    
+                idataCOMRAM                    003A86  000004  003A8A      3A86       0  CODE    
+                text37                         003A8A  00000E  003A98      1D45       0  CODE    
+                text31                         003A98  00001A  003AB2      1D4C       0  CODE    
+                text13                         003AB2  000020  003AD2      1D59       0  CODE    
+                text36                         003AD2  000024  003AF6      1D69       0  CODE    
+                text1                          003AF6  000024  003B1A      1D7B       0  CODE    
+                text7                          003B1A  000026  003B40      1D8D       0  CODE    
+                text30                         003B40  000034  003B74      1DA0       0  CODE    
+                text29                         003B74  000036  003BAA      1DBA       0  CODE    
+                text19                         003BAA  000036  003BE0      1DD5       0  CODE    
+                text23                         003BE0  000042  003C22      1DF0       0  CODE    
+                text14                         003C22  000048  003C6A      1E11       0  CODE    
+                cinit                          003C6A  00004E  003CB8      1E35       0  CODE    
+                text33                         003CB8  000052  003D0A      1E5C       0  CODE    
+                text24                         003D0A  000052  003D5C      1E85       0  CODE    
+                text34                         003D5C  000056  003DB2      1EAE       0  CODE    
+                text21                         003DB2  00006C  003E1E      1ED9       0  CODE    
+                text8                          003E1E  00006C  003E8A      1F0F       0  CODE    
+                text28                         003E8A  00006E  003EF8      1F45       0  CODE    
+                text35                         003EF8  000070  003F68      1F7C       0  CODE    
+                text16                         003F68  000074  003FDC      1FB4       0  CODE    
+                text12                         003FDC  00007A  004056      1FEE       0  CODE    
+                text20                         004056  000084  0040DA      202B       0  CODE    
+                text25                         0040DA  000086  004160      206D       0  CODE    
+                text18                         004160  0000B2  004212      20B0       0  CODE    
+                text15                         004212  0000BE  0042D0      2109       0  CODE    
+                text26                         0042D0  0000CC  00439C      2168       0  CODE    
+                text27                         00439C  0000E4  004480      21CE       0  CODE    
+                text22                         004480  000148  0045C8      2240       0  CODE    
+                text17                         0045C8  0001A2  00476A      22E4       0  CODE    
+                text9                          00476A  0001CC  004936      23B5       0  CODE    
+                text0                          004936  0001CC  004B02      249B       0  CODE    
+                text10                         004B02  0002AA  004DAC      2581       0  CODE    
+                text2                          004DAC  000374  005120      26D6       0  CODE    
+                text6                          005120  00044C  00556C      2890       0  CODE    
+                text5                          00556C  00044C  0059B8      2AB6       0  CODE    
+                text11                         0059B8  0004AC  005E64      2CDC       0  CODE    
+                text32                         005E64  0014A0  007304      2F32       0  CODE    
+                mediumconst                    007304  000CFC  008000      3982       0  MEDIUMCO
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -203,19 +245,19 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BANK6            000600-0006FF              100
         BANK7            000700-0007FF              100
-        BIGRAM           000044-0000FF               BC
+        BIGRAM           000059-0000FF               A7
                          0001B4-0001FF               4C
                          0002D8-0007FF              528
-        CODE             000004-004067             4064
-        COMRAM           000044-00005F               1C
-        CONST            000004-004067             4064
+        CODE             000004-003A7D             3A7A
+        COMRAM           000059-00005F                7
+        CONST            000004-003A7D             3A7A
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000800-004067             3868
+        MEDIUMCONST      000800-003A7D             327E
         RAM              000060-0000FF               A0
                          0001B4-0001FF               4C
                          0002D8-0007FF              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       000800-004067              100
+        SMALLCONST       000800-003A7D              100
         STACK            0002D8-0007FF              528
 
                                   Symbol Table
@@ -223,20 +265,42 @@ UNUSED ADDRESS RANGES
 ?___awdiv                       cstackCOMRAM 000001
 ?___awmod                       cstackCOMRAM 00000F
 ?___lmul                        cstackCOMRAM 000001
+?___lwdiv                       cstackCOMRAM 000001
+?___lwmod                       cstackCOMRAM 000008
 ?___wmul                        cstackCOMRAM 000001
 ?_rand                          cstackCOMRAM 00000D
+?_sprintf                       cstackCOMRAM 00000D
+EEPROM_Read@address             cstackCOMRAM 000001
+EEPROM_Write@address            cstackCOMRAM 000001
+EEPROM_Write@data               cstackCOMRAM 000003
 _ADCON1                         (abs)        000FC1
-_Font3x6                        mediumconst  007F3B
-_Font8x8                        mediumconst  00733B
+_CCP1CONbits                    (abs)        000FBD
+_CCPR1L                         (abs)        000FBE
+_EEADR                          (abs)        000FA9
+_EECON1bits                     (abs)        000FA6
+_EECON2                         (abs)        000FA7
+_EEDATA                         (abs)        000FA8
+_EEPROM_Read                    text37       003A8A
+_EEPROM_Write                   text36       003AD2
+_Font3x6                        mediumconst  007F05
+_Font8x8                        mediumconst  007305
+_INTCONbits                     (abs)        000FF2
 _LATBbits                       (abs)        000F8A
 _LATD                           (abs)        000F8C
+_PIE1bits                       (abs)        000F9D
+_PIR1bits                       (abs)        000F9E
+_PIR2bits                       (abs)        000FA1
 _PORTA                          (abs)        000F80
 _PORTB                          (abs)        000F81
 _PORTD                          (abs)        000F83
 _PORTE                          (abs)        000F84
 _PORTEbits                      (abs)        000F84
+_PR2                            (abs)        000FCB
+_T2CONbits                      (abs)        000FCA
+_TMR2                           (abs)        000FCC
 _TRISA                          (abs)        000F92
 _TRISB                          (abs)        000F93
+_TRISCbits                      (abs)        000F94
 _TRISD                          (abs)        000F95
 _TRISE                          (abs)        000F96
 __CFG_FOSC$HS                   (abs)        000000
@@ -321,7 +385,21 @@ __Htext20                       text20       000000
 __Htext21                       text21       000000
 __Htext22                       text22       000000
 __Htext23                       text23       000000
+__Htext24                       text24       000000
+__Htext25                       text25       000000
+__Htext26                       text26       000000
+__Htext27                       text27       000000
+__Htext28                       text28       000000
+__Htext29                       text29       000000
 __Htext3                        text3        000000
+__Htext30                       text30       000000
+__Htext31                       text31       000000
+__Htext32                       text32       000000
+__Htext33                       text33       000000
+__Htext34                       text34       000000
+__Htext35                       text35       000000
+__Htext36                       text36       000000
+__Htext37                       text37       000000
 __Htext4                        text4        000000
 __Htext5                        text5        000000
 __Htext6                        text6        000000
@@ -369,7 +447,7 @@ __Lintentry                     intentry     000000
 __Lintret                       intret       000000
 __Lintsave_regs                 intsave_regs 000000
 __Lirdata                       irdata       000000
-__Lmediumconst                  mediumconst  00733A
+__Lmediumconst                  mediumconst  007304
 __LnvFARRAM                     nvFARRAM     000000
 __Lnvbit                        nvbit        000000
 __Lnvrram                       nvrram       000000
@@ -408,7 +486,21 @@ __Ltext20                       text20       000000
 __Ltext21                       text21       000000
 __Ltext22                       text22       000000
 __Ltext23                       text23       000000
+__Ltext24                       text24       000000
+__Ltext25                       text25       000000
+__Ltext26                       text26       000000
+__Ltext27                       text27       000000
+__Ltext28                       text28       000000
+__Ltext29                       text29       000000
 __Ltext3                        text3        000000
+__Ltext30                       text30       000000
+__Ltext31                       text31       000000
+__Ltext32                       text32       000000
+__Ltext33                       text33       000000
+__Ltext34                       text34       000000
+__Ltext35                       text35       000000
+__Ltext36                       text36       000000
+__Ltext37                       text37       000000
 __Ltext4                        text4        000000
 __Ltext5                        text5        000000
 __Ltext6                        text6        000000
@@ -418,103 +510,146 @@ __Ltext9                        text9        000000
 __S0                            (abs)        30000E
 __S1                            (abs)        0002D8
 __S2                            (abs)        000000
-___awdiv                        text17       004474
+___awdiv                        text20       004056
 ___awdiv@counter                cstackCOMRAM 000005
 ___awdiv@dividend               cstackCOMRAM 000001
 ___awdiv@divisor                cstackCOMRAM 000003
 ___awdiv@quotient               cstackCOMRAM 000007
 ___awdiv@sign                   cstackCOMRAM 000006
-___awmod                        text23       004316
+___awmod                        text35       003EF8
 ___awmod@counter                cstackCOMRAM 000013
 ___awmod@dividend               cstackCOMRAM 00000F
 ___awmod@divisor                cstackCOMRAM 000011
 ___awmod@sign                   cstackCOMRAM 000014
 ___inthi_sp                     stack        000000
 ___intlo_sp                     stack        000000
-___lmul                         text22       0041E6
+___lmul                         text34       003D5C
 ___lmul@multiplicand            cstackCOMRAM 000005
 ___lmul@multiplier              cstackCOMRAM 000001
 ___lmul@product                 cstackCOMRAM 000009
+___lwdiv                        text24       003D0A
+___lwdiv@counter                cstackCOMRAM 000007
+___lwdiv@dividend               cstackCOMRAM 000001
+___lwdiv@divisor                cstackCOMRAM 000003
+___lwdiv@quotient               cstackCOMRAM 000005
+___lwmod                        text23       003BE0
+___lwmod@counter                cstackCOMRAM 00000C
+___lwmod@dividend               cstackCOMRAM 000008
+___lwmod@divisor                cstackCOMRAM 00000A
 ___param_bank                   (abs)        000000
 ___rparam_used                  (abs)        000001
 ___sp                           stack        000000
-___wmul                         text4        004086
+___wmul                         text7        003B1A
 ___wmul@multiplicand            cstackCOMRAM 000003
 ___wmul@multiplier              cstackCOMRAM 000001
 ___wmul@product                 cstackCOMRAM 000005
 __accesstop                     (abs)        000060
 __activetblptr                  (abs)        000002
-__end_of_Font3x6                mediumconst  007FFE
-__end_of_Font8x8                mediumconst  007B3B
-__end_of___awdiv                text17       0044F8
-__end_of___awmod                text23       004386
-__end_of___lmul                 text22       00423C
-__end_of___wmul                 text4        0040AC
-__end_of__initialization        cinit        00418A
-__end_of_accueil                mediumconst  007F3B
-__end_of_completedUpdate        text6        004B38
-__end_of_createRandomShape      text20       00733A
-__end_of_delay                  text19       004086
-__end_of_delayHomeScreen        text18       0040E0
-__end_of_display_grid           text13       00496C
-__end_of_dontBelong2Shape       text9        004474
-__end_of_glcd_FillScreen        text11       004316
-__end_of_glcd_Image             text12       0043FA
-__end_of_glcd_Init              text10       004668
-__end_of_glcd_PlotPixel         text14       0045AA
-__end_of_glcd_ReadByte          text16       004116
-__end_of_glcd_WriteByte         text15       00414C
-__end_of_gravity                text8        005E9A
-__end_of_lineCompletedTest      text5        0042A8
-__end_of_main                   text0        0047CA
-__end_of_moveLeft               text3        0055A2
-__end_of_moveRight              text2        0059EE
-__end_of_rand                   text21       0041E6
-__end_of_rotate                 text1        005156
-__end_of_update_display_shapes  text7        004DE2
-__initialization                cinit        00414C
-__mediumconst                   mediumconst  00733A
+__end_of_EEPROM_Read            text37       003A98
+__end_of_EEPROM_Write           text36       003AF6
+__end_of_Font3x6                mediumconst  007FC8
+__end_of_Font8x8                mediumconst  007B05
+__end_of___awdiv                text20       0040DA
+__end_of___awmod                text35       003F68
+__end_of___lmul                 text34       003DB2
+__end_of___lwdiv                text24       003D5C
+__end_of___lwmod                text23       003C22
+__end_of___wmul                 text7        003B40
+__end_of__initialization        cinit        003CAE
+__end_of_accueil                mediumconst  007F05
+__end_of_completedUpdate        text9        004936
+__end_of_createRandomShape      text32       007304
+__end_of_delay                  text31       003AB2
+__end_of_delayHomeScreen        text30       003B74
+__end_of_displayStartScore      text21       003E1E
+__end_of_display_grid           text17       00476A
+__end_of_dontBelong2Shape       text12       004056
+__end_of_dpowers                mediumconst  007FD2
+__end_of_glcd_FillScreen        text28       003EF8
+__end_of_glcd_Image             text16       003FDC
+__end_of_glcd_Init              text15       0042D0
+__end_of_glcd_PlotPixel         text18       004212
+__end_of_glcd_ReadByte          text19       003BE0
+__end_of_glcd_SetCursor         text14       003C6A
+__end_of_glcd_WriteByte         text29       003BAA
+__end_of_glcd_WriteChar3x6      text27       004480
+__end_of_glcd_WriteChar8X8      text26       00439C
+__end_of_glcd_WriteString       text25       004160
+__end_of_glcd_text_write        text13       003AD2
+__end_of_gravity                text11       005E64
+__end_of_lineCompletedTest      text8        003E8A
+__end_of_main                   text0        004B02
+__end_of_moveLeft               text6        00556C
+__end_of_moveRight              text5        0059B8
+__end_of_pwmStart               text4        003A82
+__end_of_pwmStop                text3        003A86
+__end_of_rand                   text33       003D0A
+__end_of_rotate                 text2        005120
+__end_of_setupPWM               text1        003B1A
+__end_of_sprintf                text22       0045C8
+__end_of_update_display_shapes  text10       004DAC
+__initialization                cinit        003C6A
+__mediumconst                   mediumconst  007304
 __pbssBANK1                     bssBANK1     000100
 __pbssBANK2                     bssBANK2     000200
-__pbssCOMRAM                    bssCOMRAM    000041
-__pcinit                        cinit        00414C
+__pbssCOMRAM                    bssCOMRAM    00003E
+__pcinit                        cinit        003C6A
 __pcstackCOMRAM                 cstackCOMRAM 000001
-__pdataCOMRAM                   dataCOMRAM   00003D
-__pidataCOMRAM                  idataCOMRAM  004068
-__pmediumconst                  mediumconst  00733A
-__ptext0                        text0        004668
-__ptext1                        text1        004DE2
-__ptext10                       text10       0045AA
-__ptext11                       text11       0042A8
-__ptext12                       text12       004386
-__ptext13                       text13       0047CA
-__ptext14                       text14       0044F8
-__ptext15                       text15       004116
-__ptext16                       text16       0040E0
-__ptext17                       text17       004474
-__ptext18                       text18       0040AC
-__ptext19                       text19       00406C
-__ptext2                        text2        0055A2
-__ptext20                       text20       005E9A
-__ptext21                       text21       004194
-__ptext22                       text22       0041E6
-__ptext23                       text23       004316
-__ptext3                        text3        005156
-__ptext4                        text4        004086
-__ptext5                        text5        00423C
-__ptext6                        text6        00496C
-__ptext7                        text7        004B38
-__ptext8                        text8        0059EE
-__ptext9                        text9        0043FA
+__pdataCOMRAM                   dataCOMRAM   000055
+__pidataCOMRAM                  idataCOMRAM  003A86
+__pmediumconst                  mediumconst  007304
+__ptext0                        text0        004936
+__ptext1                        text1        003AF6
+__ptext10                       text10       004B02
+__ptext11                       text11       0059B8
+__ptext12                       text12       003FDC
+__ptext13                       text13       003AB2
+__ptext14                       text14       003C22
+__ptext15                       text15       004212
+__ptext16                       text16       003F68
+__ptext17                       text17       0045C8
+__ptext18                       text18       004160
+__ptext19                       text19       003BAA
+__ptext2                        text2        004DAC
+__ptext20                       text20       004056
+__ptext21                       text21       003DB2
+__ptext22                       text22       004480
+__ptext23                       text23       003BE0
+__ptext24                       text24       003D0A
+__ptext25                       text25       0040DA
+__ptext26                       text26       0042D0
+__ptext27                       text27       00439C
+__ptext28                       text28       003E8A
+__ptext29                       text29       003B74
+__ptext3                        text3        003A82
+__ptext30                       text30       003B40
+__ptext31                       text31       003A98
+__ptext32                       text32       005E64
+__ptext33                       text33       003CB8
+__ptext34                       text34       003D5C
+__ptext35                       text35       003EF8
+__ptext36                       text36       003AD2
+__ptext37                       text37       003A8A
+__ptext4                        text4        003A7E
+__ptext5                        text5        00556C
+__ptext6                        text6        005120
+__ptext7                        text7        003B1A
+__ptext8                        text8        003E1E
+__ptext9                        text9        00476A
 __ramtop                        ramtop       000800
+__size_of_EEPROM_Read           (abs)        000000
+__size_of_EEPROM_Write          (abs)        000000
 __size_of___awdiv               (abs)        000000
 __size_of___awmod               (abs)        000000
 __size_of___lmul                (abs)        000000
+__size_of___lwdiv               (abs)        000000
+__size_of___lwmod               (abs)        000000
 __size_of___wmul                (abs)        000000
 __size_of_completedUpdate       (abs)        000000
 __size_of_createRandomShape     (abs)        000000
 __size_of_delay                 (abs)        000000
 __size_of_delayHomeScreen       (abs)        000000
+__size_of_displayStartScore     (abs)        000000
 __size_of_display_grid          (abs)        000000
 __size_of_dontBelong2Shape      (abs)        000000
 __size_of_glcd_FillScreen       (abs)        000000
@@ -522,83 +657,106 @@ __size_of_glcd_Image            (abs)        000000
 __size_of_glcd_Init             (abs)        000000
 __size_of_glcd_PlotPixel        (abs)        000000
 __size_of_glcd_ReadByte         (abs)        000000
+__size_of_glcd_SetCursor        (abs)        000000
 __size_of_glcd_WriteByte        (abs)        000000
+__size_of_glcd_WriteChar3x6     (abs)        000000
+__size_of_glcd_WriteChar8X8     (abs)        000000
+__size_of_glcd_WriteString      (abs)        000000
+__size_of_glcd_text_write       (abs)        000000
 __size_of_gravity               (abs)        000000
 __size_of_lineCompletedTest     (abs)        000000
 __size_of_main                  (abs)        000000
 __size_of_moveLeft              (abs)        000000
 __size_of_moveRight             (abs)        000000
+__size_of_pwmStart              (abs)        000000
+__size_of_pwmStop               (abs)        000000
 __size_of_rand                  (abs)        000000
 __size_of_rotate                (abs)        000000
+__size_of_setupPWM              (abs)        000000
+__size_of_sprintf               (abs)        000000
 __size_of_update_display_shapes (abs)        000000
 __smallconst                    smallconst   000000
-_accueil                        mediumconst  007B3B
+_accueil                        mediumconst  007B05
 _all_shapes                     bssBANK1     000100
 _array_data                     bssBANK2     000200
-_completedUpdate                text6        00496C
-_createRandomShape              text20       005E9A
-_delay                          text19       00406C
-_delayHomeScreen                text18       0040AC
-_display_grid                   text13       0047CA
-_dontBelong2Shape               text9        0043FA
-_glcd_FillScreen                text11       0042A8
-_glcd_Image                     text12       004386
-_glcd_Init                      text10       0045AA
-_glcd_PlotPixel                 text14       0044F8
-_glcd_ReadByte                  text16       0040E0
-_glcd_WriteByte                 text15       004116
-_gravity                        text8        0059EE
-_lineCompletedTest              text5        00423C
-_main                           text0        004668
-_moveLeft                       text3        005156
-_moveRight                      text2        0055A2
-_rand                           text21       004194
-_randx                          dataCOMRAM   00003D
-_rotate                         text1        004DE2
-_score                          bssCOMRAM    000043
-_update_display_shapes          text7        004B38
-_x                              bssCOMRAM    000042
-_y                              bssCOMRAM    000041
+_completedUpdate                text9        00476A
+_createRandomShape              text32       005E64
+_delay                          text31       003A98
+_delayHomeScreen                text30       003B40
+_displayStartScore              text21       003DB2
+_display_grid                   text17       0045C8
+_dontBelong2Shape               text12       003FDC
+_dpowers                        mediumconst  007FC8
+_glcd_FillScreen                text28       003E8A
+_glcd_Image                     text16       003F68
+_glcd_Init                      text15       004212
+_glcd_PlotPixel                 text18       004160
+_glcd_ReadByte                  text19       003BAA
+_glcd_SetCursor                 text14       003C22
+_glcd_WriteByte                 text29       003B74
+_glcd_WriteChar3x6              text27       00439C
+_glcd_WriteChar8X8              text26       0042D0
+_glcd_WriteString               text25       0040DA
+_glcd_text_write                text13       003AB2
+_gravity                        text11       0059B8
+_lineCompletedTest              text8        003E1E
+_main                           text0        004936
+_moveLeft                       text6        005120
+_moveRight                      text5        00556C
+_pwmStart                       text4        003A7E
+_pwmStop                        text3        003A82
+_rand                           text33       003CB8
+_randx                          dataCOMRAM   000055
+_rotate                         text2        004DAC
+_score                          bssCOMRAM    000054
+_setupPWM                       text1        003AF6
+_sprintf                        text22       004480
+_update_display_shapes          text10       004B02
+_x                              bssCOMRAM    000053
+_y                              bssCOMRAM    000052
 completedUpdate@i               cstackCOMRAM 00002D
-completedUpdate@i_218           cstackCOMRAM 00002B
+completedUpdate@i_303           cstackCOMRAM 00002B
 completedUpdate@j               cstackCOMRAM 00002C
-completedUpdate@j_216           cstackCOMRAM 000029
-completedUpdate@j_217           cstackCOMRAM 00002A
+completedUpdate@j_301           cstackCOMRAM 000029
+completedUpdate@j_302           cstackCOMRAM 00002A
 completedUpdate@line            cstackCOMRAM 000028
 createRandomShape@i             cstackCOMRAM 000034
 createRandomShape@k             cstackCOMRAM 00001E
-createRandomShape@k_193         cstackCOMRAM 00001F
-createRandomShape@k_194         cstackCOMRAM 000020
-createRandomShape@k_195         cstackCOMRAM 000021
-createRandomShape@k_197         cstackCOMRAM 000022
-createRandomShape@k_198         cstackCOMRAM 000023
-createRandomShape@k_199         cstackCOMRAM 000024
-createRandomShape@k_200         cstackCOMRAM 000025
-createRandomShape@k_202         cstackCOMRAM 000026
-createRandomShape@k_203         cstackCOMRAM 000027
-createRandomShape@k_204         cstackCOMRAM 000028
-createRandomShape@k_205         cstackCOMRAM 000029
-createRandomShape@k_207         cstackCOMRAM 00002A
-createRandomShape@k_208         cstackCOMRAM 00002B
-createRandomShape@k_209         cstackCOMRAM 00002C
-createRandomShape@k_210         cstackCOMRAM 00002D
-createRandomShape@k_211         cstackCOMRAM 00002E
+createRandomShape@k_278         cstackCOMRAM 00001F
+createRandomShape@k_279         cstackCOMRAM 000020
+createRandomShape@k_280         cstackCOMRAM 000021
+createRandomShape@k_282         cstackCOMRAM 000022
+createRandomShape@k_283         cstackCOMRAM 000023
+createRandomShape@k_284         cstackCOMRAM 000024
+createRandomShape@k_285         cstackCOMRAM 000025
+createRandomShape@k_287         cstackCOMRAM 000026
+createRandomShape@k_288         cstackCOMRAM 000027
+createRandomShape@k_289         cstackCOMRAM 000028
+createRandomShape@k_290         cstackCOMRAM 000029
+createRandomShape@k_292         cstackCOMRAM 00002A
+createRandomShape@k_293         cstackCOMRAM 00002B
+createRandomShape@k_294         cstackCOMRAM 00002C
+createRandomShape@k_295         cstackCOMRAM 00002D
+createRandomShape@k_296         cstackCOMRAM 00002E
 createRandomShape@orientation   cstackCOMRAM 000033
 createRandomShape@start         cstackCOMRAM 00002F
-createRandomShape@start_196     cstackCOMRAM 000030
-createRandomShape@start_201     cstackCOMRAM 000031
-createRandomShape@start_206     cstackCOMRAM 000032
+createRandomShape@start_281     cstackCOMRAM 000030
+createRandomShape@start_286     cstackCOMRAM 000031
+createRandomShape@start_291     cstackCOMRAM 000032
 createRandomShape@type          cstackCOMRAM 00001D
 delay@c                         cstackCOMRAM 000001
 delayHomeScreen@c               cstackCOMRAM 000001
 delayHomeScreen@d               cstackCOMRAM 000003
+displayStartScore@F4364         bssCOMRAM    00003E
+displayStartScore@bestScore     cstackCOMRAM 00002F
+displayStartScore@string        cstackCOMRAM 00001B
 display_grid@i                  cstackCOMRAM 000013
 display_grid@j                  cstackCOMRAM 000012
 dontBelong2Shape@index          cstackCOMRAM 000006
 dontBelong2Shape@k              cstackCOMRAM 000007
 dontBelong2Shape@x              cstackCOMRAM 000001
 dontBelong2Shape@y              cstackCOMRAM 000002
-end_of_initialization           cinit        00418A
+end_of_initialization           cinit        003CAE
 glcd_FillScreen@color           cstackCOMRAM 00000B
 glcd_FillScreen@i               cstackCOMRAM 00000D
 glcd_FillScreen@j               cstackCOMRAM 00000C
@@ -614,16 +772,36 @@ glcd_PlotPixel@xpos             cstackCOMRAM 00000F
 glcd_PlotPixel@ypos             cstackCOMRAM 00000B
 glcd_ReadByte@data              cstackCOMRAM 000002
 glcd_ReadByte@side              cstackCOMRAM 000001
+glcd_SetCursor@side             cstackCOMRAM 00000C
+glcd_SetCursor@xpos             cstackCOMRAM 00000D
+glcd_SetCursor@ypos             cstackCOMRAM 00000B
 glcd_WriteByte@data             cstackCOMRAM 000009
 glcd_WriteByte@side             cstackCOMRAM 00000A
+glcd_WriteChar3x6@ch            cstackCOMRAM 00000F
+glcd_WriteChar3x6@color         cstackCOMRAM 00000B
+glcd_WriteChar3x6@i             cstackCOMRAM 000010
+glcd_WriteChar3x6@side          cstackCOMRAM 000011
+glcd_WriteChar3x6@xpos          cstackCOMRAM 00000E
+glcd_WriteChar8X8@ch            cstackCOMRAM 000010
+glcd_WriteChar8X8@chr           cstackCOMRAM 00000E
+glcd_WriteChar8X8@color         cstackCOMRAM 00000B
+glcd_WriteChar8X8@i             cstackCOMRAM 000012
+glcd_WriteChar8X8@side          cstackCOMRAM 000013
+glcd_WriteChar8X8@xpos          cstackCOMRAM 000011
+glcd_WriteString@color          cstackCOMRAM 000017
+glcd_WriteString@font           cstackCOMRAM 000016
+glcd_WriteString@str            cstackCOMRAM 000014
+glcd_text_write@str             cstackCOMRAM 000018
+glcd_text_write@x               cstackCOMRAM 00001A
+glcd_text_write@y               cstackCOMRAM 00001B
 gravity@a                       cstackCOMRAM 000012
 gravity@b                       cstackCOMRAM 000013
 gravity@i                       cstackCOMRAM 000019
 gravity@index                   cstackCOMRAM 00001A
 gravity@j                       cstackCOMRAM 000016
-gravity@j_159                   cstackCOMRAM 000017
-gravity@j_161                   cstackCOMRAM 000018
-gravity@j_162                   cstackCOMRAM 000015
+gravity@j_244                   cstackCOMRAM 000017
+gravity@j_246                   cstackCOMRAM 000018
+gravity@j_247                   cstackCOMRAM 000015
 gravity@ok                      cstackCOMRAM 000014
 intlevel0                       text         000000
 intlevel1                       text         000000
@@ -632,47 +810,56 @@ intlevel3                       text         000000
 lineCompletedTest@completed     cstackCOMRAM 000031
 lineCompletedTest@i             cstackCOMRAM 000032
 lineCompletedTest@j             cstackCOMRAM 000033
-main@i                          cstackCOMRAM 00003A
-main@i_246                      cstackCOMRAM 000038
-main@index                      cstackCOMRAM 00003C
-main@next                       cstackCOMRAM 000037
-main@y                          cstackCOMRAM 00003B
-main@y_247                      cstackCOMRAM 000039
+main@bestScore                  cstackCOMRAM 000037
+main@i                          cstackCOMRAM 00003B
+main@i_339                      cstackCOMRAM 000039
+main@index                      cstackCOMRAM 00003D
+main@next                       cstackCOMRAM 000038
+main@y                          cstackCOMRAM 00003C
+main@y_340                      cstackCOMRAM 00003A
 moveLeft@a                      cstackCOMRAM 000011
 moveLeft@b                      cstackCOMRAM 000012
 moveLeft@i                      cstackCOMRAM 000017
 moveLeft@index                  cstackCOMRAM 000018
 moveLeft@j                      cstackCOMRAM 000014
-moveLeft@j_179                  cstackCOMRAM 000015
-moveLeft@j_180                  cstackCOMRAM 000016
+moveLeft@j_264                  cstackCOMRAM 000015
+moveLeft@j_265                  cstackCOMRAM 000016
 moveLeft@ok                     cstackCOMRAM 000013
 moveRight@a                     cstackCOMRAM 000011
 moveRight@b                     cstackCOMRAM 000012
 moveRight@i                     cstackCOMRAM 000017
 moveRight@index                 cstackCOMRAM 000018
 moveRight@j                     cstackCOMRAM 000014
-moveRight@j_170                 cstackCOMRAM 000015
-moveRight@j_171                 cstackCOMRAM 000016
+moveRight@j_255                 cstackCOMRAM 000015
+moveRight@j_256                 cstackCOMRAM 000016
 moveRight@ok                    cstackCOMRAM 000013
 rotate@index                    cstackCOMRAM 00001E
 rotate@k                        cstackCOMRAM 00001F
-rotate@k_234                    cstackCOMRAM 00001D
+rotate@k_319                    cstackCOMRAM 00001D
 rotate@new_coord                cstackCOMRAM 000010
 rotate@ok                       cstackCOMRAM 00001A
 rotate@pivot_x                  cstackCOMRAM 00001B
 rotate@pivot_y                  cstackCOMRAM 00001C
 rotate@temp_x                   cstackCOMRAM 000018
 rotate@temp_y                   cstackCOMRAM 000019
+setupPWM@PR2value               cstackCOMRAM 000001
+sprintf@ap                      cstackCOMRAM 000014
+sprintf@c                       cstackCOMRAM 00001A
+sprintf@f                       cstackCOMRAM 00000F
+sprintf@flag                    cstackCOMRAM 000016
+sprintf@prec                    cstackCOMRAM 000017
+sprintf@sp                      cstackCOMRAM 00000D
+sprintf@val                     cstackCOMRAM 000018
 stackhi                         (abs)        0007FF
 stacklo                         (abs)        0002D8
 start                           init         000000
-start_initialization            cinit        00414C
+start_initialization            cinit        003C6A
 update_display_shapes@i         cstackCOMRAM 00001C
 update_display_shapes@j         cstackCOMRAM 00001D
 update_display_shapes@m         cstackCOMRAM 000018
-update_display_shapes@m_145     cstackCOMRAM 00001A
+update_display_shapes@m_230     cstackCOMRAM 00001A
 update_display_shapes@n         cstackCOMRAM 000019
-update_display_shapes@n_146     cstackCOMRAM 00001B
+update_display_shapes@n_231     cstackCOMRAM 00001B
 update_display_shapes@operation cstackCOMRAM 000017
 update_display_shapes@x         cstackCOMRAM 00001F
 update_display_shapes@y         cstackCOMRAM 00001E
@@ -682,16 +869,17 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 944 in file "main.c"
+		line 960 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  y               1   56[COMRAM] unsigned char 
-  y               1   58[COMRAM] unsigned char 
-  i               1   55[COMRAM] unsigned char 
-  i               1   57[COMRAM] unsigned char 
-  index           1   59[COMRAM] unsigned char 
-  next            1   54[COMRAM] char 
+  y               1   57[COMRAM] unsigned char 
+  y               1   59[COMRAM] unsigned char 
+  i               1   56[COMRAM] unsigned char 
+  i               1   58[COMRAM] unsigned char 
+  index           1   60[COMRAM] unsigned char 
+  next            1   55[COMRAM] char 
+  bestScore       1   54[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -702,33 +890,69 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         0       0       0       0       0       0       0       0       0
-      Locals:         6       0       0       0       0       0       0       0       0
+      Locals:         7       0       0       0       0       0       0       0       0
       Temps:          2       0       0       0       0       0       0       0       0
-      Totals:         8       0       0       0       0       0       0       0       0
-Total ram usage:        8 bytes
+      Totals:         9       0       0       0       0       0       0       0       0
+Total ram usage:        9 bytes
  Hardware stack levels required when called:    5
  This function calls:
+		_EEPROM_Read
+		_EEPROM_Write
 		_createRandomShape
 		_delay
 		_delayHomeScreen
+		_displayStartScore
 		_display_grid
 		_glcd_FillScreen
 		_glcd_Image
 		_glcd_Init
+		_glcd_text_write
 		_gravity
 		_lineCompletedTest
 		_moveLeft
 		_moveRight
+		_pwmStart
+		_pwmStop
 		_rotate
+		_setupPWM
 		_update_display_shapes
  This function is called by:
 		Startup code after reset
  This function uses a non-reentrant model
 
 
+ *************** function _setupPWM *****************
+ Defined at:
+		line 38 in file "glcd_library/mcu.c"
+ Parameters:    Size  Location     Type
+  PR2value        2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         2       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _rotate *****************
  Defined at:
-		line 906 in file "main.c"
+		line 907 in file "main.c"
  Parameters:    Size  Location     Type
   index           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -764,9 +988,67 @@ Total ram usage:       24 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _pwmStop *****************
+ Defined at:
+		line 77 in file "glcd_library/mcu.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _pwmStart *****************
+ Defined at:
+		line 71 in file "glcd_library/mcu.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _moveRight *****************
  Defined at:
-		line 417 in file "main.c"
+		line 418 in file "main.c"
  Parameters:    Size  Location     Type
   index           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -804,7 +1086,7 @@ Total ram usage:       17 bytes
 
  *************** function _moveLeft *****************
  Defined at:
-		line 456 in file "main.c"
+		line 457 in file "main.c"
  Parameters:    Size  Location     Type
   index           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -873,7 +1155,7 @@ Total ram usage:        6 bytes
 
  *************** function _lineCompletedTest *****************
  Defined at:
-		line 886 in file "main.c"
+		line 887 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -905,7 +1187,7 @@ Total ram usage:        6 bytes
 
  *************** function _completedUpdate *****************
  Defined at:
-		line 854 in file "main.c"
+		line 855 in file "main.c"
  Parameters:    Size  Location     Type
   line            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -940,7 +1222,7 @@ Total ram usage:       14 bytes
 
  *************** function _update_display_shapes *****************
  Defined at:
-		line 215 in file "main.c"
+		line 216 in file "main.c"
  Parameters:    Size  Location     Type
   operation       1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -979,7 +1261,7 @@ Total ram usage:       14 bytes
 
  *************** function _gravity *****************
  Defined at:
-		line 362 in file "main.c"
+		line 363 in file "main.c"
  Parameters:    Size  Location     Type
   index           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1017,7 +1299,7 @@ Total ram usage:       19 bytes
 
  *************** function _dontBelong2Shape *****************
  Defined at:
-		line 348 in file "main.c"
+		line 349 in file "main.c"
  Parameters:    Size  Location     Type
   index           1    wreg     unsigned char 
   x               1    0[COMRAM] unsigned char 
@@ -1047,6 +1329,72 @@ Total ram usage:        7 bytes
 		_moveRight
 		_moveLeft
 		_rotate
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_text_write *****************
+ Defined at:
+		line 685 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  str             2   23[COMRAM] PTR const unsigned char 
+		 -> STR_3(27), 
+  x               1   25[COMRAM] unsigned char 
+  y               1   26[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         4       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         4       0       0       0       0       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_glcd_SetCursor
+		_glcd_WriteString
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_SetCursor *****************
+ Defined at:
+		line 554 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  xpos            1    wreg     unsigned char 
+  ypos            1   10[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  xpos            1   12[COMRAM] unsigned char 
+  side            1   11[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         1       0       0       0       0       0       0       0       0
+      Locals:         2       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_glcd_WriteByte
+ This function is called by:
+		_glcd_text_write
  This function uses a non-reentrant model
 
 
@@ -1081,39 +1429,6 @@ Total ram usage:        2 bytes
 		_glcd_WriteByte
  This function is called by:
 		_main
- This function uses a non-reentrant model
-
-
- *************** function _glcd_FillScreen *****************
- Defined at:
-		line 530 in file "glcd_library/glcd.c"
- Parameters:    Size  Location     Type
-  color           1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  color           1   10[COMRAM] unsigned char 
-  i               1   12[COMRAM] unsigned char 
-  j               1   11[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, prodl, prodh, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-      Params:         0       0       0       0       0       0       0       0       0
-      Locals:         3       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0
-      Totals:         3       0       0       0       0       0       0       0       0
-Total ram usage:        3 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		_glcd_WriteByte
- This function is called by:
-		_main
-		_glcd_Init
  This function uses a non-reentrant model
 
 
@@ -1152,7 +1467,7 @@ Total ram usage:        5 bytes
 
  *************** function _display_grid *****************
  Defined at:
-		line 60 in file "main.c"
+		line 61 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1219,42 +1534,6 @@ Total ram usage:        7 bytes
  This function uses a non-reentrant model
 
 
- *************** function _glcd_WriteByte *****************
- Defined at:
-		line 395 in file "glcd_library/glcd.c"
- Parameters:    Size  Location     Type
-  side            1    wreg     unsigned char 
-  data            1    8[COMRAM] unsigned char 
- Auto vars:     Size  Location     Type
-  side            1    9[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-      Params:         1       0       0       0       0       0       0       0       0
-      Locals:         1       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_glcd_Init
-		_glcd_PlotPixel
-		_glcd_FillScreen
-		_glcd_Image
-		_glcd_SetCursor
-		_glcd_WriteChar8X8
-		_glcd_WriteChar3x6
- This function uses a non-reentrant model
-
-
  *************** function _glcd_ReadByte *****************
  Defined at:
 		line 432 in file "glcd_library/glcd.c"
@@ -1317,9 +1596,320 @@ Total ram usage:        8 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _displayStartScore *****************
+ Defined at:
+		line 945 in file "main.c"
+ Parameters:    Size  Location     Type
+  bestScore       1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  bestScore       1   46[COMRAM] unsigned char 
+  string         20   26[COMRAM] unsigned char [20]
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:        21       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:        21       0       0       0       0       0       0       0       0
+Total ram usage:       21 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_delayHomeScreen
+		_glcd_FillScreen
+		_glcd_WriteString
+		_sprintf
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _sprintf *****************
+ Defined at:
+		line 492 in file "C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c"
+ Parameters:    Size  Location     Type
+  sp              2   12[COMRAM] PTR unsigned char 
+		 -> displayStartScore@string(20), 
+  f               2   14[COMRAM] PTR const unsigned char 
+		 -> STR_1(3), 
+ Auto vars:     Size  Location     Type
+  tmpval          4    0        struct .
+  cp              3    0        PTR const unsigned char 
+  val             2   23[COMRAM] unsigned int 
+  ap              2   19[COMRAM] PTR void [1]
+		 -> ?_sprintf(2), 
+  len             2    0        unsigned int 
+  c               1   25[COMRAM] char 
+  prec            1   22[COMRAM] char 
+  flag            1   21[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2   12[COMRAM] int 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         6       0       0       0       0       0       0       0       0
+      Locals:         7       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:        14       0       0       0       0       0       0       0       0
+Total ram usage:       14 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		___lwdiv
+		___lwmod
+ This function is called by:
+		_displayStartScore
+ This function uses a non-reentrant model
+
+
+ *************** function ___lwmod *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2    7[COMRAM] unsigned int 
+  divisor         2    9[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  counter         1   11[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2    7[COMRAM] unsigned int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         4       0       0       0       0       0       0       0       0
+      Locals:         1       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         5       0       0       0       0       0       0       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_sprintf
+ This function uses a non-reentrant model
+
+
+ *************** function ___lwdiv *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c"
+ Parameters:    Size  Location     Type
+  dividend        2    0[COMRAM] unsigned int 
+  divisor         2    2[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  quotient        2    4[COMRAM] unsigned int 
+  counter         1    6[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] unsigned int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         4       0       0       0       0       0       0       0       0
+      Locals:         3       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         7       0       0       0       0       0       0       0       0
+Total ram usage:        7 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_sprintf
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_WriteString *****************
+ Defined at:
+		line 673 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  str             2   19[COMRAM] PTR const unsigned char 
+		 -> STR_3(27), STR_2(14), displayStartScore@string(20), 
+  font            1   21[COMRAM] unsigned char 
+  color           1   22[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         4       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         4       0       0       0       0       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_glcd_WriteChar3x6
+		_glcd_WriteChar8X8
+ This function is called by:
+		_displayStartScore
+		_glcd_text_write
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_WriteChar8X8 *****************
+ Defined at:
+		line 579 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  ch              1    wreg     unsigned char 
+  color           1   10[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  ch              1   15[COMRAM] unsigned char 
+  chr             2   13[COMRAM] unsigned int 
+  side            1   18[COMRAM] unsigned char 
+  i               1   17[COMRAM] unsigned char 
+  xpos            1   16[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         1       0       0       0       0       0       0       0       0
+      Locals:         6       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         9       0       0       0       0       0       0       0       0
+Total ram usage:        9 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_glcd_WriteByte
+ This function is called by:
+		_glcd_WriteString
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_WriteChar3x6 *****************
+ Defined at:
+		line 627 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  ch              1    wreg     unsigned char 
+  color           1   10[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  ch              1   14[COMRAM] unsigned char 
+  side            1   16[COMRAM] unsigned char 
+  i               1   15[COMRAM] unsigned char 
+  xpos            1   13[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         1       0       0       0       0       0       0       0       0
+      Locals:         4       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         7       0       0       0       0       0       0       0       0
+Total ram usage:        7 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_glcd_WriteByte
+ This function is called by:
+		_glcd_WriteString
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_FillScreen *****************
+ Defined at:
+		line 530 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  color           1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  color           1   10[COMRAM] unsigned char 
+  i               1   12[COMRAM] unsigned char 
+  j               1   11[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         3       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_glcd_WriteByte
+ This function is called by:
+		_displayStartScore
+		_main
+		_glcd_Init
+ This function uses a non-reentrant model
+
+
+ *************** function _glcd_WriteByte *****************
+ Defined at:
+		line 395 in file "glcd_library/glcd.c"
+ Parameters:    Size  Location     Type
+  side            1    wreg     unsigned char 
+  data            1    8[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  side            1    9[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         1       0       0       0       0       0       0       0       0
+      Locals:         1       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_glcd_Init
+		_glcd_PlotPixel
+		_glcd_FillScreen
+		_glcd_SetCursor
+		_glcd_WriteChar8X8
+		_glcd_WriteChar3x6
+		_glcd_Image
+ This function uses a non-reentrant model
+
+
  *************** function _delayHomeScreen *****************
  Defined at:
-		line 505 in file "main.c"
+		line 506 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1343,13 +1933,14 @@ Total ram usage:        4 bytes
  This function calls:
 		Nothing
  This function is called by:
+		_displayStartScore
 		_main
  This function uses a non-reentrant model
 
 
  *************** function _delay *****************
  Defined at:
-		line 496 in file "main.c"
+		line 497 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1379,7 +1970,7 @@ Total ram usage:        2 bytes
 
  *************** function _createRandomShape *****************
  Defined at:
-		line 515 in file "main.c"
+		line 516 in file "main.c"
  Parameters:    Size  Location     Type
   i               1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1522,67 +2113,157 @@ Total ram usage:        6 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _EEPROM_Write *****************
+ Defined at:
+		line 22 in file "glcd_library/mcu.c"
+ Parameters:    Size  Location     Type
+  address         2    0[COMRAM] int 
+  data            1    2[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         3       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _EEPROM_Read *****************
+ Defined at:
+		line 13 in file "glcd_library/mcu.c"
+ Parameters:    Size  Location     Type
+  address         2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         2       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul32.c
-		___lmul        		CODE           	41E6	0000	87
+		___lmul        		CODE           	3D5C	0000	87
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul32.c estimated size: 87
 
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c
+		___lwdiv       		CODE           	3D0A	0000	83
+
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c estimated size: 83
+
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awdiv.c
-		___awdiv       		CODE           	4474	0000	133
+		___awdiv       		CODE           	4056	0000	133
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awdiv.c estimated size: 133
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\rand.c
-		_rand          		CODE           	4194	0000	83
+		_rand          		CODE           	3CB8	0000	83
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\rand.c estimated size: 83
 
-shared
-		_Font3x6       		MEDIUMCONST    	7F3B	0000	196
-		_Font8x8       		MEDIUMCONST    	733B	0000	2049
-		_accueil       		MEDIUMCONST    	7B3B	0000	1025
-		__initialization		CODE           	414C	0000	63
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
+		_sprintf       		CODE           	4480	0000	329
 
-shared estimated size: 3333
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c estimated size: 329
+
+shared
+		_Font3x6       		MEDIUMCONST    	7F05	0000	196
+		_dpowers       		MEDIUMCONST    	7FC8	0000	11
+		_Font8x8       		MEDIUMCONST    	7305	0000	2049
+		_accueil       		MEDIUMCONST    	7B05	0000	1025
+		__initialization		CODE           	3C6A	0000	69
+
+shared estimated size: 3350
+
+glcd_library/mcu.c
+		_setupPWM      		CODE           	3AF6	0000	37
+		_EEPROM_Read   		CODE           	3A8A	0000	15
+		_EEPROM_Write  		CODE           	3AD2	0000	37
+		_pwmStart      		CODE           	3A7E	0000	5
+		_pwmStop       		CODE           	3A82	0000	5
+
+glcd_library/mcu.c estimated size: 99
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c
-		___wmul        		CODE           	4086	0000	39
+		___wmul        		CODE           	3B1A	0000	39
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c estimated size: 39
 
-main.c
-		_update_display_shapes		CODE           	4B38	0000	683
-		_delay         		CODE           	406C	0000	27
-		_gravity       		CODE           	59EE	0000	1197
-		_display_grid  		CODE           	47CA	0000	419
-		_main          		CODE           	4668	0000	355
-		_moveLeft      		CODE           	5156	0000	1101
-		_moveRight     		CODE           	55A2	0000	1101
-		_completedUpdate		CODE           	496C	0000	461
-		_createRandomShape		CODE           	5E9A	0000	5281
-		_rotate        		CODE           	4DE2	0000	885
-		_dontBelong2Shape		CODE           	43FA	0000	123
-		_delayHomeScreen		CODE           	40AC	0000	53
-		_lineCompletedTest		CODE           	423C	0000	109
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwmod.c
+		___lwmod       		CODE           	3BE0	0000	67
 
-main.c estimated size: 11795
+C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwmod.c estimated size: 67
+
+main.c
+		_update_display_shapes		CODE           	4B02	0000	683
+		_delay         		CODE           	3A98	0000	27
+		_gravity       		CODE           	59B8	0000	1197
+		_display_grid  		CODE           	45C8	0000	419
+		_main          		CODE           	4936	0000	461
+		_moveLeft      		CODE           	5120	0000	1101
+		_displayStartScore		CODE           	3DB2	0000	109
+		_moveRight     		CODE           	556C	0000	1101
+		_completedUpdate		CODE           	476A	0000	461
+		_createRandomShape		CODE           	5E64	0000	5281
+		_rotate        		CODE           	4DAC	0000	885
+		_dontBelong2Shape		CODE           	3FDC	0000	123
+		_delayHomeScreen		CODE           	3B40	0000	53
+		_lineCompletedTest		CODE           	3E1E	0000	109
+
+main.c estimated size: 12010
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awmod.c
-		___awmod       		CODE           	4316	0000	113
+		___awmod       		CODE           	3EF8	0000	113
 
 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\awmod.c estimated size: 113
 
 glcd_library/glcd.c
-		_glcd_WriteByte		CODE           	4116	0000	55
-		_glcd_Init     		CODE           	45AA	0000	191
-		_glcd_ReadByte 		CODE           	40E0	0000	55
-		_glcd_FillScreen		CODE           	42A8	0000	111
-		_glcd_PlotPixel		CODE           	44F8	0000	179
-		_glcd_Image    		CODE           	4386	0000	117
+		_glcd_SetCursor		CODE           	3C22	0000	73
+		_glcd_WriteString		CODE           	40DA	0000	135
+		_glcd_WriteByte		CODE           	3B74	0000	55
+		_glcd_Init     		CODE           	4212	0000	191
+		_glcd_ReadByte 		CODE           	3BAA	0000	55
+		_glcd_WriteChar8X8		CODE           	42D0	0000	205
+		_glcd_FillScreen		CODE           	3E8A	0000	111
+		_glcd_text_write		CODE           	3AB2	0000	33
+		_glcd_WriteChar3x6		CODE           	439C	0000	229
+		_glcd_PlotPixel		CODE           	4160	0000	179
+		_glcd_Image    		CODE           	3F68	0000	117
 
-glcd_library/glcd.c estimated size: 708
+glcd_library/glcd.c estimated size: 1383
 
