@@ -1053,6 +1053,12 @@ void main(void) {
     if(score >= bestScore )
     {
         glcd_text_write("you beat your best score !",1,1);
+        delayHomeScreen();
+    }
+    else
+    {
+        glcd_text_write("Game Over",1,1);
+        delayHomeScreen();
     }
     EEPROM_Write(ADDRESSZERO, score);
     

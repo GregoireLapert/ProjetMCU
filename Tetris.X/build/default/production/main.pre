@@ -6048,6 +6048,12 @@ glcd_FillScreen(0);
 if(score >= bestScore )
 {
 glcd_text_write("you beat your best score !",1,1);
+delayHomeScreen();
+}
+else
+{
+glcd_text_write("Game Over",1,1);
+delayHomeScreen();
 }
 EEPROM_Write(0x00, score);
 
